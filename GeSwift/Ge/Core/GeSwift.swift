@@ -29,16 +29,21 @@ extension GeCompatible {
         get {
             return Ge<Self>.self
         }
+        set {
+            /// setter
+        }
     }
     
     public var ge: Ge<Self> {
         get {
             return Ge(self)
         }
+        set {
+            /// setter
+        }
     }
 }
 
 extension String: GeCompatible {}
-
 extension NSObject: GeCompatible {}
 

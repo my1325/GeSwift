@@ -9,15 +9,19 @@
 import UIKit.UIView
 
 extension Ge where Base: UIView {
-    public var snapShot: UIImage {
-        get {
-            UIGraphicsBeginImageContextWithOptions(base.bounds.size, true, UIScreen.main.scale);
-            let context = UIGraphicsGetCurrentContext();
-            base.layer.render(in: context!)
-            let shotImage = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            return shotImage!;
+    
+    public func snapShot(size: CGSize?) -> UIImage? {
+        var size = size
+        if size == nil {
+            size = base.bounds.size
         }
+        
+        UIGraphicsBeginImageContextWithOptions(size!, true, UIScreen.main.scale);
+        let context = UIGraphicsGetCurrentContext()
+        base.layer.render(in: context!)
+        let shotImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return shotImage
     }
     
     public func addConstraint(inSuper attribute: NSLayoutAttribute, constant: CGFloat) {
@@ -85,8 +89,11 @@ extension Ge where Base: UIView {
     ///   - color: 边框颜色
     ///   - width: 边框宽度
     ///   - dashPartten: 虚线样式
-    public func dashBorder(_ color: CGColor = UIColor.ge.with(hex: "cccccc").cgColor, _ width: CGFloat = 1 / UIScreen.main.scale, _ dashPartten: [NSNumber] = [4, 2], _ lineCap: String = "square", frame: CGRect) {
-//        CAShapeLayer *border = [CAShapeLayer layer];
+    public func dashBorder(_ color: CGColor = UIColor.ge.serializeWithString(useingHex: "cccccc").cgColor,
+                           _ width: CGFloat = 1 / UIScreen.main.scale,
+                           _ dashPartten: [NSNumber] = [4, 2],
+                           _ lineCap: String = "square",
+                           frame: CGRect) {
         let border = CAShapeLayer()
         border.strokeColor = color
         border.fillColor = nil
@@ -101,12 +108,20 @@ extension Ge where Base: UIView {
 }
 
 
-protocol Nibloadable {
-    
-}
+protocol Nibloadable {}
+
+extension UIView: Nibloadable {}
+
 extension Nibloadable where Self : UIView{
    
-    static func loadNib(_ nibNmae :String? = nil) -> Self{
-        return Bundle.main.loadNibNamed(nibNmae ?? "\(self)", owner: nil, options: nil)?.first as! Self
+    static func loadNib(named nibNmae: String? = nil) -> Self? {
+        return Bundle.main.loadNibNamed(nibNmae ?? "\(self)", owner: nil, options: nil)?.first as? Self
+    }
+}
+
+extension Ge where Base: UIView {
+    
+    public static func loadNib(named nibName: String? = nil) -> Base? {
+        return Base.loadNib(named: nibName)
     }
 }

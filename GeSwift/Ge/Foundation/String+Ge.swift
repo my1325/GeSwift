@@ -6,17 +6,15 @@
 //  Copyright © 2017年 MY. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+private let True_Condition = ["true", "True", "TURE", "yes", "Yes", "YES", "1"]
+private let False_Condition = ["false", "False", "FALSE", "no", "No", "NO", "0"]
+
 
 extension Ge where Base == String {
-    // 格式化
-    public static func with(date: Date, format: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: date)
-    }
     
-    public static func with(jsonlist: [Any]) -> String? {
+    public static func deserialize(from jsonlist: [Any]) -> String? {
         do {
             let data = try JSONSerialization.data(withJSONObject: jsonlist, options: .prettyPrinted)
             return String(data: data, encoding: .utf8)
@@ -26,7 +24,7 @@ extension Ge where Base == String {
         }
     }
 
-    public static func with(jsonDict: [AnyHashable: Any]) -> String? {
+    public static func deserialize(from jsonDict: [AnyHashable: Any]) -> String? {
         do {
             let data = try JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted)
             return String(data: data, encoding: .utf8)
@@ -49,34 +47,53 @@ extension Ge where Base == String {
         return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first
     }
     /// 数值
-    public var doubleValue: Double {
-        return Double(base) ?? 0
+    public var double: Double? {
+        return Double(base)
     }
     
-    public var longValue: Int64 {
-        return Int64(base) ?? 0
+    public var long: Int64? {
+        return Int64(base)
     }
     
-    public var boolValue: Bool {
-         return ["true", "True", "TRUE", "Yes", "yes", "YES", "1"].contains(base)
+    public var bool: Bool? {
+        if True_Condition.contains(base) {
+            return true
+        }
+        else if False_Condition.contains(base) {
+            return false
+        }
+        return nil
     }
     
-    /// 时间格式化
-    public func to(date format: String) -> Date? {
-        var time = base
+    // color
+    public var asColor: UIColor {
+        var cString: String = base.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         
-        if time.hasSuffix(".0") {
-            time.removeLast()
-            time.removeLast()
+        if (cString.hasPrefix("#")) {
+            cString = subString(at: 1 ..< base.count)
+        }
+        if cString.hasPrefix("0X") {
+            cString = subString(at: 2 ..< base.count)
         }
         
-        let dateFormmater = DateFormatter()
-        dateFormmater.dateFormat = format
-        return dateFormmater.date(from: time)
+        if (cString.count != 6) {
+            fatalError("only support 6 digst hex color such as ffffff")
+        }
+        
+        let rString = subString(at: 0 ..< 2)
+        let gString = subString(at: 2 ..< 4)
+        let bString = subString(at: 4 ..< 6)
+        
+        var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
+        Scanner(string: rString).scanHexInt32(&r)
+        Scanner(string: gString).scanHexInt32(&g)
+        Scanner(string: bString).scanHexInt32(&b)
+        
+        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
     }
     
     /// json
-   public func toJson() -> Any? {
+    public var jsonObject: Any? {
         if let data = base.data(using: .utf8) {
             do {
                 let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
@@ -89,13 +106,48 @@ extension Ge where Base == String {
         return nil
     }
     
+    /// 时间格式化
+    public func serializeToDate(using format: String) -> Date? {
+        var time = base
+        
+        if time.hasSuffix(".0") {
+            time.removeLast()
+            time.removeLast()
+        }
+        
+        let dateFormmater = DateFormatter()
+        dateFormmater.dateFormat = format
+        return dateFormmater.date(from: time)
+    }
+    
+    
     /// subString
-    public func subString(_ location: Int, length: Int) -> String? {
+    public func subString(at location: Int, length: Int) -> String? {
         let startIndex = base.index(base.startIndex, offsetBy: location)
         let endIndex = base.index(startIndex, offsetBy: length)
         let sub = base[startIndex ..< endIndex]
         
         return String(sub)
+    }
+    
+    public func subString(at range: CountableRange<Int>) -> String {
+        guard range.upperBound <= base.count, range.lowerBound >= 0 else {
+            fatalError("range \(range) out of string bounds 0 ..< \(base.count)")
+        }
+        
+        let startIndex = base.index(base.startIndex, offsetBy: range.lowerBound)
+        let endIndex = base.index(base.startIndex, offsetBy: range.upperBound)
+        return String(base[startIndex ..< endIndex])
+    }
+    
+    public func subString(at range: CountableClosedRange<Int>) -> String {
+        guard range.upperBound < base.count, range.lowerBound >= 0 else {
+            fatalError("range \(range) out of string bounds 0 ..< \(base.count)")
+        }
+        
+        let startIndex = base.index(base.startIndex, offsetBy: range.lowerBound)
+        let endIndex = base.index(base.startIndex, offsetBy: range.upperBound)
+        return String(base[startIndex ... endIndex])
     }
     
 }

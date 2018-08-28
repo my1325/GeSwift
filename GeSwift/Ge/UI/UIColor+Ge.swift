@@ -14,7 +14,7 @@ extension Ge where Base: UIColor {
     ///
     /// - Parameter hex: hexValue
     /// - Returns: UIColor
-    public static func with(hex: String) -> UIColor {
+    public static func serializeWithString(useingHex hex: String) -> UIColor {
         var cString: String = (hex as NSString).trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {

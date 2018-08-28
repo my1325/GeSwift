@@ -8,10 +8,9 @@
 
 import Foundation
 
-extension Ge where Base == Data
-{
+extension Ge where Base == Data {
     /// 16进制字符串
-    public func toHex16() -> String? {
+    public var hexString: String? {
         var string = ""
         base.enumerateBytes { (bytes, index, stop) in
                 for index in 0 ..< bytes.count {
@@ -25,5 +24,17 @@ extension Ge where Base == Data
                 }
         }
         return string
+    }
+    
+    /// jsonObject
+    public var jsonObject: Any? {
+        do {
+            let retObj = try JSONSerialization.jsonObject(with: base,
+                                                          options: JSONSerialization.ReadingOptions.allowFragments)
+            return retObj
+        }
+        catch {
+            return nil
+        }
     }
 }

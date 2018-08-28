@@ -10,7 +10,7 @@ import UIKit.UIImage
 
 extension Ge where Base: UIImage {
     /// colorimage
-    public static func with(color: UIColor, size: CGSize) -> UIImage? {
+    public static func produce(color: UIColor, size: CGSize) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale);
         
         let context = UIGraphicsGetCurrentContext();
@@ -21,8 +21,9 @@ extension Ge where Base: UIImage {
         UIGraphicsEndImageContext();
         return image;
     }
+    
     /// 压缩图片到指定大小
-    public static func with(image sourceImage: UIImage, targetSize: CGSize =  CGSize(width: 480, height: 640)) -> UIImage? {
+    public static func compress(image sourceImage: UIImage, targetSize: CGSize =  CGSize(width: 480, height: 640)) -> UIImage? {
         let size = targetSize
         var newImage: UIImage? = nil
         let imageSize = sourceImage.size
@@ -59,8 +60,9 @@ extension Ge where Base: UIImage {
         
         return newImage!
     }
+    
     /// 压缩图片到指定大小
     public func to(targetSize: CGSize = CGSize(width: 480, height: 640)) -> UIImage? {
-        return UIImage.ge.with(image: base, targetSize: targetSize)
+        return UIImage.ge.compress(image: base, targetSize: targetSize)
     }
 }
