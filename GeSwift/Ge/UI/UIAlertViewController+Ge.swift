@@ -15,7 +15,7 @@ extension Ge where Base: UIAlertController {
     /// - Parameters:
     ///   - title: title
     ///   - touch: 回调事件
-    public func cancel(title: String?, touch: (() -> Void)?) -> Ge<Base> {
+    public func cancel(_ title: String?, touch: (() -> Void)?) -> Ge<Base> {
         let action = UIAlertAction(title: title, style: .cancel) {(action) in
             if let touch = touch {
                 touch()
@@ -30,7 +30,7 @@ extension Ge where Base: UIAlertController {
     /// - Parameters:
     ///   - title: title
     ///   - touch: 回调
-    public func destructive(title: String, touch: (()->Void)?) -> Ge<Base> {
+    public func destructive(_ title: String, touch: (()->Void)?) -> Ge<Base> {
         let action = UIAlertAction(title: title, style: .destructive) {(action) in
             if let touch = touch {
                 touch()
@@ -45,7 +45,7 @@ extension Ge where Base: UIAlertController {
     /// - Parameters:
     ///   - others: 按钮的title数组
     ///   - touch: 回调时间
-    public func other(others: [String]?, touch: ((Int) -> Void)?) -> Ge<Base> {
+    public func other(_ others: [String]?, touch: ((Int) -> Void)?) -> Ge<Base> {
         guard  let others = others else { return self }
         for index in 0 ..< others.count {
             let action = UIAlertAction(title: others[index],
@@ -65,7 +65,7 @@ extension Ge where Base: UIAlertController {
     ///
     /// - Parameter viewController: vc
     public func show(InViewController viewController: UIViewController?) {
-        vc?.present(base, animated: true, completion: nil)
+        viewController?.present(base, animated: true, completion: nil)
     }
 }
 

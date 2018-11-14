@@ -14,7 +14,7 @@ private let False_Condition = ["false", "False", "FALSE", "no", "No", "NO", "0"]
 
 extension Ge where Base == String {
     
-    public static func deserialize(from jsonlist: [Any]) -> String? {
+    public static func string(from jsonlist: [Any]) -> String? {
         do {
             let data = try JSONSerialization.data(withJSONObject: jsonlist, options: .prettyPrinted)
             return String(data: data, encoding: .utf8)
@@ -24,7 +24,7 @@ extension Ge where Base == String {
         }
     }
 
-    public static func deserialize(from jsonDict: [AnyHashable: Any]) -> String? {
+    public static func string(from jsonDict: [AnyHashable: Any]) -> String? {
         do {
             let data = try JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted)
             return String(data: data, encoding: .utf8)
@@ -122,6 +122,19 @@ extension Ge where Base == String {
     
     
     /// subString
+
+    public func subString(from location: Int) -> String? {
+        let startIndex = base.index(base.startIndex, offsetBy: location)
+        let sub = base[startIndex ... base.endIndex]
+        return String(sub)
+    }
+
+    public func subString(to location: Int) -> String? {
+        let endIndex = base.index(base.startIndex, offsetBy: location)
+        let sub = base[base.startIndex ... endIndex]
+        return String(sub)
+    }
+
     public func subString(at location: Int, length: Int) -> String? {
         let startIndex = base.index(base.startIndex, offsetBy: location)
         let endIndex = base.index(startIndex, offsetBy: length)

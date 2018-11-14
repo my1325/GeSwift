@@ -9,6 +9,78 @@
 import UIKit.UIView
 
 extension Ge where Base: UIView {
+
+    public var x: CGFloat {
+        get { return base.frame.origin.x }
+        set {
+            var frame = base.frame
+            frame.origin.x = newValue
+            base.frame = frame
+        }
+    }
+
+    public var y: CGFloat {
+        get { return base.frame.origin.y }
+        set {
+            var frame = base.frame
+            frame.origin.y = newValue
+            base.frame = frame
+        }
+    }
+
+    public var width: CGFloat {
+        get { return base.frame.size.width }
+        set {
+            var frame = base.frame
+            frame.size.width = newValue
+            base.frame = frame
+        }
+    }
+
+    public var height: CGFloat {
+        get { return base.frame.size.height }
+        set {
+            var frame = base.frame
+            frame.size.height = newValue
+            base.frame = frame
+        }
+    }
+
+    public var midX: CGFloat {
+        get { return base.frame.midX }
+        set { x = newValue - width / 2 }
+    }
+
+    public var midY: CGFloat {
+        get { return base.frame.midY }
+        set { y = newValue - height / 2 }
+    }
+
+    public var maxX: CGFloat {
+        get { return base.frame.maxX }
+        set { x = newValue - width }
+    }
+
+    public var maxY: CGFloat {
+        get { return base.frame.maxY }
+        set { y = newValue - height }
+    }
+
+    public var origin: CGPoint {
+        get { return base.frame.origin }
+        set {
+            x = newValue.x
+            y = newValue.y
+        }
+    }
+
+    public var size: CGSize {
+        get { return base.frame.size }
+        set {
+            width = newValue.width
+            height = newValue.height
+        }
+    }
     
     public func snapShot(size: CGSize?) -> UIImage? {
         var size = size
@@ -24,7 +96,7 @@ extension Ge where Base: UIView {
         return shotImage
     }
     
-    public func addConstraint(inSuper attribute: NSLayoutAttribute, constant: CGFloat) {
+    public func addConstraint(inSuper attribute: NSLayoutConstraint.Attribute, constant: CGFloat) {
         let constraint = NSLayoutConstraint(item: base,
                                             attribute: attribute,
                                             relatedBy: .equal,
@@ -57,7 +129,7 @@ extension Ge where Base: UIView {
         base.superview?.addConstraint(constraint)
     }
     
-    public func updateConstraint(inSuper attribute: NSLayoutAttribute, constant: CGFloat) {
+    public func updateConstraint(inSuper attribute: NSLayoutConstraint.Attribute, constant: CGFloat) {
         for constraint in base.superview!.constraints {
             if (constraint.firstAttribute == attribute && constraint.firstItem as? UIView == base) ||
             (constraint.firstAttribute == attribute && constraint.secondItem as? UIView == base) {
@@ -89,7 +161,7 @@ extension Ge where Base: UIView {
     ///   - color: 边框颜色
     ///   - width: 边框宽度
     ///   - dashPartten: 虚线样式
-    public func dashBorder(_ color: CGColor = UIColor.ge.serializeWithString(useingHex: "cccccc").cgColor,
+    public func dashBorder(_ color: CGColor = UIColor.ge.color(with: "cccccc").cgColor,
                            _ width: CGFloat = 1 / UIScreen.main.scale,
                            _ dashPartten: [NSNumber] = [4, 2],
                            _ lineCap: String = "square",
@@ -100,28 +172,9 @@ extension Ge where Base: UIView {
         border.path = UIBezierPath(rect: frame).cgPath
         border.frame = frame
         border.lineWidth = width
-        border.lineCap = lineCap
+        border.lineCap = CAShapeLayerLineCap(rawValue: "lineCap")
         border.lineDashPattern = dashPartten
         
         base.layer.addSublayer(border)
-    }
-}
-
-
-protocol Nibloadable {}
-
-extension UIView: Nibloadable {}
-
-extension Nibloadable where Self : UIView{
-   
-    static func loadNib(named nibNmae: String? = nil) -> Self? {
-        return Bundle.main.loadNibNamed(nibNmae ?? "\(self)", owner: nil, options: nil)?.first as? Self
-    }
-}
-
-extension Ge where Base: UIView {
-    
-    public static func loadNib(named nibName: String? = nil) -> Base? {
-        return Base.loadNib(named: nibName)
     }
 }

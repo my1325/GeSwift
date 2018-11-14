@@ -72,7 +72,7 @@ extension Ge where Base: UITableView{
         if let cell = base.dataSource?.tableView(base, cellForRowAt: indexPath) {
             cell.setNeedsLayout()
             // use auto layout to calculate the cell height
-            var height = cell.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+            var height = cell.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
             // add separator height
             if base.separatorStyle != .none {
                 height += 1 / UIScreen.main.scale
@@ -99,5 +99,35 @@ extension Ge where Base: UITableView{
         let footer = UIView()
         footer.backgroundColor = UIColor.clear
         base.tableFooterView = footer
+    }
+}
+
+extension Ge where Base: UITableView {
+
+    public func register<T: UITableViewCell>(reusableCell cellType: T.Type) where T: Reusable {
+        base.register(cellType, forCellReuseIdentifier: T.reuseIdentifier)
+    }
+
+    public func register<T: UITableViewCell>(reusableNibCell cellType: T.Type) where T: NibReusable {
+        base.register(T.nib, forCellReuseIdentifier: T.reuseIdentifier)
+    }
+
+    public func registe<T: UITableViewHeaderFooterView>(reusableHeaderFooterView type: T.Type) where T: Reusable {
+        base.register(type, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
+    }
+
+    public func register<T: UITableViewHeaderFooterView>(reuseableNibHeaderFooterView type: T.Type) where T: NibReusable {
+        base.register(T.nib, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
+    }
+
+    public func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath? = nil) -> T where T: Reusable {
+        if let indexPath = indexPath {
+            return base.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as! T
+        }
+        return base.dequeueReusableCell(withIdentifier: T.reuseIdentifier) as! T
+    }
+
+    public func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>() -> T where T: Reusable {
+        return base.dequeueReusableHeaderFooterView(withIdentifier: T.reuseIdentifier) as! T
     }
 }

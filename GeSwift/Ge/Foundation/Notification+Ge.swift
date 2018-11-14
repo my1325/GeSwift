@@ -12,7 +12,7 @@ extension Notification.Name: GeCompatible {}
 
 // MARK: - eg:
 
-class HSHNotificationCache {
+internal final class HSHNotificationCache {
     internal static let instance = HSHNotificationCache()
     
     private var cache: [String: Notification.Name] = [:]

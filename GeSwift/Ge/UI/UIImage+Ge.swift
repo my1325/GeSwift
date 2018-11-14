@@ -9,8 +9,9 @@
 import UIKit.UIImage
 
 extension Ge where Base: UIImage {
+
     /// colorimage
-    public static func produce(color: UIColor, size: CGSize) -> UIImage? {
+    public static func image(withColor color: UIColor, size: CGSize) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale);
         
         let context = UIGraphicsGetCurrentContext();
@@ -23,10 +24,10 @@ extension Ge where Base: UIImage {
     }
     
     /// 压缩图片到指定大小
-    public static func compress(image sourceImage: UIImage, targetSize: CGSize =  CGSize(width: 480, height: 640)) -> UIImage? {
-        let size = targetSize
+    public func compress(toTargetSize size: CGSize =  CGSize(width: 480, height: 640)) -> UIImage? {
+        let size = size
         var newImage: UIImage? = nil
-        let imageSize = sourceImage.size
+        let imageSize = base.size
         
         let width = imageSize.width
         let height = imageSize.height
@@ -54,15 +55,67 @@ extension Ge where Base: UIImage {
         thumbnailRect.origin = point;
         thumbnailRect.size.width = sacaledWidth;
         thumbnailRect.size.height = scaledHeight;
-        sourceImage.draw(in: thumbnailRect)
+        base.draw(in: thumbnailRect)
         newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext();
+        UIGraphicsEndImageContext()
         
-        return newImage!
+        return newImage
     }
-    
-    /// 压缩图片到指定大小
-    public func to(targetSize: CGSize = CGSize(width: 480, height: 640)) -> UIImage? {
-        return UIImage.ge.compress(image: base, targetSize: targetSize)
+
+    /// add image a cornerRadius
+    ///
+    /// - Parameter cornerRadius: cornerRadius
+    /// - Returns: new image
+    public func image(withCornerRadius cornerRadius: CGFloat) -> UIImage? {
+
+        UIGraphicsBeginImageContextWithOptions(base.size, false, UIScreen.main.scale)
+
+        let rect = CGRect(x: 0, y: 0, width: base.size.width, height: base.size.height)
+        UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).addClip()
+        base.draw(in: rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+
+        UIGraphicsEndImageContext()
+        return image
+    }
+
+    /// circle image with a border
+    ///
+    /// - Parameters:
+    ///   - color: border color
+    ///   - width: border width
+    /// - Returns: UIImage
+    public func image(withCircleBorder borderColor: UIColor, width borderWidth: CGFloat) -> UIImage? {
+
+        let imageW = base.size.width + 2 * borderWidth;
+        let imageH = base.size.height + 2 * borderWidth;
+        let imageSize = CGSize(width: imageW, height: imageH)
+        UIGraphicsBeginImageContextWithOptions(imageSize, false, UIScreen.main.scale)
+        let ctx = UIGraphicsGetCurrentContext()
+
+        borderColor.set()
+        let bigRadius = imageW * 0.5
+        let centerX = bigRadius
+        let centerY = bigRadius
+        ctx?.addArc(center: CGPoint(x: centerX, y: centerY),
+                    radius: bigRadius,
+                    startAngle: 0,
+                    endAngle: CGFloat(Double.pi * 2),
+                    clockwise: false)
+        ctx?.fillPath()
+
+        let smallRadius = bigRadius - borderWidth
+        ctx?.addArc(center: CGPoint(x: centerX, y: centerY),
+                    radius: smallRadius,
+                    startAngle: 0,
+                    endAngle: CGFloat(Double.pi * 2),
+                    clockwise: false)
+        ctx?.clip()
+        base.draw(in: CGRect(x: borderWidth, y: borderWidth, width: base.size.width, height: base.size.height))
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage
     }
 }

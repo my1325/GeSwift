@@ -1,52 +1,69 @@
 //
-//  UIControl+Ge.swift
-//  GeSwift
+//  UIButton+Ge.swift
+//  PinkeyeFinance
 //
-//  Created by weipinzhiyuan on 2018/8/23.
-//  Copyright © 2018 my. All rights reserved.
+//  Created by weipinzhiyuan on 2018/6/3.
+//  Copyright © 2018年 my. All rights reserved.
 //
 
 import UIKit
 
-fileprivate class HSHUIControlEventTarget {
-    
-    /// handler
-    var action: () -> Void
-    
-    /// init
-    ///
-    /// - Parameters:
-    ///   - action: handler
-    ///   - event: UIControlEvents
-    ///   - control: UIControl
-    ///   - useKey: associate key
-    init(withAction action: @escaping () -> Void,
-         forEvent event: UIControlEvents,
-         withControl control: UIControl) {
+fileprivate final class GeControlEventObject<T: UIControl> {
+
+    private let action: ((T) -> Void)?
+
+    init(action: ((T) -> Void)?) {
         self.action = action
-        control.addTarget(self, action: #selector(eventAction), for: event)
     }
-    
-    /// action
-    @objc func eventAction() {
-        action()
+
+    @objc func selectorAction(_ sender: UIControl) {
+        self.action?(sender as! T)
     }
 }
 
-extension Ge where Base: UIControl {
-    
-    /// UIControlEvent
-    ///
-    /// - Parameters:
-    ///   - event: UIControlEvents
-    ///   - usingHandler: handler
-    func add(event: UIControlEvents, usingHandler handler: ((Base) -> Void)?) {
-        var key = "\(base.description)_\(event.rawValue)"
-        let control = base
-        let target = HSHUIControlEventTarget(withAction: { [weak control] in
-            guard let control = control else { return }
-            handler?(control)
-            }, forEvent: event, withControl: base)
-        objc_setAssociatedObject(control, &key, target, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+
+fileprivate var tapKey = "tapKey"
+extension Ge where Base: UIButton {
+
+    public func tap(_ block: @escaping (Base) -> Void) {
+        let target = GeControlEventObject(action: block)
+        base.addTarget(target, action: #selector(GeControlEventObject.selectorAction(_:)), for: UIControl.Event.touchUpInside)
+        objc_setAssociatedObject(base, &tapKey, target, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
+}
+
+fileprivate var editingChangedKey = "editingChangedKey"
+fileprivate var editingDidBeginKey = "editingDidBeginKey"
+fileprivate var editingDidEndKey = "editingDidEndKey"
+fileprivate var editingDidEndOnExitKey = "editingDidEndOnExitKey"
+extension Ge where Base: UITextField {
+
+    public func editingChanged(_ block: @escaping (Base) -> Void) {
+        let target = GeControlEventObject(action: block)
+        base.addTarget(target, action: #selector(GeControlEventObject.selectorAction(_:)), for: UIControl.Event.editingChanged)
+        objc_setAssociatedObject(base, &editingChangedKey, target, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+
+    public func editingDidBegin(_ block: @escaping (Base) -> Void) {
+        let target = GeControlEventObject(action: block)
+        base.addTarget(target, action: #selector(GeControlEventObject.selectorAction(_:)), for: UIControl.Event.editingDidBegin)
+        objc_setAssociatedObject(base, &editingDidBeginKey, target, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+
+    public func editingDidEnd(_ block: @escaping (Base) -> Void) {
+        let target = GeControlEventObject(action: block)
+        base.addTarget(target, action: #selector(GeControlEventObject.selectorAction(_:)), for: UIControl.Event.editingDidEnd)
+        objc_setAssociatedObject(base, &editingDidEndKey, target, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+
+    public func editingDidEndOnExit(_ block: @escaping (Base) -> Void) {
+        let target = GeControlEventObject(action: block)
+        base.addTarget(target, action: #selector(GeControlEventObject.selectorAction(_:)), for: UIControl.Event.editingDidEndOnExit)
+        objc_setAssociatedObject(base, &editingDidEndOnExitKey, target, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+}
+
+fileprivate var valueChangedKey = "valueChangedKey"
+extension Ge where Base == UISwitch {
+    public
 }
