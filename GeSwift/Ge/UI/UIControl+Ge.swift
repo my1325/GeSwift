@@ -2,7 +2,7 @@
 //  UIButton+Ge.swift
 //  PinkeyeFinance
 //
-//  Created by weipinzhiyuan on 2018/6/3.
+//  Created by my on 2018/6/3.
 //  Copyright © 2018年 my. All rights reserved.
 //
 
@@ -65,5 +65,17 @@ extension Ge where Base: UITextField {
 
 fileprivate var valueChangedKey = "valueChangedKey"
 extension Ge where Base == UISwitch {
-    public
+    public func valueChanged(_ block: @escaping (Base) -> Void) {
+        let target = GeControlEventObject(action: block)
+        base.addTarget(target, action: #selector(GeControlEventObject.selectorAction(_:)), for: UIControl.Event.valueChanged)
+        objc_setAssociatedObject(base, &valueChangedKey, target, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+}
+
+extension Ge where Base == UISegmentedControl {
+    public func valueChanged(_ block: @escaping (Base) -> Void) {
+        let target = GeControlEventObject(action: block)
+        base.addTarget(target, action: #selector(GeControlEventObject.selectorAction(_:)), for: UIControl.Event.valueChanged)
+        objc_setAssociatedObject(base, &valueChangedKey, target, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
 }

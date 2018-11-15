@@ -25,14 +25,21 @@
 		5E2FC3AF20DA5F59007FEF3E /* Data+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC3A120DA5F59007FEF3E /* Data+Ge.swift */; };
 		5E2FC3B020DA5F59007FEF3E /* String+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC3A220DA5F59007FEF3E /* String+Ge.swift */; };
 		5E49EFE7219AC2B500A09046 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49EFE6219AC2B500A09046 /* Reusable.swift */; };
+		5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7622219D63C30012F6A8 /* WCDB+Ge.swift */; };
+		5E4E7627219D649B0012F6A8 /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7625219D649B0012F6A8 /* HorizontalView.swift */; };
+		5E4E7628219D649B0012F6A8 /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */; };
+		5E4E762B219D65670012F6A8 /* String+crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E762A219D65670012F6A8 /* String+crypto.swift */; };
 		5EDB9BF6213E73D700CF3193 /* Notification+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDB9BF5213E73D700CF3193 /* Notification+Ge.swift */; };
 		5EF525C3219BBD82004F2D55 /* UICollectionView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C2219BBD82004F2D55 /* UICollectionView+Ge.swift */; };
 		5EF525C5219BBFF2004F2D55 /* UserDefaults+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C4219BBFF2004F2D55 /* UserDefaults+Ge.swift */; };
 		5EF525C7219BC13F004F2D55 /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C6219BC13F004F2D55 /* Plist.swift */; };
 		5EF525C9219BC31E004F2D55 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C8219BC31E004F2D55 /* Defaults.swift */; };
+		6EF2BCAC04BB4AE33DDCB4F6 /* Pods_GeSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
+		520017B9EEFF8D241A5DF796 /* Pods-GeSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		5E1C6AAE212E4814000D3A7C /* Date+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ge.swift"; sourceTree = "<group>"; };
 		5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ge.swift"; sourceTree = "<group>"; };
 		5E2FC37920DA59A6007FEF3E /* GeSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,11 +60,16 @@
 		5E2FC3A120DA5F59007FEF3E /* Data+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Ge.swift"; sourceTree = "<group>"; };
 		5E2FC3A220DA5F59007FEF3E /* String+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ge.swift"; sourceTree = "<group>"; };
 		5E49EFE6219AC2B500A09046 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		5E4E7622219D63C30012F6A8 /* WCDB+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WCDB+Ge.swift"; sourceTree = "<group>"; };
+		5E4E7625219D649B0012F6A8 /* HorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalView.swift; sourceTree = "<group>"; };
+		5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
+		5E4E762A219D65670012F6A8 /* String+crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+crypto.swift"; sourceTree = "<group>"; };
 		5EDB9BF5213E73D700CF3193 /* Notification+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ge.swift"; sourceTree = "<group>"; };
 		5EF525C2219BBD82004F2D55 /* UICollectionView+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ge.swift"; sourceTree = "<group>"; };
 		5EF525C4219BBFF2004F2D55 /* UserDefaults+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ge.swift"; sourceTree = "<group>"; };
 		5EF525C6219BC13F004F2D55 /* Plist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		5EF525C8219BC31E004F2D55 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EF2BCAC04BB4AE33DDCB4F6 /* Pods_GeSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +89,8 @@
 			children = (
 				5E2FC37B20DA59A6007FEF3E /* GeSwift */,
 				5E2FC37A20DA59A6007FEF3E /* Products */,
+				73109FF9AD0F4262AA6DF44E /* Pods */,
+				A6983030081C274FC5B44F92 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +119,9 @@
 		5E2FC39020DA5F59007FEF3E /* Ge */ = {
 			isa = PBXGroup;
 			children = (
+				5E4E7629219D654E0012F6A8 /* Crypto */,
+				5E4E7624219D646A0012F6A8 /* Control */,
+				5E4E7621219D63A60012F6A8 /* DataBase */,
 				5E2FC39120DA5F59007FEF3E /* UI */,
 				5E2FC39D20DA5F59007FEF3E /* Core */,
 				5E2FC3A020DA5F59007FEF3E /* Foundation */,
@@ -150,6 +168,48 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
+		5E4E7621219D63A60012F6A8 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				5E4E7622219D63C30012F6A8 /* WCDB+Ge.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		5E4E7624219D646A0012F6A8 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */,
+				5E4E7625219D649B0012F6A8 /* HorizontalView.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		5E4E7629219D654E0012F6A8 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				5E4E762A219D65670012F6A8 /* String+crypto.swift */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
+		73109FF9AD0F4262AA6DF44E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				520017B9EEFF8D241A5DF796 /* Pods-GeSwift.debug.xcconfig */,
+				416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A6983030081C274FC5B44F92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,9 +217,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E2FC38B20DA59A9007FEF3E /* Build configuration list for PBXNativeTarget "GeSwift" */;
 			buildPhases = (
+				7AC6B84F4BA720C6076E405E /* [CP] Check Pods Manifest.lock */,
 				5E2FC37520DA59A6007FEF3E /* Sources */,
 				5E2FC37620DA59A6007FEF3E /* Frameworks */,
 				5E2FC37720DA59A6007FEF3E /* Resources */,
+				FE325A3B0A9AFCF2A3D52BCE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -216,6 +278,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7AC6B84F4BA720C6076E405E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GeSwift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE325A3B0A9AFCF2A3D52BCE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLiteRepairKit/sqliterk.framework",
+				"${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/WCDB.swift/WCDBSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/WCDBOptimizedSQLCipher/sqlcipher.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sqliterk.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Schedule.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WCDBSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sqlcipher.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5E2FC37520DA59A6007FEF3E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -234,10 +355,14 @@
 				5E2FC3A620DA5F59007FEF3E /* UIView+Ge.swift in Sources */,
 				5EF525C9219BC31E004F2D55 /* Defaults.swift in Sources */,
 				5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */,
+				5E4E762B219D65670012F6A8 /* String+crypto.swift in Sources */,
 				5E2FC3AB20DA5F59007FEF3E /* UIResponder.swift in Sources */,
+				5E4E7627219D649B0012F6A8 /* HorizontalView.swift in Sources */,
 				5E1C6AB5212E538C000D3A7C /* UIScrollView+Ge.swift in Sources */,
 				5EF525C5219BBFF2004F2D55 /* UserDefaults+Ge.swift in Sources */,
 				5EF525C7219BC13F004F2D55 /* Plist.swift in Sources */,
+				5E4E7628219D649B0012F6A8 /* CycleScrollView.swift in Sources */,
+				5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */,
 				5E2FC3A720DA5F59007FEF3E /* UIColor+Ge.swift in Sources */,
 				5EDB9BF6213E73D700CF3193 /* Notification+Ge.swift in Sources */,
 				5E2FC3A820DA5F59007FEF3E /* UITableView+Ge.swift in Sources */,
@@ -382,6 +507,7 @@
 		};
 		5E2FC38C20DA59A9007FEF3E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 520017B9EEFF8D241A5DF796 /* Pods-GeSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -400,6 +526,7 @@
 		};
 		5E2FC38D20DA59A9007FEF3E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

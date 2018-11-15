@@ -2,7 +2,7 @@
 //  Plist.swift
 //  GeSwift
 //
-//  Created by weipinzhiyuan on 2018/11/14.
+//  Created by my on 2018/11/14.
 //  Copyright © 2018 my. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  Notification+Ge.swift
 //  GeSwift
 //
-//  Created by weipinzhiyuan on 2018/9/4.
+//  Created by my on 2018/9/4.
 //  Copyright © 2018 my. All rights reserved.
 //
 

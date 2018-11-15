@@ -2,7 +2,7 @@
 //  UIScrollView+Ge.swift
 //  GeSwift
 //
-//  Created by weipinzhiyuan on 2018/8/23.
+//  Created by my on 2018/8/23.
 //  Copyright © 2018 my. All rights reserved.
 //
 

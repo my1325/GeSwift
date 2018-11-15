@@ -1,8 +1,8 @@
 //
 //  Reusable.swift
-//  HSHTool
+//  Tool
 //
-//  Created by weipinzhiyuan on 2018/10/22.
+//  Created by my on 2018/10/22.
 //  Copyright © 2018 my. All rights reserved.
 //
 

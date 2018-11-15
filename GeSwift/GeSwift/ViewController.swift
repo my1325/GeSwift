@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  GeSwift
 //
-//  Created by weipinzhiyuan on 2018/6/20.
+//  Created by my on 2018/6/20.
 //  Copyright © 2018年 my. All rights reserved.
 //
 
