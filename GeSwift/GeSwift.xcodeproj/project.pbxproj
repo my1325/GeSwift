@@ -29,6 +29,7 @@
 		5E4E7627219D649B0012F6A8 /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7625219D649B0012F6A8 /* HorizontalView.swift */; };
 		5E4E7628219D649B0012F6A8 /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */; };
 		5E4E762B219D65670012F6A8 /* String+crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E762A219D65670012F6A8 /* String+crypto.swift */; };
+		5ED77EAE21ABD98900587B26 /* UIWindow+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED77EAD21ABD98900587B26 /* UIWindow+Ge.swift */; };
 		5EDB9BF6213E73D700CF3193 /* Notification+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDB9BF5213E73D700CF3193 /* Notification+Ge.swift */; };
 		5EF525C3219BBD82004F2D55 /* UICollectionView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C2219BBD82004F2D55 /* UICollectionView+Ge.swift */; };
 		5EF525C5219BBFF2004F2D55 /* UserDefaults+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C4219BBFF2004F2D55 /* UserDefaults+Ge.swift */; };
@@ -64,6 +65,7 @@
 		5E4E7625219D649B0012F6A8 /* HorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalView.swift; sourceTree = "<group>"; };
 		5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
 		5E4E762A219D65670012F6A8 /* String+crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+crypto.swift"; sourceTree = "<group>"; };
+		5ED77EAD21ABD98900587B26 /* UIWindow+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Ge.swift"; sourceTree = "<group>"; };
 		5EDB9BF5213E73D700CF3193 /* Notification+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ge.swift"; sourceTree = "<group>"; };
 		5EF525C2219BBD82004F2D55 /* UICollectionView+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ge.swift"; sourceTree = "<group>"; };
 		5EF525C4219BBFF2004F2D55 /* UserDefaults+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ge.swift"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				5E2FC39A20DA5F59007FEF3E /* UIResponder.swift */,
 				5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */,
 				5EF525C2219BBD82004F2D55 /* UICollectionView+Ge.swift */,
+				5ED77EAD21ABD98900587B26 /* UIWindow+Ge.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */,
 				5E4E762B219D65670012F6A8 /* String+crypto.swift in Sources */,
 				5E2FC3AB20DA5F59007FEF3E /* UIResponder.swift in Sources */,
+				5ED77EAE21ABD98900587B26 /* UIWindow+Ge.swift in Sources */,
 				5E4E7627219D649B0012F6A8 /* HorizontalView.swift in Sources */,
 				5E1C6AB5212E538C000D3A7C /* UIScrollView+Ge.swift in Sources */,
 				5EF525C5219BBFF2004F2D55 /* UserDefaults+Ge.swift in Sources */,

@@ -13,7 +13,7 @@ import Foundation
 public class DefaultsKeys {
     public final class DefaultsKey<V>: DefaultsKeys {
         fileprivate var key: Plist.Key
-        init(key: Plist.Key) {
+        public init(key: Plist.Key) {
             self.key = key
         }
     }
@@ -26,7 +26,6 @@ extension Plist {
     }
 
     public func set<V: Encodable>(_ value: V?, for key: DefaultsKeys.DefaultsKey<V>) {
-        guard let encodeValue = value else { return }
         if valueIsBaseType(V.self) {
             self[key.key] = encodeValue
         }

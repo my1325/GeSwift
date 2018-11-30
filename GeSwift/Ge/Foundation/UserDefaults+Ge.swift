@@ -8,13 +8,13 @@
 
 import Foundation
 
-internal protocol UserDefaultsKey {
+public protocol UserDefaultsKey {
     associatedtype ValueType
 }
 
-internal struct DefaultsKey<ValueType>: UserDefaultsKey {
+public struct DefaultsKey<ValueType>: UserDefaultsKey {
     fileprivate let key: String
-    init(_ key: String) {
+    public init(_ key: String) {
         self.key = key
     }
 }
@@ -26,7 +26,7 @@ extension Ge where Base: UserDefaults {
     }
 
     @discardableResult
-    internal func set<ValueType: Encodable>(_ value: ValueType?, for key: DefaultsKey<ValueType>) -> Bool {
+    public func set<ValueType: Encodable>(_ value: ValueType?, for key: DefaultsKey<ValueType>) -> Bool {
         guard let value = value else { return false }
         if valueIsBaseType(ValueType.self) {
             base.set(value, forKey: key.key)
@@ -38,7 +38,7 @@ extension Ge where Base: UserDefaults {
         return base.synchronize()
     }
 
-    internal func value<ValueType: Decodable>(for key: DefaultsKey<ValueType>) -> ValueType? {
+    public func value<ValueType: Decodable>(for key: DefaultsKey<ValueType>) -> ValueType? {
         guard let data = base.value(forKey: key.key) as? Data else { return nil }
         if valueIsBaseType(ValueType.self) {
             return base.value(forKey: key.key) as? ValueType
