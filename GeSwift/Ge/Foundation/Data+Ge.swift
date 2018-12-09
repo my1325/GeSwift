@@ -8,6 +8,8 @@
 
 import Foundation
 
+extension Data: GeCompatible {}
+
 extension Ge where Base == Data {
     /// 16进制字符串
     public var hexString: String? {

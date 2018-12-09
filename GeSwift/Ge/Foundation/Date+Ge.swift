@@ -8,6 +8,8 @@
 
 import Foundation
 
+extension Date: GeCompatible {}
+
 public enum HSHDateWeek: Int {
     case saturday = 0
     case sunday = 1
