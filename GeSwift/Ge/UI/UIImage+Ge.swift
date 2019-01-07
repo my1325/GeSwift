@@ -118,4 +118,32 @@ extension Ge where Base: UIImage {
 
         return newImage
     }
+
+    /// 渐变图片
+    ///
+    /// - Parameters:
+    /// - colors: colors
+    ///   - sPoint: startPoint
+    ///   - ePoint: endPoint
+    ///   - size: image size
+    /// - Returns: image
+    public static func gradientImage(colors: [UIColor],
+                                     startPoint sPoint: CGPoint,
+                                     endPoint ePoint: CGPoint,
+                                     size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, true, 0)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+
+        let context = UIGraphicsGetCurrentContext()
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let colors = colors.map({ $0.cgColor })
+//            colors.map {(color: UIColor) -> AnyObject! in return color.CGColor as AnyObject! } as NSArray
+        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: nil)!
+        // 第二个参数是起始位置，第三个参数是终止位置
+        context?.drawLinearGradient(gradient, start: sPoint, end: ePoint, options: CGGradientDrawingOptions.init(rawValue: 0))
+        return UIGraphicsGetImageFromCurrentImageContext()!
+    }
+
 }

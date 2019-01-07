@@ -43,3 +43,22 @@ extension Plist {
         return try? JSONDecoder().decode(V.self, from: data)
     }
 }
+
+extension Plist {
+    public static let infoPlist: Plist = Plist(path: Bundle.main.path(forResource: "info", ofType: "plist")!)
+}
+
+extension DefaultsKeys {
+    /// CFBundleShortVersionStringKey
+    public static let shortVersion = DefaultsKey<String>(key: "CFBundleShortVersionString")
+    /// kCFBundleInfoDictionaryVersionKey
+    public static let infoVersion = DefaultsKey<String>(key: "CFBundleInfoDictionaryVersion")
+    /// CFBundleExecutableKey
+    public static let executable = DefaultsKey<String>(key: "CFBundleExecutable")
+    /// CFBundleIdentifierKey
+    public static let bundleId = DefaultsKey<String>(key: "CFBundleIdentifier")
+    /// kCFBundleVersionKey
+    public static let bundleVersion = DefaultsKey<String>(key: "CFBundleVersion")
+    /// kCFBundleNameKey
+    public static let bundleName = DefaultsKey<String>(key: "CFBundleName")
+}

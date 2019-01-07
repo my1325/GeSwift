@@ -11,7 +11,7 @@ import Foundation
 extension Date: GeCompatible {}
 
 public enum HSHDateWeek: Int {
-    case saturday = 0
+    case saturday = 7
     case sunday = 1
     case monday = 2
     case tuesday = 3
@@ -20,6 +20,7 @@ public enum HSHDateWeek: Int {
     case friday = 6
 }
 
+extension Date: GeCompatible {}
 
 extension Ge where Base == Date {
     /// weak day
