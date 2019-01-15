@@ -20,8 +20,6 @@ public enum HSHDateWeek: Int {
     case friday = 6
 }
 
-extension Date: GeCompatible {}
-
 extension Ge where Base == Date {
     /// weak day
     public var week: HSHDateWeek {

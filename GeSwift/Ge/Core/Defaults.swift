@@ -27,10 +27,10 @@ extension Plist {
 
     public func set<V: Encodable>(_ value: V?, for key: DefaultsKeys.DefaultsKey<V>) {
         if valueIsBaseType(V.self) {
-            self[key.key] = encodeValue
+            self[key.key] = value
         }
         else {
-            let data = try? JSONEncoder().encode(encodeValue)
+            let data = try? JSONEncoder().encode(value)
             self[key.key] = data
         }
     }

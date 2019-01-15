@@ -23,7 +23,7 @@ extension Ge where Base: UIWindow {
 
     public var topMostViewController: UIViewController? {
         //  getting rootViewController
-        var topController = rootViewController
+        var topController = base.rootViewController
         //  Getting topMost ViewController
         while topController?.presentedViewController != nil {
             topController = topController?.presentedViewController

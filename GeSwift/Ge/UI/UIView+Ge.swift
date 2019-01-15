@@ -147,7 +147,7 @@ extension Ge where Base: UIView {
         }
     }
     
-    public func updateConstrain(forHeight height: CGFloat) {
+    public func updateConstraint(forHeight height: CGFloat) {
         for constraint in base.constraints {
             if constraint.firstAttribute == .height && constraint.firstItem as? UIView == base {
                 constraint.constant = height
