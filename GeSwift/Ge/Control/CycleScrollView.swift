@@ -350,8 +350,7 @@ extension CycleScrollView: UICollectionViewDataSource {
             }
             else if let imgUrl = dataSource?.scrollView?(self, imageURLAtIndex: indexPath.item % totalIndex) {
                 cell.imageView.kf.setImage(with: imgUrl,
-                                           placeholder: placeholderImage,
-                                           options: nil, progressBlock: nil, completionHandler: nil)
+                                           placeholder: placeholderImage)
             }
             else {
                 cell.imageView.image = placeholderImage
