@@ -28,7 +28,7 @@
 		5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7622219D63C30012F6A8 /* WCDB+Ge.swift */; };
 		5E4E7627219D649B0012F6A8 /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7625219D649B0012F6A8 /* HorizontalView.swift */; };
 		5E4E7628219D649B0012F6A8 /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */; };
-		5E4E762B219D65670012F6A8 /* String+crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E762A219D65670012F6A8 /* String+crypto.swift */; };
+		5EA9A52B21FFFB290066089B /* GeSwift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5EA9A52A21FFFB290066089B /* GeSwift.podspec */; };
 		5ED77EAE21ABD98900587B26 /* UIWindow+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED77EAD21ABD98900587B26 /* UIWindow+Ge.swift */; };
 		5EDB9BF6213E73D700CF3193 /* Notification+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDB9BF5213E73D700CF3193 /* Notification+Ge.swift */; };
 		5EF525C3219BBD82004F2D55 /* UICollectionView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C2219BBD82004F2D55 /* UICollectionView+Ge.swift */; };
@@ -64,7 +64,7 @@
 		5E4E7622219D63C30012F6A8 /* WCDB+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WCDB+Ge.swift"; sourceTree = "<group>"; };
 		5E4E7625219D649B0012F6A8 /* HorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalView.swift; sourceTree = "<group>"; };
 		5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
-		5E4E762A219D65670012F6A8 /* String+crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+crypto.swift"; sourceTree = "<group>"; };
+		5EA9A52A21FFFB290066089B /* GeSwift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GeSwift.podspec; path = ../GeSwift.podspec; sourceTree = "<group>"; };
 		5ED77EAD21ABD98900587B26 /* UIWindow+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Ge.swift"; sourceTree = "<group>"; };
 		5EDB9BF5213E73D700CF3193 /* Notification+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ge.swift"; sourceTree = "<group>"; };
 		5EF525C2219BBD82004F2D55 /* UICollectionView+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ge.swift"; sourceTree = "<group>"; };
@@ -89,6 +89,7 @@
 		5E2FC37020DA59A6007FEF3E = {
 			isa = PBXGroup;
 			children = (
+				5EA9A52A21FFFB290066089B /* GeSwift.podspec */,
 				5E2FC37B20DA59A6007FEF3E /* GeSwift */,
 				5E2FC37A20DA59A6007FEF3E /* Products */,
 				73109FF9AD0F4262AA6DF44E /* Pods */,
@@ -121,7 +122,6 @@
 		5E2FC39020DA5F59007FEF3E /* Ge */ = {
 			isa = PBXGroup;
 			children = (
-				5E4E7629219D654E0012F6A8 /* Crypto */,
 				5E4E7624219D646A0012F6A8 /* Control */,
 				5E4E7621219D63A60012F6A8 /* DataBase */,
 				5E2FC39120DA5F59007FEF3E /* UI */,
@@ -186,14 +186,6 @@
 				5E4E7625219D649B0012F6A8 /* HorizontalView.swift */,
 			);
 			path = Control;
-			sourceTree = "<group>";
-		};
-		5E4E7629219D654E0012F6A8 /* Crypto */ = {
-			isa = PBXGroup;
-			children = (
-				5E4E762A219D65670012F6A8 /* String+crypto.swift */,
-			);
-			path = Crypto;
 			sourceTree = "<group>";
 		};
 		73109FF9AD0F4262AA6DF44E /* Pods */ = {
@@ -273,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EA9A52B21FFFB290066089B /* GeSwift.podspec in Resources */,
 				5E2FC38720DA59A9007FEF3E /* LaunchScreen.storyboard in Resources */,
 				5E2FC38420DA59A9007FEF3E /* Assets.xcassets in Resources */,
 				5E2FC38220DA59A6007FEF3E /* Main.storyboard in Resources */,
@@ -358,7 +351,6 @@
 				5E2FC3A620DA5F59007FEF3E /* UIView+Ge.swift in Sources */,
 				5EF525C9219BC31E004F2D55 /* Defaults.swift in Sources */,
 				5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */,
-				5E4E762B219D65670012F6A8 /* String+crypto.swift in Sources */,
 				5E2FC3AB20DA5F59007FEF3E /* UIResponder.swift in Sources */,
 				5ED77EAE21ABD98900587B26 /* UIWindow+Ge.swift in Sources */,
 				5E4E7627219D649B0012F6A8 /* HorizontalView.swift in Sources */,
@@ -517,7 +509,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = R59L7J6ULM;
 				INFOPLIST_FILE = GeSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -538,7 +530,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GeSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

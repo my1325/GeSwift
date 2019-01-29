@@ -177,4 +177,21 @@ extension Ge where Base: UIView {
         
         base.layer.addSublayer(border)
     }
+
+    /// 添加部分圆角
+    ///
+    /// - Parameters:
+    ///   - corners: 需要添加的
+    ///   - radius: 圆角
+    ///   - rect: 圆角在的矩形
+    public func addRoundCorner(_ corners: UIRectCorner, radii: CGSize, rect: CGRect = .zero) {
+        var rect = rect
+        if rect == .zero {
+            rect = self.base.bounds
+        }
+        let roundPath = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: radii)
+        let shape = CAShapeLayer()
+        shape.path = roundPath.cgPath
+        self.base.layer.mask = shape
+    }
 }

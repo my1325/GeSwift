@@ -293,6 +293,7 @@ public final class CycleScrollView: UIView {
         _collectionView.delegate = self
         _collectionView.dataSource = self
         _collectionView.isPagingEnabled = true
+        _collectionView.backgroundColor = UIColor.clear
         _collectionView.register(CycleScrollViewCustomViewCell.self, forCellWithReuseIdentifier: "CycleScrollViewCustomViewCell")
         _collectionView.register(CycleScrollViewImageCell.self, forCellWithReuseIdentifier: "CycleScrollViewImageCell")
         self.addSubview(_collectionView)

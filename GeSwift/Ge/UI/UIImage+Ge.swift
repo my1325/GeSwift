@@ -146,4 +146,75 @@ extension Ge where Base: UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
 
+    /// 二维码图片
+    ///
+    /// - Parameters:
+    ///   - url: 二维码
+    ///   - image: 中间的icon
+    /// - Returns: UIImage
+    public static func qrCodeImage(withURL url: String, image: UIImage? = nil) -> UIImage {
+        //创建滤镜
+        let filter = CIFilter(name: "CIQRCodeGenerator")
+        filter?.setDefaults()
+        //将url加入二维码
+        filter?.setValue(url.data(using: String.Encoding.utf8), forKey: "inputMessage")
+        //取出生成的二维码（不清晰）
+        if let outputImage = filter?.outputImage {
+            //生成清晰度更好的二维码
+            let qrCodeImage = hightDefinitionImage(outputImage, size: 300)
+            //如果有一个头像的话，将头像加入二维码中心
+            if let image = image {
+                //给头像加一个白色圆边（如果没有这个需求直接忽略）
+                //            image = circleImageWithImage(image, borderWidth: 50, borderColor: UIColor.white)
+                //合成图片
+                let newImage = syntheticImage(qrCodeImage, iconImage: image, width: 60, height: 60)
+                return newImage
+            }
+            return qrCodeImage
+        }
+        return UIImage()
+    }
+
+
+    //image: 二维码 iconImage:头像图片 width: 头像的宽 height: 头像的宽
+    public static func syntheticImage(_ image: UIImage, iconImage:UIImage, width: CGFloat, height: CGFloat) -> UIImage{
+        //开启图片上下文
+        UIGraphicsBeginImageContext(image.size)
+        //绘制背景图片
+        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+
+        let x = (image.size.width - width) * 0.5
+        let y = (image.size.height - height) * 0.5
+        iconImage.draw(in: CGRect(x: x, y: y, width: width, height: height))
+        //取出绘制好的图片
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        //关闭上下文
+        UIGraphicsEndImageContext()
+        //返回合成好的图片
+        if let newImage = newImage {
+            return newImage
+        }
+        return UIImage()
+    }
+
+    //MARK: - 生成高清的UIImage
+    public static func hightDefinitionImage(_ image: CIImage, size: CGFloat) -> UIImage {
+
+        let integral: CGRect = image.extent.integral
+        let proportion: CGFloat = min(size/integral.width, size/integral.height)
+
+        let width = integral.width * proportion
+        let height = integral.height * proportion
+        let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceGray()
+        let bitmapRef = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: 0)!
+
+        let context = CIContext(options: nil)
+        let bitmapImage: CGImage = context.createCGImage(image, from: integral)!
+
+        bitmapRef.interpolationQuality = CGInterpolationQuality.none
+        bitmapRef.scaleBy(x: proportion, y: proportion);
+        bitmapRef.draw(bitmapImage, in: integral);
+        let image: CGImage = bitmapRef.makeImage()!
+        return UIImage(cgImage: image)
+    }
 }

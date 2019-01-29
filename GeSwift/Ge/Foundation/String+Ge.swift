@@ -124,13 +124,13 @@ extension Ge where Base == String {
 
     public func subString(from location: Int) -> String? {
         let startIndex = base.index(base.startIndex, offsetBy: location)
-        let sub = base[startIndex ... base.endIndex]
+        let sub = base[startIndex ..< base.endIndex]
         return String(sub)
     }
 
     public func subString(to location: Int) -> String? {
         let endIndex = base.index(base.startIndex, offsetBy: location)
-        let sub = base[base.startIndex ... endIndex]
+        let sub = base[base.startIndex ..< endIndex]
         return String(sub)
     }
 
