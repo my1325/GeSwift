@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
  s.summary         = "GeSwift for my's ioser"
  s.homepage        = "https://github.com/my1325/GeSwift.git"
  s.license            = "MIT"
- s.platform          = :ios, "8.0"
+ s.platform          = :ios, "9.0"
  s.authors           = { "mayong" => "ma.yong@vpclub.cn" }
  s.source             = { :git => "https://github.com/my1325/GeSwift.git", :tag => "#{s.version}" }
  s.swift_version = '4.2'
@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
 	ss.dependency 'GeSwift/Foundation'
 	ss.dependency 'Schedule'
 	ss.dependency 'SnapKit'
-	ss.dependency 'Kingfisher'
+	ss.dependency 'Kingfisher', '4.10.1'
     end
     
 end
