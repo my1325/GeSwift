@@ -15,28 +15,28 @@ extension Ge where Base: UIColor {
     /// - Parameter hex: hexValue
     /// - Returns: UIColor
     public static func color(with hex: String) -> UIColor {
-        var cString: String = (hex as NSString).trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).uppercased()
+        precondition(hex.count >= 6, "hex string's count must be more than 6")
         
-        if (cString.hasPrefix("#")) {
-            cString = (cString as NSString).substring(from: 1)
-        }
-        if cString.hasPrefix("0X") {
-            cString = (cString as NSString).substring(from: 2)
+        let cString = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            .uppercased()
+            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrences(of: "#", with: "")
+            .replacingOccurrences(of: "0X", with: "")
+        
+        var alpha: CGFloat = 1
+        if cString.count > 6, let alphaString = cString.ge.subString(from: 5),  let double = Double(alphaString), double < 100  {
+            alpha = CGFloat(double / 100.0)
         }
         
-        if (cString.count != 6) {
-            return UIColor.gray
-        }
-        
-        let rString = (cString as NSString).substring(to: 2)
-        let gString = ((cString as NSString).substring(from: 2) as NSString).substring(to: 2)
-        let bString = ((cString as NSString).substring(from: 4) as NSString).substring(to: 2)
+        let rString = cString.ge.subString(to: 2)!
+        let gString = cString.ge.subString(from: 2)!.ge.subString(to: 2)!
+        let bString = cString.ge.subString(from: 4)!.ge.subString(to: 2)!
         
         var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
         Scanner(string: rString).scanHexInt32(&r)
         Scanner(string: gString).scanHexInt32(&g)
         Scanner(string: bString).scanHexInt32(&b)
         
-        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
+        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: alpha)
     }
 }

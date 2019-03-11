@@ -66,29 +66,29 @@ extension Ge where Base == String {
     
     // color
     public var asColor: UIColor {
-        var cString: String = base.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
+        precondition(self.base.count >= 6, "hex string's count must be more than 6")
         
-        if (cString.hasPrefix("#")) {
-            cString = subString(at: 1 ..< base.count)
-        }
-        if cString.hasPrefix("0X") {
-            cString = subString(at: 2 ..< base.count)
+        let cString = self.base.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            .uppercased()
+            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrences(of: "#", with: "")
+            .replacingOccurrences(of: "0X", with: "")
+        
+        var alpha: CGFloat = 1
+        if cString.count > 6, let alphaString = cString.ge.subString(from: 5),  let double = Double(alphaString), double < 100  {
+            alpha = CGFloat(double / 100.0)
         }
         
-        if (cString.count != 6) {
-            fatalError("only support 6 digst hex color such as ffffff")
-        }
-        
-        let rString = subString(at: 0 ..< 2)
-        let gString = subString(at: 2 ..< 4)
-        let bString = subString(at: 4 ..< 6)
+        let rString = cString.ge.subString(to: 2)!
+        let gString = cString.ge.subString(from: 2)!.ge.subString(to: 2)!
+        let bString = cString.ge.subString(from: 4)!.ge.subString(to: 2)!
         
         var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
         Scanner(string: rString).scanHexInt32(&r)
         Scanner(string: gString).scanHexInt32(&g)
         Scanner(string: bString).scanHexInt32(&b)
         
-        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
+        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: alpha)
     }
     
     /// json

@@ -36,7 +36,6 @@ extension Ge where Base: UIWindow {
         let root  = UIApplication.shared.delegate?.window??.rootViewController as? UITabBarController
         let nav = root?.selectedViewController as? UINavigationController
         let controller = nav?.topViewController
-
         return controller
     }
 }

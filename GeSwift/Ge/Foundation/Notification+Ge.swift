@@ -41,7 +41,38 @@ extension Ge where Base == String {
     }
 }
 
+fileprivate class NotificationObserver {
+    
+    private let closure: (Notification) -> Void
+    init(closure: @escaping (Notification) -> Void, name: Notification.Name) {
+        self.closure = closure
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(_:)), name: name, object: nil)
+    }
+    
+    @objc func handleNotification(_ notification: Notification) {
+        closure(notification)
+    }
+}
+
+fileprivate var notificationObserverKey = "notificationObserverKey"
+
 extension Ge where Base == NSNotification.Name {
+    
+    /// add observer for notification
+    ///
+    /// - Parameters:
+    ///   - observer: observer
+    ///   - queue: execute queue
+    ///   - closure: closure
+    public func add(observer: Any, queue: DispatchQueue = .main, closure: @escaping (Notification) -> Void) {
+        let executeClosure = { (notification: Notification) in
+            queue.async {
+                closure(notification)
+            }
+        }
+        let newObserver = NotificationObserver(closure: executeClosure, name: self.base)
+        objc_setAssociatedObject(observer, &notificationObserverKey, newObserver, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+    }
     
     /// post notification
     ///
@@ -68,5 +99,8 @@ extension Ge where Base == NSNotification.Name {
     ///   - object: from object
     public func remove(observer: Any, object: Any? = nil) {
         NotificationCenter.default.removeObserver(observer, name: base, object: object)
+        if let notificationObserver = objc_getAssociatedObject(observer, &notificationObserverKey) as? NotificationObserver {
+            NotificationCenter.default.removeObserver(notificationObserver, name: base, object: object)
+        }
     }
 }

@@ -13,19 +13,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        var testView = UIView()
+        var testView = UILabel()
+        testView.text = "xxxx"
         testView.backgroundColor = UIColor.red
         testView.ge.size = CGSize(width: 100, height: 100)
         testView.ge.x = 200
         testView.ge.y = 200
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-//            testView.ge.animation(animation: { (animator) in
-//                animator.translation(x: 100, y: 100).scale(x: 0.8).scale(y: 1.2).rotate(CGFloat(Double.pi))
-//            })
-            testView.ge.springAnimation(springDamping: 0.8, initialSpringVelocity: 1.0, animation: { (animator) in
-                    animator.scale(x: 0.8).scale(y: 1.2)
-            })
-        }
+        
+        testView.jsonStyle = JSONStyle(json: "{ \"backgroundColor\": \"#999999\", \"shadowOffset\": [2,2], \"shadowColor\": \"0xff0000\", \"shadowRadius\": 3, \"shadowOpacity\": 0.35, \"textColor\": \"ffffff\",\"fontSize\": 14, \"alignment\": 1}".data(using: String.Encoding.utf8)!)
         self.view.addSubview(testView)
     }
 
@@ -33,7 +28,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

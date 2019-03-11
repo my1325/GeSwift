@@ -11,5 +11,6 @@ target 'GeSwift' do
   pod 'CryptoSwift'
   pod 'SnapKit'
   pod 'Schedule'
+  pod 'SwiftyJSON'
 
 end
