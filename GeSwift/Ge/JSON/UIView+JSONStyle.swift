@@ -43,7 +43,7 @@ extension JSONKeys {
 
 extension JSONKeys {
     
-    fileprivate enum TextAlignment: String {
+    public enum TextAlignment: String {
         case center
         case left
         case right
@@ -66,14 +66,16 @@ extension JSONKeys {
         }
     }
     
-    fileprivate enum LineBreakMode: String {
-        case charWrapping 
+    public enum LineBreakMode: String {
+        case charWrapping
+        case wordWrapping
+        
     }
     
     public static let textColor: JSONKey<UIColor> = JSONKey(key: "textColor", defaultValue: UIColor.black)
     public static let fontSize: JSONKey<Double> = JSONKey(key: "fontSize", defaultValue: 17)
     public static let fontWeight: JSONKey<String> = JSONKey<String>(key: "fontWeight")
-    public static let alignment: JSONKey<NSTextAlignment> = JSONKey(key: "alignment", defaultValue: NSTextAlignment.left)
+    public static let alignment: JSONKey<TextAlignment> = JSONKey(key: "alignment", defaultValue: TextAlignment.left)
     public static let breakMode: JSONKey<NSLineBreakMode> = JSONKey(key: "breakMode", defaultValue: NSLineBreakMode.byCharWrapping)
     public static let numberOfLines: JSONKey<Int> = JSONKey(key: "numberOfLines", defaultValue: 1)
 }
