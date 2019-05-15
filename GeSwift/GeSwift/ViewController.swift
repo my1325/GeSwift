@@ -10,18 +10,25 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var scanView: ScanView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        var testView = UILabel()
-        testView.text = "xxxx"
-        testView.backgroundColor = UIColor.red
-        testView.ge.size = CGSize(width: 100, height: 100)
-        testView.ge.x = 200
-        testView.ge.y = 200
-        
-        testView.jsonStyle = JSONStyle(json: "{ \"backgroundColor\": \"#999999\", \"shadowOffset\": [2,2], \"shadowColor\": \"0xff0000\", \"shadowRadius\": 3, \"shadowOpacity\": 0.35, \"textColor\": \"ffffff\",\"fontSize\": 14, \"alignment\": 1}".data(using: String.Encoding.utf8)!)
-        self.view.addSubview(testView)
+//        var testView = UILabel()
+//        testView.text = "xxxx"
+//        testView.backgroundColor = UIColor.red
+//        testView.ge.size = CGSize(width: 100, height: 100)
+//        testView.ge.x = 200
+//        testView.ge.y = 200
+//
+//        self.view.addSubview(testView)
+        scanView.rectOfInterest = CGRect(x: 100, y: 100, width: 200, height: 300)
+        scanView.scanResult = { [weak self] (string) in
+            print(string ?? "unknow")
+            self?.scanView.startScan()
+        }
+        scanView.startScan()
     }
 
     override func didReceiveMemoryWarning() {

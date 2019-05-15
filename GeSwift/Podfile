@@ -13,4 +13,8 @@ target 'GeSwift' do
   pod 'Schedule'
   pod 'SwiftyJSON'
 
+  target 'GeSwiftTests' do
+    inherit! :search_paths
+
+  end
 end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E02E3BD228BB6BC002F8AF1 /* GeSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */; };
+		5E02E3C5228BB8D4002F8AF1 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E02E3C4228BB8D4002F8AF1 /* ScanView.swift */; };
 		5E1346812229284600B5B2BC /* UIView+JSONStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1346802229284600B5B2BC /* UIView+JSONStyle.swift */; };
 		5E1C6AAF212E4814000D3A7C /* Date+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AAE212E4814000D3A7C /* Date+Ge.swift */; };
 		5E1C6AB5212E538C000D3A7C /* UIScrollView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */; };
@@ -41,9 +43,23 @@
 		6EF2BCAC04BB4AE33DDCB4F6 /* Pods_GeSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5E02E3BF228BB6BC002F8AF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E2FC37120DA59A6007FEF3E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E2FC37820DA59A6007FEF3E;
+			remoteInfo = GeSwift;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
 		520017B9EEFF8D241A5DF796 /* Pods-GeSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		5E02E3BA228BB6BC002F8AF1 /* GeSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeSwiftTests.swift; sourceTree = "<group>"; };
+		5E02E3BE228BB6BC002F8AF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E02E3C4228BB8D4002F8AF1 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		5E1346802229284600B5B2BC /* UIView+JSONStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+JSONStyle.swift"; sourceTree = "<group>"; };
 		5E1C6AAE212E4814000D3A7C /* Date+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ge.swift"; sourceTree = "<group>"; };
 		5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ge.swift"; sourceTree = "<group>"; };
@@ -81,6 +97,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5E02E3B7228BB6BC002F8AF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5E2FC37620DA59A6007FEF3E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -92,11 +115,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E02E3BB228BB6BC002F8AF1 /* GeSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */,
+				5E02E3BE228BB6BC002F8AF1 /* Info.plist */,
+			);
+			path = GeSwiftTests;
+			sourceTree = "<group>";
+		};
 		5E2FC37020DA59A6007FEF3E = {
 			isa = PBXGroup;
 			children = (
 				5EA9A52A21FFFB290066089B /* GeSwift.podspec */,
 				5E2FC37B20DA59A6007FEF3E /* GeSwift */,
+				5E02E3BB228BB6BC002F8AF1 /* GeSwiftTests */,
 				5E2FC37A20DA59A6007FEF3E /* Products */,
 				73109FF9AD0F4262AA6DF44E /* Pods */,
 				A6983030081C274FC5B44F92 /* Frameworks */,
@@ -107,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				5E2FC37920DA59A6007FEF3E /* GeSwift.app */,
+				5E02E3BA228BB6BC002F8AF1 /* GeSwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,6 +226,7 @@
 			children = (
 				5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */,
 				5E4E7625219D649B0012F6A8 /* HorizontalView.swift */,
+				5E02E3C4228BB8D4002F8AF1 /* ScanView.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -233,6 +268,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5E02E3B9228BB6BC002F8AF1 /* GeSwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E02E3C3228BB6BC002F8AF1 /* Build configuration list for PBXNativeTarget "GeSwiftTests" */;
+			buildPhases = (
+				5E02E3B6228BB6BC002F8AF1 /* Sources */,
+				5E02E3B7228BB6BC002F8AF1 /* Frameworks */,
+				5E02E3B8228BB6BC002F8AF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E02E3C0228BB6BC002F8AF1 /* PBXTargetDependency */,
+			);
+			name = GeSwiftTests;
+			productName = GeSwiftTests;
+			productReference = 5E02E3BA228BB6BC002F8AF1 /* GeSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5E2FC37820DA59A6007FEF3E /* GeSwift */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E2FC38B20DA59A9007FEF3E /* Build configuration list for PBXNativeTarget "GeSwift" */;
@@ -258,10 +311,14 @@
 		5E2FC37120DA59A6007FEF3E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = my;
 				TargetAttributes = {
+					5E02E3B9228BB6BC002F8AF1 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 5E2FC37820DA59A6007FEF3E;
+					};
 					5E2FC37820DA59A6007FEF3E = {
 						CreatedOnToolsVersion = 9.4;
 					};
@@ -281,11 +338,19 @@
 			projectRoot = "";
 			targets = (
 				5E2FC37820DA59A6007FEF3E /* GeSwift */,
+				5E02E3B9228BB6BC002F8AF1 /* GeSwiftTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5E02E3B8228BB6BC002F8AF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5E2FC37720DA59A6007FEF3E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -361,6 +426,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5E02E3B6228BB6BC002F8AF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E02E3BD228BB6BC002F8AF1 /* GeSwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5E2FC37520DA59A6007FEF3E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -386,6 +459,7 @@
 				5E4E7627219D649B0012F6A8 /* HorizontalView.swift in Sources */,
 				5E1C6AB5212E538C000D3A7C /* UIScrollView+Ge.swift in Sources */,
 				5EF525C5219BBFF2004F2D55 /* UserDefaults+Ge.swift in Sources */,
+				5E02E3C5228BB8D4002F8AF1 /* ScanView.swift in Sources */,
 				5EF525C7219BC13F004F2D55 /* Plist.swift in Sources */,
 				5E4E7628219D649B0012F6A8 /* CycleScrollView.swift in Sources */,
 				5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */,
@@ -396,6 +470,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5E02E3C0228BB6BC002F8AF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E2FC37820DA59A6007FEF3E /* GeSwift */;
+			targetProxy = 5E02E3BF228BB6BC002F8AF1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5E2FC38020DA59A6007FEF3E /* Main.storyboard */ = {
@@ -417,6 +499,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5E02E3C1228BB6BC002F8AF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GeSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hsh.service.GeSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeSwift.app/GeSwift";
+			};
+			name = Debug;
+		};
+		5E02E3C2228BB6BC002F8AF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GeSwiftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hsh.service.GeSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeSwift.app/GeSwift";
+			};
+			name = Release;
+		};
 		5E2FC38920DA59A9007FEF3E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -578,6 +703,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5E02E3C3228BB6BC002F8AF1 /* Build configuration list for PBXNativeTarget "GeSwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E02E3C1228BB6BC002F8AF1 /* Debug */,
+				5E02E3C2228BB6BC002F8AF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5E2FC37420DA59A6007FEF3E /* Build configuration list for PBXProject "GeSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

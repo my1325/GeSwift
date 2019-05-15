@@ -9,6 +9,21 @@
 import UIKit.UIImage
 
 extension Ge where Base: UIImage {
+    
+    /// 检测到的二维码
+    public var detectedQrCode: String? {
+        var qrCode: String?
+        /// 检测图片中是否有二维码
+        let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
+        if let cgImage = self.base.cgImage {
+            let ciImages = CIImage(cgImage: cgImage)
+            let features = detector?.features(in: ciImages, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh]) ?? []
+            if let feature = features.first as? CIQRCodeFeature, let messageString = feature.messageString {
+                qrCode = messageString
+            }
+        }
+        return qrCode
+    }
 
     /// colorimage
     public static func image(withColor color: UIColor, size: CGSize) -> UIImage? {
