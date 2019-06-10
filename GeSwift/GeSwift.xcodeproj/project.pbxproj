@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5E02E3BD228BB6BC002F8AF1 /* GeSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */; };
 		5E02E3C5228BB8D4002F8AF1 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E02E3C4228BB8D4002F8AF1 /* ScanView.swift */; };
-		5E1346812229284600B5B2BC /* UIView+JSONStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1346802229284600B5B2BC /* UIView+JSONStyle.swift */; };
 		5E1C6AAF212E4814000D3A7C /* Date+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AAE212E4814000D3A7C /* Date+Ge.swift */; };
 		5E1C6AB5212E538C000D3A7C /* UIScrollView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */; };
 		5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC37C20DA59A6007FEF3E /* AppDelegate.swift */; };
@@ -39,7 +38,6 @@
 		5EF525C5219BBFF2004F2D55 /* UserDefaults+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C4219BBFF2004F2D55 /* UserDefaults+Ge.swift */; };
 		5EF525C7219BC13F004F2D55 /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C6219BC13F004F2D55 /* Plist.swift */; };
 		5EF525C9219BC31E004F2D55 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C8219BC31E004F2D55 /* Defaults.swift */; };
-		5EFD342F2227D86B00176241 /* JSONStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFD342E2227D86B00176241 /* JSONStyle.swift */; };
 		6EF2BCAC04BB4AE33DDCB4F6 /* Pods_GeSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +58,6 @@
 		5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeSwiftTests.swift; sourceTree = "<group>"; };
 		5E02E3BE228BB6BC002F8AF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E02E3C4228BB8D4002F8AF1 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
-		5E1346802229284600B5B2BC /* UIView+JSONStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+JSONStyle.swift"; sourceTree = "<group>"; };
 		5E1C6AAE212E4814000D3A7C /* Date+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ge.swift"; sourceTree = "<group>"; };
 		5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ge.swift"; sourceTree = "<group>"; };
 		5E2FC37920DA59A6007FEF3E /* GeSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,7 +89,6 @@
 		5EF525C4219BBFF2004F2D55 /* UserDefaults+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ge.swift"; sourceTree = "<group>"; };
 		5EF525C6219BC13F004F2D55 /* Plist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		5EF525C8219BC31E004F2D55 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
-		5EFD342E2227D86B00176241 /* JSONStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStyle.swift; sourceTree = "<group>"; };
 		B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -182,7 +178,6 @@
 				5E2FC39720DA5F59007FEF3E /* UITableView+Ge.swift */,
 				5E2FC39820DA5F59007FEF3E /* UIImage+Ge.swift */,
 				5E2FC39920DA5F59007FEF3E /* UIAlertViewController+Ge.swift */,
-				5E2FC39A20DA5F59007FEF3E /* UIResponder.swift */,
 				5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */,
 				5EF525C2219BBD82004F2D55 /* UICollectionView+Ge.swift */,
 				5ED77EAD21ABD98900587B26 /* UIWindow+Ge.swift */,
@@ -193,6 +188,7 @@
 		5E2FC39D20DA5F59007FEF3E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5E2FC39A20DA5F59007FEF3E /* UIResponder.swift */,
 				5E49EFE6219AC2B500A09046 /* Reusable.swift */,
 				5E2FC39F20DA5F59007FEF3E /* GeSwift.swift */,
 				5EF525C6219BC13F004F2D55 /* Plist.swift */,
@@ -242,8 +238,6 @@
 		5EFD342D2227D85900176241 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				5EFD342E2227D86B00176241 /* JSONStyle.swift */,
-				5E1346802229284600B5B2BC /* UIView+JSONStyle.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -440,7 +434,6 @@
 			files = (
 				5E49EFE7219AC2B500A09046 /* Reusable.swift in Sources */,
 				5E1C6AAF212E4814000D3A7C /* Date+Ge.swift in Sources */,
-				5E1346812229284600B5B2BC /* UIView+JSONStyle.swift in Sources */,
 				5E2FC3A420DA5F59007FEF3E /* UIControl+Ge.swift in Sources */,
 				5E2FC3A920DA5F59007FEF3E /* UIImage+Ge.swift in Sources */,
 				5EF525C3219BBD82004F2D55 /* UICollectionView+Ge.swift in Sources */,
@@ -451,7 +444,6 @@
 				5E2FC3B020DA5F59007FEF3E /* String+Ge.swift in Sources */,
 				5E2FC3A620DA5F59007FEF3E /* UIView+Ge.swift in Sources */,
 				5EA9A52E22002BCB0066089B /* UIViewAnimation+Ge.swift in Sources */,
-				5EFD342F2227D86B00176241 /* JSONStyle.swift in Sources */,
 				5EF525C9219BC31E004F2D55 /* Defaults.swift in Sources */,
 				5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */,
 				5E2FC3AB20DA5F59007FEF3E /* UIResponder.swift in Sources */,
