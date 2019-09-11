@@ -3,17 +3,39 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A1B1BF723279F6800DE7FBF /* UILabel+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1BF623279F6800DE7FBF /* UILabel+Ge.swift */; };
+		4A1B1C4F23288B7500DE7FBF /* UIControl+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39320DA5F59007FEF3E /* UIControl+Ge.swift */; };
+		4A1B1C5023288B7500DE7FBF /* UIView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39520DA5F59007FEF3E /* UIView+Ge.swift */; };
+		4A1B1C5123288B7500DE7FBF /* UIColor+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39620DA5F59007FEF3E /* UIColor+Ge.swift */; };
+		4A1B1C5223288B7500DE7FBF /* UITableView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39720DA5F59007FEF3E /* UITableView+Ge.swift */; };
+		4A1B1C5323288B7500DE7FBF /* UIImage+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39820DA5F59007FEF3E /* UIImage+Ge.swift */; };
+		4A1B1C5423288B7500DE7FBF /* UIAlertViewController+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39920DA5F59007FEF3E /* UIAlertViewController+Ge.swift */; };
+		4A1B1C5523288B7500DE7FBF /* UIScrollView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */; };
+		4A1B1C5623288B7500DE7FBF /* UICollectionView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C2219BBD82004F2D55 /* UICollectionView+Ge.swift */; };
+		4A1B1C5723288B7500DE7FBF /* UIWindow+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED77EAD21ABD98900587B26 /* UIWindow+Ge.swift */; };
+		4A1B1C5823288B7500DE7FBF /* UILabel+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1BF623279F6800DE7FBF /* UILabel+Ge.swift */; };
+		4A1B1C5923288B8300DE7FBF /* UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39A20DA5F59007FEF3E /* UIResponder.swift */; };
+		4A1B1C5A23288B8300DE7FBF /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49EFE6219AC2B500A09046 /* Reusable.swift */; };
+		4A1B1C5B23288B8300DE7FBF /* GeSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39F20DA5F59007FEF3E /* GeSwift.swift */; };
+		4A1B1C5C23288B8300DE7FBF /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C6219BC13F004F2D55 /* Plist.swift */; };
+		4A1B1C5D23288B8300DE7FBF /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C8219BC31E004F2D55 /* Defaults.swift */; };
+		4A1B1C5E23288B8900DE7FBF /* Data+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC3A120DA5F59007FEF3E /* Data+Ge.swift */; };
+		4A1B1C5F23288B8900DE7FBF /* String+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC3A220DA5F59007FEF3E /* String+Ge.swift */; };
+		4A1B1C6023288B8900DE7FBF /* Date+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AAE212E4814000D3A7C /* Date+Ge.swift */; };
+		4A1B1C6123288B8900DE7FBF /* Notification+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDB9BF5213E73D700CF3193 /* Notification+Ge.swift */; };
+		4A1B1C6223288B8900DE7FBF /* UserDefaults+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C4219BBFF2004F2D55 /* UserDefaults+Ge.swift */; };
+		4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */; };
+		4A1B1C6D2328BCF400DE7FBF /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6C2328BCF400DE7FBF /* HorizontalView.swift */; };
 		5E02E3BD228BB6BC002F8AF1 /* GeSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */; };
 		5E02E3C5228BB8D4002F8AF1 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E02E3C4228BB8D4002F8AF1 /* ScanView.swift */; };
 		5E1C6AAF212E4814000D3A7C /* Date+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AAE212E4814000D3A7C /* Date+Ge.swift */; };
 		5E1C6AB5212E538C000D3A7C /* UIScrollView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */; };
 		5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC37C20DA59A6007FEF3E /* AppDelegate.swift */; };
 		5E2FC37F20DA59A6007FEF3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC37E20DA59A6007FEF3E /* ViewController.swift */; };
-		5E2FC38220DA59A6007FEF3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E2FC38020DA59A6007FEF3E /* Main.storyboard */; };
 		5E2FC38420DA59A9007FEF3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E2FC38320DA59A9007FEF3E /* Assets.xcassets */; };
 		5E2FC38720DA59A9007FEF3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E2FC38520DA59A9007FEF3E /* LaunchScreen.storyboard */; };
 		5E2FC3A420DA5F59007FEF3E /* UIControl+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39320DA5F59007FEF3E /* UIControl+Ge.swift */; };
@@ -28,7 +50,6 @@
 		5E2FC3B020DA5F59007FEF3E /* String+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC3A220DA5F59007FEF3E /* String+Ge.swift */; };
 		5E49EFE7219AC2B500A09046 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49EFE6219AC2B500A09046 /* Reusable.swift */; };
 		5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7622219D63C30012F6A8 /* WCDB+Ge.swift */; };
-		5E4E7627219D649B0012F6A8 /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7625219D649B0012F6A8 /* HorizontalView.swift */; };
 		5E4E7628219D649B0012F6A8 /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */; };
 		5EA9A52B21FFFB290066089B /* GeSwift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5EA9A52A21FFFB290066089B /* GeSwift.podspec */; };
 		5EA9A52E22002BCB0066089B /* UIViewAnimation+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA9A52D22002BCB0066089B /* UIViewAnimation+Ge.swift */; };
@@ -39,6 +60,7 @@
 		5EF525C7219BC13F004F2D55 /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C6219BC13F004F2D55 /* Plist.swift */; };
 		5EF525C9219BC31E004F2D55 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C8219BC31E004F2D55 /* Defaults.swift */; };
 		6EF2BCAC04BB4AE33DDCB4F6 /* Pods_GeSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */; };
+		C8719B4626C9F28670742C1B /* Pods_GeSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6902E79E348691ABF0DCDB /* Pods_GeSwiftTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +75,9 @@
 
 /* Begin PBXFileReference section */
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
+		4A1B1BF623279F6800DE7FBF /* UILabel+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ge.swift"; sourceTree = "<group>"; };
+		4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalViewController.swift; sourceTree = "<group>"; };
+		4A1B1C6C2328BCF400DE7FBF /* HorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalView.swift; sourceTree = "<group>"; };
 		520017B9EEFF8D241A5DF796 /* Pods-GeSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		5E02E3BA228BB6BC002F8AF1 /* GeSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeSwiftTests.swift; sourceTree = "<group>"; };
@@ -63,7 +88,6 @@
 		5E2FC37920DA59A6007FEF3E /* GeSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E2FC37C20DA59A6007FEF3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E2FC37E20DA59A6007FEF3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5E2FC38120DA59A6007FEF3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E2FC38320DA59A9007FEF3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E2FC38620DA59A9007FEF3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E2FC38820DA59A9007FEF3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,7 +103,6 @@
 		5E2FC3A220DA5F59007FEF3E /* String+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ge.swift"; sourceTree = "<group>"; };
 		5E49EFE6219AC2B500A09046 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		5E4E7622219D63C30012F6A8 /* WCDB+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WCDB+Ge.swift"; sourceTree = "<group>"; };
-		5E4E7625219D649B0012F6A8 /* HorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalView.swift; sourceTree = "<group>"; };
 		5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
 		5EA9A52A21FFFB290066089B /* GeSwift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GeSwift.podspec; path = ../GeSwift.podspec; sourceTree = "<group>"; };
 		5EA9A52D22002BCB0066089B /* UIViewAnimation+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewAnimation+Ge.swift"; sourceTree = "<group>"; };
@@ -90,6 +113,9 @@
 		5EF525C6219BC13F004F2D55 /* Plist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		5EF525C8219BC31E004F2D55 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF6902E79E348691ABF0DCDB /* Pods_GeSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F924FBD892D6C9FFC4D1D607 /* Pods-GeSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwiftTests/Pods-GeSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FB5C2970462D0297012BA8A5 /* Pods-GeSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwiftTests/Pods-GeSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8719B4626C9F28670742C1B /* Pods_GeSwiftTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +138,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A1B1C6323288D0400DE7FBF /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		4A1B1C6B2328BCF400DE7FBF /* HorizontalView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HorizontalView;
+			sourceTree = "<group>";
+		};
 		5E02E3BB228BB6BC002F8AF1 /* GeSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,10 +186,10 @@
 		5E2FC37B20DA59A6007FEF3E /* GeSwift */ = {
 			isa = PBXGroup;
 			children = (
+				4A1B1C6323288D0400DE7FBF /* Examples */,
 				5E2FC39020DA5F59007FEF3E /* Ge */,
 				5E2FC37C20DA59A6007FEF3E /* AppDelegate.swift */,
 				5E2FC37E20DA59A6007FEF3E /* ViewController.swift */,
-				5E2FC38020DA59A6007FEF3E /* Main.storyboard */,
 				5E2FC38320DA59A9007FEF3E /* Assets.xcassets */,
 				5E2FC38520DA59A9007FEF3E /* LaunchScreen.storyboard */,
 				5E2FC38820DA59A9007FEF3E /* Info.plist */,
@@ -181,6 +223,7 @@
 				5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */,
 				5EF525C2219BBD82004F2D55 /* UICollectionView+Ge.swift */,
 				5ED77EAD21ABD98900587B26 /* UIWindow+Ge.swift */,
+				4A1B1BF623279F6800DE7FBF /* UILabel+Ge.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -220,8 +263,9 @@
 		5E4E7624219D646A0012F6A8 /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				4A1B1C6C2328BCF400DE7FBF /* HorizontalView.swift */,
+				4A1B1C6B2328BCF400DE7FBF /* HorizontalView */,
 				5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */,
-				5E4E7625219D649B0012F6A8 /* HorizontalView.swift */,
 				5E02E3C4228BB8D4002F8AF1 /* ScanView.swift */,
 			);
 			path = Control;
@@ -247,6 +291,8 @@
 			children = (
 				520017B9EEFF8D241A5DF796 /* Pods-GeSwift.debug.xcconfig */,
 				416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */,
+				F924FBD892D6C9FFC4D1D607 /* Pods-GeSwiftTests.debug.xcconfig */,
+				FB5C2970462D0297012BA8A5 /* Pods-GeSwiftTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -255,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */,
+				CF6902E79E348691ABF0DCDB /* Pods_GeSwiftTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -266,6 +313,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E02E3C3228BB6BC002F8AF1 /* Build configuration list for PBXNativeTarget "GeSwiftTests" */;
 			buildPhases = (
+				298AF78DBEAC2BE54AB90DED /* [CP] Check Pods Manifest.lock */,
 				5E02E3B6228BB6BC002F8AF1 /* Sources */,
 				5E02E3B7228BB6BC002F8AF1 /* Frameworks */,
 				5E02E3B8228BB6BC002F8AF1 /* Resources */,
@@ -352,13 +400,34 @@
 				5EA9A52B21FFFB290066089B /* GeSwift.podspec in Resources */,
 				5E2FC38720DA59A9007FEF3E /* LaunchScreen.storyboard in Resources */,
 				5E2FC38420DA59A9007FEF3E /* Assets.xcassets in Resources */,
-				5E2FC38220DA59A6007FEF3E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		298AF78DBEAC2BE54AB90DED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GeSwiftTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7AC6B84F4BA720C6076E405E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -387,30 +456,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GeSwift/Pods-GeSwift-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/SQLiteRepairKit/sqliterk.framework",
-				"${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/WCDB.swift/WCDBSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/WCDBOptimizedSQLCipher/sqlcipher.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-GeSwift/Pods-GeSwift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sqliterk.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Schedule.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WCDBSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sqlcipher.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-GeSwift/Pods-GeSwift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -424,6 +474,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A1B1C5E23288B8900DE7FBF /* Data+Ge.swift in Sources */,
+				4A1B1C5F23288B8900DE7FBF /* String+Ge.swift in Sources */,
+				4A1B1C6023288B8900DE7FBF /* Date+Ge.swift in Sources */,
+				4A1B1C6123288B8900DE7FBF /* Notification+Ge.swift in Sources */,
+				4A1B1C6223288B8900DE7FBF /* UserDefaults+Ge.swift in Sources */,
+				4A1B1C5923288B8300DE7FBF /* UIResponder.swift in Sources */,
+				4A1B1C5A23288B8300DE7FBF /* Reusable.swift in Sources */,
+				4A1B1C5B23288B8300DE7FBF /* GeSwift.swift in Sources */,
+				4A1B1C5C23288B8300DE7FBF /* Plist.swift in Sources */,
+				4A1B1C5D23288B8300DE7FBF /* Defaults.swift in Sources */,
+				4A1B1C4F23288B7500DE7FBF /* UIControl+Ge.swift in Sources */,
+				4A1B1C5023288B7500DE7FBF /* UIView+Ge.swift in Sources */,
+				4A1B1C5123288B7500DE7FBF /* UIColor+Ge.swift in Sources */,
+				4A1B1C5223288B7500DE7FBF /* UITableView+Ge.swift in Sources */,
+				4A1B1C5323288B7500DE7FBF /* UIImage+Ge.swift in Sources */,
+				4A1B1C5423288B7500DE7FBF /* UIAlertViewController+Ge.swift in Sources */,
+				4A1B1C5523288B7500DE7FBF /* UIScrollView+Ge.swift in Sources */,
+				4A1B1C5623288B7500DE7FBF /* UICollectionView+Ge.swift in Sources */,
+				4A1B1C5723288B7500DE7FBF /* UIWindow+Ge.swift in Sources */,
+				4A1B1C5823288B7500DE7FBF /* UILabel+Ge.swift in Sources */,
 				5E02E3BD228BB6BC002F8AF1 /* GeSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,12 +514,13 @@
 				5E2FC3B020DA5F59007FEF3E /* String+Ge.swift in Sources */,
 				5E2FC3A620DA5F59007FEF3E /* UIView+Ge.swift in Sources */,
 				5EA9A52E22002BCB0066089B /* UIViewAnimation+Ge.swift in Sources */,
+				4A1B1C6D2328BCF400DE7FBF /* HorizontalView.swift in Sources */,
 				5EF525C9219BC31E004F2D55 /* Defaults.swift in Sources */,
 				5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */,
 				5E2FC3AB20DA5F59007FEF3E /* UIResponder.swift in Sources */,
 				5ED77EAE21ABD98900587B26 /* UIWindow+Ge.swift in Sources */,
-				5E4E7627219D649B0012F6A8 /* HorizontalView.swift in Sources */,
 				5E1C6AB5212E538C000D3A7C /* UIScrollView+Ge.swift in Sources */,
+				4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */,
 				5EF525C5219BBFF2004F2D55 /* UserDefaults+Ge.swift in Sources */,
 				5E02E3C5228BB8D4002F8AF1 /* ScanView.swift in Sources */,
 				5EF525C7219BC13F004F2D55 /* Plist.swift in Sources */,
@@ -457,6 +528,7 @@
 				5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */,
 				5E2FC3A720DA5F59007FEF3E /* UIColor+Ge.swift in Sources */,
 				5EDB9BF6213E73D700CF3193 /* Notification+Ge.swift in Sources */,
+				4A1B1BF723279F6800DE7FBF /* UILabel+Ge.swift in Sources */,
 				5E2FC3A820DA5F59007FEF3E /* UITableView+Ge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,14 +544,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5E2FC38020DA59A6007FEF3E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E2FC38120DA59A6007FEF3E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5E2FC38520DA59A9007FEF3E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -493,6 +557,7 @@
 /* Begin XCBuildConfiguration section */
 		5E02E3C1228BB6BC002F8AF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F924FBD892D6C9FFC4D1D607 /* Pods-GeSwiftTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -515,6 +580,7 @@
 		};
 		5E02E3C2228BB6BC002F8AF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB5C2970462D0297012BA8A5 /* Pods-GeSwiftTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -657,7 +723,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 869PD8U2V4;
 				INFOPLIST_FILE = GeSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -666,7 +732,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = dev;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -679,7 +745,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 869PD8U2V4;
 				INFOPLIST_FILE = GeSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -688,7 +754,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.mr.my.ge.GeSwift";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

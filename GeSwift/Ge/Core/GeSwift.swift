@@ -28,8 +28,7 @@ extension GeCompatible {
     public static var ge: Ge<Self>.Type {
         get {
             return Ge<Self>.self
-        }
-        set {
+        } set {
             /// setter
         }
     }
@@ -37,8 +36,7 @@ extension GeCompatible {
     public var ge: Ge<Self> {
         get {
             return Ge(self)
-        }
-        set {
+        } set {
             /// setter
         }
     }

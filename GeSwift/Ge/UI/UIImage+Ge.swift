@@ -11,7 +11,7 @@ import UIKit.UIImage
 extension Ge where Base: UIImage {
     
     /// 检测到的二维码
-    public var detectedQrCode: String? {
+    public var qrCode: String? {
         var qrCode: String?
         /// 检测图片中是否有二维码
         let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])

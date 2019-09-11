@@ -17,35 +17,33 @@ extension UIControl.State: Hashable {
 public final class HorizontalCell: UICollectionViewCell {
     
     internal lazy var titleLabel: UILabel = {
-        let _titleLabel = UILabel()
-        _titleLabel.font = UIFont.systemFont(ofSize: 15)
-        _titleLabel.textColor = "333333".ge.asColor
-        _titleLabel.textAlignment = .center
-        self.contentView.addSubview(_titleLabel)
-        _titleLabel.snp.makeConstraints({ (make) in
+        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.textColor = "333333".ge.asColor
+        $0.textAlignment = .center
+        self.contentView.addSubview($0)
+        $0.snp.makeConstraints({ (make) in
             make.center.equalTo(self.contentView.snp.center).offset(0)
         })
-        return _titleLabel
-    }()
+        return $0
+    }(UILabel())
     
     internal lazy var badgeLabel: UILabel = {
-        let _badgeLabel = UILabel()
-        _badgeLabel.backgroundColor = UIColor.red
-        _badgeLabel.font = UIFont.systemFont(ofSize: 10)
-        _badgeLabel.textAlignment = .center
-        _badgeLabel.textColor = UIColor.white
-        _badgeLabel.layer.cornerRadius = 7
-        _badgeLabel.clipsToBounds = true
-        self.contentView.addSubview(_badgeLabel)
-        self.contentView.bringSubviewToFront(_badgeLabel)
-        _badgeLabel.snp.makeConstraints({ (make) in
+        $0.backgroundColor = UIColor.red
+        $0.font = UIFont.systemFont(ofSize: 10)
+        $0.textAlignment = .center
+        $0.textColor = UIColor.white
+        $0.layer.cornerRadius = 7
+        $0.clipsToBounds = true
+        self.contentView.addSubview($0)
+        self.contentView.bringSubviewToFront($0)
+        $0.snp.makeConstraints({ (make) in
             make.top.equalTo(self.titleLabel.snp.top).offset(-10)
             make.left.equalTo(self.titleLabel.snp.right).offset(-10)
             make.height.equalTo(14)
             make.width.equalTo(20)
         })
-        return _badgeLabel
-    }()
+        return $0
+    }(UILabel())
     
     fileprivate var badge: Int = 0 {
         didSet {
@@ -88,55 +86,52 @@ public class HorizontalView: UIView {
     private let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     
     private lazy var contentView: UIView = {
-        let _contentView = UIView()
-        _contentView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(_contentView)
-        _contentView.snp.makeConstraints({ (make) in
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview($0)
+        $0.snp.makeConstraints({ (make) in
             make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
-        return _contentView
-    }()
+        return $0
+    }(UIView())
     
     private let indicator: UIView = {
-        let _indicator = UIView()
-        _indicator.backgroundColor = "125fa7".ge.asColor
-        return _indicator
-    }()
+        $0.backgroundColor = "125fa7".ge.asColor
+        return $0
+    }(UIView())
     
     private lazy var collectionView: UICollectionView = {
-        
         layout.scrollDirection = .horizontal
-        
-        let _collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        _collectionView.showsVerticalScrollIndicator = false
-        _collectionView.showsHorizontalScrollIndicator = false
-        _collectionView.delegate = self
-        _collectionView.dataSource = self
-        _collectionView.register(HorizontalCell.self, forCellWithReuseIdentifier: "HorizontalCell")
-        _collectionView.backgroundColor = UIColor.white
-        _collectionView.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.addSubview(_collectionView)
-        _collectionView.snp.makeConstraints({ (make) in
+        $0.showsVerticalScrollIndicator = false
+        $0.showsHorizontalScrollIndicator = false
+        $0.delegate = self
+        $0.dataSource = self
+        $0.register(HorizontalCell.self, forCellWithReuseIdentifier: "HorizontalCell")
+        $0.backgroundColor = UIColor.white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview($0)
+        $0.snp.makeConstraints({ (make) in
             make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
-        return _collectionView
-    }()
+        return $0
+    }(UICollectionView(frame: .zero, collectionViewLayout: layout))
     
     private var attributes: [UIControl.State: [NSAttributedString.Key: Any]] = [.normal: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: "333333".ge.asColor],
                                                                               .selected: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: "333333".ge.asColor]]
     
+    private var cacheSize: [IndexPath: CGSize] = [:]
+    
     private func alignIndicator(oldValue: Int, newValue: Int) {
         
-        guard let count =  dataSource?.numberOfItemsInHorizontalView(self), newValue < count else { return }
+        guard let count =  self.dataSource?.numberOfItemsInHorizontalView(self), newValue < count else { return }
         
         let cellAttribute = self.collectionView.layoutAttributesForItem(at: IndexPath(item: newValue, section: 0))
         let cellRect = cellAttribute?.frame ?? .zero
-        self.indicator.frame = CGRect(x: cellRect.minX + indicatorWidthPadding, y: self.contentView.ge.height - self.indicatorHeight, width: cellRect.size.width - indicatorWidthPadding * 2, height: self.indicatorHeight)
+        self.indicator.frame = CGRect(x: cellRect.minX + self.indicatorWidthPadding, y: self.contentView.ge.height - self.indicatorHeight, width: cellRect.size.width - self.indicatorWidthPadding * 2, height: self.indicatorHeight)
 
         self.collectionView.selectItem(at: IndexPath(item: newValue, section: 0), animated: false, scrollPosition: .centeredHorizontally)
         
-        let oldCell = collectionView.cellForItem(at: IndexPath(item: oldValue, section: 0)) as? HorizontalCell
-        let newCell = collectionView.cellForItem(at: IndexPath(item: newValue, section: 0)) as? HorizontalCell
+        let oldCell = self.collectionView.cellForItem(at: IndexPath(item: oldValue, section: 0)) as? HorizontalCell
+        let newCell = self.collectionView.cellForItem(at: IndexPath(item: newValue, section: 0)) as? HorizontalCell
         oldCell?.state = .normal
         newCell?.state = .selected
     }
@@ -151,9 +146,11 @@ public class HorizontalView: UIView {
     
     public var indicatorColor: UIColor = "125fa7".ge.asColor {
         didSet {
-            indicator.backgroundColor = indicatorColor
+            self.indicator.backgroundColor = indicatorColor
         }
     }
+    
+    public var contentInset: UIEdgeInsets = UIEdgeInsets.zero
 
     public var badgeColor: UIColor = UIColor.white
     
@@ -163,14 +160,13 @@ public class HorizontalView: UIView {
     
     public var selectedIndex: Int {
         get {
-            return selectedButtonIndex
-        }
-        set {
-            guard newValue != selectedButtonIndex else { return }
-            guard newValue < dataSource?.numberOfItemsInHorizontalView(self) ?? 0 else { fatalError() }
+            return self.selectedButtonIndex
+        } set {
+            guard newValue != self.selectedButtonIndex else { return }
+            guard newValue < self.dataSource?.numberOfItemsInHorizontalView(self) ?? 0 else { fatalError() }
             willChangeValue(forKey: "selectedIndex")
-            alignIndicator(oldValue: selectedButtonIndex, newValue: newValue)
-            selectedButtonIndex = newValue
+            self.alignIndicator(oldValue: self.selectedButtonIndex, newValue: newValue)
+            self.selectedButtonIndex = newValue
             didChangeValue(forKey: "selectedIndex")
         }
     }
@@ -190,11 +186,10 @@ public class HorizontalView: UIView {
                            animations: {
                             self.alignIndicator(oldValue: self.selectedButtonIndex, newValue: index)
             }, completion: nil)
+        } else {
+            self.alignIndicator(oldValue: self.selectedButtonIndex, newValue: index)
         }
-        else {
-            alignIndicator(oldValue: selectedButtonIndex, newValue: index)
-        }
-        selectedButtonIndex = index
+        self.selectedButtonIndex = index
     }
     
     /// set title attribute
@@ -204,41 +199,43 @@ public class HorizontalView: UIView {
     ///   - value: value
     ///   - state: control state, normal, selected
     public func set(attribute: NSAttributedString.Key, value: Any, forState state: UIControl.State) {
-        var attributesSource = attributes[state] ?? [:]
+        var attributesSource = self.attributes[state] ?? [:]
         attributesSource[attribute] = value
-        attributes[state] = attributesSource
+        self.attributes[state] = attributesSource
     }
     
     /// reload data
     public func reloadData() {
-        collectionView.reloadData()
-        collectionView.layoutIfNeeded()
+        
+        self.cacheSize.removeAll()
+        self.collectionView.reloadData()
+        self.collectionView.layoutIfNeeded()
         
         if indicator.superview == nil {
             self.collectionView.addSubview(indicator)
         }
         
-        let total = dataSource?.numberOfItemsInHorizontalView(self) ?? 0
+        let total = self.dataSource?.numberOfItemsInHorizontalView(self) ?? 0
         guard total > 0 else { return }
         
-        if selectedButtonIndex > total - 1 {
-            selectedButtonIndex = total - 1
+        if self.selectedButtonIndex > total - 1 {
+            self.selectedButtonIndex = total - 1
         }
         
-        if total > 0 && total > selectedButtonIndex && selectedButtonIndex >= 0 {
-            contentView.layoutIfNeeded()
+        if total > 0 && total > self.selectedButtonIndex && self.selectedButtonIndex >= 0 {
+            self.contentView.layoutIfNeeded()
             
-            let cellAttribute = self.collectionView.layoutAttributesForItem(at: IndexPath(item: selectedButtonIndex, section: 0))
+            let cellAttribute = self.collectionView.layoutAttributesForItem(at: IndexPath(item: self.selectedButtonIndex, section: 0))
             let cellRect = cellAttribute?.frame ?? .zero
-            self.indicator.frame = CGRect(x: cellRect.minX + indicatorWidthPadding, y: self.contentView.ge.height - self.indicatorHeight, width: cellRect.size.width - indicatorWidthPadding * 2, height: self.indicatorHeight)
+            self.indicator.frame = CGRect(x: cellRect.minX + self.indicatorWidthPadding, y: self.contentView.ge.height - self.indicatorHeight, width: cellRect.size.width - self.indicatorWidthPadding * 2, height: self.indicatorHeight)
 
-            self.collectionView.selectItem(at: IndexPath(item: selectedButtonIndex, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+            self.collectionView.selectItem(at: IndexPath(item: self.selectedButtonIndex, section: 0), animated: false, scrollPosition: .centeredHorizontally)
         }
         self.updateConstraintsIfNeeded()
     }
     
     public override func layoutSubviews() {
-        reloadData()
+        self.reloadData()
         super.layoutSubviews()
     }
 }
@@ -246,15 +243,31 @@ public class HorizontalView: UIView {
 extension HorizontalView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let width = delegate?.horizontalView?(self, widthForItemAtIndex: indexPath.item) {
-            return CGSize(width: width, height: collectionView.ge.height)
+        
+        if let size = cacheSize[indexPath] {
+            return size
         }
-        if let title = dataSource?.horizontalView(self, titleAtIndex: indexPath.item) {
-            let attribute = attributes[.normal]
-            let width = NSAttributedString(string: title, attributes: attribute).boundingRect(with: CGSize(width: Double(MAXFLOAT), height: Double(MAXFLOAT)),
+        
+        if let width = delegate?.horizontalView?(self, widthForItemAtIndex: indexPath.item) {
+            let size = CGSize(width: width, height: collectionView.ge.height)
+            self.cacheSize[indexPath] = size
+            return size
+        }
+        
+        if let title = self.dataSource?.horizontalView(self, titleAtIndex: indexPath.item) {
+            
+            let width1 = NSAttributedString(string: title, attributes: self.attributes[.normal]).boundingRect(with: CGSize(width: Double(MAXFLOAT), height: Double(MAXFLOAT)),
                                                                                options: .usesLineFragmentOrigin,
                                                                                context: nil).size.width
-            return CGSize(width: width + 25, height: collectionView.ge.height)
+            
+            let width2 = NSAttributedString(string: title, attributes: self.attributes[.selected]).boundingRect(with: CGSize(width: Double(MAXFLOAT), height: Double(MAXFLOAT)),
+                                                                                               options: .usesLineFragmentOrigin,
+                                                                                               context: nil).size.width
+
+            let size = CGSize(width: max(width1, width2) + 25, height: collectionView.ge.height)
+            self.cacheSize[indexPath] = size
+            
+            return size
         }
         return .zero
     }
@@ -268,12 +281,12 @@ extension HorizontalView: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .zero
+        return self.contentInset
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        set(selectedIndex: indexPath.item, animated: true)
-        delegate?.horizontalView?(self, didSeletedItemAtIndex: indexPath.item)
+        self.set(selectedIndex: indexPath.item, animated: true)
+        self.delegate?.horizontalView?(self, didSeletedItemAtIndex: indexPath.item)
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -283,12 +296,12 @@ extension HorizontalView: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCell", for: indexPath) as! HorizontalCell
-        cell.attributes = attributes
-        cell.title = dataSource?.horizontalView(self, titleAtIndex: indexPath.item) ?? ""
-        cell.badgeLabel.textColor = badgeColor
-        cell.badgeLabel.backgroundColor = backgroundColor
-        cell.badge = dataSource?.horizontalView(self, badgeAtIndex: indexPath.item) ?? 0
-        cell.state = indexPath.item == selectedIndex ? .selected : .normal
+        cell.attributes = self.attributes
+        cell.title = self.dataSource?.horizontalView(self, titleAtIndex: indexPath.item) ?? ""
+        cell.badgeLabel.textColor = self.badgeColor
+        cell.badgeLabel.backgroundColor = self.badgeBackgroundColor
+        cell.badge = self.dataSource?.horizontalView(self, badgeAtIndex: indexPath.item) ?? 0
+        cell.state = indexPath.item == self.selectedIndex ? .selected : .normal
         return cell
     }
 }

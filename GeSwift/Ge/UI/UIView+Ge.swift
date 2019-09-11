@@ -195,3 +195,117 @@ extension Ge where Base: UIView {
         self.base.layer.mask = shape
     }
 }
+
+fileprivate final class GeEventObject: NSObject, UIGestureRecognizerDelegate {
+    
+    lazy var gestureRecognizer: UIGestureRecognizer = {
+        switch self.event {
+        case .longPress(let taps, let duration, let action):
+            let gr = UILongPressGestureRecognizer(target: self, action: #selector(longPress(sender:)))
+            gr.numberOfTapsRequired = taps
+            gr.minimumPressDuration = TimeInterval(duration)
+            return gr
+         case .pan(let minTouches, let maxTouches, let action):
+            let gr = UIPanGestureRecognizer(target: self, action: #selector(pan(sender:)))
+            gr.maximumNumberOfTouches = maxTouches
+            gr.minimumNumberOfTouches = minTouches
+            return gr
+        case .pin(let scale, let action):
+            let gr = UIPinchGestureRecognizer(target: self, action: #selector(pin(sender:)))
+            gr.scale = scale
+            return gr
+        case .swipe(let touchs, let direction, let action):
+            let gr = UISwipeGestureRecognizer(target: self, action: #selector(swipe(sender:)))
+            gr.numberOfTouchesRequired = touchs
+            gr.direction = direction
+            return gr
+        case .tap(let taps, let action):
+            let gr = UITapGestureRecognizer(target: self, action: #selector(tap(sender:)))
+            gr.numberOfTapsRequired = taps
+            return gr
+        }
+    }()
+    
+    let event: ControlEvent
+    init(event: ControlEvent) {
+        self.event = event
+        super.init()
+    }
+    
+    @objc func tap(sender: UITapGestureRecognizer) {
+        switch self.event {
+        case .tap(_, let action):
+            action(sender)
+        default:
+            break
+        }
+    }
+    
+    @objc func longPress(sender: UILongPressGestureRecognizer) {
+        switch self.event {
+        case .longPress(_, _, let action):
+            action(sender)
+        default:
+            break
+        }
+    }
+    
+    @objc func pan(sender: UIPanGestureRecognizer) {
+        switch self.event {
+        case .pan(_, _, let action):
+            action(sender)
+        default:
+            break
+        }
+    }
+    
+    @objc func pin(sender: UIPinchGestureRecognizer) {
+        switch self.event {
+        case .pin(_, let action):
+            action(sender)
+        default:
+            break
+        }
+    }
+    
+    @objc func swipe(sender: UISwipeGestureRecognizer) {
+        switch self.event {
+        case .swipe(_, _, let action):
+            action(sender)
+        default:
+            break
+        }
+    }
+}
+
+public enum ControlEvent {
+    case tap(taps: Int, action: (UITapGestureRecognizer) -> Void)
+    case longPress(taps: Int, duration: Int, action: (UILongPressGestureRecognizer) -> Void)
+    case pan(minTouches: Int, maxTouches: Int, action: (UIPanGestureRecognizer) -> Void)
+    case pin(scale: CGFloat, action: (UIPinchGestureRecognizer) -> Void)
+    case swipe(touchs: Int, direction: UISwipeGestureRecognizer.Direction, action: (UISwipeGestureRecognizer) -> Void)
+    
+    fileprivate var key: String {
+        switch self {
+        case .tap:
+            return "tap_gr"
+        case .longPress:
+            return "long_gr"
+        case .pan:
+            return "pan_gr"
+        case .pin:
+            return "pan_gr"
+        case .swipe:
+            return "swipe_gr"
+        }
+    }
+}
+
+extension Ge where Base: UIView {
+    
+    public func addEvent(_ event: ControlEvent) {
+        let eventObject = GeEventObject(event: event)
+        base.addGestureRecognizer(eventObject.gestureRecognizer)
+        objc_setAssociatedObject(eventObject, event.key, self, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+}

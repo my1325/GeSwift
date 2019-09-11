@@ -22,6 +22,16 @@ class GeSwiftTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    func testSubStringTo() {
+        let subString = "1234567890".ge.subString(to: 8)
+        print("case ---- testSubStringTo, value:\(1234567890), result:\(subString!)")
+    }
+    
+    func testSubStringFrom() {
+        let subString = "1234567890".ge.subString(to: 8)
+        print("case ---- testSubStringFrom, value:\(1234567890), result:\(subString!)")
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

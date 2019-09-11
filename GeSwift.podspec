@@ -1,15 +1,15 @@
 Pod::Spec.new do |s|
 
  s.name             = "GeSwift"
- s.version           = "0.0.3"
+ s.version           = "0.0.4"
  s.summary         = "GeSwift for my's ioser"
  s.homepage        = "https://github.com/my1325/GeSwift.git"
  s.license            = "MIT"
  s.platform          = :ios, "9.0"
  s.authors           = { "mayong" => "ma.yong@vpclub.cn" }
- s.source             = { :git => "https://github.com/my1325/GeSwift.git", :tag => "#{s.version}" }
+ s.source             = { :git => "https://github.com/my1325/GeSwift.git", :tag => "0.0.3" }
  s.swift_version = '4.2'
- s.default_subspecs = 'Core','DataBase','UI','Foundation','Control'
+ s.default_subspecs = 'Core','DataBase','UI','Foundation'
 
     s.subspec 'Core' do |ss|
 	ss.source_files = 'GeSwift/Ge/Core/*.{swift}'
@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
 	ss.dependency 'GeSwift/Foundation'
 	ss.dependency 'Schedule'
 	ss.dependency 'SnapKit'
-	ss.dependency 'Kingfisher', '4.10.1'
+	ss.dependency 'Kingfisher'
     end
     
 end

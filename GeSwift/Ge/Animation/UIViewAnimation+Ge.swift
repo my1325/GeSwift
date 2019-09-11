@@ -33,7 +33,7 @@ public final class UIViewAnimator {
     }
 
     public private(set) var springDaming: CGFloat = 0.0
-    private private(set) var initialSpringVelocity: CGFloat = 0.0
+    public private(set) var initialSpringVelocity: CGFloat = 0.0
     init(view: UIView, duration: TimeInterval = 0.35, delay: TimeInterval = 0.0, springDamping: CGFloat, initialSpringVelocity: CGFloat, options: UIView.AnimationOptions = [], completion: UIViewAnimationCompletion? = nil) {
         self.view = view
         self.frame = view.frame

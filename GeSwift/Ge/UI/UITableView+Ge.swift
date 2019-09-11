@@ -94,12 +94,6 @@ extension Ge where Base: UITableView{
     public func clearCacheHeight(atIndexPath indexPath: IndexPath) {
         cacheHeights.clearCache(atIndexPath: indexPath)
     }
-    
-    public func setFooterNil() {
-        let footer = UIView()
-        footer.backgroundColor = UIColor.clear
-        base.tableFooterView = footer
-    }
 }
 
 extension Ge where Base: UITableView {

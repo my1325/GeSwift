@@ -7,14 +7,49 @@
 //
 
 import UIKit
+import SnapKit
 
-class ViewController: UIViewController {
 
-    @IBOutlet weak var scanView: ScanView!
+internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_back_white"), style: .plain, target: self, action: #selector(popViewController))
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.extendedLayoutIncludesOpaqueBars = true
+        self.edgesForExtendedLayout = .init(rawValue: 0)
+        self.automaticallyAdjustsScrollViewInsets = false
+        self.view.backgroundColor = UIColor.white
+    }
+    
+    @objc func popViewController() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+internal final class ViewController: BaseViewController {
+    
+    lazy var tableView: UITableView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.tableFooterView = UIView()
+        $0.delegate = self
+        $0.dataSource = self
+        $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        self.view.addSubview($0)
+        $0.snp.makeConstraints({ (make) in
+            make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        })
+        return $0
+    }(UITableView(frame: CGRect.zero, style: UITableView.Style.plain))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.title = "GeSwift-Examples"
+        self.navigationItem.leftBarButtonItem = nil
+        self.view.backgroundColor = UIColor.white
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,3 +58,28 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+            cell?.textLabel?.font = UIFont.systemFont(ofSize: 14)
+            cell?.textLabel?.textColor = "666666".ge.asColor
+            cell?.accessoryType = .disclosureIndicator
+        }
+        cell?.textLabel?.text = "\(indexPath.row + 1)、HorizontalViewController"
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if 0 == indexPath.row {
+            self.navigationController?.pushViewController(HorizontalViewController(), animated: true)
+        }
+    }
+}

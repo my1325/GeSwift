@@ -60,38 +60,35 @@ fileprivate final class CycleScrollViewCustomViewCell: UICollectionViewCell {
 fileprivate final class CycleScrollViewImageCell: UICollectionViewCell {
     
     fileprivate lazy var imageView: UIImageView = {
-        let _imageView = UIImageView()
-        _imageView.translatesAutoresizingMaskIntoConstraints = false
-        _imageView.backgroundColor = UIColor.lightGray
-        self.contentView.addSubview(_imageView)
-        _imageView.snp.makeConstraints({ (make) in
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = UIColor.lightGray
+        self.contentView.addSubview($0)
+        $0.snp.makeConstraints({ (make) in
             make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
-        return _imageView
-    }()
+        return $0
+    }(UIImageView())
     
     fileprivate lazy var titleContanerView: UIView = {
-        let _titleContainerView = UIView()
-        _titleContainerView.translatesAutoresizingMaskIntoConstraints = false
-        _titleContainerView.backgroundColor = UIColor.black.withAlphaComponent(0.35)
-        self.contentView.addSubview(_titleContainerView)
-        _titleContainerView.snp.makeConstraints({ (make) in
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = UIColor.black.withAlphaComponent(0.35)
+        self.contentView.addSubview($0)
+        $0.snp.makeConstraints({ (make) in
             make.left.right.bottom.equalTo(0)
             make.height.equalTo(self.titleMargin)
         })
-        return _titleContainerView
-    }()
+        return $0
+    }(UIView())
     
     fileprivate lazy var titleLabel: UILabel = {
-        let _titleLable = UILabel()
-        _titleLable.numberOfLines = 2
-        _titleLable.translatesAutoresizingMaskIntoConstraints = false
-        self.titleContanerView.addSubview(_titleLable)
-        _titleLable.snp.makeConstraints({ (make) in
+        $0.numberOfLines = 2
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        self.titleContanerView.addSubview($0)
+        $0.snp.makeConstraints({ (make) in
             make.edges.equalTo(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
         })
-        return _titleLable
-    }()
+        return $0
+    }(UILabel())
     
     var titleMargin: CGFloat = 20 {
         didSet {
@@ -101,7 +98,6 @@ fileprivate final class CycleScrollViewImageCell: UICollectionViewCell {
             case .top, .bottom, .center:
                 titleContanerView.ge.updateConstraint(forHeight: titleMargin)
             }
-            
             contentView.layoutIfNeeded()
         }
     }
@@ -207,7 +203,6 @@ public final class CycleScrollView: UIView {
         }
         
         collectionView.reloadData()
-//        collectionView.layoutIfNeeded()
         pageControl.numberOfPages = totalIndex
         pageControl.currentPage = 0
         pageControl.translatesAutoresizingMaskIntoConstraints = false
@@ -281,27 +276,26 @@ public final class CycleScrollView: UIView {
     
     private lazy var collectionView: UICollectionView = {
         
-        let _layout = UICollectionViewFlowLayout()
-        _layout.scrollDirection = scrollDirection
-        _layout.minimumLineSpacing = 0
-        _layout.minimumInteritemSpacing = 0
-        
-        let _collectionView = UICollectionView(frame: .zero, collectionViewLayout: _layout)
-        _collectionView.translatesAutoresizingMaskIntoConstraints = false
-        _collectionView.showsVerticalScrollIndicator = false
-        _collectionView.showsHorizontalScrollIndicator = false
-        _collectionView.delegate = self
-        _collectionView.dataSource = self
-        _collectionView.isPagingEnabled = true
-        _collectionView.backgroundColor = UIColor.clear
-        _collectionView.register(CycleScrollViewCustomViewCell.self, forCellWithReuseIdentifier: "CycleScrollViewCustomViewCell")
-        _collectionView.register(CycleScrollViewImageCell.self, forCellWithReuseIdentifier: "CycleScrollViewImageCell")
-        self.addSubview(_collectionView)
-        _collectionView.snp.makeConstraints({ (make) in
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.showsVerticalScrollIndicator = false
+        $0.showsHorizontalScrollIndicator = false
+        $0.delegate = self
+        $0.dataSource = self
+        $0.isPagingEnabled = true
+        $0.backgroundColor = UIColor.clear
+        $0.register(CycleScrollViewCustomViewCell.self, forCellWithReuseIdentifier: "CycleScrollViewCustomViewCell")
+        $0.register(CycleScrollViewImageCell.self, forCellWithReuseIdentifier: "CycleScrollViewImageCell")
+        self.addSubview($0)
+        $0.snp.makeConstraints({ (make) in
             make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
-        return _collectionView
-    }()
+        return $0
+    }(UICollectionView(frame: .zero, collectionViewLayout: {
+        $0.scrollDirection = scrollDirection
+        $0.minimumLineSpacing = 0
+        $0.minimumInteritemSpacing = 0
+        return $0
+    }(UICollectionViewFlowLayout())))
 }
 
 extension CycleScrollView: UICollectionViewDelegateFlowLayout {
@@ -348,12 +342,10 @@ extension CycleScrollView: UICollectionViewDataSource {
             cell.titleContanerView.isHidden = !isShowTitleView
             if let image = dataSource?.scrollView?(self, imageAtIndex: indexPath.item % totalIndex) {
                 cell.imageView.image = image
-            }
-            else if let imgUrl = dataSource?.scrollView?(self, imageURLAtIndex: indexPath.item % totalIndex) {
+            } else if let imgUrl = dataSource?.scrollView?(self, imageURLAtIndex: indexPath.item % totalIndex) {
                 cell.imageView.kf.setImage(with: imgUrl,
                                            placeholder: placeholderImage)
-            }
-            else {
+            } else {
                 cell.imageView.image = placeholderImage
             }
             
@@ -363,8 +355,7 @@ extension CycleScrollView: UICollectionViewDataSource {
                 if let title = dataSource?.scrollView?(self, titleAtIndex: indexPath.item % totalIndex) {
                     cell.titleLabel.attributedText = NSAttributedString(string: title, attributes: titleAttribute)
                     cell.titleContanerView.isHidden = false
-                }
-                else {
+                } else {
                     cell.titleContanerView.isHidden = true
                 }
             }

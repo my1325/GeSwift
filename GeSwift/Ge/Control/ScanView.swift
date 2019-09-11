@@ -27,7 +27,7 @@ public final class ScanView: UIView {
     public typealias ScanResult = (String?) -> Void
     public var scanResult: ScanResult?
     public lazy var rectOfInterest: CGRect = self.bounds
-    
+    #if !targetEnvironment(simulator)
     private(set) var device: AVCaptureDevice = AVCaptureDevice.default(for: .video)!
     private(set) var input: AVCaptureDeviceInput?
     private(set) var output: AVCaptureMetadataOutput?
@@ -95,8 +95,9 @@ public final class ScanView: UIView {
         
         self.isConfiged = true
     }
+    #endif
 }
-
+#if !targetEnvironment(simulator)
 extension ScanView {
     
     public func startScan() {
@@ -123,3 +124,4 @@ extension ScanView: AVCaptureMetadataOutputObjectsDelegate {
         scanResult?(text)
     }
 }
+#endif
