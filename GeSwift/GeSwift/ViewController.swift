@@ -43,6 +43,9 @@ internal final class ViewController: BaseViewController {
         return $0
     }(UITableView(frame: CGRect.zero, style: UITableView.Style.plain))
     
+    
+    let viewControllers: [String] = ["HorizontalViewController", "ScanViewController", "CycleScrollViewController"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -61,7 +64,7 @@ internal final class ViewController: BaseViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewControllers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,7 +75,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell?.textLabel?.textColor = "666666".ge.asColor
             cell?.accessoryType = .disclosureIndicator
         }
-        cell?.textLabel?.text = "\(indexPath.row + 1)、HorizontalViewController"
+        cell?.textLabel?.text = "\(indexPath.row + 1)、\(viewControllers[indexPath.row])"
         return cell!
     }
     
@@ -80,6 +83,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         if 0 == indexPath.row {
             self.navigationController?.pushViewController(HorizontalViewController(), animated: true)
+        } else if 1 == indexPath.row {
+            self.navigationController?.pushViewController(ScanViewController(), animated: true)
+        } else if 2 == indexPath.row {
+            self.navigationController?.pushViewController(CycleScrollViewController(), animated: true)
         }
     }
 }

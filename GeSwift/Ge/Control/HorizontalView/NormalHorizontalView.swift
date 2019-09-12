@@ -14,55 +14,6 @@ extension UIControl.State: Hashable {
     public var hashValue: Int { return Int(rawValue) }
 }
 
-public final class HorizontalCell: UICollectionViewCell {
-    
-    internal lazy var titleLabel: UILabel = {
-        $0.font = UIFont.systemFont(ofSize: 15)
-        $0.textColor = "333333".ge.asColor
-        $0.textAlignment = .center
-        self.contentView.addSubview($0)
-        $0.snp.makeConstraints({ (make) in
-            make.center.equalTo(self.contentView.snp.center).offset(0)
-        })
-        return $0
-    }(UILabel())
-    
-    internal lazy var badgeLabel: UILabel = {
-        $0.backgroundColor = UIColor.red
-        $0.font = UIFont.systemFont(ofSize: 10)
-        $0.textAlignment = .center
-        $0.textColor = UIColor.white
-        $0.layer.cornerRadius = 7
-        $0.clipsToBounds = true
-        self.contentView.addSubview($0)
-        self.contentView.bringSubviewToFront($0)
-        $0.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.titleLabel.snp.top).offset(-10)
-            make.left.equalTo(self.titleLabel.snp.right).offset(-10)
-            make.height.equalTo(14)
-            make.width.equalTo(20)
-        })
-        return $0
-    }(UILabel())
-    
-    fileprivate var badge: Int = 0 {
-        didSet {
-            badgeLabel.text = "\(badge)"
-            badgeLabel.isHidden = badge == 0
-        }
-    }
-    
-    fileprivate var title: String = ""
-    
-    fileprivate var state: UIControl.State = .normal {
-        didSet {
-            titleLabel.attributedText = NSAttributedString(string: title, attributes: attributes[state])
-        }
-    }
-    
-    fileprivate var attributes: [UIControl.State: [NSAttributedString.Key: Any]] = [:]
-}
-
 @objc
 public protocol HorizontalDelegate: NSObjectProtocol {
     
@@ -81,8 +32,59 @@ public protocol HorizontalDataSource: NSObjectProtocol {
     func horizontalView(_ horizontalView: HorizontalView, badgeAtIndex index: Int) -> Int
 }
 
-public class HorizontalView: UIView {
+open class HorizontalView: UIView {}
 
+public class NormalHorizontalView: HorizontalView {
+
+    public final class HorizontalCell: UICollectionViewCell {
+        
+        internal lazy var titleLabel: UILabel = {
+            $0.font = UIFont.systemFont(ofSize: 15)
+            $0.textColor = "333333".ge.asColor
+            $0.textAlignment = .center
+            self.contentView.addSubview($0)
+            $0.snp.makeConstraints({ (make) in
+                make.center.equalTo(self.contentView.snp.center).offset(0)
+            })
+            return $0
+        }(UILabel())
+        
+        internal lazy var badgeLabel: UILabel = {
+            $0.backgroundColor = UIColor.red
+            $0.font = UIFont.systemFont(ofSize: 10)
+            $0.textAlignment = .center
+            $0.textColor = UIColor.white
+            $0.layer.cornerRadius = 7
+            $0.clipsToBounds = true
+            self.contentView.addSubview($0)
+            self.contentView.bringSubviewToFront($0)
+            $0.snp.makeConstraints({ (make) in
+                make.top.equalTo(self.titleLabel.snp.top).offset(-10)
+                make.left.equalTo(self.titleLabel.snp.right).offset(-10)
+                make.height.equalTo(14)
+                make.width.equalTo(20)
+            })
+            return $0
+        }(UILabel())
+        
+        fileprivate var badge: Int = 0 {
+            didSet {
+                badgeLabel.text = "\(badge)"
+                badgeLabel.isHidden = badge == 0
+            }
+        }
+        
+        fileprivate var title: String = ""
+        
+        fileprivate var state: UIControl.State = .normal {
+            didSet {
+                titleLabel.attributedText = NSAttributedString(string: title, attributes: attributes[state])
+            }
+        }
+        
+        fileprivate var attributes: [UIControl.State: [NSAttributedString.Key: Any]] = [:]
+    }
+    
     private let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     
     private lazy var contentView: UIView = {
@@ -142,6 +144,8 @@ public class HorizontalView: UIView {
     
     public weak var dataSource: HorizontalDataSource?
     
+    public var minimumInteritemSpacing: CGFloat = 25
+    
     public var indicatorHeight: CGFloat = 2
     
     public var indicatorColor: UIColor = "125fa7".ge.asColor {
@@ -178,7 +182,7 @@ public class HorizontalView: UIView {
     ///   - animated: animated
     public func set(selectedIndex index: Int, animated: Bool) {
         if animated {
-            UIView.animate(withDuration: animated ? 0.4 : 0.0,
+            UIView.animate(withDuration: 0.4,
                            delay: 0,
                            usingSpringWithDamping: 0.5,
                            initialSpringVelocity: 0,
@@ -240,7 +244,7 @@ public class HorizontalView: UIView {
     }
 }
 
-extension HorizontalView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension NormalHorizontalView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -264,7 +268,7 @@ extension HorizontalView: UICollectionViewDelegateFlowLayout, UICollectionViewDa
                                                                                                options: .usesLineFragmentOrigin,
                                                                                                context: nil).size.width
 
-            let size = CGSize(width: max(width1, width2) + 25, height: collectionView.ge.height)
+            let size = CGSize(width: max(width1, width2) + self.minimumInteritemSpacing, height: collectionView.ge.height)
             self.cacheSize[indexPath] = size
             
             return size

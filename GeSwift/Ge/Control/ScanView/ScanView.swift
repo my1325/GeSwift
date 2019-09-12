@@ -69,10 +69,7 @@ public final class ScanView: UIView {
             session!.addOutput(output!)
         }
         
-        output?.metadataObjectTypes = [AVMetadataObject.ObjectType.qr,
-                                       AVMetadataObject.ObjectType.ean13,
-                                       AVMetadataObject.ObjectType.ean8,
-                                       AVMetadataObject.ObjectType.code128]
+        output?.metadataObjectTypes = [.qr, .upce, .code39, .code39Mod43, .code93, .pdf417, .ean13, .ean8, .code128]
         
         //CGRectMake(y/deviceHeight, x/deviceWidth, height/deviceHeight, width/deviceWidth);
 //        fileprivate let SCANRECT: CGRect = CGRect(x: LEFT, y: TOP, width: 220, height: 220)

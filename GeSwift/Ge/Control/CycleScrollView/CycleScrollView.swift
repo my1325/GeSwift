@@ -40,7 +40,6 @@ public protocol CyclePageControl {
     var currentPage: Int { get set }
 }
 
-
 extension UIPageControl: CyclePageControl {}
 
 fileprivate final class CycleScrollViewCustomViewCell: UICollectionViewCell {
@@ -257,15 +256,37 @@ public final class CycleScrollView: UIView {
                 wself.scrollTimeOffset = 1
                 
                 DispatchQueue.main.async {
-                    let index = Int(wself.collectionView.contentOffset.x / wself.collectionView.bounds.size.width + 0.5) + 1
+                    let index: Int
+                    switch wself.scrollDirection {
+                    case .horizontal:
+                        index = Int(wself.collectionView.contentOffset.x / wself.collectionView.bounds.size.width + 0.5) + 1
+                    case .vertical:
+                        index = Int(wself.collectionView.contentOffset.y / wself.collectionView.bounds.size.height + 0.5) + 1
+                    @unknown default:
+                        fatalError()
+                    }
+                    
                     let totalIndex = wself.totalIndex > 1 ? wself.totalIndex * 300 - 1 : wself.totalIndex
                     if index < totalIndex {
-                        wself.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
+                        switch wself.scrollDirection {
+                        case .horizontal:
+                            wself.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
+                        case .vertical:
+                            wself.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredVertically, animated: true)
+                        @unknown default:
+                            fatalError()
+                        }
                         wself.pageControl.currentPage = index % wself.totalIndex
-                    }
-                    else {
+                    } else {
                         UIView.performWithoutAnimation {
-                            wself.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
+                            switch wself.scrollDirection {
+                            case .horizontal:
+                                wself.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
+                            case .vertical:
+                                wself.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredVertically, animated: true)
+                            @unknown default:
+                                fatalError()
+                            }
                             wself.pageControl.currentPage = 0
                         }
                     }
@@ -335,8 +356,7 @@ extension CycleScrollView: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CycleScrollViewCustomViewCell\(indexPath.item % totalIndex)", for: indexPath) as! CycleScrollViewCustomViewCell
             cell.customView = customView
             return cell
-        }
-        else {
+        } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CycleScrollViewImageCell", for: indexPath) as! CycleScrollViewImageCell
             cell.imageView.contentMode = contentModel
             cell.titleContanerView.isHidden = !isShowTitleView

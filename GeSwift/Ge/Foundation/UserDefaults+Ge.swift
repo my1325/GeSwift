@@ -30,8 +30,7 @@ extension Ge where Base: UserDefaults {
         guard let value = value else { return false }
         if valueIsBaseType(ValueType.self) {
             base.set(value, forKey: key.key)
-        }
-        else {
+        } else {
             let data = try? JSONEncoder().encode(value)
             base.set(data, forKey: key.key)
         }

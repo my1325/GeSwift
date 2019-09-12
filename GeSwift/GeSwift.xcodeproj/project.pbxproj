@@ -29,9 +29,13 @@
 		4A1B1C6123288B8900DE7FBF /* Notification+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDB9BF5213E73D700CF3193 /* Notification+Ge.swift */; };
 		4A1B1C6223288B8900DE7FBF /* UserDefaults+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF525C4219BBFF2004F2D55 /* UserDefaults+Ge.swift */; };
 		4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */; };
-		4A1B1C6D2328BCF400DE7FBF /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6C2328BCF400DE7FBF /* HorizontalView.swift */; };
+		4A1B1C6D2328BCF400DE7FBF /* NormalHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6C2328BCF400DE7FBF /* NormalHorizontalView.swift */; };
+		4A1B1C732328D0E100DE7FBF /* FadeHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */; };
+		4AFCFF372329F14D00EDD09A /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCFF362329F14D00EDD09A /* ScanViewController.swift */; };
+		4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCFF382329F55900EDD09A /* CycleScrollViewController.swift */; };
+		4AFCFF3E2329F5D800EDD09A /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCFF3D2329F5D800EDD09A /* CycleScrollView.swift */; };
+		4AFCFF412329F5EB00EDD09A /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCFF402329F5EB00EDD09A /* ScanView.swift */; };
 		5E02E3BD228BB6BC002F8AF1 /* GeSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */; };
-		5E02E3C5228BB8D4002F8AF1 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E02E3C4228BB8D4002F8AF1 /* ScanView.swift */; };
 		5E1C6AAF212E4814000D3A7C /* Date+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AAE212E4814000D3A7C /* Date+Ge.swift */; };
 		5E1C6AB5212E538C000D3A7C /* UIScrollView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */; };
 		5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC37C20DA59A6007FEF3E /* AppDelegate.swift */; };
@@ -50,7 +54,6 @@
 		5E2FC3B020DA5F59007FEF3E /* String+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC3A220DA5F59007FEF3E /* String+Ge.swift */; };
 		5E49EFE7219AC2B500A09046 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49EFE6219AC2B500A09046 /* Reusable.swift */; };
 		5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7622219D63C30012F6A8 /* WCDB+Ge.swift */; };
-		5E4E7628219D649B0012F6A8 /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */; };
 		5EA9A52B21FFFB290066089B /* GeSwift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5EA9A52A21FFFB290066089B /* GeSwift.podspec */; };
 		5EA9A52E22002BCB0066089B /* UIViewAnimation+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA9A52D22002BCB0066089B /* UIViewAnimation+Ge.swift */; };
 		5ED77EAE21ABD98900587B26 /* UIWindow+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED77EAD21ABD98900587B26 /* UIWindow+Ge.swift */; };
@@ -77,12 +80,16 @@
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
 		4A1B1BF623279F6800DE7FBF /* UILabel+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ge.swift"; sourceTree = "<group>"; };
 		4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalViewController.swift; sourceTree = "<group>"; };
-		4A1B1C6C2328BCF400DE7FBF /* HorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalView.swift; sourceTree = "<group>"; };
+		4A1B1C6C2328BCF400DE7FBF /* NormalHorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalHorizontalView.swift; sourceTree = "<group>"; };
+		4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeHorizontalView.swift; sourceTree = "<group>"; };
+		4AFCFF362329F14D00EDD09A /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		4AFCFF382329F55900EDD09A /* CycleScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleScrollViewController.swift; sourceTree = "<group>"; };
+		4AFCFF3D2329F5D800EDD09A /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
+		4AFCFF402329F5EB00EDD09A /* ScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		520017B9EEFF8D241A5DF796 /* Pods-GeSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		5E02E3BA228BB6BC002F8AF1 /* GeSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeSwiftTests.swift; sourceTree = "<group>"; };
 		5E02E3BE228BB6BC002F8AF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5E02E3C4228BB8D4002F8AF1 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		5E1C6AAE212E4814000D3A7C /* Date+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ge.swift"; sourceTree = "<group>"; };
 		5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ge.swift"; sourceTree = "<group>"; };
 		5E2FC37920DA59A6007FEF3E /* GeSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,7 +110,6 @@
 		5E2FC3A220DA5F59007FEF3E /* String+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ge.swift"; sourceTree = "<group>"; };
 		5E49EFE6219AC2B500A09046 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		5E4E7622219D63C30012F6A8 /* WCDB+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WCDB+Ge.swift"; sourceTree = "<group>"; };
-		5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
 		5EA9A52A21FFFB290066089B /* GeSwift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GeSwift.podspec; path = ../GeSwift.podspec; sourceTree = "<group>"; };
 		5EA9A52D22002BCB0066089B /* UIViewAnimation+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewAnimation+Ge.swift"; sourceTree = "<group>"; };
 		5ED77EAD21ABD98900587B26 /* UIWindow+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Ge.swift"; sourceTree = "<group>"; };
@@ -142,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */,
+				4AFCFF362329F14D00EDD09A /* ScanViewController.swift */,
+				4AFCFF382329F55900EDD09A /* CycleScrollViewController.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -149,8 +157,26 @@
 		4A1B1C6B2328BCF400DE7FBF /* HorizontalView */ = {
 			isa = PBXGroup;
 			children = (
+				4A1B1C6C2328BCF400DE7FBF /* NormalHorizontalView.swift */,
+				4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */,
 			);
 			path = HorizontalView;
+			sourceTree = "<group>";
+		};
+		4AFCFF3C2329F5D800EDD09A /* CycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				4AFCFF3D2329F5D800EDD09A /* CycleScrollView.swift */,
+			);
+			path = CycleScrollView;
+			sourceTree = "<group>";
+		};
+		4AFCFF3F2329F5EB00EDD09A /* ScanView */ = {
+			isa = PBXGroup;
+			children = (
+				4AFCFF402329F5EB00EDD09A /* ScanView.swift */,
+			);
+			path = ScanView;
 			sourceTree = "<group>";
 		};
 		5E02E3BB228BB6BC002F8AF1 /* GeSwiftTests */ = {
@@ -263,10 +289,9 @@
 		5E4E7624219D646A0012F6A8 /* Control */ = {
 			isa = PBXGroup;
 			children = (
-				4A1B1C6C2328BCF400DE7FBF /* HorizontalView.swift */,
+				4AFCFF3F2329F5EB00EDD09A /* ScanView */,
+				4AFCFF3C2329F5D800EDD09A /* CycleScrollView */,
 				4A1B1C6B2328BCF400DE7FBF /* HorizontalView */,
-				5E4E7626219D649B0012F6A8 /* CycleScrollView.swift */,
-				5E02E3C4228BB8D4002F8AF1 /* ScanView.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -505,7 +530,10 @@
 				5E49EFE7219AC2B500A09046 /* Reusable.swift in Sources */,
 				5E1C6AAF212E4814000D3A7C /* Date+Ge.swift in Sources */,
 				5E2FC3A420DA5F59007FEF3E /* UIControl+Ge.swift in Sources */,
+				4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */,
 				5E2FC3A920DA5F59007FEF3E /* UIImage+Ge.swift in Sources */,
+				4AFCFF3E2329F5D800EDD09A /* CycleScrollView.swift in Sources */,
+				4AFCFF412329F5EB00EDD09A /* ScanView.swift in Sources */,
 				5EF525C3219BBD82004F2D55 /* UICollectionView+Ge.swift in Sources */,
 				5E2FC3AF20DA5F59007FEF3E /* Data+Ge.swift in Sources */,
 				5E2FC3AA20DA5F59007FEF3E /* UIAlertViewController+Ge.swift in Sources */,
@@ -514,17 +542,17 @@
 				5E2FC3B020DA5F59007FEF3E /* String+Ge.swift in Sources */,
 				5E2FC3A620DA5F59007FEF3E /* UIView+Ge.swift in Sources */,
 				5EA9A52E22002BCB0066089B /* UIViewAnimation+Ge.swift in Sources */,
-				4A1B1C6D2328BCF400DE7FBF /* HorizontalView.swift in Sources */,
+				4A1B1C6D2328BCF400DE7FBF /* NormalHorizontalView.swift in Sources */,
 				5EF525C9219BC31E004F2D55 /* Defaults.swift in Sources */,
 				5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */,
 				5E2FC3AB20DA5F59007FEF3E /* UIResponder.swift in Sources */,
 				5ED77EAE21ABD98900587B26 /* UIWindow+Ge.swift in Sources */,
+				4AFCFF372329F14D00EDD09A /* ScanViewController.swift in Sources */,
 				5E1C6AB5212E538C000D3A7C /* UIScrollView+Ge.swift in Sources */,
 				4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */,
+				4A1B1C732328D0E100DE7FBF /* FadeHorizontalView.swift in Sources */,
 				5EF525C5219BBFF2004F2D55 /* UserDefaults+Ge.swift in Sources */,
-				5E02E3C5228BB8D4002F8AF1 /* ScanView.swift in Sources */,
 				5EF525C7219BC13F004F2D55 /* Plist.swift in Sources */,
-				5E4E7628219D649B0012F6A8 /* CycleScrollView.swift in Sources */,
 				5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */,
 				5E2FC3A720DA5F59007FEF3E /* UIColor+Ge.swift in Sources */,
 				5EDB9BF6213E73D700CF3193 /* Notification+Ge.swift in Sources */,
@@ -720,8 +748,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 869PD8U2V4;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LS59MWP9WR;
 				INFOPLIST_FILE = GeSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -730,7 +758,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mr.my.ge.GeSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -741,9 +769,9 @@
 			baseConfigurationReference = 416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 869PD8U2V4;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LS59MWP9WR;
 				INFOPLIST_FILE = GeSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -752,7 +780,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mr.my.ge.GeSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.mr.my.ge.GeSwift";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
