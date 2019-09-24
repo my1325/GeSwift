@@ -14,7 +14,7 @@ extension Ge where Base: UIScrollView {
     ///
     /// - Parameter size: target image size, if nil use scroll view's content size
     /// - Returns: image
-    public func snapShot() -> UIImage? {
+    public var snapShot: UIImage? {
         
         let savedContentOffset = base.contentOffset
         let savedFrame = base.frame

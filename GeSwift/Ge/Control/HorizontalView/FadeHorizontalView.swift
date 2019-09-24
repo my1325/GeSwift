@@ -172,7 +172,7 @@ public final class FadeHorizontalView: HorizontalView {
     ///   - animated: animated
     public func set(selectedIndex index: Int, animated: Bool) {
         if animated {
-            UIView.animate(withDuration: 0.5,
+            UIView.animate(withDuration: 3,
                            delay: 0,
                            usingSpringWithDamping: 0.8,
                            initialSpringVelocity: 0,
@@ -268,7 +268,7 @@ extension FadeHorizontalView: UICollectionViewDelegateFlowLayout, UICollectionVi
                                                                                                                 options: .usesLineFragmentOrigin,
                                                                                                                 context: nil).size.width
             
-            let size = CGSize(width: max(width1, width2) + self.minimumInteritemSpacing, height: collectionView.ge.height)
+            let size = CGSize(width: max(width1, width2) + self.minimumInteritemSpacing, height: collectionView.ge.height - self.indicatorHeight)
             self.cacheSize[indexPath] = size
             
             return size

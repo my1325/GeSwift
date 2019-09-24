@@ -28,8 +28,7 @@ fileprivate class TableCacheHeights {
     subscript(indexPath: IndexPath) -> CGFloat? {
         get {
             return cacheHeights[indexPath]
-        }
-        set {
+        } set {
             cacheHeights[indexPath] = newValue
         }
     }

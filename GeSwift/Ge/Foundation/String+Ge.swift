@@ -17,8 +17,7 @@ extension Ge where Base == String {
         do {
             let data = try JSONSerialization.data(withJSONObject: jsonlist, options: .prettyPrinted)
             return String(data: data, encoding: .utf8)
-        }
-        catch {
+        } catch {
             return nil
         }
     }
@@ -27,8 +26,7 @@ extension Ge where Base == String {
         do {
             let data = try JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted)
             return String(data: data, encoding: .utf8)
-        }
-        catch {
+        } catch {
             return nil
         }
     }
@@ -57,8 +55,7 @@ extension Ge where Base == String {
     public var bool: Bool? {
         if True_Condition.contains(base) {
             return true
-        }
-        else if False_Condition.contains(base) {
+        } else if False_Condition.contains(base) {
             return false
         }
         return nil
@@ -97,8 +94,7 @@ extension Ge where Base == String {
             do {
                 let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 return result
-            }
-            catch {
+            } catch {
                 return nil
             }
         }
@@ -138,7 +134,6 @@ extension Ge where Base == String {
         let startIndex = base.index(base.startIndex, offsetBy: location)
         let endIndex = base.index(startIndex, offsetBy: length)
         let sub = base[startIndex ..< endIndex]
-        
         return String(sub)
     }
     
@@ -171,18 +166,20 @@ extension Ge where Base == String {
     }
 
     public func toNSRange(_ range: Range<String.Index>) -> NSRange {
-        guard let from = range.lowerBound.samePosition(in: base.utf16), let to = range.upperBound.samePosition(in: base.utf16) else {
+        guard let from = range.lowerBound.samePosition(in: base.utf16),
+            let to = range.upperBound.samePosition(in: base.utf16) else {
             return NSMakeRange(0, 0)
         }
         return NSMakeRange(base.utf16.distance(from: base.utf16.startIndex, to: from), base.utf16.distance(from: from, to: to))
     }
 
     public func toRange(_ range: NSRange) -> Range<String.Index>? {
-        guard let from16 = base.utf16.index(base.utf16.startIndex, offsetBy: range.location, limitedBy: base.utf16.endIndex) else { return nil }
-        guard let to16 = base.utf16.index(from16, offsetBy: range.length, limitedBy: base.utf16.endIndex) else { return nil }
-        guard let from = String.Index(from16, within: base) else { return nil }
-        guard let to = String.Index(to16, within: base) else { return nil }
+        guard let from16 = base.utf16.index(base.utf16.startIndex, offsetBy: range.location, limitedBy: base.utf16.endIndex),
+            let to16 = base.utf16.index(from16, offsetBy: range.length, limitedBy: base.utf16.endIndex),
+            let from = String.Index(from16, within: base),
+            let to = String.Index(to16, within: base) else {
+                return nil
+        }
         return from ..< to
     }
-
 }

@@ -128,7 +128,7 @@ public class NormalHorizontalView: HorizontalView {
         
         let cellAttribute = self.collectionView.layoutAttributesForItem(at: IndexPath(item: newValue, section: 0))
         let cellRect = cellAttribute?.frame ?? .zero
-        self.indicator.frame = CGRect(x: cellRect.minX + self.indicatorWidthPadding, y: self.contentView.ge.height - self.indicatorHeight, width: cellRect.size.width - self.indicatorWidthPadding * 2, height: self.indicatorHeight)
+        self.indicator.frame = CGRect(x: cellRect.minX + self.indicatorPadding.left, y: self.contentView.ge.height - self.indicatorHeight, width: cellRect.size.width - self.indicatorPadding.left - self.indicatorPadding.right, height: self.indicatorHeight)
 
         self.collectionView.selectItem(at: IndexPath(item: newValue, section: 0), animated: false, scrollPosition: .centeredHorizontally)
         
@@ -139,14 +139,22 @@ public class NormalHorizontalView: HorizontalView {
     }
     
     private var selectedButtonIndex: Int = 0
-        
+
+    /// 设置此属性为false，如果content-width 小于width时，会自动调整contentInset属性
+    public var centerButtons: Bool = false
+    
     public weak var delegate: HorizontalDelegate?
     
     public weak var dataSource: HorizontalDataSource?
     
     public var minimumInteritemSpacing: CGFloat = 25
     
-    public var indicatorHeight: CGFloat = 2
+    public var indicatorHeight: CGFloat = 2 {
+        didSet {
+            self.indicator.layer.cornerRadius = self.indicatorHeight / 2
+            self.indicator.clipsToBounds = true 
+        }
+    }
     
     public var indicatorColor: UIColor = "125fa7".ge.asColor {
         didSet {
@@ -160,7 +168,7 @@ public class NormalHorizontalView: HorizontalView {
     
     public var badgeBackgroundColor: UIColor = UIColor.red
     
-    public var indicatorWidthPadding: CGFloat = 10
+    public var indicatorPadding: UIEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
     
     public var selectedIndex: Int {
         get {
@@ -231,7 +239,7 @@ public class NormalHorizontalView: HorizontalView {
             
             let cellAttribute = self.collectionView.layoutAttributesForItem(at: IndexPath(item: self.selectedButtonIndex, section: 0))
             let cellRect = cellAttribute?.frame ?? .zero
-            self.indicator.frame = CGRect(x: cellRect.minX + self.indicatorWidthPadding, y: self.contentView.ge.height - self.indicatorHeight, width: cellRect.size.width - self.indicatorWidthPadding * 2, height: self.indicatorHeight)
+            self.indicator.frame = CGRect(x: cellRect.minX + self.indicatorPadding.left, y: self.contentView.ge.height - self.indicatorHeight, width: cellRect.size.width - self.indicatorPadding.left - self.indicatorPadding.right, height: self.indicatorHeight)
 
             self.collectionView.selectItem(at: IndexPath(item: self.selectedButtonIndex, section: 0), animated: false, scrollPosition: .centeredHorizontally)
         }
@@ -285,6 +293,9 @@ extension NormalHorizontalView: UICollectionViewDelegateFlowLayout, UICollection
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if self.centerButtons && collectionView.contentSize.width < self.ge.width {
+            self.contentInset = UIEdgeInsets(top: self.contentInset.top, left: (self.ge.width - collectionView.contentSize.width) / 2, bottom: self.contentInset.bottom, right: (self.ge.width - collectionView.contentSize.width) / 2)
+        }
         return self.contentInset
     }
     

@@ -35,6 +35,7 @@
 		4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCFF382329F55900EDD09A /* CycleScrollViewController.swift */; };
 		4AFCFF3E2329F5D800EDD09A /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCFF3D2329F5D800EDD09A /* CycleScrollView.swift */; };
 		4AFCFF412329F5EB00EDD09A /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCFF402329F5EB00EDD09A /* ScanView.swift */; };
+		4AFCFF43232A4E0800EDD09A /* NSObject+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCFF42232A4E0800EDD09A /* NSObject+Ge.swift */; };
 		5E02E3BD228BB6BC002F8AF1 /* GeSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */; };
 		5E1C6AAF212E4814000D3A7C /* Date+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AAE212E4814000D3A7C /* Date+Ge.swift */; };
 		5E1C6AB5212E538C000D3A7C /* UIScrollView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */; };
@@ -86,6 +87,7 @@
 		4AFCFF382329F55900EDD09A /* CycleScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleScrollViewController.swift; sourceTree = "<group>"; };
 		4AFCFF3D2329F5D800EDD09A /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
 		4AFCFF402329F5EB00EDD09A /* ScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+		4AFCFF42232A4E0800EDD09A /* NSObject+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ge.swift"; sourceTree = "<group>"; };
 		520017B9EEFF8D241A5DF796 /* Pods-GeSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		5E02E3BA228BB6BC002F8AF1 /* GeSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeSwiftTests.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				5E1C6AAE212E4814000D3A7C /* Date+Ge.swift */,
 				5EDB9BF5213E73D700CF3193 /* Notification+Ge.swift */,
 				5EF525C4219BBFF2004F2D55 /* UserDefaults+Ge.swift */,
+				4AFCFF42232A4E0800EDD09A /* NSObject+Ge.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				5EF525C5219BBFF2004F2D55 /* UserDefaults+Ge.swift in Sources */,
 				5EF525C7219BC13F004F2D55 /* Plist.swift in Sources */,
 				5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */,
+				4AFCFF43232A4E0800EDD09A /* NSObject+Ge.swift in Sources */,
 				5E2FC3A720DA5F59007FEF3E /* UIColor+Ge.swift in Sources */,
 				5EDB9BF6213E73D700CF3193 /* Notification+Ge.swift in Sources */,
 				4A1B1BF723279F6800DE7FBF /* UILabel+Ge.swift in Sources */,

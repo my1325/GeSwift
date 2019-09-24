@@ -66,8 +66,7 @@ public final class Plist {
             let retValue: NSDictionary = NSDictionary()
             retValue.write(toFile: self.path, atomically: true)
             return retValue as! [String: Any]
-        }
-        catch {
+        } catch {
             fatalError("create path dir error: \(error.localizedDescription)")
         }
     }()

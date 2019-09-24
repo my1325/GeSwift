@@ -145,6 +145,7 @@ extension Ge where Base: UIImage {
     public static func gradientImage(colors: [UIColor],
                                      startPoint sPoint: CGPoint,
                                      endPoint ePoint: CGPoint,
+                                     locations: [CGFloat],
                                      size: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, true, 0)
         defer {
@@ -154,10 +155,9 @@ extension Ge where Base: UIImage {
         let context = UIGraphicsGetCurrentContext()
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let colors = colors.map({ $0.cgColor })
-//            colors.map {(color: UIColor) -> AnyObject! in return color.CGColor as AnyObject! } as NSArray
-        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: nil)!
+        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: locations)!
         // 第二个参数是起始位置，第三个参数是终止位置
-        context?.drawLinearGradient(gradient, start: sPoint, end: ePoint, options: CGGradientDrawingOptions.init(rawValue: 0))
+        context?.drawLinearGradient(gradient, start: sPoint, end: CGPoint(x: ePoint.x * size.width, y: ePoint.y * size.height), options: CGGradientDrawingOptions.init(rawValue: 0))
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
 

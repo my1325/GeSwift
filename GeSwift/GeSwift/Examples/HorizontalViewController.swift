@@ -15,11 +15,12 @@ internal final class HorizontalViewController: BaseViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.delegate = self
         $0.dataSource = self
-        $0.indicatorHeight = 2
+        $0.indicatorHeight = 3
         $0.indicatorColor = UIColor.lightGray
-        $0.indicatorWidthPadding = 20
+        $0.indicatorPadding = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 30)
         $0.badgeBackgroundColor = UIColor.red
         $0.badgeColor = UIColor.white
+        $0.centerButtons = true
         $0.set(attribute: NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14), forState: UIControl.State.normal)
         $0.set(attribute: NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 16), forState: UIControl.State.selected)
         $0.set(attribute: NSAttributedString.Key.foregroundColor, value: UIColor.black, forState: UIControl.State.normal)
@@ -56,7 +57,7 @@ internal final class HorizontalViewController: BaseViewController {
         return $0
     }(FadeHorizontalView())
     
-    let titleSource: [String] = ["hello", "world", "xcode", "build", "color", "white", "android", "apple", "origin"]
+    let titleSource: [String] = ["hello", "world", ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
