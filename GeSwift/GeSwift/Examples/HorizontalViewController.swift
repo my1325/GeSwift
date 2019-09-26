@@ -11,7 +11,7 @@ import SnapKit
 
 internal final class HorizontalViewController: BaseViewController {
 
-    lazy var normalHorizontalView: NormalHorizontalView = {
+    lazy var normalHorizontalView: HorizontalView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.delegate = self
         $0.dataSource = self
@@ -31,31 +31,31 @@ internal final class HorizontalViewController: BaseViewController {
             make.height.equalTo(40)
         })
         return $0
-    }(NormalHorizontalView())
+    }(HorizontalView())
     
-    lazy var fadeHorizontalView: FadeHorizontalView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.delegate = self
-        $0.dataSource = self
-        $0.indicatorHeight = 2
-        $0.indicatorColor = UIColor.lightGray
-        $0.indicatorWidthPadding = 20
-        $0.badgeBackgroundColor = UIColor.red
-        $0.badgeColor = UIColor.white
-        $0.backgroundColor = UIColor.yellow
-        $0.viewTintColor = UIColor.blue
-        $0.set(attribute: NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14), forState: UIControl.State.normal)
-        $0.set(attribute: NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14), forState: UIControl.State.selected)
-        $0.set(attribute: NSAttributedString.Key.foregroundColor, value: UIColor.black, forState: UIControl.State.normal)
-        $0.set(attribute: NSAttributedString.Key.foregroundColor, value: UIColor.white, forState: UIControl.State.selected)
-        self.view.addSubview($0)
-        $0.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.normalHorizontalView.snp.bottom).offset(100)
-            make.left.right.equalTo(0)
-            make.height.equalTo(40)
-        })
-        return $0
-    }(FadeHorizontalView())
+//    lazy var fadeHorizontalView: FadeHorizontalView = {
+//        $0.translatesAutoresizingMaskIntoConstraints = false
+//        $0.delegate = self
+//        $0.dataSource = self
+//        $0.indicatorHeight = 2
+//        $0.indicatorColor = UIColor.lightGray
+//        $0.indicatorWidthPadding = 20
+//        $0.badgeBackgroundColor = UIColor.red
+//        $0.badgeColor = UIColor.white
+//        $0.backgroundColor = UIColor.yellow
+//        $0.viewTintColor = UIColor.blue
+//        $0.set(attribute: NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14), forState: UIControl.State.normal)
+//        $0.set(attribute: NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 14), forState: UIControl.State.selected)
+//        $0.set(attribute: NSAttributedString.Key.foregroundColor, value: UIColor.black, forState: UIControl.State.normal)
+//        $0.set(attribute: NSAttributedString.Key.foregroundColor, value: UIColor.white, forState: UIControl.State.selected)
+//        self.view.addSubview($0)
+//        $0.snp.makeConstraints({ (make) in
+//            make.top.equalTo(self.normalHorizontalView.snp.bottom).offset(100)
+//            make.left.right.equalTo(0)
+//            make.height.equalTo(40)
+//        })
+//        return $0
+//    }(FadeHorizontalView())
     
     let titleSource: [String] = ["hello", "world", ]
     
@@ -65,7 +65,7 @@ internal final class HorizontalViewController: BaseViewController {
         // Do any additional setup after loading the view.
         self.title = "HorizontalViewController"
         self.normalHorizontalView.reloadData()
-        self.fadeHorizontalView.reloadData()
+//        self.fadeHorizontalView.reloadData()
     }
 }
 

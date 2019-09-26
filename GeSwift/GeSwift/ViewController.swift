@@ -43,8 +43,14 @@ internal final class ViewController: BaseViewController {
         return $0
     }(UITableView(frame: CGRect.zero, style: UITableView.Style.plain))
     
-    
-    let viewControllers: [String] = ["HorizontalViewController", "ScanViewController", "CycleScrollViewController"]
+    struct ViewController {
+        var name: String
+        var controller: UIViewController
+    }
+    let viewControllers: [ViewController] = [ViewController(name: "HorizontalViewController", controller: HorizontalViewController()),
+                                     ViewController(name: "ScanViewController", controller: ScanViewController()),
+                                     ViewController(name: "CycleScrollViewController", controller: CycleScrollViewController()),
+                                     ViewController(name: "AnimationViewController", controller: AnimationViewController())]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,18 +81,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell?.textLabel?.textColor = "666666".ge.asColor
             cell?.accessoryType = .disclosureIndicator
         }
-        cell?.textLabel?.text = "\(indexPath.row + 1)、\(viewControllers[indexPath.row])"
+        cell?.textLabel?.text = "\(indexPath.row + 1)、\(viewControllers[indexPath.row].name)"
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if 0 == indexPath.row {
-            self.navigationController?.pushViewController(HorizontalViewController(), animated: true)
-        } else if 1 == indexPath.row {
-            self.navigationController?.pushViewController(ScanViewController(), animated: true)
-        } else if 2 == indexPath.row {
-            self.navigationController?.pushViewController(CycleScrollViewController(), animated: true)
-        }
+        self.navigationController?.pushViewController(viewControllers[indexPath.row].controller, animated: true)
     }
 }
