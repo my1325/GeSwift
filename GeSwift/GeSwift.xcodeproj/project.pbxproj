@@ -10,7 +10,6 @@
 		4A1B1BF723279F6800DE7FBF /* UILabel+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1BF623279F6800DE7FBF /* UILabel+Ge.swift */; };
 		4A1B1C4F23288B7500DE7FBF /* UIControl+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39320DA5F59007FEF3E /* UIControl+Ge.swift */; };
 		4A1B1C5023288B7500DE7FBF /* UIView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39520DA5F59007FEF3E /* UIView+Ge.swift */; };
-		4A1B1C5123288B7500DE7FBF /* UIColor+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39620DA5F59007FEF3E /* UIColor+Ge.swift */; };
 		4A1B1C5223288B7500DE7FBF /* UITableView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39720DA5F59007FEF3E /* UITableView+Ge.swift */; };
 		4A1B1C5323288B7500DE7FBF /* UIImage+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39820DA5F59007FEF3E /* UIImage+Ge.swift */; };
 		4A1B1C5423288B7500DE7FBF /* UIAlertViewController+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39920DA5F59007FEF3E /* UIAlertViewController+Ge.swift */; };
@@ -35,6 +34,7 @@
 		4A26FA9A233B594000B8E10D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA99233B594000B8E10D /* Protocols.swift */; };
 		4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA9B233B59B100B8E10D /* HorizontalCell.swift */; };
 		4A669B5D233C5F7200A69866 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A669B5C233C5F7200A69866 /* Animation.swift */; };
+		4A67057A2340B2A1007D7C28 /* UIColor+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6705792340B2A1007D7C28 /* UIColor+Ge.swift */; };
 		4AD24BDA233C913A003D05F8 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD24BD9233C913A003D05F8 /* AnimationViewController.swift */; };
 		4AD24BDC233C9322003D05F8 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD24BDB233C9322003D05F8 /* Label.swift */; };
 		4AD24BDE233C93FB003D05F8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD24BDD233C93FB003D05F8 /* View.swift */; };
@@ -52,7 +52,6 @@
 		5E2FC38720DA59A9007FEF3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E2FC38520DA59A9007FEF3E /* LaunchScreen.storyboard */; };
 		5E2FC3A420DA5F59007FEF3E /* UIControl+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39320DA5F59007FEF3E /* UIControl+Ge.swift */; };
 		5E2FC3A620DA5F59007FEF3E /* UIView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39520DA5F59007FEF3E /* UIView+Ge.swift */; };
-		5E2FC3A720DA5F59007FEF3E /* UIColor+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39620DA5F59007FEF3E /* UIColor+Ge.swift */; };
 		5E2FC3A820DA5F59007FEF3E /* UITableView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39720DA5F59007FEF3E /* UITableView+Ge.swift */; };
 		5E2FC3A920DA5F59007FEF3E /* UIImage+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39820DA5F59007FEF3E /* UIImage+Ge.swift */; };
 		5E2FC3AA20DA5F59007FEF3E /* UIAlertViewController+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39920DA5F59007FEF3E /* UIAlertViewController+Ge.swift */; };
@@ -93,6 +92,7 @@
 		4A26FA99233B594000B8E10D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4A26FA9B233B59B100B8E10D /* HorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCell.swift; sourceTree = "<group>"; };
 		4A669B5C233C5F7200A69866 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		4A6705792340B2A1007D7C28 /* UIColor+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ge.swift"; sourceTree = "<group>"; };
 		4AD24BD9233C913A003D05F8 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		4AD24BDB233C9322003D05F8 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		4AD24BDD233C93FB003D05F8 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -115,7 +115,6 @@
 		5E2FC38820DA59A9007FEF3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E2FC39320DA5F59007FEF3E /* UIControl+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Ge.swift"; sourceTree = "<group>"; };
 		5E2FC39520DA5F59007FEF3E /* UIView+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ge.swift"; sourceTree = "<group>"; };
-		5E2FC39620DA5F59007FEF3E /* UIColor+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ge.swift"; sourceTree = "<group>"; };
 		5E2FC39720DA5F59007FEF3E /* UITableView+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Ge.swift"; sourceTree = "<group>"; };
 		5E2FC39820DA5F59007FEF3E /* UIImage+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Ge.swift"; sourceTree = "<group>"; };
 		5E2FC39920DA5F59007FEF3E /* UIAlertViewController+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertViewController+Ge.swift"; sourceTree = "<group>"; };
@@ -268,12 +267,12 @@
 			children = (
 				5E2FC39320DA5F59007FEF3E /* UIControl+Ge.swift */,
 				5E2FC39520DA5F59007FEF3E /* UIView+Ge.swift */,
-				5E2FC39620DA5F59007FEF3E /* UIColor+Ge.swift */,
 				5E2FC39720DA5F59007FEF3E /* UITableView+Ge.swift */,
 				5E2FC39820DA5F59007FEF3E /* UIImage+Ge.swift */,
 				5E2FC39920DA5F59007FEF3E /* UIAlertViewController+Ge.swift */,
 				5E1C6AB4212E538C000D3A7C /* UIScrollView+Ge.swift */,
 				5EF525C2219BBD82004F2D55 /* UICollectionView+Ge.swift */,
+				4A6705792340B2A1007D7C28 /* UIColor+Ge.swift */,
 				5ED77EAD21ABD98900587B26 /* UIWindow+Ge.swift */,
 				4A1B1BF623279F6800DE7FBF /* UILabel+Ge.swift */,
 			);
@@ -541,7 +540,6 @@
 				4A1B1C5D23288B8300DE7FBF /* Defaults.swift in Sources */,
 				4A1B1C4F23288B7500DE7FBF /* UIControl+Ge.swift in Sources */,
 				4A1B1C5023288B7500DE7FBF /* UIView+Ge.swift in Sources */,
-				4A1B1C5123288B7500DE7FBF /* UIColor+Ge.swift in Sources */,
 				4A1B1C5223288B7500DE7FBF /* UITableView+Ge.swift in Sources */,
 				4A1B1C5323288B7500DE7FBF /* UIImage+Ge.swift in Sources */,
 				4A1B1C5423288B7500DE7FBF /* UIAlertViewController+Ge.swift in Sources */,
@@ -564,6 +562,7 @@
 				4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */,
 				4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */,
 				5E2FC3A920DA5F59007FEF3E /* UIImage+Ge.swift in Sources */,
+				4A67057A2340B2A1007D7C28 /* UIColor+Ge.swift in Sources */,
 				4AFCFF3E2329F5D800EDD09A /* CycleScrollView.swift in Sources */,
 				4AFCFF412329F5EB00EDD09A /* ScanView.swift in Sources */,
 				4AD24BDE233C93FB003D05F8 /* View.swift in Sources */,
@@ -588,7 +587,6 @@
 				5EF525C7219BC13F004F2D55 /* Plist.swift in Sources */,
 				5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */,
 				4AFCFF43232A4E0800EDD09A /* NSObject+Ge.swift in Sources */,
-				5E2FC3A720DA5F59007FEF3E /* UIColor+Ge.swift in Sources */,
 				5EDB9BF6213E73D700CF3193 /* Notification+Ge.swift in Sources */,
 				4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */,
 				4A1B1BF723279F6800DE7FBF /* UILabel+Ge.swift in Sources */,

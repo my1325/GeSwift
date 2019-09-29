@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
     s.subspec 'UI' do |ss|
 	ss.source_files = 'GeSwift/Ge/UI/*.{swift}'
  	ss.dependency 'GeSwift/Core'
+    ss.dependency 'GeSwift/Foundation'
     end
    
     s.subspec 'Foundation' do |ss|
@@ -32,7 +33,7 @@ Pod::Spec.new do |s|
     end
     
     s.subspec 'Control' do |ss|
-	ss.source_files = 'GeSwift/Ge/Control/*.{swift}'	
+	ss.source_files = 'GeSwift/Ge/Control/**/*.{swift}'
 	ss.dependency 'GeSwift/UI'
 	ss.dependency 'GeSwift/Foundation'
 	ss.dependency 'Schedule'
