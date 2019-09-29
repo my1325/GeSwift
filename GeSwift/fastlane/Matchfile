@@ -1,6 +1,0 @@
-git_url("git@gitee.com:my1325/certificates.git")
-storage_mode("git")
-type("development") # The default type, can be: appstore, adhoc, enterprise or development
-app_identifier(["com.mr.my.ge.GeSwift"])
-# Your Apple Developer Portal username
-username("my13254679@qq.com")
