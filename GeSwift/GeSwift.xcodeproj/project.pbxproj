@@ -288,7 +288,6 @@
 				5E2FC39F20DA5F59007FEF3E /* GeSwift.swift */,
 				5EF525C6219BC13F004F2D55 /* Plist.swift */,
 				5EF525C8219BC31E004F2D55 /* Defaults.swift */,
-				4A669B5C233C5F7200A69866 /* Animation.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -329,6 +328,7 @@
 			children = (
 				4AD24BDD233C93FB003D05F8 /* View.swift */,
 				4AD24BDB233C9322003D05F8 /* Label.swift */,
+				4A669B5C233C5F7200A69866 /* Animation.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";

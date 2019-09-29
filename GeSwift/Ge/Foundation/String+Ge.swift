@@ -65,20 +65,25 @@ extension Ge where Base == String {
     public var asColor: UIColor {
         precondition(self.base.count >= 6, "hex string's count must be more than 6")
         
-        let cString = self.base.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        var cString = self.base.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             .uppercased()
             .replacingOccurrences(of: " ", with: "")
             .replacingOccurrences(of: "#", with: "")
             .replacingOccurrences(of: "0X", with: "")
         
         var alpha: CGFloat = 1
-        if cString.count > 6, let alphaString = cString.ge.subString(from: 5),  let double = Double(alphaString), double < 100  {
-            alpha = CGFloat(double / 100.0)
+        if self.base.count == 8, let alphaString = cString.ge.subString(to: 2) {
+            
+            var alphaValue: CUnsignedInt = 255
+            Scanner(string: alphaString).scanHexInt32(&alphaValue)
+            alpha = CGFloat(alphaValue / 255)
+            cString = cString.ge.subString(at: 2 ... 7)
         }
         
+        
         let rString = cString.ge.subString(to: 2)!
-        let gString = cString.ge.subString(from: 2)!.ge.subString(to: 2)!
-        let bString = cString.ge.subString(from: 4)!.ge.subString(to: 2)!
+        let gString = cString.ge.subString(at: 2 ..< 4)
+        let bString = cString.ge.subString(at: 4 ..< 6)
         
         var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
         Scanner(string: rString).scanHexInt32(&r)

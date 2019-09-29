@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
 
  s.name             = "GeSwift"
- s.version           = "0.0.5"
+ s.version           = "0.0.6"
  s.summary         = "GeSwift for my's ioser"
  s.homepage        = "https://github.com/my1325/GeSwift.git"
  s.license            = "MIT"
  s.platform          = :ios, "10.0"
  s.authors           = { "mayong" => "ma.yong@vpclub.cn" }
- s.source             = { :git => "https://github.com/my1325/GeSwift.git", :tag => "0.0.3" }
+ s.source             = { :git => "https://github.com/my1325/GeSwift.git", :tag => "0.0.6" }
  s.swift_version = '4.2'
  s.default_subspecs = 'Core','DataBase','UI','Foundation'
 
