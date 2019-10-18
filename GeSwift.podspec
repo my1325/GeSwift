@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
  s.authors           = { "mayong" => "ma.yong@vpclub.cn" }
  s.source             = { :git => "https://github.com/my1325/GeSwift.git", :tag => "0.0.6" }
  s.swift_version = '4.2'
- s.default_subspecs = 'Core','DataBase','UI','Foundation'
+ s.default_subspecs = 'Core','UI','Foundation'
 
     s.subspec 'Core' do |ss|
 	ss.source_files = 'GeSwift/Ge/Core/*.{swift}'
