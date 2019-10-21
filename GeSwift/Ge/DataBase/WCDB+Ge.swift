@@ -62,8 +62,8 @@ public final class TableFilter<T: WCDBSwift.TableCodable> {
     }
 }
 
-public protocol Table: WCDBSwift.TableCodable  {
-    
+public protocol Table where Self: TableCodable {
+
     static var tableName: String { get }
     
     static func getObjects(in database: Database, on columns: [Self.CodingKeys], using filter: ((TableFilter<Self>) -> Void)?) throws -> [Self]

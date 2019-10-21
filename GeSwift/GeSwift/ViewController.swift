@@ -8,7 +8,49 @@
 
 import UIKit
 import SnapKit
+import WCDBSwift
 
+internal final class WorkItem: Table, TableCodable {
+    
+    static var tableName: String = "WorkItem"
+
+    var identifier: Int?
+    
+    var actualStartTime: TimeInterval?
+    var actualEndTime: TimeInterval?
+    
+    var expectedStartTime: TimeInterval
+    var expectedEndTime: TimeInterval
+    var createTime: TimeInterval
+    var content: String
+    var extralCompleteContent: String?
+    var remark: String?
+    
+    var isAutoIncrement: Bool = true // 用于定义是否使用自增的方式插入
+    var lastInsertedRowID: Int64 = 0 // 用于获取自增插入后的主键值
+    
+    enum CodingKeys: String, CodingTableKey {
+        typealias Root = WorkItem
+        static let objectRelationalMapping = TableBinding(WorkItem.CodingKeys.self)
+        
+        case actualStartTime = "actual_start_time"
+        case actualEndTime = "actual_end_time"
+        case expectedStartTime = "expected_start_time"
+        case expectedEndTime = "expected_end_time"
+        case createTime = "create_time"
+        case content = "content"
+        case extralCompleteContent = "extral_complete_content"
+        case remark = "remark"
+        case identifier = "identifier"
+    }
+    
+    init(content: String, expectedStartTime: TimeInterval, expectedEndTime: TimeInterval) {
+        self.expectedEndTime = expectedEndTime
+        self.expectedStartTime = expectedStartTime
+        self.content = content
+        self.createTime = Date().timeIntervalSince1970
+    }
+}
 
 internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {

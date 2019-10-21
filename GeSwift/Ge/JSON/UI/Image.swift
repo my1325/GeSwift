@@ -10,9 +10,9 @@ import UIKit
 
 open class Image: View {
     
-    override func layout() -> UIView {
-        return UIImageView()
-    }
+//    override func layout() -> UIView {
+//        return UIImageView()
+//    }
     
     var image: UIImage?
 }

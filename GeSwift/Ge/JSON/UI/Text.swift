@@ -12,10 +12,10 @@ import UIKit
 open class Text: View {
     
         
-    override func layout() -> UIView {
-        return UILabel()
-    }
-    
+//    override func layout() -> UIView {
+//        return UILabel()
+//    }
+//    
     var text: String? 
     
     var textColor: UIColor = UIColor.black

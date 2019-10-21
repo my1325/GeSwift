@@ -10,10 +10,10 @@ import UIKit
 
 open class Input: Text {
     
-    override func layout() -> UIView {
-        return UITextView()
-    }
-    
+//    override func layout() -> UIView {
+//        return UITextView()
+//    }
+//    
     lazy var placeholder: String? = nil
      
     lazy var placeholderColor: UIColor = UIColor.lightGray

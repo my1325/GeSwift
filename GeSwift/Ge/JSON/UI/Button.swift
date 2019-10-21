@@ -10,9 +10,9 @@ import UIKit
 
 open class Button: Text {
     
-    override func layout() -> UIView {
-        return UIButton()
-    }
+//    override func layout() -> UIView {
+//        return UIButton()
+//    }
     
     private(set) var touchClosure: ((_ sender: Button) -> Void)?
     func touch(_ closure: ((_ sender: Button) -> Void)?) {
