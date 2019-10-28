@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0766632366F619007DAA07 /* PlistProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0766622366F619007DAA07 /* PlistProperty.swift */; };
 		4A1B1BF723279F6800DE7FBF /* UILabel+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1BF623279F6800DE7FBF /* UILabel+Ge.swift */; };
 		4A1B1C4F23288B7500DE7FBF /* UIControl+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39320DA5F59007FEF3E /* UIControl+Ge.swift */; };
 		4A1B1C5023288B7500DE7FBF /* UIView+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2FC39520DA5F59007FEF3E /* UIView+Ge.swift */; };
@@ -33,6 +34,7 @@
 		4A26FA98233B55F400B8E10D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A26FA97233B55F400B8E10D /* Storyboard.storyboard */; };
 		4A26FA9A233B594000B8E10D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA99233B594000B8E10D /* Protocols.swift */; };
 		4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA9B233B59B100B8E10D /* HorizontalCell.swift */; };
+		4A4474C223602C0E002B69FF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4474C123602C0E002B69FF /* WebViewController.swift */; };
 		4A67057A2340B2A1007D7C28 /* UIColor+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6705792340B2A1007D7C28 /* UIColor+Ge.swift */; };
 		4A749E7E23598EED0055FFD2 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A749E7D23598EED0055FFD2 /* View.swift */; };
 		4A749E80235991CC0055FFD2 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A749E7F235991CC0055FFD2 /* Input.swift */; };
@@ -86,6 +88,7 @@
 
 /* Begin PBXFileReference section */
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
+		4A0766622366F619007DAA07 /* PlistProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistProperty.swift; sourceTree = "<group>"; };
 		4A1B1BF623279F6800DE7FBF /* UILabel+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ge.swift"; sourceTree = "<group>"; };
 		4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalViewController.swift; sourceTree = "<group>"; };
 		4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeHorizontalView.swift; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 		4A26FA97233B55F400B8E10D /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		4A26FA99233B594000B8E10D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4A26FA9B233B59B100B8E10D /* HorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCell.swift; sourceTree = "<group>"; };
+		4A4474C123602C0E002B69FF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4A6705792340B2A1007D7C28 /* UIColor+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ge.swift"; sourceTree = "<group>"; };
 		4A749E7D23598EED0055FFD2 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		4A749E7F235991CC0055FFD2 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
@@ -192,6 +196,14 @@
 			path = StoryBoardTest;
 			sourceTree = "<group>";
 		};
+		4A4474C023602BF4002B69FF /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				4A4474C123602C0E002B69FF /* WebViewController.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		4A749E7C23598ED30055FFD2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +265,7 @@
 		5E2FC37B20DA59A6007FEF3E /* GeSwift */ = {
 			isa = PBXGroup;
 			children = (
+				4A4474C023602BF4002B69FF /* WebView */,
 				4A1B1C6323288D0400DE7FBF /* Examples */,
 				5E2FC39020DA5F59007FEF3E /* Ge */,
 				5E2FC37C20DA59A6007FEF3E /* AppDelegate.swift */,
@@ -302,6 +315,7 @@
 				5E2FC39F20DA5F59007FEF3E /* GeSwift.swift */,
 				5EF525C6219BC13F004F2D55 /* Plist.swift */,
 				5EF525C8219BC31E004F2D55 /* Defaults.swift */,
+				4A0766622366F619007DAA07 /* PlistProperty.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -571,6 +585,7 @@
 				4A749E80235991CC0055FFD2 /* Input.swift in Sources */,
 				4A749E7E23598EED0055FFD2 /* View.swift in Sources */,
 				5E2FC3A920DA5F59007FEF3E /* UIImage+Ge.swift in Sources */,
+				4A0766632366F619007DAA07 /* PlistProperty.swift in Sources */,
 				4A67057A2340B2A1007D7C28 /* UIColor+Ge.swift in Sources */,
 				4AFCFF3E2329F5D800EDD09A /* CycleScrollView.swift in Sources */,
 				4AFCFF412329F5EB00EDD09A /* ScanView.swift in Sources */,
@@ -584,6 +599,7 @@
 				5E2FC3B020DA5F59007FEF3E /* String+Ge.swift in Sources */,
 				4AD24BDA233C913A003D05F8 /* AnimationViewController.swift in Sources */,
 				5E2FC3A620DA5F59007FEF3E /* UIView+Ge.swift in Sources */,
+				4A4474C223602C0E002B69FF /* WebViewController.swift in Sources */,
 				5EF525C9219BC31E004F2D55 /* Defaults.swift in Sources */,
 				5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */,
 				5E2FC3AB20DA5F59007FEF3E /* UIResponder.swift in Sources */,

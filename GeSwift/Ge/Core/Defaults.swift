@@ -21,15 +21,14 @@ public class DefaultsKeys {
 
 extension Plist {
 
-    private func valueIsBaseType<V>(_ type: V.Type) -> Bool {
+    public func valueIsBaseType<V>(_ type: V.Type) -> Bool {
         return type == Int.self || type == Double.self || type == String.self || type == Data.self || type == Date.self || type == Bool.self
     }
 
     public func set<V: Encodable>(_ value: V?, for key: DefaultsKeys.DefaultsKey<V>) {
         if valueIsBaseType(V.self) {
             self[key.key] = value
-        }
-        else {
+        } else {
             let data = try? JSONEncoder().encode(value)
             self[key.key] = data
         }
