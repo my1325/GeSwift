@@ -7,12 +7,12 @@ Pod::Spec.new do |s|
  s.license            = "MIT"
  s.platform          = :ios, "10.0"
  s.authors           = { "mayong" => "ma.yong@vpclub.cn" }
- s.source             = { :git => "https://github.com/my1325/GeSwift.git", :tag => "0.0.8.1" }
- s.swift_version = '4.2'
+ s.source             = { :git => "https://github.com/my1325/GeSwift.git", :tag => "#{s.version}" }
+ s.swift_version = '5.1'
  s.default_subspecs = 'Core','UI','Foundation'
 
     s.subspec 'Core' do |ss|
-	ss.source_files = 'GeSwift/Ge/Core/*.{swift}'
+	ss.source_files = 'Sources/GeSwift/Core/*.{swift}'
     end
     
     s.subspec 'DataBase' do |ss|
@@ -22,13 +22,13 @@ Pod::Spec.new do |s|
     end 
     
     s.subspec 'UI' do |ss|
-	ss.source_files = 'GeSwift/Ge/UI/*.{swift}'
+	ss.source_files = 'Sources/GeSwift/UI/*.{swift}'
  	ss.dependency 'GeSwift/Core'
     ss.dependency 'GeSwift/Foundation'
     end
    
     s.subspec 'Foundation' do |ss|
-	ss.source_files = 'GeSwift/Ge/Foundation/*.{swift}'
+	ss.source_files = 'Sources/GeSwift/Foundation/*.{swift}'
 	ss.dependency 'GeSwift/Core'
     end
     
@@ -40,5 +40,12 @@ Pod::Spec.new do |s|
 	ss.dependency 'SnapKit'
 	ss.dependency 'Kingfisher'
     end
-    
+
+    s.subspec 'Codable' do |ss|
+    ss.source_files = 'Sources/GeSwift/Codable/*.{swift}'
+    end 
+
+    s.subspec 'Codable' do |ss|
+    ss.source_files = 'Sources/GeSwift/LocationTask/*.{swift}'
+    end 
 end
