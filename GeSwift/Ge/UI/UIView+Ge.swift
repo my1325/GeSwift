@@ -305,6 +305,7 @@ extension Ge where Base: UIView {
     
     public func addEvent(_ event: ControlEvent) {
         let eventObject = GeEventObject(event: event)
+        self.base.isUserInteractionEnabled = true
         base.addGestureRecognizer(eventObject.gestureRecognizer)
         objc_setAssociatedObject(eventObject, event.key, self, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }

@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
  s.license            = "MIT"
  s.platform          = :ios, "10.0"
  s.authors           = { "mayong" => "ma.yong@vpclub.cn" }
- s.source             = { :git => "https://github.com/my1325/GeSwift.git", :tag => "0.0.7" }
+ s.source             = { :git => "https://github.com/my1325/GeSwift.git", :tag => "0.0.8.1" }
  s.swift_version = '4.2'
  s.default_subspecs = 'Core','UI','Foundation'
 

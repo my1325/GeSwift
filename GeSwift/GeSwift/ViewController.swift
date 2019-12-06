@@ -92,7 +92,8 @@ internal final class ViewController: BaseViewController {
     let viewControllers: [ViewController] = [ViewController(name: "HorizontalViewController", controller: HorizontalViewController()),
                                      ViewController(name: "ScanViewController", controller: ScanViewController()),
                                      ViewController(name: "CycleScrollViewController", controller: CycleScrollViewController()),
-                                     ViewController(name: "AnimationViewController", controller: AnimationViewController())]
+                                     ViewController(name: "LayoutViewController", controller: LayoutViewController()),
+                                     ViewController(name: "CircularLayoutLayoutController", controller: CircularLayoutLayoutController())]
     
     override func viewDidLoad() {
         super.viewDidLoad()

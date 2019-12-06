@@ -14,9 +14,9 @@ internal final class CycleScrollViewController: BaseViewController {
         $0.delegate = self
         $0.dataSource = self
         $0.isHidePageControlWhenSinglePage = true
-        $0.pageControlLocation = .left
+        $0.pageControl = SizeFitPageControl()
         $0.scrollDirection = .horizontal
-        $0.scrollTimeInterval = 1
+        $0.scrollTimeInterval = 5
         self.view.addSubview($0)
         return $0
     }(CycleScrollView(frame: CGRect(x: 0, y: 10, width: iphone_width, height: 200)))
@@ -24,10 +24,10 @@ internal final class CycleScrollViewController: BaseViewController {
     private lazy var verticleCycleScrollView: CycleScrollView = {
         $0.delegate = self
         $0.dataSource = self
+        $0.pageControl = CircleScalePageControl()
         $0.isHidePageControlWhenSinglePage = true
-        $0.pageControlLocation = .right
-        $0.scrollDirection = .vertical
-        $0.scrollTimeInterval = 1
+        $0.scrollDirection = .horizontal
+        $0.scrollTimeInterval = 5
         self.view.addSubview($0)
         return $0
     }(CycleScrollView(frame: CGRect(x: 0, y: 230, width: iphone_width, height: 200)))
