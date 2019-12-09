@@ -23,6 +23,24 @@
 		4A8726F12398E7FA0002CAC1 /* CircularLayoutLayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726F02398E7FA0002CAC1 /* CircularLayoutLayoutController.swift */; };
 		4A8726F42398EB7C0002CAC1 /* CircleScalePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726F22398EB7C0002CAC1 /* CircleScalePageControl.swift */; };
 		4A8726F52398EB7C0002CAC1 /* SizeFitPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726F32398EB7C0002CAC1 /* SizeFitPageControl.swift */; };
+		4A995D48239E1984009529E4 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D47239E1984009529E4 /* IJKMediaFramework.framework */; };
+		4A995D49239E1995009529E4 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D47239E1984009529E4 /* IJKMediaFramework.framework */; };
+		4A995D4B239E1B44009529E4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D4A239E1B44009529E4 /* libc++.tbd */; };
+		4A995D4D239E1B4C009529E4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D4C239E1B4C009529E4 /* libz.tbd */; };
+		4A995D4F239E1B54009529E4 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D4E239E1B54009529E4 /* libbz2.tbd */; };
+		4A995D51239E1B60009529E4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D50239E1B60009529E4 /* AudioToolbox.framework */; };
+		4A995D53239E1B69009529E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D52239E1B69009529E4 /* CoreGraphics.framework */; };
+		4A995D55239E1B71009529E4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D54239E1B71009529E4 /* AVFoundation.framework */; };
+		4A995D57239E1B79009529E4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D56239E1B78009529E4 /* CoreMedia.framework */; };
+		4A995D59239E1B7F009529E4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D58239E1B7F009529E4 /* CoreVideo.framework */; };
+		4A995D5B239E1B85009529E4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D5A239E1B85009529E4 /* MediaPlayer.framework */; };
+		4A995D5D239E1B8C009529E4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D5C239E1B8C009529E4 /* MobileCoreServices.framework */; };
+		4A995D5F239E1B92009529E4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D5E239E1B92009529E4 /* OpenGLES.framework */; };
+		4A995D61239E1B99009529E4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D60239E1B99009529E4 /* QuartzCore.framework */; };
+		4A995D63239E1B9E009529E4 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D62239E1B9E009529E4 /* VideoToolbox.framework */; };
+		4A995D66239E3440009529E4 /* LotteryDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A995D65239E3440009529E4 /* LotteryDrawViewController.swift */; };
+		4A995D68239E3452009529E4 /* LotteryDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A995D67239E3452009529E4 /* LotteryDraw.swift */; };
+		4A995D6A239E43E2009529E4 /* LotteryDrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A995D69239E43E2009529E4 /* LotteryDrawViewController.xib */; };
 		4AC9AA5D239A6CC100E6678B /* LocationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA40239A6CC100E6678B /* LocationTask.swift */; };
 		4AC9AA5E239A6CC100E6678B /* DefaultCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA42239A6CC100E6678B /* DefaultCodable.swift */; };
 		4AC9AA5F239A6CC100E6678B /* DefaultCodableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA43239A6CC100E6678B /* DefaultCodableWrapper.swift */; };
@@ -91,6 +109,24 @@
 		4A8726F02398E7FA0002CAC1 /* CircularLayoutLayoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLayoutLayoutController.swift; sourceTree = "<group>"; };
 		4A8726F22398EB7C0002CAC1 /* CircleScalePageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleScalePageControl.swift; sourceTree = "<group>"; };
 		4A8726F32398EB7C0002CAC1 /* SizeFitPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeFitPageControl.swift; sourceTree = "<group>"; };
+		4A995D45239E189F009529E4 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IJKMediaFramework.framework; path = ../../IJKMediaFramework/IJKMediaFramework/IJKMediaFramework.framework; sourceTree = "<group>"; };
+		4A995D47239E1984009529E4 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
+		4A995D4A239E1B44009529E4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
+		4A995D4C239E1B4C009529E4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		4A995D4E239E1B54009529E4 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libbz2.tbd; sourceTree = DEVELOPER_DIR; };
+		4A995D50239E1B60009529E4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		4A995D52239E1B69009529E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		4A995D54239E1B71009529E4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		4A995D56239E1B78009529E4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		4A995D58239E1B7F009529E4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
+		4A995D5A239E1B85009529E4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
+		4A995D5C239E1B8C009529E4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		4A995D5E239E1B92009529E4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		4A995D60239E1B99009529E4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		4A995D62239E1B9E009529E4 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/VideoToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		4A995D65239E3440009529E4 /* LotteryDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryDrawViewController.swift; sourceTree = "<group>"; };
+		4A995D67239E3452009529E4 /* LotteryDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryDraw.swift; sourceTree = "<group>"; };
+		4A995D69239E43E2009529E4 /* LotteryDrawViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LotteryDrawViewController.xib; sourceTree = "<group>"; };
 		4AC9AA40239A6CC100E6678B /* LocationTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTask.swift; sourceTree = "<group>"; };
 		4AC9AA42239A6CC100E6678B /* DefaultCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCodable.swift; sourceTree = "<group>"; };
 		4AC9AA43239A6CC100E6678B /* DefaultCodableWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCodableWrapper.swift; sourceTree = "<group>"; };
@@ -143,6 +179,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A995D63239E1B9E009529E4 /* VideoToolbox.framework in Frameworks */,
+				4A995D61239E1B99009529E4 /* QuartzCore.framework in Frameworks */,
+				4A995D5F239E1B92009529E4 /* OpenGLES.framework in Frameworks */,
+				4A995D5D239E1B8C009529E4 /* MobileCoreServices.framework in Frameworks */,
+				4A995D5B239E1B85009529E4 /* MediaPlayer.framework in Frameworks */,
+				4A995D59239E1B7F009529E4 /* CoreVideo.framework in Frameworks */,
+				4A995D57239E1B79009529E4 /* CoreMedia.framework in Frameworks */,
+				4A995D55239E1B71009529E4 /* AVFoundation.framework in Frameworks */,
+				4A995D53239E1B69009529E4 /* CoreGraphics.framework in Frameworks */,
+				4A995D51239E1B60009529E4 /* AudioToolbox.framework in Frameworks */,
+				4A995D4F239E1B54009529E4 /* libbz2.tbd in Frameworks */,
+				4A995D4D239E1B4C009529E4 /* libz.tbd in Frameworks */,
+				4A995D4B239E1B44009529E4 /* libc++.tbd in Frameworks */,
+				4A995D49239E1995009529E4 /* IJKMediaFramework.framework in Frameworks */,
 				C8719B4626C9F28670742C1B /* Pods_GeSwiftTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EF2BCAC04BB4AE33DDCB4F6 /* Pods_GeSwift.framework in Frameworks */,
+				4A995D48239E1984009529E4 /* IJKMediaFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +251,32 @@
 				4A8726DD2398D5680002CAC1 /* WaterCollectionViewLayout.swift */,
 			);
 			path = CollectionVIewLayout;
+			sourceTree = "<group>";
+		};
+		4A995D41239E17CE009529E4 /* IJKPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				4A995D47239E1984009529E4 /* IJKMediaFramework.framework */,
+			);
+			path = IJKPlayer;
+			sourceTree = "<group>";
+		};
+		4A995D64239E340C009529E4 /* LotteryDraw */ = {
+			isa = PBXGroup;
+			children = (
+				4A995D6B239E43E8009529E4 /* View */,
+				4A995D65239E3440009529E4 /* LotteryDrawViewController.swift */,
+				4A995D69239E43E2009529E4 /* LotteryDrawViewController.xib */,
+			);
+			path = LotteryDraw;
+			sourceTree = "<group>";
+		};
+		4A995D6B239E43E8009529E4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A995D67239E3452009529E4 /* LotteryDraw.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4AC9AA3F239A6CC100E6678B /* LocationTask */ = {
@@ -318,6 +395,8 @@
 		5E2FC37B20DA59A6007FEF3E /* GeSwift */ = {
 			isa = PBXGroup;
 			children = (
+				4A995D64239E340C009529E4 /* LotteryDraw */,
+				4A995D41239E17CE009529E4 /* IJKPlayer */,
 				4A4474C023602BF4002B69FF /* WebView */,
 				4A1B1C6323288D0400DE7FBF /* Examples */,
 				5E2FC39020DA5F59007FEF3E /* Ge */,
@@ -377,6 +456,20 @@
 		A6983030081C274FC5B44F92 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A995D62239E1B9E009529E4 /* VideoToolbox.framework */,
+				4A995D60239E1B99009529E4 /* QuartzCore.framework */,
+				4A995D5E239E1B92009529E4 /* OpenGLES.framework */,
+				4A995D5C239E1B8C009529E4 /* MobileCoreServices.framework */,
+				4A995D5A239E1B85009529E4 /* MediaPlayer.framework */,
+				4A995D58239E1B7F009529E4 /* CoreVideo.framework */,
+				4A995D56239E1B78009529E4 /* CoreMedia.framework */,
+				4A995D54239E1B71009529E4 /* AVFoundation.framework */,
+				4A995D52239E1B69009529E4 /* CoreGraphics.framework */,
+				4A995D50239E1B60009529E4 /* AudioToolbox.framework */,
+				4A995D4E239E1B54009529E4 /* libbz2.tbd */,
+				4A995D4C239E1B4C009529E4 /* libz.tbd */,
+				4A995D4A239E1B44009529E4 /* libc++.tbd */,
+				4A995D45239E189F009529E4 /* IJKMediaFramework.framework */,
 				B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */,
 				CF6902E79E348691ABF0DCDB /* Pods_GeSwiftTests.framework */,
 			);
@@ -476,6 +569,7 @@
 			files = (
 				5EA9A52B21FFFB290066089B /* GeSwift.podspec in Resources */,
 				5E2FC38720DA59A9007FEF3E /* LaunchScreen.storyboard in Resources */,
+				4A995D6A239E43E2009529E4 /* LotteryDrawViewController.xib in Resources */,
 				4A8726EF2398E1CF0002CAC1 /* LayoutViewController.xib in Resources */,
 				5E2FC38420DA59A9007FEF3E /* Assets.xcassets in Resources */,
 			);
@@ -560,6 +654,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A995D68239E3452009529E4 /* LotteryDraw.swift in Sources */,
 				4AC9AA75239A6CC100E6678B /* Plist.swift in Sources */,
 				4AC9AA66239A6CC100E6678B /* UILabel+Ge.swift in Sources */,
 				4A8726F42398EB7C0002CAC1 /* CircleScalePageControl.swift in Sources */,
@@ -570,6 +665,7 @@
 				4AC9AA70239A6CC100E6678B /* Reusable.swift in Sources */,
 				4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */,
 				4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */,
+				4A995D66239E3440009529E4 /* LotteryDrawViewController.swift in Sources */,
 				4A8726EB2398DF540002CAC1 /* SimpleScaleCollectionViewLayout.swift in Sources */,
 				4AC9AA5E239A6CC100E6678B /* DefaultCodable.swift in Sources */,
 				4AC9AA72239A6CC100E6678B /* PlistProperty.swift in Sources */,
@@ -640,6 +736,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 66VRX7YQU2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GeSwift/IJKPlayer",
+				);
 				INFOPLIST_FILE = GeSwiftTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -649,11 +749,14 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsh.service.GeSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeSwift.app/GeSwift";
+				VALID_ARCHS = "arm64 arm64e";
 			};
 			name = Debug;
 		};
@@ -665,6 +768,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 66VRX7YQU2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GeSwift/IJKPlayer",
+				);
 				INFOPLIST_FILE = GeSwiftTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -673,11 +780,14 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsh.service.GeSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeSwift.app/GeSwift";
+				VALID_ARCHS = "arm64 arm64e";
 			};
 			name = Release;
 		};
@@ -803,6 +913,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LS59MWP9WR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GeSwift/IJKPlayer",
+				);
 				INFOPLIST_FILE = GeSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -814,6 +928,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm64 arm64e armv7s";
 			};
 			name = Debug;
 		};
@@ -825,6 +940,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LS59MWP9WR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GeSwift/IJKPlayer",
+				);
 				INFOPLIST_FILE = GeSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -836,6 +955,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm64 arm64e armv7s";
 			};
 			name = Release;
 		};

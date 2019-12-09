@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import WCDBSwift
+import IJKMediaFramework
 
 internal final class WorkItem: Table, TableCodable {
     
@@ -53,6 +54,7 @@ internal final class WorkItem: Table, TableCodable {
 }
 
 internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_back_white"), style: .plain, target: self, action: #selector(popViewController))
@@ -93,7 +95,8 @@ internal final class ViewController: BaseViewController {
                                      ViewController(name: "ScanViewController", controller: ScanViewController()),
                                      ViewController(name: "CycleScrollViewController", controller: CycleScrollViewController()),
                                      ViewController(name: "LayoutViewController", controller: LayoutViewController()),
-                                     ViewController(name: "CircularLayoutLayoutController", controller: CircularLayoutLayoutController())]
+                                     ViewController(name: "CircularLayoutLayoutController", controller: CircularLayoutLayoutController()),
+                                     ViewController(name: "LotteryDrawViewController", controller: LotteryDrawViewController())]
     
     override func viewDidLoad() {
         super.viewDidLoad()
