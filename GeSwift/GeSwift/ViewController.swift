@@ -96,7 +96,8 @@ internal final class ViewController: BaseViewController {
                                      ViewController(name: "CycleScrollViewController", controller: CycleScrollViewController()),
                                      ViewController(name: "LayoutViewController", controller: LayoutViewController()),
                                      ViewController(name: "CircularLayoutLayoutController", controller: CircularLayoutLayoutController()),
-                                     ViewController(name: "LotteryDrawViewController", controller: LotteryDrawViewController())]
+                                     ViewController(name: "LotteryDrawViewController", controller: LotteryDrawViewController()),
+                                     ViewController(name: "IJKPlayerViewController", controller: IJKPlayerViewController())]
     
     override func viewDidLoad() {
         super.viewDidLoad()

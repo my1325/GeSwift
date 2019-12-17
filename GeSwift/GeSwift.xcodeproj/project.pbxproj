@@ -13,6 +13,21 @@
 		4A26FA9A233B594000B8E10D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA99233B594000B8E10D /* Protocols.swift */; };
 		4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA9B233B59B100B8E10D /* HorizontalCell.swift */; };
 		4A4474C223602C0E002B69FF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4474C123602C0E002B69FF /* WebViewController.swift */; };
+		4A7E56C923A8A7F4003181AF /* IJKPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E56C823A8A7F4003181AF /* IJKPlayerViewController.swift */; };
+		4A7E56CB23A8AA8A003181AF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56CA23A8AA89003181AF /* libz.tbd */; };
+		4A7E56CD23A8AA97003181AF /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56CC23A8AA97003181AF /* libbz2.tbd */; };
+		4A7E56CF23A8AA9D003181AF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56CE23A8AA9D003181AF /* libc++.tbd */; };
+		4A7E56D123A8AAAA003181AF /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56D023A8AAAA003181AF /* VideoToolbox.framework */; };
+		4A7E56D323A8AAB0003181AF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56D223A8AAB0003181AF /* CoreMotion.framework */; };
+		4A7E56D523A8AAB7003181AF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56D423A8AAB7003181AF /* AudioToolbox.framework */; };
+		4A7E56D723A8AAC0003181AF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56D623A8AAC0003181AF /* CoreGraphics.framework */; };
+		4A7E56D923A8AAC6003181AF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56D823A8AAC6003181AF /* AVFoundation.framework */; };
+		4A7E56DB23A8AACD003181AF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56DA23A8AACD003181AF /* CoreMedia.framework */; };
+		4A7E56DD23A8AADF003181AF /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56DC23A8AADF003181AF /* CoreVideo.framework */; };
+		4A7E56DF23A8AAE5003181AF /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56DE23A8AAE5003181AF /* MediaPlayer.framework */; };
+		4A7E56E023A8AAEF003181AF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D5C239E1B8C009529E4 /* MobileCoreServices.framework */; };
+		4A7E56E123A8AAF7003181AF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D5E239E1B92009529E4 /* OpenGLES.framework */; };
+		4A7E56E323A8AAFD003181AF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56E223A8AAFD003181AF /* QuartzCore.framework */; };
 		4A8726E32398D5680002CAC1 /* WaterCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726DD2398D5680002CAC1 /* WaterCollectionViewLayout.swift */; };
 		4A8726E52398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726E42398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift */; };
 		4A8726E72398D7CB0002CAC1 /* CircularCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726E62398D7CB0002CAC1 /* CircularCollectionViewLayout.swift */; };
@@ -23,6 +38,10 @@
 		4A8726F12398E7FA0002CAC1 /* CircularLayoutLayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726F02398E7FA0002CAC1 /* CircularLayoutLayoutController.swift */; };
 		4A8726F42398EB7C0002CAC1 /* CircleScalePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726F22398EB7C0002CAC1 /* CircleScalePageControl.swift */; };
 		4A8726F52398EB7C0002CAC1 /* SizeFitPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726F32398EB7C0002CAC1 /* SizeFitPageControl.swift */; };
+		4A97D73823A7226D00522A16 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97D73723A7226D00522A16 /* Player.swift */; };
+		4A97D73A23A72FBD00522A16 /* Player+Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97D73923A72FBD00522A16 /* Player+Play.swift */; };
+		4A97D73C23A7311A00522A16 /* Player+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97D73B23A7311A00522A16 /* Player+Configuration.swift */; };
+		4A97D73E23A75E3800522A16 /* WeakTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97D73D23A75E3800522A16 /* WeakTarget.swift */; };
 		4A995D48239E1984009529E4 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D47239E1984009529E4 /* IJKMediaFramework.framework */; };
 		4A995D49239E1995009529E4 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D47239E1984009529E4 /* IJKMediaFramework.framework */; };
 		4A995D4B239E1B44009529E4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D4A239E1B44009529E4 /* libc++.tbd */; };
@@ -41,6 +60,9 @@
 		4A995D66239E3440009529E4 /* LotteryDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A995D65239E3440009529E4 /* LotteryDrawViewController.swift */; };
 		4A995D68239E3452009529E4 /* LotteryDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A995D67239E3452009529E4 /* LotteryDraw.swift */; };
 		4A995D6A239E43E2009529E4 /* LotteryDrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A995D69239E43E2009529E4 /* LotteryDrawViewController.xib */; };
+		4ABCC3F6239F81BE00DFB87E /* LotteryDrawNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCC3F5239F81BE00DFB87E /* LotteryDrawNew.swift */; };
+		4ABCC3F8239F9B3B00DFB87E /* LotteryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCC3F7239F9B3B00DFB87E /* LotteryItem.swift */; };
+		4ABCC3FA239F9B4500DFB87E /* LotteryItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ABCC3F9239F9B4500DFB87E /* LotteryItem.xib */; };
 		4AC9AA5D239A6CC100E6678B /* LocationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA40239A6CC100E6678B /* LocationTask.swift */; };
 		4AC9AA5E239A6CC100E6678B /* DefaultCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA42239A6CC100E6678B /* DefaultCodable.swift */; };
 		4AC9AA5F239A6CC100E6678B /* DefaultCodableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA43239A6CC100E6678B /* DefaultCodableWrapper.swift */; };
@@ -99,6 +121,19 @@
 		4A26FA99233B594000B8E10D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4A26FA9B233B59B100B8E10D /* HorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCell.swift; sourceTree = "<group>"; };
 		4A4474C123602C0E002B69FF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		4A7E56C823A8A7F4003181AF /* IJKPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IJKPlayerViewController.swift; sourceTree = "<group>"; };
+		4A7E56CA23A8AA89003181AF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		4A7E56CC23A8AA97003181AF /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		4A7E56CE23A8AA9D003181AF /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		4A7E56D023A8AAAA003181AF /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		4A7E56D223A8AAB0003181AF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		4A7E56D423A8AAB7003181AF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4A7E56D623A8AAC0003181AF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4A7E56D823A8AAC6003181AF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4A7E56DA23A8AACD003181AF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		4A7E56DC23A8AADF003181AF /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		4A7E56DE23A8AAE5003181AF /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		4A7E56E223A8AAFD003181AF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4A8726DD2398D5680002CAC1 /* WaterCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCollectionViewLayout.swift; sourceTree = "<group>"; };
 		4A8726E42398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixSpacingCollectionViewLayout.swift; sourceTree = "<group>"; };
 		4A8726E62398D7CB0002CAC1 /* CircularCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -109,6 +144,10 @@
 		4A8726F02398E7FA0002CAC1 /* CircularLayoutLayoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLayoutLayoutController.swift; sourceTree = "<group>"; };
 		4A8726F22398EB7C0002CAC1 /* CircleScalePageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleScalePageControl.swift; sourceTree = "<group>"; };
 		4A8726F32398EB7C0002CAC1 /* SizeFitPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeFitPageControl.swift; sourceTree = "<group>"; };
+		4A97D73723A7226D00522A16 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		4A97D73923A72FBD00522A16 /* Player+Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+Play.swift"; sourceTree = "<group>"; };
+		4A97D73B23A7311A00522A16 /* Player+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+Configuration.swift"; sourceTree = "<group>"; };
+		4A97D73D23A75E3800522A16 /* WeakTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakTarget.swift; sourceTree = "<group>"; };
 		4A995D45239E189F009529E4 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IJKMediaFramework.framework; path = ../../IJKMediaFramework/IJKMediaFramework/IJKMediaFramework.framework; sourceTree = "<group>"; };
 		4A995D47239E1984009529E4 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 		4A995D4A239E1B44009529E4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
@@ -127,6 +166,9 @@
 		4A995D65239E3440009529E4 /* LotteryDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryDrawViewController.swift; sourceTree = "<group>"; };
 		4A995D67239E3452009529E4 /* LotteryDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryDraw.swift; sourceTree = "<group>"; };
 		4A995D69239E43E2009529E4 /* LotteryDrawViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LotteryDrawViewController.xib; sourceTree = "<group>"; };
+		4ABCC3F5239F81BE00DFB87E /* LotteryDrawNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryDrawNew.swift; sourceTree = "<group>"; };
+		4ABCC3F7239F9B3B00DFB87E /* LotteryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryItem.swift; sourceTree = "<group>"; };
+		4ABCC3F9239F9B4500DFB87E /* LotteryItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LotteryItem.xib; sourceTree = "<group>"; };
 		4AC9AA40239A6CC100E6678B /* LocationTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTask.swift; sourceTree = "<group>"; };
 		4AC9AA42239A6CC100E6678B /* DefaultCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCodable.swift; sourceTree = "<group>"; };
 		4AC9AA43239A6CC100E6678B /* DefaultCodableWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCodableWrapper.swift; sourceTree = "<group>"; };
@@ -201,6 +243,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A7E56E323A8AAFD003181AF /* QuartzCore.framework in Frameworks */,
+				4A7E56E123A8AAF7003181AF /* OpenGLES.framework in Frameworks */,
+				4A7E56E023A8AAEF003181AF /* MobileCoreServices.framework in Frameworks */,
+				4A7E56DF23A8AAE5003181AF /* MediaPlayer.framework in Frameworks */,
+				4A7E56DD23A8AADF003181AF /* CoreVideo.framework in Frameworks */,
+				4A7E56DB23A8AACD003181AF /* CoreMedia.framework in Frameworks */,
+				4A7E56D923A8AAC6003181AF /* AVFoundation.framework in Frameworks */,
+				4A7E56D723A8AAC0003181AF /* CoreGraphics.framework in Frameworks */,
+				4A7E56D523A8AAB7003181AF /* AudioToolbox.framework in Frameworks */,
+				4A7E56D323A8AAB0003181AF /* CoreMotion.framework in Frameworks */,
+				4A7E56D123A8AAAA003181AF /* VideoToolbox.framework in Frameworks */,
+				4A7E56CF23A8AA9D003181AF /* libc++.tbd in Frameworks */,
+				4A7E56CD23A8AA97003181AF /* libbz2.tbd in Frameworks */,
+				4A7E56CB23A8AA8A003181AF /* libz.tbd in Frameworks */,
 				6EF2BCAC04BB4AE33DDCB4F6 /* Pods_GeSwift.framework in Frameworks */,
 				4A995D48239E1984009529E4 /* IJKMediaFramework.framework in Frameworks */,
 			);
@@ -218,6 +274,7 @@
 				4A8726EC2398E1CF0002CAC1 /* LayoutViewController.swift */,
 				4A8726ED2398E1CF0002CAC1 /* LayoutViewController.xib */,
 				4A8726F02398E7FA0002CAC1 /* CircularLayoutLayoutController.swift */,
+				4A7E56C823A8A7F4003181AF /* IJKPlayerViewController.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -253,28 +310,43 @@
 			path = CollectionVIewLayout;
 			sourceTree = "<group>";
 		};
+		4A97D73623A7225F00522A16 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				4A97D73723A7226D00522A16 /* Player.swift */,
+				4A97D73923A72FBD00522A16 /* Player+Play.swift */,
+				4A97D73B23A7311A00522A16 /* Player+Configuration.swift */,
+				4A97D73D23A75E3800522A16 /* WeakTarget.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		4A995D41239E17CE009529E4 /* IJKPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				4A97D73623A7225F00522A16 /* Player */,
 				4A995D47239E1984009529E4 /* IJKMediaFramework.framework */,
 			);
 			path = IJKPlayer;
 			sourceTree = "<group>";
 		};
-		4A995D64239E340C009529E4 /* LotteryDraw */ = {
+		4A995D64239E340C009529E4 /* LotteryDraw(抽奖大转盘) */ = {
 			isa = PBXGroup;
 			children = (
 				4A995D6B239E43E8009529E4 /* View */,
 				4A995D65239E3440009529E4 /* LotteryDrawViewController.swift */,
 				4A995D69239E43E2009529E4 /* LotteryDrawViewController.xib */,
 			);
-			path = LotteryDraw;
+			path = "LotteryDraw(抽奖大转盘)";
 			sourceTree = "<group>";
 		};
 		4A995D6B239E43E8009529E4 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				4A995D67239E3452009529E4 /* LotteryDraw.swift */,
+				4ABCC3F5239F81BE00DFB87E /* LotteryDrawNew.swift */,
+				4ABCC3F7239F9B3B00DFB87E /* LotteryItem.swift */,
+				4ABCC3F9239F9B4500DFB87E /* LotteryItem.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -395,7 +467,7 @@
 		5E2FC37B20DA59A6007FEF3E /* GeSwift */ = {
 			isa = PBXGroup;
 			children = (
-				4A995D64239E340C009529E4 /* LotteryDraw */,
+				4A995D64239E340C009529E4 /* LotteryDraw(抽奖大转盘) */,
 				4A995D41239E17CE009529E4 /* IJKPlayer */,
 				4A4474C023602BF4002B69FF /* WebView */,
 				4A1B1C6323288D0400DE7FBF /* Examples */,
@@ -456,6 +528,18 @@
 		A6983030081C274FC5B44F92 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A7E56E223A8AAFD003181AF /* QuartzCore.framework */,
+				4A7E56DE23A8AAE5003181AF /* MediaPlayer.framework */,
+				4A7E56DC23A8AADF003181AF /* CoreVideo.framework */,
+				4A7E56DA23A8AACD003181AF /* CoreMedia.framework */,
+				4A7E56D823A8AAC6003181AF /* AVFoundation.framework */,
+				4A7E56D623A8AAC0003181AF /* CoreGraphics.framework */,
+				4A7E56D423A8AAB7003181AF /* AudioToolbox.framework */,
+				4A7E56D223A8AAB0003181AF /* CoreMotion.framework */,
+				4A7E56D023A8AAAA003181AF /* VideoToolbox.framework */,
+				4A7E56CE23A8AA9D003181AF /* libc++.tbd */,
+				4A7E56CC23A8AA97003181AF /* libbz2.tbd */,
+				4A7E56CA23A8AA89003181AF /* libz.tbd */,
 				4A995D62239E1B9E009529E4 /* VideoToolbox.framework */,
 				4A995D60239E1B99009529E4 /* QuartzCore.framework */,
 				4A995D5E239E1B92009529E4 /* OpenGLES.framework */,
@@ -567,6 +651,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ABCC3FA239F9B4500DFB87E /* LotteryItem.xib in Resources */,
 				5EA9A52B21FFFB290066089B /* GeSwift.podspec in Resources */,
 				5E2FC38720DA59A9007FEF3E /* LaunchScreen.storyboard in Resources */,
 				4A995D6A239E43E2009529E4 /* LotteryDrawViewController.xib in Resources */,
@@ -659,6 +744,7 @@
 				4AC9AA66239A6CC100E6678B /* UILabel+Ge.swift in Sources */,
 				4A8726F42398EB7C0002CAC1 /* CircleScalePageControl.swift in Sources */,
 				4AC9AA6C239A6CC100E6678B /* String+Ge.swift in Sources */,
+				4A97D73C23A7311A00522A16 /* Player+Configuration.swift in Sources */,
 				4A8726F12398E7FA0002CAC1 /* CircularLayoutLayoutController.swift in Sources */,
 				4A26FA9A233B594000B8E10D /* Protocols.swift in Sources */,
 				4AC9AA6B239A6CC100E6678B /* Data+Ge.swift in Sources */,
@@ -669,6 +755,7 @@
 				4A8726EB2398DF540002CAC1 /* SimpleScaleCollectionViewLayout.swift in Sources */,
 				4AC9AA5E239A6CC100E6678B /* DefaultCodable.swift in Sources */,
 				4AC9AA72239A6CC100E6678B /* PlistProperty.swift in Sources */,
+				4A97D73E23A75E3800522A16 /* WeakTarget.swift in Sources */,
 				4AC9AA64239A6CC100E6678B /* UITableView+Ge.swift in Sources */,
 				4AC9AA73239A6CC100E6678B /* UIResponder.swift in Sources */,
 				4AC9AA6D239A6CC100E6678B /* Date+Ge.swift in Sources */,
@@ -676,6 +763,7 @@
 				4AC9AA6F239A6CC100E6678B /* UserDefaults+Ge.swift in Sources */,
 				4A8726E52398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift in Sources */,
 				4AC9AA6E239A6CC100E6678B /* Notification+Ge.swift in Sources */,
+				4ABCC3F6239F81BE00DFB87E /* LotteryDrawNew.swift in Sources */,
 				4AFCFF3E2329F5D800EDD09A /* CycleScrollView.swift in Sources */,
 				4AC9AA60239A6CC100E6678B /* UICollectionView+Ge.swift in Sources */,
 				4AC9AA5F239A6CC100E6678B /* DefaultCodableWrapper.swift in Sources */,
@@ -683,6 +771,7 @@
 				4A8726F52398EB7C0002CAC1 /* SizeFitPageControl.swift in Sources */,
 				4AC9AA69239A6CC100E6678B /* UIScrollView+Ge.swift in Sources */,
 				5E2FC37F20DA59A6007FEF3E /* ViewController.swift in Sources */,
+				4ABCC3F8239F9B3B00DFB87E /* LotteryItem.swift in Sources */,
 				4A4474C223602C0E002B69FF /* WebViewController.swift in Sources */,
 				4A8726EE2398E1CF0002CAC1 /* LayoutViewController.swift in Sources */,
 				4AC9AA71239A6CC100E6678B /* GeSwift.swift in Sources */,
@@ -693,11 +782,14 @@
 				4A8726E92398D9090002CAC1 /* CircularRotatedCollectionViewLayout.swift in Sources */,
 				4AC9AA65239A6CC100E6678B /* UIWindow+Ge.swift in Sources */,
 				4AC9AA68239A6CC100E6678B /* UIAlertViewController+Ge.swift in Sources */,
+				4A97D73A23A72FBD00522A16 /* Player+Play.swift in Sources */,
 				4AC9AA5D239A6CC100E6678B /* LocationTask.swift in Sources */,
 				4A1B1C732328D0E100DE7FBF /* FadeHorizontalView.swift in Sources */,
 				4A8726E32398D5680002CAC1 /* WaterCollectionViewLayout.swift in Sources */,
+				4A97D73823A7226D00522A16 /* Player.swift in Sources */,
 				5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */,
 				4AC9AA67239A6CC100E6678B /* UIImage+Ge.swift in Sources */,
+				4A7E56C923A8A7F4003181AF /* IJKPlayerViewController.swift in Sources */,
 				4AC9AA74239A6CC100E6678B /* Defaults.swift in Sources */,
 				4AC9AA61239A6CC100E6678B /* UIView+Ge.swift in Sources */,
 				4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */,
