@@ -12,7 +12,6 @@
 		4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA94233B50F900B8E10D /* HorizontalView.swift */; };
 		4A26FA9A233B594000B8E10D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA99233B594000B8E10D /* Protocols.swift */; };
 		4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA9B233B59B100B8E10D /* HorizontalCell.swift */; };
-		4A4474C223602C0E002B69FF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4474C123602C0E002B69FF /* WebViewController.swift */; };
 		4A7E56C923A8A7F4003181AF /* IJKPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E56C823A8A7F4003181AF /* IJKPlayerViewController.swift */; };
 		4A7E56E623A8BC15003181AF /* IJKPlayerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E56E523A8BC15003181AF /* IJKPlayerControl.swift */; };
 		4A8726E32398D5680002CAC1 /* WaterCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726DD2398D5680002CAC1 /* WaterCollectionViewLayout.swift */; };
@@ -42,12 +41,6 @@
 		4A995D5F239E1B92009529E4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D5E239E1B92009529E4 /* OpenGLES.framework */; };
 		4A995D61239E1B99009529E4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D60239E1B99009529E4 /* QuartzCore.framework */; };
 		4A995D63239E1B9E009529E4 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D62239E1B9E009529E4 /* VideoToolbox.framework */; };
-		4A995D66239E3440009529E4 /* LotteryDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A995D65239E3440009529E4 /* LotteryDrawViewController.swift */; };
-		4A995D68239E3452009529E4 /* LotteryDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A995D67239E3452009529E4 /* LotteryDraw.swift */; };
-		4A995D6A239E43E2009529E4 /* LotteryDrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A995D69239E43E2009529E4 /* LotteryDrawViewController.xib */; };
-		4ABCC3F6239F81BE00DFB87E /* LotteryDrawNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCC3F5239F81BE00DFB87E /* LotteryDrawNew.swift */; };
-		4ABCC3F8239F9B3B00DFB87E /* LotteryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCC3F7239F9B3B00DFB87E /* LotteryItem.swift */; };
-		4ABCC3FA239F9B4500DFB87E /* LotteryItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ABCC3F9239F9B4500DFB87E /* LotteryItem.xib */; };
 		4AC9AA5D239A6CC100E6678B /* LocationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA40239A6CC100E6678B /* LocationTask.swift */; };
 		4AC9AA5E239A6CC100E6678B /* DefaultCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA42239A6CC100E6678B /* DefaultCodable.swift */; };
 		4AC9AA5F239A6CC100E6678B /* DefaultCodableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA43239A6CC100E6678B /* DefaultCodableWrapper.swift */; };
@@ -105,7 +98,6 @@
 		4A26FA94233B50F900B8E10D /* HorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalView.swift; sourceTree = "<group>"; };
 		4A26FA99233B594000B8E10D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4A26FA9B233B59B100B8E10D /* HorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCell.swift; sourceTree = "<group>"; };
-		4A4474C123602C0E002B69FF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4A7E56C823A8A7F4003181AF /* IJKPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IJKPlayerViewController.swift; sourceTree = "<group>"; };
 		4A7E56CA23A8AA89003181AF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		4A7E56CC23A8AA97003181AF /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
@@ -148,12 +140,6 @@
 		4A995D5E239E1B92009529E4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		4A995D60239E1B99009529E4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		4A995D62239E1B9E009529E4 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/VideoToolbox.framework; sourceTree = DEVELOPER_DIR; };
-		4A995D65239E3440009529E4 /* LotteryDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryDrawViewController.swift; sourceTree = "<group>"; };
-		4A995D67239E3452009529E4 /* LotteryDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryDraw.swift; sourceTree = "<group>"; };
-		4A995D69239E43E2009529E4 /* LotteryDrawViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LotteryDrawViewController.xib; sourceTree = "<group>"; };
-		4ABCC3F5239F81BE00DFB87E /* LotteryDrawNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryDrawNew.swift; sourceTree = "<group>"; };
-		4ABCC3F7239F9B3B00DFB87E /* LotteryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryItem.swift; sourceTree = "<group>"; };
-		4ABCC3F9239F9B4500DFB87E /* LotteryItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LotteryItem.xib; sourceTree = "<group>"; };
 		4AC9AA40239A6CC100E6678B /* LocationTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTask.swift; sourceTree = "<group>"; };
 		4AC9AA42239A6CC100E6678B /* DefaultCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCodable.swift; sourceTree = "<group>"; };
 		4AC9AA43239A6CC100E6678B /* DefaultCodableWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCodableWrapper.swift; sourceTree = "<group>"; };
@@ -259,14 +245,6 @@
 			path = HorizontalView;
 			sourceTree = "<group>";
 		};
-		4A4474C023602BF4002B69FF /* WebView */ = {
-			isa = PBXGroup;
-			children = (
-				4A4474C123602C0E002B69FF /* WebViewController.swift */,
-			);
-			path = WebView;
-			sourceTree = "<group>";
-		};
 		4A7E56E423A8BBDE003181AF /* PlayerControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,27 +283,6 @@
 				4A97D73623A7225F00522A16 /* Player */,
 			);
 			path = IJKPlayer;
-			sourceTree = "<group>";
-		};
-		4A995D64239E340C009529E4 /* LotteryDraw(抽奖大转盘) */ = {
-			isa = PBXGroup;
-			children = (
-				4A995D6B239E43E8009529E4 /* View */,
-				4A995D65239E3440009529E4 /* LotteryDrawViewController.swift */,
-				4A995D69239E43E2009529E4 /* LotteryDrawViewController.xib */,
-			);
-			path = "LotteryDraw(抽奖大转盘)";
-			sourceTree = "<group>";
-		};
-		4A995D6B239E43E8009529E4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				4A995D67239E3452009529E4 /* LotteryDraw.swift */,
-				4ABCC3F5239F81BE00DFB87E /* LotteryDrawNew.swift */,
-				4ABCC3F7239F9B3B00DFB87E /* LotteryItem.swift */,
-				4ABCC3F9239F9B4500DFB87E /* LotteryItem.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		4AC9AA3F239A6CC100E6678B /* LocationTask */ = {
@@ -444,9 +401,7 @@
 		5E2FC37B20DA59A6007FEF3E /* GeSwift */ = {
 			isa = PBXGroup;
 			children = (
-				4A995D64239E340C009529E4 /* LotteryDraw(抽奖大转盘) */,
 				4A995D41239E17CE009529E4 /* IJKPlayer */,
-				4A4474C023602BF4002B69FF /* WebView */,
 				4A1B1C6323288D0400DE7FBF /* Examples */,
 				5E2FC39020DA5F59007FEF3E /* Ge */,
 				5E2FC37C20DA59A6007FEF3E /* AppDelegate.swift */,
@@ -628,10 +583,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4ABCC3FA239F9B4500DFB87E /* LotteryItem.xib in Resources */,
 				5EA9A52B21FFFB290066089B /* GeSwift.podspec in Resources */,
 				5E2FC38720DA59A9007FEF3E /* LaunchScreen.storyboard in Resources */,
-				4A995D6A239E43E2009529E4 /* LotteryDrawViewController.xib in Resources */,
 				4A8726EF2398E1CF0002CAC1 /* LayoutViewController.xib in Resources */,
 				5E2FC38420DA59A9007FEF3E /* Assets.xcassets in Resources */,
 			);
@@ -716,7 +669,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A995D68239E3452009529E4 /* LotteryDraw.swift in Sources */,
 				4AC9AA75239A6CC100E6678B /* Plist.swift in Sources */,
 				4AC9AA66239A6CC100E6678B /* UILabel+Ge.swift in Sources */,
 				4A8726F42398EB7C0002CAC1 /* CircleScalePageControl.swift in Sources */,
@@ -728,7 +680,6 @@
 				4AC9AA70239A6CC100E6678B /* Reusable.swift in Sources */,
 				4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */,
 				4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */,
-				4A995D66239E3440009529E4 /* LotteryDrawViewController.swift in Sources */,
 				4A8726EB2398DF540002CAC1 /* SimpleScaleCollectionViewLayout.swift in Sources */,
 				4AC9AA5E239A6CC100E6678B /* DefaultCodable.swift in Sources */,
 				4AC9AA72239A6CC100E6678B /* PlistProperty.swift in Sources */,
@@ -740,7 +691,6 @@
 				4AC9AA6F239A6CC100E6678B /* UserDefaults+Ge.swift in Sources */,
 				4A8726E52398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift in Sources */,
 				4AC9AA6E239A6CC100E6678B /* Notification+Ge.swift in Sources */,
-				4ABCC3F6239F81BE00DFB87E /* LotteryDrawNew.swift in Sources */,
 				4AFCFF3E2329F5D800EDD09A /* CycleScrollView.swift in Sources */,
 				4AC9AA60239A6CC100E6678B /* UICollectionView+Ge.swift in Sources */,
 				4AC9AA5F239A6CC100E6678B /* DefaultCodableWrapper.swift in Sources */,
@@ -748,8 +698,6 @@
 				4A8726F52398EB7C0002CAC1 /* SizeFitPageControl.swift in Sources */,
 				4AC9AA69239A6CC100E6678B /* UIScrollView+Ge.swift in Sources */,
 				5E2FC37F20DA59A6007FEF3E /* ViewController.swift in Sources */,
-				4ABCC3F8239F9B3B00DFB87E /* LotteryItem.swift in Sources */,
-				4A4474C223602C0E002B69FF /* WebViewController.swift in Sources */,
 				4A8726EE2398E1CF0002CAC1 /* LayoutViewController.swift in Sources */,
 				4AC9AA71239A6CC100E6678B /* GeSwift.swift in Sources */,
 				5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */,

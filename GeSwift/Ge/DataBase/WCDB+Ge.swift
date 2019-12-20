@@ -74,7 +74,7 @@ public protocol Table: TableCodable {
     
     static func insert(objects: [Self], in database: Database, on columns: [Self.CodingKeys]) throws
 
-    static func delete(object: Self, from database: Database, on columns: [Self.CodingKeys], using filter: ((TableFilter<Self>) -> Void)?) throws -> UInt64
+    static func delete(from database: Database, using filter: ((TableFilter<Self>) -> Void)?) throws -> UInt64
 
     static func migrateToDatabase(_ database: Database) throws
     
@@ -154,15 +154,12 @@ extension Table {
         try insert.execute(with: objects)
     }
     
-    public static func delete(object: Self, from database: Database, on columns: [Self.CodingKeys] = [], using filter: ((TableFilter<Self>) -> Void)? = nil) throws -> UInt64 {
-        
-        var properties: [PropertyConvertible] = columns
-        if columns.count == 0 { properties = Self.Properties.all }
+    public static func delete(from database: Database, using filter: ((TableFilter<Self>) -> Void)? = nil) throws -> UInt64 {
         
         let fil: TableFilter<Self> = TableFilter(self)
         filter?(fil)
 
-        let delete = try database.prepareUpdate(table: self.tableName, on: properties)
+        let delete = try database.prepareDelete(fromTable: self.tableName)
 
         if let condition = fil.whereCondition { delete.where(condition) }
         if let orderby = fil.orderBy { delete.order(by: orderby) }
@@ -171,7 +168,7 @@ extension Table {
             else { delete.limit(limit) }
         }
         
-        try delete.execute(with: object)
+        try delete.execute()
         return UInt64(delete.changes ?? 0)
     }
     

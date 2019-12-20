@@ -13,7 +13,7 @@ internal final class ScanViewController: BaseViewController {
     private lazy var scanView: ScanView = {
         $0.rectOfInterest = CGRect(x: iphone_width / 2 - 150, y: iphone_height / 2 - 150 - navigationBar_height, width: 300, height: 300)
         $0.scanResult = { [weak self] (result) in
-            print(result)
+            print(result ?? "unknown")
             self?.scanView.startScan()
         }
         self.view.addSubview($0)
