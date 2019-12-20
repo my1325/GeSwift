@@ -21,7 +21,7 @@ public protocol GeCompatible {
     
     static var ge: Ge<GeCompatibleType>.Type { get }
     
-    var ge: Ge<GeCompatibleType> { get }
+    var ge: Ge<GeCompatibleType> { get }    
 }
 
 extension GeCompatible {
@@ -39,6 +39,11 @@ extension GeCompatible {
         } set {
             /// setter
         }
+    }
+    
+    public func ge(closure: (Self) -> Void) -> Self {
+        closure(self)
+        return self
     }
 }
 

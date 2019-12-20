@@ -14,20 +14,7 @@
 		4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA9B233B59B100B8E10D /* HorizontalCell.swift */; };
 		4A4474C223602C0E002B69FF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4474C123602C0E002B69FF /* WebViewController.swift */; };
 		4A7E56C923A8A7F4003181AF /* IJKPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E56C823A8A7F4003181AF /* IJKPlayerViewController.swift */; };
-		4A7E56CB23A8AA8A003181AF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56CA23A8AA89003181AF /* libz.tbd */; };
-		4A7E56CD23A8AA97003181AF /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56CC23A8AA97003181AF /* libbz2.tbd */; };
-		4A7E56CF23A8AA9D003181AF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56CE23A8AA9D003181AF /* libc++.tbd */; };
-		4A7E56D123A8AAAA003181AF /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56D023A8AAAA003181AF /* VideoToolbox.framework */; };
-		4A7E56D323A8AAB0003181AF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56D223A8AAB0003181AF /* CoreMotion.framework */; };
-		4A7E56D523A8AAB7003181AF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56D423A8AAB7003181AF /* AudioToolbox.framework */; };
-		4A7E56D723A8AAC0003181AF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56D623A8AAC0003181AF /* CoreGraphics.framework */; };
-		4A7E56D923A8AAC6003181AF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56D823A8AAC6003181AF /* AVFoundation.framework */; };
-		4A7E56DB23A8AACD003181AF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56DA23A8AACD003181AF /* CoreMedia.framework */; };
-		4A7E56DD23A8AADF003181AF /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56DC23A8AADF003181AF /* CoreVideo.framework */; };
-		4A7E56DF23A8AAE5003181AF /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56DE23A8AAE5003181AF /* MediaPlayer.framework */; };
-		4A7E56E023A8AAEF003181AF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D5C239E1B8C009529E4 /* MobileCoreServices.framework */; };
-		4A7E56E123A8AAF7003181AF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D5E239E1B92009529E4 /* OpenGLES.framework */; };
-		4A7E56E323A8AAFD003181AF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7E56E223A8AAFD003181AF /* QuartzCore.framework */; };
+		4A7E56E623A8BC15003181AF /* IJKPlayerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E56E523A8BC15003181AF /* IJKPlayerControl.swift */; };
 		4A8726E32398D5680002CAC1 /* WaterCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726DD2398D5680002CAC1 /* WaterCollectionViewLayout.swift */; };
 		4A8726E52398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726E42398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift */; };
 		4A8726E72398D7CB0002CAC1 /* CircularCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726E62398D7CB0002CAC1 /* CircularCollectionViewLayout.swift */; };
@@ -42,8 +29,6 @@
 		4A97D73A23A72FBD00522A16 /* Player+Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97D73923A72FBD00522A16 /* Player+Play.swift */; };
 		4A97D73C23A7311A00522A16 /* Player+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97D73B23A7311A00522A16 /* Player+Configuration.swift */; };
 		4A97D73E23A75E3800522A16 /* WeakTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97D73D23A75E3800522A16 /* WeakTarget.swift */; };
-		4A995D48239E1984009529E4 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D47239E1984009529E4 /* IJKMediaFramework.framework */; };
-		4A995D49239E1995009529E4 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D47239E1984009529E4 /* IJKMediaFramework.framework */; };
 		4A995D4B239E1B44009529E4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D4A239E1B44009529E4 /* libc++.tbd */; };
 		4A995D4D239E1B4C009529E4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D4C239E1B4C009529E4 /* libz.tbd */; };
 		4A995D4F239E1B54009529E4 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D4E239E1B54009529E4 /* libbz2.tbd */; };
@@ -134,6 +119,7 @@
 		4A7E56DC23A8AADF003181AF /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		4A7E56DE23A8AAE5003181AF /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4A7E56E223A8AAFD003181AF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4A7E56E523A8BC15003181AF /* IJKPlayerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IJKPlayerControl.swift; sourceTree = "<group>"; };
 		4A8726DD2398D5680002CAC1 /* WaterCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCollectionViewLayout.swift; sourceTree = "<group>"; };
 		4A8726E42398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixSpacingCollectionViewLayout.swift; sourceTree = "<group>"; };
 		4A8726E62398D7CB0002CAC1 /* CircularCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -149,7 +135,6 @@
 		4A97D73B23A7311A00522A16 /* Player+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+Configuration.swift"; sourceTree = "<group>"; };
 		4A97D73D23A75E3800522A16 /* WeakTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakTarget.swift; sourceTree = "<group>"; };
 		4A995D45239E189F009529E4 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IJKMediaFramework.framework; path = ../../IJKMediaFramework/IJKMediaFramework/IJKMediaFramework.framework; sourceTree = "<group>"; };
-		4A995D47239E1984009529E4 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 		4A995D4A239E1B44009529E4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		4A995D4C239E1B4C009529E4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		4A995D4E239E1B54009529E4 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libbz2.tbd; sourceTree = DEVELOPER_DIR; };
@@ -234,7 +219,6 @@
 				4A995D4F239E1B54009529E4 /* libbz2.tbd in Frameworks */,
 				4A995D4D239E1B4C009529E4 /* libz.tbd in Frameworks */,
 				4A995D4B239E1B44009529E4 /* libc++.tbd in Frameworks */,
-				4A995D49239E1995009529E4 /* IJKMediaFramework.framework in Frameworks */,
 				C8719B4626C9F28670742C1B /* Pods_GeSwiftTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,22 +227,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A7E56E323A8AAFD003181AF /* QuartzCore.framework in Frameworks */,
-				4A7E56E123A8AAF7003181AF /* OpenGLES.framework in Frameworks */,
-				4A7E56E023A8AAEF003181AF /* MobileCoreServices.framework in Frameworks */,
-				4A7E56DF23A8AAE5003181AF /* MediaPlayer.framework in Frameworks */,
-				4A7E56DD23A8AADF003181AF /* CoreVideo.framework in Frameworks */,
-				4A7E56DB23A8AACD003181AF /* CoreMedia.framework in Frameworks */,
-				4A7E56D923A8AAC6003181AF /* AVFoundation.framework in Frameworks */,
-				4A7E56D723A8AAC0003181AF /* CoreGraphics.framework in Frameworks */,
-				4A7E56D523A8AAB7003181AF /* AudioToolbox.framework in Frameworks */,
-				4A7E56D323A8AAB0003181AF /* CoreMotion.framework in Frameworks */,
-				4A7E56D123A8AAAA003181AF /* VideoToolbox.framework in Frameworks */,
-				4A7E56CF23A8AA9D003181AF /* libc++.tbd in Frameworks */,
-				4A7E56CD23A8AA97003181AF /* libbz2.tbd in Frameworks */,
-				4A7E56CB23A8AA8A003181AF /* libz.tbd in Frameworks */,
 				6EF2BCAC04BB4AE33DDCB4F6 /* Pods_GeSwift.framework in Frameworks */,
-				4A995D48239E1984009529E4 /* IJKMediaFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +267,14 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		4A7E56E423A8BBDE003181AF /* PlayerControl */ = {
+			isa = PBXGroup;
+			children = (
+				4A7E56E523A8BC15003181AF /* IJKPlayerControl.swift */,
+			);
+			name = PlayerControl;
+			sourceTree = "<group>";
+		};
 		4A8726D62398D5350002CAC1 /* CollectionVIewLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,8 +301,8 @@
 		4A995D41239E17CE009529E4 /* IJKPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				4A7E56E423A8BBDE003181AF /* PlayerControl */,
 				4A97D73623A7225F00522A16 /* Player */,
-				4A995D47239E1984009529E4 /* IJKMediaFramework.framework */,
 			);
 			path = IJKPlayer;
 			sourceTree = "<group>";
@@ -794,6 +771,7 @@
 				4AC9AA61239A6CC100E6678B /* UIView+Ge.swift in Sources */,
 				4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */,
 				4AC9AA62239A6CC100E6678B /* UIControl+Ge.swift in Sources */,
+				4A7E56E623A8BC15003181AF /* IJKPlayerControl.swift in Sources */,
 				4AC9AA6A239A6CC100E6678B /* NSObject+Ge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1015,6 +993,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mr.my.ge.GeSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1041,6 +1023,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mr.my.ge.GeSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";

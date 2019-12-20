@@ -62,7 +62,7 @@ public final class TableFilter<T: WCDBSwift.TableCodable> {
     }
 }
 
-public protocol Table where Self: TableCodable {
+public protocol Table: TableCodable {
 
     static var tableName: String { get }
     

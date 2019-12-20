@@ -76,6 +76,6 @@ internal final class WaterCollectionViewLayout: UICollectionViewFlowLayout {
     }
     
     override var collectionViewContentSize: CGSize {
-        return CGSize(width: iphone_width - 16, height: colHeight.max()! + sectionInset.bottom - minimumLineSpacing)
+        return CGSize(width: UIScreen.main.bounds.width - 16, height: colHeight.max()! + sectionInset.bottom - minimumLineSpacing)
     }
 }

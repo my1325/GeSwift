@@ -74,7 +74,7 @@ internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate
 
 internal final class ViewController: BaseViewController {
     
-    lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: UITableView.Style.plain).ge {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.tableFooterView = UIView()
         $0.delegate = self
@@ -84,8 +84,19 @@ internal final class ViewController: BaseViewController {
         $0.snp.makeConstraints({ (make) in
             make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
-        return $0
-    }(UITableView(frame: CGRect.zero, style: UITableView.Style.plain))
+    }
+//    lazy var tableView: UITableView = {
+//        $0.translatesAutoresizingMaskIntoConstraints = false
+//        $0.tableFooterView = UIView()
+//        $0.delegate = self
+//        $0.dataSource = self
+//        $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        self.view.addSubview($0)
+//        $0.snp.makeConstraints({ (make) in
+//            make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+//        })
+//        return $0
+//    }(UITableView(frame: CGRect.zero, style: UITableView.Style.plain))
     
     struct ViewController {
         var name: String

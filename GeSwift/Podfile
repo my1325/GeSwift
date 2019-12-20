@@ -12,6 +12,7 @@ target 'GeSwift' do
   pod 'SnapKit'
   pod 'Schedule'
   pod 'SwiftyJSON'
+  pod 'IJKMediaFramework', :path => 'IJKMediaFramework/'
 
   target 'GeSwiftTests' do
     inherit! :search_paths
