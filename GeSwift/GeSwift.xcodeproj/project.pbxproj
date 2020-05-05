@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00B776C1245AC4BF002D4239 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C0245AC4BF002D4239 /* Function.swift */; };
+		00B776C4245AC579002D4239 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C3245AC579002D4239 /* PriorityQueue.swift */; };
 		4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */; };
 		4A1B1C732328D0E100DE7FBF /* FadeHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */; };
 		4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA94233B50F900B8E10D /* HorizontalView.swift */; };
 		4A26FA9A233B594000B8E10D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA99233B594000B8E10D /* Protocols.swift */; };
 		4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA9B233B59B100B8E10D /* HorizontalCell.swift */; };
-		4A7E56C923A8A7F4003181AF /* IJKPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E56C823A8A7F4003181AF /* IJKPlayerViewController.swift */; };
-		4A7E56E623A8BC15003181AF /* IJKPlayerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E56E523A8BC15003181AF /* IJKPlayerControl.swift */; };
 		4A8726E32398D5680002CAC1 /* WaterCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726DD2398D5680002CAC1 /* WaterCollectionViewLayout.swift */; };
 		4A8726E52398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726E42398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift */; };
 		4A8726E72398D7CB0002CAC1 /* CircularCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726E62398D7CB0002CAC1 /* CircularCollectionViewLayout.swift */; };
@@ -24,10 +24,6 @@
 		4A8726F12398E7FA0002CAC1 /* CircularLayoutLayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726F02398E7FA0002CAC1 /* CircularLayoutLayoutController.swift */; };
 		4A8726F42398EB7C0002CAC1 /* CircleScalePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726F22398EB7C0002CAC1 /* CircleScalePageControl.swift */; };
 		4A8726F52398EB7C0002CAC1 /* SizeFitPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8726F32398EB7C0002CAC1 /* SizeFitPageControl.swift */; };
-		4A97D73823A7226D00522A16 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97D73723A7226D00522A16 /* Player.swift */; };
-		4A97D73A23A72FBD00522A16 /* Player+Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97D73923A72FBD00522A16 /* Player+Play.swift */; };
-		4A97D73C23A7311A00522A16 /* Player+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97D73B23A7311A00522A16 /* Player+Configuration.swift */; };
-		4A97D73E23A75E3800522A16 /* WeakTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A97D73D23A75E3800522A16 /* WeakTarget.swift */; };
 		4A995D4B239E1B44009529E4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D4A239E1B44009529E4 /* libc++.tbd */; };
 		4A995D4D239E1B4C009529E4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D4C239E1B4C009529E4 /* libz.tbd */; };
 		4A995D4F239E1B54009529E4 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A995D4E239E1B54009529E4 /* libbz2.tbd */; };
@@ -92,13 +88,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00B776C0245AC4BF002D4239 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		00B776C3245AC579002D4239 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
 		4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalViewController.swift; sourceTree = "<group>"; };
 		4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeHorizontalView.swift; sourceTree = "<group>"; };
 		4A26FA94233B50F900B8E10D /* HorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalView.swift; sourceTree = "<group>"; };
 		4A26FA99233B594000B8E10D /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4A26FA9B233B59B100B8E10D /* HorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCell.swift; sourceTree = "<group>"; };
-		4A7E56C823A8A7F4003181AF /* IJKPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IJKPlayerViewController.swift; sourceTree = "<group>"; };
 		4A7E56CA23A8AA89003181AF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		4A7E56CC23A8AA97003181AF /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		4A7E56CE23A8AA9D003181AF /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -111,7 +108,6 @@
 		4A7E56DC23A8AADF003181AF /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		4A7E56DE23A8AAE5003181AF /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4A7E56E223A8AAFD003181AF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4A7E56E523A8BC15003181AF /* IJKPlayerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IJKPlayerControl.swift; sourceTree = "<group>"; };
 		4A8726DD2398D5680002CAC1 /* WaterCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCollectionViewLayout.swift; sourceTree = "<group>"; };
 		4A8726E42398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixSpacingCollectionViewLayout.swift; sourceTree = "<group>"; };
 		4A8726E62398D7CB0002CAC1 /* CircularCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -122,10 +118,6 @@
 		4A8726F02398E7FA0002CAC1 /* CircularLayoutLayoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLayoutLayoutController.swift; sourceTree = "<group>"; };
 		4A8726F22398EB7C0002CAC1 /* CircleScalePageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleScalePageControl.swift; sourceTree = "<group>"; };
 		4A8726F32398EB7C0002CAC1 /* SizeFitPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeFitPageControl.swift; sourceTree = "<group>"; };
-		4A97D73723A7226D00522A16 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		4A97D73923A72FBD00522A16 /* Player+Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+Play.swift"; sourceTree = "<group>"; };
-		4A97D73B23A7311A00522A16 /* Player+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+Configuration.swift"; sourceTree = "<group>"; };
-		4A97D73D23A75E3800522A16 /* WeakTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakTarget.swift; sourceTree = "<group>"; };
 		4A995D45239E189F009529E4 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IJKMediaFramework.framework; path = ../../IJKMediaFramework/IJKMediaFramework/IJKMediaFramework.framework; sourceTree = "<group>"; };
 		4A995D4A239E1B44009529E4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		4A995D4C239E1B4C009529E4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
@@ -220,6 +212,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00B776C2245AC566002D4239 /* PriorityQueue */ = {
+			isa = PBXGroup;
+			children = (
+				00B776C3245AC579002D4239 /* PriorityQueue.swift */,
+			);
+			path = PriorityQueue;
+			sourceTree = "<group>";
+		};
 		4A1B1C6323288D0400DE7FBF /* Examples */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,7 +229,6 @@
 				4A8726EC2398E1CF0002CAC1 /* LayoutViewController.swift */,
 				4A8726ED2398E1CF0002CAC1 /* LayoutViewController.xib */,
 				4A8726F02398E7FA0002CAC1 /* CircularLayoutLayoutController.swift */,
-				4A7E56C823A8A7F4003181AF /* IJKPlayerViewController.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -245,14 +244,6 @@
 			path = HorizontalView;
 			sourceTree = "<group>";
 		};
-		4A7E56E423A8BBDE003181AF /* PlayerControl */ = {
-			isa = PBXGroup;
-			children = (
-				4A7E56E523A8BC15003181AF /* IJKPlayerControl.swift */,
-			);
-			name = PlayerControl;
-			sourceTree = "<group>";
-		};
 		4A8726D62398D5350002CAC1 /* CollectionVIewLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,26 +254,6 @@
 				4A8726DD2398D5680002CAC1 /* WaterCollectionViewLayout.swift */,
 			);
 			path = CollectionVIewLayout;
-			sourceTree = "<group>";
-		};
-		4A97D73623A7225F00522A16 /* Player */ = {
-			isa = PBXGroup;
-			children = (
-				4A97D73723A7226D00522A16 /* Player.swift */,
-				4A97D73923A72FBD00522A16 /* Player+Play.swift */,
-				4A97D73B23A7311A00522A16 /* Player+Configuration.swift */,
-				4A97D73D23A75E3800522A16 /* WeakTarget.swift */,
-			);
-			path = Player;
-			sourceTree = "<group>";
-		};
-		4A995D41239E17CE009529E4 /* IJKPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				4A7E56E423A8BBDE003181AF /* PlayerControl */,
-				4A97D73623A7225F00522A16 /* Player */,
-			);
-			path = IJKPlayer;
 			sourceTree = "<group>";
 		};
 		4AC9AA3F239A6CC100E6678B /* LocationTask */ = {
@@ -325,6 +296,7 @@
 		4AC9AA4F239A6CC100E6678B /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				00B776C2245AC566002D4239 /* PriorityQueue */,
 				4AC9AA50239A6CC100E6678B /* NSObject+Ge.swift */,
 				4AC9AA51239A6CC100E6678B /* Data+Ge.swift */,
 				4AC9AA52239A6CC100E6678B /* String+Ge.swift */,
@@ -345,6 +317,7 @@
 				4AC9AA5A239A6CC100E6678B /* UIResponder.swift */,
 				4AC9AA5B239A6CC100E6678B /* Defaults.swift */,
 				4AC9AA5C239A6CC100E6678B /* Plist.swift */,
+				00B776C0245AC4BF002D4239 /* Function.swift */,
 			);
 			name = Core;
 			path = ../../Sources/GeSwift/Core;
@@ -401,7 +374,6 @@
 		5E2FC37B20DA59A6007FEF3E /* GeSwift */ = {
 			isa = PBXGroup;
 			children = (
-				4A995D41239E17CE009529E4 /* IJKPlayer */,
 				4A1B1C6323288D0400DE7FBF /* Examples */,
 				5E2FC39020DA5F59007FEF3E /* Ge */,
 				5E2FC37C20DA59A6007FEF3E /* AppDelegate.swift */,
@@ -673,7 +645,6 @@
 				4AC9AA66239A6CC100E6678B /* UILabel+Ge.swift in Sources */,
 				4A8726F42398EB7C0002CAC1 /* CircleScalePageControl.swift in Sources */,
 				4AC9AA6C239A6CC100E6678B /* String+Ge.swift in Sources */,
-				4A97D73C23A7311A00522A16 /* Player+Configuration.swift in Sources */,
 				4A8726F12398E7FA0002CAC1 /* CircularLayoutLayoutController.swift in Sources */,
 				4A26FA9A233B594000B8E10D /* Protocols.swift in Sources */,
 				4AC9AA6B239A6CC100E6678B /* Data+Ge.swift in Sources */,
@@ -683,7 +654,7 @@
 				4A8726EB2398DF540002CAC1 /* SimpleScaleCollectionViewLayout.swift in Sources */,
 				4AC9AA5E239A6CC100E6678B /* DefaultCodable.swift in Sources */,
 				4AC9AA72239A6CC100E6678B /* PlistProperty.swift in Sources */,
-				4A97D73E23A75E3800522A16 /* WeakTarget.swift in Sources */,
+				00B776C1245AC4BF002D4239 /* Function.swift in Sources */,
 				4AC9AA64239A6CC100E6678B /* UITableView+Ge.swift in Sources */,
 				4AC9AA73239A6CC100E6678B /* UIResponder.swift in Sources */,
 				4AC9AA6D239A6CC100E6678B /* Date+Ge.swift in Sources */,
@@ -707,19 +678,16 @@
 				4A8726E92398D9090002CAC1 /* CircularRotatedCollectionViewLayout.swift in Sources */,
 				4AC9AA65239A6CC100E6678B /* UIWindow+Ge.swift in Sources */,
 				4AC9AA68239A6CC100E6678B /* UIAlertViewController+Ge.swift in Sources */,
-				4A97D73A23A72FBD00522A16 /* Player+Play.swift in Sources */,
 				4AC9AA5D239A6CC100E6678B /* LocationTask.swift in Sources */,
 				4A1B1C732328D0E100DE7FBF /* FadeHorizontalView.swift in Sources */,
 				4A8726E32398D5680002CAC1 /* WaterCollectionViewLayout.swift in Sources */,
-				4A97D73823A7226D00522A16 /* Player.swift in Sources */,
 				5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */,
+				00B776C4245AC579002D4239 /* PriorityQueue.swift in Sources */,
 				4AC9AA67239A6CC100E6678B /* UIImage+Ge.swift in Sources */,
-				4A7E56C923A8A7F4003181AF /* IJKPlayerViewController.swift in Sources */,
 				4AC9AA74239A6CC100E6678B /* Defaults.swift in Sources */,
 				4AC9AA61239A6CC100E6678B /* UIView+Ge.swift in Sources */,
 				4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */,
 				4AC9AA62239A6CC100E6678B /* UIControl+Ge.swift in Sources */,
-				4A7E56E623A8BC15003181AF /* IJKPlayerControl.swift in Sources */,
 				4AC9AA6A239A6CC100E6678B /* NSObject+Ge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
