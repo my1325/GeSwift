@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		005BFB8924615DAC0090D2C7 /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BFB8824615DAC0090D2C7 /* Trie.swift */; };
 		00B776C1245AC4BF002D4239 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C0245AC4BF002D4239 /* Function.swift */; };
 		00B776C4245AC579002D4239 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C3245AC579002D4239 /* PriorityQueue.swift */; };
 		4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		005BFB8824615DAC0090D2C7 /* Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
 		00B776C0245AC4BF002D4239 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		00B776C3245AC579002D4239 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +214,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		005BFB8724615D970090D2C7 /* Trie */ = {
+			isa = PBXGroup;
+			children = (
+				005BFB8824615DAC0090D2C7 /* Trie.swift */,
+			);
+			path = Trie;
+			sourceTree = "<group>";
+		};
 		00B776C2245AC566002D4239 /* PriorityQueue */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +306,7 @@
 		4AC9AA4F239A6CC100E6678B /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				005BFB8724615D970090D2C7 /* Trie */,
 				00B776C2245AC566002D4239 /* PriorityQueue */,
 				4AC9AA50239A6CC100E6678B /* NSObject+Ge.swift */,
 				4AC9AA51239A6CC100E6678B /* Data+Ge.swift */,
@@ -665,6 +676,7 @@
 				4AFCFF3E2329F5D800EDD09A /* CycleScrollView.swift in Sources */,
 				4AC9AA60239A6CC100E6678B /* UICollectionView+Ge.swift in Sources */,
 				4AC9AA5F239A6CC100E6678B /* DefaultCodableWrapper.swift in Sources */,
+				005BFB8924615DAC0090D2C7 /* Trie.swift in Sources */,
 				4AFCFF412329F5EB00EDD09A /* ScanView.swift in Sources */,
 				4A8726F52398EB7C0002CAC1 /* SizeFitPageControl.swift in Sources */,
 				4AC9AA69239A6CC100E6678B /* UIScrollView+Ge.swift in Sources */,
