@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 import WCDBSwift
-import IJKMediaFramework
+//import IJKMediaFramework
 
 internal final class WorkItem: Table, TableCodable {
     
@@ -106,8 +106,8 @@ internal final class ViewController: BaseViewController {
                                      ViewController(name: "ScanViewController", controller: ScanViewController()),
                                      ViewController(name: "CycleScrollViewController", controller: CycleScrollViewController()),
                                      ViewController(name: "LayoutViewController", controller: LayoutViewController()),
-                                     ViewController(name: "CircularLayoutLayoutController", controller: CircularLayoutLayoutController()),
-                                     ViewController(name: "IJKPlayerViewController", controller: IJKPlayerViewController())]
+                                     ViewController(name: "CircularLayoutLayoutController", controller: CircularLayoutLayoutController()),]
+//                                     ViewController(name: "IJKPlayerViewController", controller: IJKPlayerViewController())]
     
     override func viewDidLoad() {
         super.viewDidLoad()

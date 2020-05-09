@@ -202,6 +202,7 @@ public final class CycleScrollView: UIView {
         }
         
         collectionView.reloadData()
+        collectionView.layoutIfNeeded()
         pageControl.numberOfPages = totalIndex
         pageControl.currentPage = 0
         pageControl.translatesAutoresizingMaskIntoConstraints = false

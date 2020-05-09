@@ -80,7 +80,6 @@ extension Ge where Base == String {
             cString = cString.ge.subString(at: 2 ... 7)
         }
         
-        
         let rString = cString.ge.subString(to: 2)!
         let gString = cString.ge.subString(at: 2 ..< 4)
         let bString = cString.ge.subString(at: 4 ..< 6)
