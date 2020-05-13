@@ -10,6 +10,9 @@
 		005BFB8924615DAC0090D2C7 /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BFB8824615DAC0090D2C7 /* Trie.swift */; };
 		00B776C1245AC4BF002D4239 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C0245AC4BF002D4239 /* Function.swift */; };
 		00B776C4245AC579002D4239 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C3245AC579002D4239 /* PriorityQueue.swift */; };
+		0F3974032466A86D007445FE /* Array+PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974022466A86D007445FE /* Array+PriorityQueue.swift */; };
+		0F3974062466ABBE007445FE /* TestPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974052466ABBE007445FE /* TestPriorityQueue.swift */; };
+		0F3974082466BF79007445FE /* TestTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974072466BF79007445FE /* TestTrie.swift */; };
 		4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */; };
 		4A1B1C732328D0E100DE7FBF /* FadeHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */; };
 		4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA94233B50F900B8E10D /* HorizontalView.swift */; };
@@ -92,6 +95,9 @@
 		005BFB8824615DAC0090D2C7 /* Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
 		00B776C0245AC4BF002D4239 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		00B776C3245AC579002D4239 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
+		0F3974022466A86D007445FE /* Array+PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+PriorityQueue.swift"; sourceTree = "<group>"; };
+		0F3974052466ABBE007445FE /* TestPriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPriorityQueue.swift; sourceTree = "<group>"; };
+		0F3974072466BF79007445FE /* TestTrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTrie.swift; sourceTree = "<group>"; };
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
 		4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalViewController.swift; sourceTree = "<group>"; };
 		4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeHorizontalView.swift; sourceTree = "<group>"; };
@@ -226,8 +232,18 @@
 			isa = PBXGroup;
 			children = (
 				00B776C3245AC579002D4239 /* PriorityQueue.swift */,
+				0F3974022466A86D007445FE /* Array+PriorityQueue.swift */,
 			);
 			path = PriorityQueue;
+			sourceTree = "<group>";
+		};
+		0F3974042466AB9B007445FE /* TestFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				0F3974052466ABBE007445FE /* TestPriorityQueue.swift */,
+				0F3974072466BF79007445FE /* TestTrie.swift */,
+			);
+			path = TestFoundation;
 			sourceTree = "<group>";
 		};
 		4A1B1C6323288D0400DE7FBF /* Examples */ = {
@@ -355,6 +371,7 @@
 		5E02E3BB228BB6BC002F8AF1 /* GeSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				0F3974042466AB9B007445FE /* TestFoundation */,
 				5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */,
 				5E02E3BE228BB6BC002F8AF1 /* Info.plist */,
 			);
@@ -645,6 +662,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E02E3BD228BB6BC002F8AF1 /* GeSwiftTests.swift in Sources */,
+				0F3974082466BF79007445FE /* TestTrie.swift in Sources */,
+				0F3974062466ABBE007445FE /* TestPriorityQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,6 +718,7 @@
 				4AC9AA74239A6CC100E6678B /* Defaults.swift in Sources */,
 				4AC9AA61239A6CC100E6678B /* UIView+Ge.swift in Sources */,
 				4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */,
+				0F3974032466A86D007445FE /* Array+PriorityQueue.swift in Sources */,
 				4AC9AA62239A6CC100E6678B /* UIControl+Ge.swift in Sources */,
 				4AC9AA6A239A6CC100E6678B /* NSObject+Ge.swift in Sources */,
 			);
