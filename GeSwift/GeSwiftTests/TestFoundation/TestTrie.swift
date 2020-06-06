@@ -31,8 +31,29 @@ class TestTrie: XCTestCase {
         trie.add(key: "wor", for: 3)
 
         XCTAssertEqual(trie.count, 6)
+        XCTAssert(trie.value(for: "hello") == 100, "\(String(describing: trie.value(for: "hello")))")
+        XCTAssert(trie.value(for: "word") == 200, "\(String(describing: trie.value(for: "word")))")
+        XCTAssert(trie.value(for: "hbcd") == 300, "\(String(describing: trie.value(for: "hbcd")))")
+        XCTAssert(trie.value(for: "helob") == 1, "\(String(describing: trie.value(for: "helob")))")
+        XCTAssert(trie.value(for: "hell") == 2, "\(String(describing: trie.value(for: "hell")))")
+        XCTAssert(trie.value(for: "wor") == 3, "\(String(describing: trie.value(for: "wor")))")
+
+        trie.add(key: "hello", for: 500)
+        XCTAssert(trie.value(for: "hello") == 500, "\(String(describing: trie.value(for: "hello")))")
+
+        trie.remove(for: "hell")
+        XCTAssertNil(trie.value(for: "hell"))
+        XCTAssert(trie.value(for: "hello") == 500, "\(String(describing: trie.value(for: "hello")))")
+        
+        trie.remove(for: "word")
+        XCTAssertNil(trie.value(for: "word"))
+        XCTAssert(trie.value(for: "wor") == 3, "\(String(describing: trie.value(for: "wor")))")
+
         XCTAssertFalse(trie.isEmpty)
-        print(trie)
+        
+        XCTAssertTrue(trie.hasPrefix("wor"))
+        XCTAssertTrue(trie.hasPrefix("he"))
+        XCTAssertFalse(trie.hasPrefix("word"))
     }
 
     func testPerformanceExample() throws {

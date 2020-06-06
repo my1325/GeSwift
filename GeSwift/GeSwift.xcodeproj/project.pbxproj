@@ -232,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				00B776C3245AC579002D4239 /* PriorityQueue.swift */,
-				0F3974022466A86D007445FE /* Array+PriorityQueue.swift */,
 			);
 			path = PriorityQueue;
 			sourceTree = "<group>";
@@ -244,6 +243,14 @@
 				0F3974072466BF79007445FE /* TestTrie.swift */,
 			);
 			path = TestFoundation;
+			sourceTree = "<group>";
+		};
+		0FB3EFFF248941740000CDCF /* SystemExtension */ = {
+			isa = PBXGroup;
+			children = (
+				0F3974022466A86D007445FE /* Array+PriorityQueue.swift */,
+			);
+			path = SystemExtension;
 			sourceTree = "<group>";
 		};
 		4A1B1C6323288D0400DE7FBF /* Examples */ = {
@@ -322,6 +329,7 @@
 		4AC9AA4F239A6CC100E6678B /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				0FB3EFFF248941740000CDCF /* SystemExtension */,
 				005BFB8724615D970090D2C7 /* Trie */,
 				00B776C2245AC566002D4239 /* PriorityQueue */,
 				4AC9AA50239A6CC100E6678B /* NSObject+Ge.swift */,
@@ -941,6 +949,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/hellodylib/DerivedData/hellodylib/Build/Products/Debug-iphonesimulator",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -948,6 +960,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mr.my.ge.GeSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/GeSwift/Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 arm64e armv7s";
@@ -972,6 +985,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/hellodylib/DerivedData/hellodylib/Build/Products/Debug-iphonesimulator",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -979,6 +996,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mr.my.ge.GeSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/GeSwift/Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 arm64e armv7s";
