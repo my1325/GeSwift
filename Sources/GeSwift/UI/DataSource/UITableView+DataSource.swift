@@ -43,4 +43,13 @@ extension Ge where Base: UITableView {
             }
         }
     }
+    
+    public func dataSource<S: SectionProtocol>(_ dataSource: TableViewDataSource<S>) -> (@escaping () -> [S]) -> Void {
+        return { handler in
+            dataSource.updateDataSource(handler())
+            objc_setAssociatedObject(self.base, "com.ge.dataSource.tableView", dataSource, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            self.base.dataSource = dataSource
+            self.base.reloadData()
+        }
+    }
 }

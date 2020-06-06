@@ -18,7 +18,7 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
     typealias TitleForHeader = (UITableViewDataSource, UITableView, Int, Section.S) -> String?
     typealias TitleForFooter = (UITableViewDataSource, UITableView, Int, Section.S) -> String?
 
-    let dataSource: [Section]
+    var dataSource: [Section]
     let sectionIndexTitles: [String]?
     let configureCell: ConfigureCell
     let canEditRow: CanEditRow
@@ -29,7 +29,7 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
     let titleForFooter: TitleForFooter
     
     init(sectionIndexTitles: [String]? = nil,
-        dataSource: [Section],
+        dataSource: [Section] = [],
         configureCell: @escaping ConfigureCell,
         canEditRow: @escaping CanEditRow = { _, _, _, _ in true },
         canMoveRow: @escaping CanMoveRow = { _, _, _, _ in false },
@@ -47,6 +47,12 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
         self.editingStyleForRow = editingStyleForRow
         self.titleForFooter = titleForFooter
         self.titleForHeader = titleForHeader
+    }
+    
+    public func updateDataSource(_ source: [Section]) {
+        objc_sync_enter(self)
+        defer { objc_sync_exit(self) }
+        dataSource = source
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {

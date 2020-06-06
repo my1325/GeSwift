@@ -32,4 +32,9 @@ extension Array where Element: SectionProtocol {
     public subscript(indexPath: IndexPath) -> Element.I {
         return self[indexPath.section].items[indexPath.row]
     }
+    
+    public func bind(to: (@escaping () -> [Element]) -> Void) {
+        let element = self
+        to({ element })
+    }
 }
