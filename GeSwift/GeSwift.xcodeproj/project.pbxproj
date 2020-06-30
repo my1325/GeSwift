@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		005BFB8924615DAC0090D2C7 /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005BFB8824615DAC0090D2C7 /* Trie.swift */; };
+		006EE7CD246A6864006EBBF0 /* ArraySort+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EE7CC246A6864006EBBF0 /* ArraySort+Ge.swift */; };
 		00B776C1245AC4BF002D4239 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C0245AC4BF002D4239 /* Function.swift */; };
 		00B776C4245AC579002D4239 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C3245AC579002D4239 /* PriorityQueue.swift */; };
 		4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */; };
@@ -90,6 +91,7 @@
 
 /* Begin PBXFileReference section */
 		005BFB8824615DAC0090D2C7 /* Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
+		006EE7CC246A6864006EBBF0 /* ArraySort+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArraySort+Ge.swift"; sourceTree = "<group>"; };
 		00B776C0245AC4BF002D4239 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		00B776C3245AC579002D4239 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +224,14 @@
 			path = Trie;
 			sourceTree = "<group>";
 		};
+		006EE7C9246A67D6006EBBF0 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				006EE7CC246A6864006EBBF0 /* ArraySort+Ge.swift */,
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
 		00B776C2245AC566002D4239 /* PriorityQueue */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +316,7 @@
 		4AC9AA4F239A6CC100E6678B /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				006EE7C9246A67D6006EBBF0 /* Sort */,
 				005BFB8724615D970090D2C7 /* Trie */,
 				00B776C2245AC566002D4239 /* PriorityQueue */,
 				4AC9AA50239A6CC100E6678B /* NSObject+Ge.swift */,
@@ -663,6 +674,7 @@
 				4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */,
 				4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */,
 				4A8726EB2398DF540002CAC1 /* SimpleScaleCollectionViewLayout.swift in Sources */,
+				006EE7CD246A6864006EBBF0 /* ArraySort+Ge.swift in Sources */,
 				4AC9AA5E239A6CC100E6678B /* DefaultCodable.swift in Sources */,
 				4AC9AA72239A6CC100E6678B /* PlistProperty.swift in Sources */,
 				00B776C1245AC4BF002D4239 /* Function.swift in Sources */,

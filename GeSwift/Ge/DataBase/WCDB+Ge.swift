@@ -132,7 +132,6 @@ extension Table {
         
         let fil: TableFilter<Self> = TableFilter(self)
         filter?(fil)
-
         let update = try database.prepareUpdate(table: tableName, on: properties)
         if let condition = fil.whereCondition { update.where(condition) }
         if let orderby = fil.orderBy { update.order(by: orderby) }
