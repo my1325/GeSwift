@@ -13,6 +13,7 @@
 		0F3974032466A86D007445FE /* Array+PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974022466A86D007445FE /* Array+PriorityQueue.swift */; };
 		0F3974062466ABBE007445FE /* TestPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974052466ABBE007445FE /* TestPriorityQueue.swift */; };
 		0F3974082466BF79007445FE /* TestTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974072466BF79007445FE /* TestTrie.swift */; };
+		0F5ADEC12494DD2900E9179A /* Singal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5ADEC02494DD2900E9179A /* Singal.swift */; };
 		0F5D1200248B913500761461 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D11FF248B913500761461 /* TableViewDataSource.swift */; };
 		0F5D1202248B940200761461 /* Array+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1201248B940200761461 /* Array+DataSource.swift */; };
 		0F5D1204248B940D00761461 /* SectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1203248B940D00761461 /* SectionProtocol.swift */; };
@@ -102,6 +103,7 @@
 		0F3974022466A86D007445FE /* Array+PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+PriorityQueue.swift"; sourceTree = "<group>"; };
 		0F3974052466ABBE007445FE /* TestPriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPriorityQueue.swift; sourceTree = "<group>"; };
 		0F3974072466BF79007445FE /* TestTrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTrie.swift; sourceTree = "<group>"; };
+		0F5ADEC02494DD2900E9179A /* Singal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singal.swift; sourceTree = "<group>"; };
 		0F5D11FF248B913500761461 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		0F5D1201248B940200761461 /* Array+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+DataSource.swift"; sourceTree = "<group>"; };
 		0F5D1203248B940D00761461 /* SectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionProtocol.swift; sourceTree = "<group>"; };
@@ -251,6 +253,14 @@
 				0F3974072466BF79007445FE /* TestTrie.swift */,
 			);
 			path = TestFoundation;
+			sourceTree = "<group>";
+		};
+		0F5ADEBF2494DD1000E9179A /* Singal */ = {
+			isa = PBXGroup;
+			children = (
+				0F5ADEC02494DD2900E9179A /* Singal.swift */,
+			);
+			path = Singal;
 			sourceTree = "<group>";
 		};
 		0F5D11FE248B912000761461 /* DataSource */ = {
@@ -444,6 +454,7 @@
 		5E2FC39020DA5F59007FEF3E /* Ge */ = {
 			isa = PBXGroup;
 			children = (
+				0F5ADEBF2494DD1000E9179A /* Singal */,
 				4AC9AA41239A6CC100E6678B /* Codable */,
 				4AC9AA56239A6CC100E6678B /* Core */,
 				4AC9AA4F239A6CC100E6678B /* Foundation */,
@@ -731,6 +742,7 @@
 				4AC9AA69239A6CC100E6678B /* UIScrollView+Ge.swift in Sources */,
 				5E2FC37F20DA59A6007FEF3E /* ViewController.swift in Sources */,
 				4A8726EE2398E1CF0002CAC1 /* LayoutViewController.swift in Sources */,
+				0F5ADEC12494DD2900E9179A /* Singal.swift in Sources */,
 				4AC9AA71239A6CC100E6678B /* GeSwift.swift in Sources */,
 				5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */,
 				4AFCFF372329F14D00EDD09A /* ScanViewController.swift in Sources */,
