@@ -9,7 +9,7 @@
 import UIKit.UIResponder
 
 public protocol GeResponderProtocol {
-    func  intercept(event: GeResponderEvent)
+    func intercept(event: GeResponderEvent)
 }
 
 public protocol GeResponderEvent {}

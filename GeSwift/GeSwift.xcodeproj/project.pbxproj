@@ -11,6 +11,13 @@
 		006EE7CD246A6864006EBBF0 /* ArraySort+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EE7CC246A6864006EBBF0 /* ArraySort+Ge.swift */; };
 		00B776C1245AC4BF002D4239 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C0245AC4BF002D4239 /* Function.swift */; };
 		00B776C4245AC579002D4239 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C3245AC579002D4239 /* PriorityQueue.swift */; };
+		0F3974032466A86D007445FE /* Array+PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974022466A86D007445FE /* Array+PriorityQueue.swift */; };
+		0F3974062466ABBE007445FE /* TestPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974052466ABBE007445FE /* TestPriorityQueue.swift */; };
+		0F3974082466BF79007445FE /* TestTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974072466BF79007445FE /* TestTrie.swift */; };
+		0F5D1200248B913500761461 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D11FF248B913500761461 /* TableViewDataSource.swift */; };
+		0F5D1202248B940200761461 /* Array+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1201248B940200761461 /* Array+DataSource.swift */; };
+		0F5D1204248B940D00761461 /* SectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1203248B940D00761461 /* SectionProtocol.swift */; };
+		0F5D1206248B989600761461 /* UITableView+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1205248B989600761461 /* UITableView+DataSource.swift */; };
 		4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */; };
 		4A1B1C732328D0E100DE7FBF /* FadeHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */; };
 		4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA94233B50F900B8E10D /* HorizontalView.swift */; };
@@ -94,6 +101,13 @@
 		006EE7CC246A6864006EBBF0 /* ArraySort+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArraySort+Ge.swift"; sourceTree = "<group>"; };
 		00B776C0245AC4BF002D4239 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		00B776C3245AC579002D4239 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
+		0F3974022466A86D007445FE /* Array+PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+PriorityQueue.swift"; sourceTree = "<group>"; };
+		0F3974052466ABBE007445FE /* TestPriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPriorityQueue.swift; sourceTree = "<group>"; };
+		0F3974072466BF79007445FE /* TestTrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTrie.swift; sourceTree = "<group>"; };
+		0F5D11FF248B913500761461 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		0F5D1201248B940200761461 /* Array+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+DataSource.swift"; sourceTree = "<group>"; };
+		0F5D1203248B940D00761461 /* SectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionProtocol.swift; sourceTree = "<group>"; };
+		0F5D1205248B989600761461 /* UITableView+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+DataSource.swift"; sourceTree = "<group>"; };
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
 		4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalViewController.swift; sourceTree = "<group>"; };
 		4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeHorizontalView.swift; sourceTree = "<group>"; };
@@ -224,20 +238,41 @@
 			path = Trie;
 			sourceTree = "<group>";
 		};
-		006EE7C9246A67D6006EBBF0 /* Sort */ = {
-			isa = PBXGroup;
-			children = (
-				006EE7CC246A6864006EBBF0 /* ArraySort+Ge.swift */,
-			);
-			path = Sort;
-			sourceTree = "<group>";
-		};
 		00B776C2245AC566002D4239 /* PriorityQueue */ = {
 			isa = PBXGroup;
 			children = (
 				00B776C3245AC579002D4239 /* PriorityQueue.swift */,
 			);
 			path = PriorityQueue;
+			sourceTree = "<group>";
+		};
+		0F3974042466AB9B007445FE /* TestFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				0F3974052466ABBE007445FE /* TestPriorityQueue.swift */,
+				0F3974072466BF79007445FE /* TestTrie.swift */,
+			);
+			path = TestFoundation;
+			sourceTree = "<group>";
+		};
+		0F5D11FE248B912000761461 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				0F5D11FF248B913500761461 /* TableViewDataSource.swift */,
+				0F5D1201248B940200761461 /* Array+DataSource.swift */,
+				0F5D1203248B940D00761461 /* SectionProtocol.swift */,
+				0F5D1205248B989600761461 /* UITableView+DataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		0FB3EFFF248941740000CDCF /* SystemExtension */ = {
+			isa = PBXGroup;
+			children = (
+				006EE7CC246A6864006EBBF0 /* ArraySort+Ge.swift */,
+				0F3974022466A86D007445FE /* Array+PriorityQueue.swift */,
+			);
+			path = SystemExtension;
 			sourceTree = "<group>";
 		};
 		4A1B1C6323288D0400DE7FBF /* Examples */ = {
@@ -298,6 +333,7 @@
 		4AC9AA44239A6CC100E6678B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0F5D11FE248B912000761461 /* DataSource */,
 				4AC9AA45239A6CC100E6678B /* UICollectionView+Ge.swift */,
 				4AC9AA46239A6CC100E6678B /* UIView+Ge.swift */,
 				4AC9AA47239A6CC100E6678B /* UIControl+Ge.swift */,
@@ -316,7 +352,7 @@
 		4AC9AA4F239A6CC100E6678B /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				006EE7C9246A67D6006EBBF0 /* Sort */,
+				0FB3EFFF248941740000CDCF /* SystemExtension */,
 				005BFB8724615D970090D2C7 /* Trie */,
 				00B776C2245AC566002D4239 /* PriorityQueue */,
 				4AC9AA50239A6CC100E6678B /* NSObject+Ge.swift */,
@@ -366,6 +402,7 @@
 		5E02E3BB228BB6BC002F8AF1 /* GeSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				0F3974042466AB9B007445FE /* TestFoundation */,
 				5E02E3BC228BB6BC002F8AF1 /* GeSwiftTests.swift */,
 				5E02E3BE228BB6BC002F8AF1 /* Info.plist */,
 			);
@@ -656,6 +693,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E02E3BD228BB6BC002F8AF1 /* GeSwiftTests.swift in Sources */,
+				0F3974082466BF79007445FE /* TestTrie.swift in Sources */,
+				0F3974062466ABBE007445FE /* TestPriorityQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +710,7 @@
 				4A26FA9A233B594000B8E10D /* Protocols.swift in Sources */,
 				4AC9AA6B239A6CC100E6678B /* Data+Ge.swift in Sources */,
 				4AC9AA70239A6CC100E6678B /* Reusable.swift in Sources */,
+				0F5D1204248B940D00761461 /* SectionProtocol.swift in Sources */,
 				4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */,
 				4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */,
 				4A8726EB2398DF540002CAC1 /* SimpleScaleCollectionViewLayout.swift in Sources */,
@@ -687,6 +727,7 @@
 				4AC9AA6E239A6CC100E6678B /* Notification+Ge.swift in Sources */,
 				4AFCFF3E2329F5D800EDD09A /* CycleScrollView.swift in Sources */,
 				4AC9AA60239A6CC100E6678B /* UICollectionView+Ge.swift in Sources */,
+				0F5D1206248B989600761461 /* UITableView+DataSource.swift in Sources */,
 				4AC9AA5F239A6CC100E6678B /* DefaultCodableWrapper.swift in Sources */,
 				005BFB8924615DAC0090D2C7 /* Trie.swift in Sources */,
 				4AFCFF412329F5EB00EDD09A /* ScanView.swift in Sources */,
@@ -700,6 +741,7 @@
 				4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */,
 				4AC9AA63239A6CC100E6678B /* UIColor+Ge.swift in Sources */,
 				4A8726E92398D9090002CAC1 /* CircularRotatedCollectionViewLayout.swift in Sources */,
+				0F5D1200248B913500761461 /* TableViewDataSource.swift in Sources */,
 				4AC9AA65239A6CC100E6678B /* UIWindow+Ge.swift in Sources */,
 				4AC9AA68239A6CC100E6678B /* UIAlertViewController+Ge.swift in Sources */,
 				4AC9AA5D239A6CC100E6678B /* LocationTask.swift in Sources */,
@@ -709,8 +751,10 @@
 				00B776C4245AC579002D4239 /* PriorityQueue.swift in Sources */,
 				4AC9AA67239A6CC100E6678B /* UIImage+Ge.swift in Sources */,
 				4AC9AA74239A6CC100E6678B /* Defaults.swift in Sources */,
+				0F5D1202248B940200761461 /* Array+DataSource.swift in Sources */,
 				4AC9AA61239A6CC100E6678B /* UIView+Ge.swift in Sources */,
 				4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */,
+				0F3974032466A86D007445FE /* Array+PriorityQueue.swift in Sources */,
 				4AC9AA62239A6CC100E6678B /* UIControl+Ge.swift in Sources */,
 				4AC9AA6A239A6CC100E6678B /* NSObject+Ge.swift in Sources */,
 			);
@@ -933,6 +977,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/hellodylib/DerivedData/hellodylib/Build/Products/Debug-iphonesimulator",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -940,6 +988,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mr.my.ge.GeSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 arm64e armv7s";
@@ -964,6 +1013,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/hellodylib/DerivedData/hellodylib/Build/Products/Debug-iphonesimulator",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -971,6 +1024,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mr.my.ge.GeSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 arm64e armv7s";

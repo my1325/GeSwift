@@ -80,6 +80,24 @@ internal final class ViewController: BaseViewController {
         $0.delegate = self
         $0.dataSource = self
         $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        $0.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        
+        let dataSource = TableViewDataSource<SectionModel<String, String>>(configureCell: { dataSource, tableView, indexPath, item in
+            return tableView.dequeueReusableCell(withIdentifier: "UITableViewCell")!
+        })
+        ["", ""].map({ SectionModel(section: "", items: [$0]) }).bind(to: $0.ge.dataSource(dataSource))
+//        ["", ""].bindItems(to: $0.ge.items(reuseIdentifier: "UITableViewCell", cellType: UITableViewCell.self))({ tableView, item, cell in
+//
+//        })
+        
+//        [[""], [""]].bindSectionItems(to: $0.ge.items(reuseIdentifier: "UITableViewCell", cellType: UITableViewCell.self))({ tableView, item, cell in
+//            print(item)
+//        })
+        
+//        [[""], [""]].bindSectionItems(to: $0.ge.sectionItems(reuseIdentifier: "UITableViewCell", cellType: UITableViewCell.self))({ tableView, item ,cell in
+//            cell.textLabel?.text = item
+//        })
+        
         self.view.addSubview($0)
         $0.snp.makeConstraints({ (make) in
             make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
