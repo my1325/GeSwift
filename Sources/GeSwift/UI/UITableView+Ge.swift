@@ -13,15 +13,14 @@ fileprivate var TableViewCacheHeightKey = "TableViewCacheHeightKey"
 
 /// cache heights
 fileprivate class TableCacheHeights {
-    
     /// cache heights
     private var cacheHeights: [IndexPath: CGFloat] = [:]
-    
+
     /// init
     ///
     /// - Parameter tableView: tableView
     init() {}
-    
+
     /// setter & getter
     ///
     /// - Parameter indexPath: indexPath in tableView
@@ -32,12 +31,12 @@ fileprivate class TableCacheHeights {
             cacheHeights[indexPath] = newValue
         }
     }
-    
+
     /// clear all height
     func clearCache() {
         cacheHeights.removeAll()
     }
-    
+
     /// clear cache at indexPath
     ///
     /// - Parameter indexPath: indexPath
@@ -46,9 +45,9 @@ fileprivate class TableCacheHeights {
     }
 }
 
-extension Ge where Base: UITableView{
-
+extension Ge where Base: UITableView {
     // MARK: cache height
+
     /// get cache heights
     fileprivate var cacheHeights: TableCacheHeights {
         var _cacheHeights: TableCacheHeights? = objc_getAssociatedObject(base, &TableViewCacheHeightKey) as? TableCacheHeights
@@ -58,7 +57,7 @@ extension Ge where Base: UITableView{
         }
         return _cacheHeights!
     }
-    
+
     /// calculate table view cell height
     ///
     /// - Parameter indexPath: cell at indexPath
@@ -67,7 +66,7 @@ extension Ge where Base: UITableView{
         if let _height = cacheHeights[indexPath] {
             return _height
         }
-        
+
         if let cell = base.dataSource?.tableView(base, cellForRowAt: indexPath) {
             cell.setNeedsLayout()
             // use auto layout to calculate the cell height
@@ -81,12 +80,12 @@ extension Ge where Base: UITableView{
         }
         return 0
     }
-    
+
     /// clear cache
     public func clearCacheHeights() {
         cacheHeights.clearCache()
     }
-    
+
     /// clear cahce height at indexPath
     ///
     /// - Parameter indexPath: indexPath
@@ -96,7 +95,6 @@ extension Ge where Base: UITableView{
 }
 
 extension Ge where Base: UITableView {
-
     public func register<T: UITableViewCell>(reusableCell cellType: T.Type) where T: Reusable {
         base.register(cellType, forCellReuseIdentifier: T.reuseIdentifier)
     }
@@ -122,5 +120,57 @@ extension Ge where Base: UITableView {
 
     public func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>() -> T where T: Reusable {
         return base.dequeueReusableHeaderFooterView(withIdentifier: T.reuseIdentifier) as! T
+    }
+}
+
+/// TODO
+fileprivate var multiDelegateForTableViewKey = "com.ge.multi.delegate.for.tableView"
+
+fileprivate final class TableViewDelegateWraper: NSObject {
+    private let pointerArray: NSPointerArray = NSPointerArray.weakObjects()
+
+    override init() {
+        super.init()
+        var context = CFRunLoopObserverContext(version: 0, info: Unmanaged.passUnretained(self).toOpaque(), retain: nil, release: nil, copyDescription: nil)
+        let observer = CFRunLoopObserverCreate(CFAllocatorGetDefault()?.takeRetainedValue(),
+                                               CFRunLoopActivity.beforeWaiting.rawValue,
+                                               true,
+                                               0,
+                                               { _, activity, pointer in
+                                                   guard CFRunLoopActivity.beforeWaiting == activity else { return }
+                                                   let wraper = pointer?.load(as: TableViewDelegateWraper.self)
+                                                   wraper?.pointerArray.addPointer(nil)
+                                                   wraper?.pointerArray.compact()
+                                               },
+                                               &context)
+
+        CFRunLoopAddObserver(CFRunLoopGetCurrent(), observer, CFRunLoopMode.defaultMode)
+    }
+
+    func addObject(_ any: AnyObject) {
+        pointerArray.addPointer(Unmanaged.passUnretained(any).toOpaque())
+    }
+    
+    override class func resolveInstanceMethod(_ sel: Selector!) -> Bool {
+        return true
+    }
+}
+
+extension Ge where Base: UITableView {
+    private var delegateList: TableViewDelegateWraper? {
+        get {
+            var list = objc_getAssociatedObject(base, &multiDelegateForTableViewKey) as? TableViewDelegateWraper
+            if list == nil {
+                list = TableViewDelegateWraper()
+                objc_setAssociatedObject(base, &multiDelegateForTableViewKey, list, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+            return list
+        } set {
+            objc_setAssociatedObject(base, &multiDelegateForTableViewKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
+    public func addDelegate(_ delegate: UITableViewDelegate) {
+        delegateList?.addObject(delegate)
     }
 }

@@ -14,6 +14,14 @@ struct DisposeToken {
     init(handler: @escaping DisposeHandler) {
         self.handler = handler
     }
+    
+    init() {
+        self.handler = { _ in }
+    }
+    
+    func dispose() {
+        handler(self)
+    }
 }
 
 struct SingleCreater<Element> {
@@ -30,6 +38,7 @@ struct SingleCreater<Element> {
 }
 
 struct Singal<Element> {
+    
     typealias Singler = (SingleCreater<Element>) -> DisposeToken
     
     let singleCreater: Singler
@@ -49,8 +58,9 @@ struct Singal<Element> {
     }
     
     func subscribe(handler: @escaping (Result<Element, Error>) -> Void) -> DisposeToken {
+        let dispose = self.singleCreater(SingleCreater(doHandler: handler))
         return DisposeToken { _ in
-            self.singleCreater(SingleCreater(doHandler: handler))
+            dispose.dispose()
         }
     }
 }
