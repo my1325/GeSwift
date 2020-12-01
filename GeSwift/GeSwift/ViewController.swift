@@ -81,11 +81,10 @@ internal final class ViewController: BaseViewController {
         $0.dataSource = self
         $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         $0.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
-        
-        let dataSource = TableViewDataSource<SectionModel<String, String>>(configureCell: { dataSource, tableView, indexPath, item in
-            return tableView.dequeueReusableCell(withIdentifier: "UITableViewCell")!
-        })
-        ["", ""].map({ SectionModel(section: "", items: [$0]) }).bind(to: $0.ge.dataSource(dataSource))
+//        let dataSource = TableViewDataSource<SectionModel<String, String>>(configureCell: { dataSource, tableView, indexPath, item in
+//            return tableView.dequeueReusableCell(withIdentifier: "UITableViewCell")!
+//        })
+//        self.viewControllers.map({ SectionModel(section: "", items: [$0]) }).bind(to: $0.ge.dataSource(dataSource))
 //        ["", ""].bindItems(to: $0.ge.items(reuseIdentifier: "UITableViewCell", cellType: UITableViewCell.self))({ tableView, item, cell in
 //
 //        })

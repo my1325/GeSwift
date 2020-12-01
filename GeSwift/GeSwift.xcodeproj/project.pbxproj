@@ -11,6 +11,7 @@
 		006EE7CD246A6864006EBBF0 /* ArraySort+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EE7CC246A6864006EBBF0 /* ArraySort+Ge.swift */; };
 		00B776C1245AC4BF002D4239 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C0245AC4BF002D4239 /* Function.swift */; };
 		00B776C4245AC579002D4239 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C3245AC579002D4239 /* PriorityQueue.swift */; };
+		0F20E89224FD500F00EB3C13 /* Pods_GeSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */; };
 		0F3974032466A86D007445FE /* Array+PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974022466A86D007445FE /* Array+PriorityQueue.swift */; };
 		0F3974062466ABBE007445FE /* TestPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974052466ABBE007445FE /* TestPriorityQueue.swift */; };
 		0F3974082466BF79007445FE /* TestTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974072466BF79007445FE /* TestTrie.swift */; };
@@ -83,7 +84,6 @@
 		5E2FC38720DA59A9007FEF3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E2FC38520DA59A9007FEF3E /* LaunchScreen.storyboard */; };
 		5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4E7622219D63C30012F6A8 /* WCDB+Ge.swift */; };
 		5EA9A52B21FFFB290066089B /* GeSwift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5EA9A52A21FFFB290066089B /* GeSwift.podspec */; };
-		6EF2BCAC04BB4AE33DDCB4F6 /* Pods_GeSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */; };
 		C8719B4626C9F28670742C1B /* Pods_GeSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6902E79E348691ABF0DCDB /* Pods_GeSwiftTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +110,7 @@
 		0F5D1201248B940200761461 /* Array+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+DataSource.swift"; sourceTree = "<group>"; };
 		0F5D1203248B940D00761461 /* SectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionProtocol.swift; sourceTree = "<group>"; };
 		0F5D1205248B989600761461 /* UITableView+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+DataSource.swift"; sourceTree = "<group>"; };
+		0F75E40525678F2D00099FD5 /* GeSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
 		4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalViewController.swift; sourceTree = "<group>"; };
 		4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeHorizontalView.swift; sourceTree = "<group>"; };
@@ -225,7 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EF2BCAC04BB4AE33DDCB4F6 /* Pods_GeSwift.framework in Frameworks */,
+				0F20E89224FD500F00EB3C13 /* Pods_GeSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +451,7 @@
 				5E2FC38320DA59A9007FEF3E /* Assets.xcassets */,
 				5E2FC38520DA59A9007FEF3E /* LaunchScreen.storyboard */,
 				5E2FC38820DA59A9007FEF3E /* Info.plist */,
+				0F75E40525678F2D00099FD5 /* GeSwift-Bridging-Header.h */,
 			);
 			path = GeSwift;
 			sourceTree = "<group>";
@@ -582,7 +584,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = my;
 				TargetAttributes = {
 					5E02E3B9228BB6BC002F8AF1 = {
@@ -591,6 +593,7 @@
 					};
 					5E2FC37820DA59A6007FEF3E = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1200;
 					};
 				};
 			};
@@ -883,6 +886,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -908,7 +912,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -943,6 +947,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -962,7 +967,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -976,6 +981,7 @@
 			baseConfigurationReference = 520017B9EEFF8D241A5DF796 /* Pods-GeSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LS59MWP9WR;
@@ -984,7 +990,7 @@
 					"$(PROJECT_DIR)/GeSwift/IJKPlayer",
 				);
 				INFOPLIST_FILE = GeSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -993,6 +999,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/hellodylib/DerivedData/hellodylib/Build/Products/Debug-iphonesimulator",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1000,10 +1007,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mr.my.ge.GeSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "GeSwift/GeSwift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "arm64 arm64e armv7s";
 			};
 			name = Debug;
 		};
@@ -1012,6 +1019,7 @@
 			baseConfigurationReference = 416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LS59MWP9WR;
@@ -1020,7 +1028,7 @@
 					"$(PROJECT_DIR)/GeSwift/IJKPlayer",
 				);
 				INFOPLIST_FILE = GeSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1029,6 +1037,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/hellodylib/DerivedData/hellodylib/Build/Products/Debug-iphonesimulator",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1036,10 +1045,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mr.my.ge.GeSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "GeSwift/GeSwift-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "arm64 arm64e armv7s";
 			};
 			name = Release;
 		};
