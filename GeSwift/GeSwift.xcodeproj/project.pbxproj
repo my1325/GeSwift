@@ -20,6 +20,9 @@
 		0F5D1202248B940200761461 /* Array+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1201248B940200761461 /* Array+DataSource.swift */; };
 		0F5D1204248B940D00761461 /* SectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1203248B940D00761461 /* SectionProtocol.swift */; };
 		0F5D1206248B989600761461 /* UITableView+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1205248B989600761461 /* UITableView+DataSource.swift */; };
+		0FA719B9258070A80021347C /* Disposeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA719B8258070A80021347C /* Disposeable.swift */; };
+		0FA719BD258072F70021347C /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA719BC258072F70021347C /* Driver.swift */; };
+		0FA719C3258073720021347C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA719C2258073720021347C /* Event.swift */; };
 		4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */; };
 		4A1B1C732328D0E100DE7FBF /* FadeHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */; };
 		4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA94233B50F900B8E10D /* HorizontalView.swift */; };
@@ -111,6 +114,9 @@
 		0F5D1203248B940D00761461 /* SectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionProtocol.swift; sourceTree = "<group>"; };
 		0F5D1205248B989600761461 /* UITableView+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+DataSource.swift"; sourceTree = "<group>"; };
 		0F75E40525678F2D00099FD5 /* GeSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		0FA719B8258070A80021347C /* Disposeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disposeable.swift; sourceTree = "<group>"; };
+		0FA719BC258072F70021347C /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
+		0FA719C2258073720021347C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
 		4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalViewController.swift; sourceTree = "<group>"; };
 		4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeHorizontalView.swift; sourceTree = "<group>"; };
@@ -262,6 +268,9 @@
 			isa = PBXGroup;
 			children = (
 				0F5ADEC02494DD2900E9179A /* Singal.swift */,
+				0FA719B8258070A80021347C /* Disposeable.swift */,
+				0FA719BC258072F70021347C /* Driver.swift */,
+				0FA719C2258073720021347C /* Event.swift */,
 			);
 			path = Singal;
 			sourceTree = "<group>";
@@ -721,10 +730,12 @@
 				4A8726F42398EB7C0002CAC1 /* CircleScalePageControl.swift in Sources */,
 				4AC9AA6C239A6CC100E6678B /* String+Ge.swift in Sources */,
 				4A8726F12398E7FA0002CAC1 /* CircularLayoutLayoutController.swift in Sources */,
+				0FA719BD258072F70021347C /* Driver.swift in Sources */,
 				4A26FA9A233B594000B8E10D /* Protocols.swift in Sources */,
 				4AC9AA6B239A6CC100E6678B /* Data+Ge.swift in Sources */,
 				4AC9AA70239A6CC100E6678B /* Reusable.swift in Sources */,
 				0F5D1204248B940D00761461 /* SectionProtocol.swift in Sources */,
+				0FA719C3258073720021347C /* Event.swift in Sources */,
 				4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */,
 				4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */,
 				4A8726EB2398DF540002CAC1 /* SimpleScaleCollectionViewLayout.swift in Sources */,
@@ -736,6 +747,7 @@
 				4AC9AA73239A6CC100E6678B /* UIResponder.swift in Sources */,
 				4AC9AA6D239A6CC100E6678B /* Date+Ge.swift in Sources */,
 				4A8726E72398D7CB0002CAC1 /* CircularCollectionViewLayout.swift in Sources */,
+				0FA719B9258070A80021347C /* Disposeable.swift in Sources */,
 				4AC9AA6F239A6CC100E6678B /* UserDefaults+Ge.swift in Sources */,
 				4A8726E52398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift in Sources */,
 				4AC9AA6E239A6CC100E6678B /* Notification+Ge.swift in Sources */,

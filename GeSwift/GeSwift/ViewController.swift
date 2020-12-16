@@ -63,7 +63,10 @@ internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate
         self.navigationController?.navigationBar.isTranslucent = false
         self.extendedLayoutIncludesOpaqueBars = true
         self.edgesForExtendedLayout = .init(rawValue: 0)
-        self.automaticallyAdjustsScrollViewInsets = false
+        if #available(iOS 11.0, *) {
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
         self.view.backgroundColor = UIColor.white
     }
     

@@ -11,6 +11,42 @@ import UIKit
 private let True_Condition = ["true", "True", "TURE", "yes", "Yes", "YES", "1"]
 private let False_Condition = ["false", "False", "FALSE", "no", "No", "NO", "0"]
 
+extension String: GeCompatible {
+    internal subscript(offset: Int) -> Character {
+        get {
+            let index = self.index(self.startIndex, offsetBy: offset)
+            precondition(index <= self.endIndex)
+            return self[index]
+        }
+    }
+    
+    internal subscript(offset: Int) -> String {
+        get {
+            let index = self.index(self.startIndex, offsetBy: offset)
+            precondition(index <= self.endIndex)
+            return String(self[index])
+        }
+    }
+    
+    internal subscript(range: Range<Int>) -> String {
+        get {
+            let startIndex = self.index(self.startIndex, offsetBy: range.lowerBound)
+            let endIndex = self.index(self.startIndex, offsetBy: range.upperBound)
+            precondition(startIndex >= self.startIndex && endIndex <= self.endIndex)
+            return String(self[startIndex ..< endIndex])
+        }
+    }
+    
+    internal subscript(range: ClosedRange<Int>) -> String {
+        get {
+            let startIndex = self.index(self.startIndex, offsetBy: range.lowerBound)
+            let endIndex = self.index(self.startIndex, offsetBy: range.upperBound)
+            precondition(startIndex >= self.startIndex && endIndex <= self.endIndex)
+            return String(self[startIndex ... endIndex])
+        }
+    }
+}
+
 extension Ge where Base == String {
     
     public static func string(from jsonlist: [Any]) -> String? {

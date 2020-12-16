@@ -180,7 +180,7 @@ extension Ge where Base: UIImage {
             //如果有一个头像的话，将头像加入二维码中心
             if let image = image {
                 //给头像加一个白色圆边（如果没有这个需求直接忽略）
-                //            image = circleImageWithImage(image, borderWidth: 50, borderColor: UIColor.white)
+//                            image = circleImageWithImage(image, borderWidth: 50, borderColor: UIColor.white)
                 //合成图片
                 let newImage = syntheticImage(qrCodeImage, iconImage: image, width: 60, height: 60)
                 return newImage

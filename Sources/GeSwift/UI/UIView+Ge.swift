@@ -161,7 +161,7 @@ extension Ge where Base: UIView {
     ///   - color: 边框颜色
     ///   - width: 边框宽度
     ///   - dashPartten: 虚线样式
-    public func dashBorder(_ color: CGColor = UIColor.ge.color(with: "cccccc").cgColor,
+    public func dashBorder(_ color: CGColor = UIColor.ge.color(with: "cccccc")!.cgColor,
                            _ width: CGFloat = 1 / UIScreen.main.scale,
                            _ dashPartten: [NSNumber] = [4, 2],
                            _ lineCap: String = "square",

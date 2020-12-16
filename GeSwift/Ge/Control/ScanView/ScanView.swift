@@ -90,7 +90,7 @@ public final class ScanView: UIView {
     public typealias ScanResult = (String?) -> Void
     public var scanResult: ScanResult?
     public lazy var rectOfInterest: CGRect = self.bounds
-    #if !targetEnvironment(simulator)
+//    #if !targetEnvironment(simulator)
     private(set) var device = AVCaptureDevice.default(for: .video)!
     private(set) var input: AVCaptureDeviceInput?
     private(set) var output: AVCaptureMetadataOutput?
@@ -157,10 +157,10 @@ public final class ScanView: UIView {
         scaleGesture.isEnabled = isScaleEnable
         isConfiged = true
     }
-    #endif
+//    #endif
 }
 
-#if !targetEnvironment(simulator)
+//#if !targetEnvironment(simulator)
 public extension ScanView {
     func startScan() {
         if !isConfiged {
@@ -223,4 +223,4 @@ extension ScanView: UIGestureRecognizerDelegate {
         }
     }
 }
-#endif
+//#endif

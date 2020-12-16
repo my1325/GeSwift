@@ -8,59 +8,53 @@
 
 import Foundation
 
-struct DisposeToken {
-    typealias DisposeHandler = (DisposeToken) -> Void
-    let handler: DisposeHandler
-    init(handler: @escaping DisposeHandler) {
-        self.handler = handler
-    }
+public protocol SingalCompatibleType {
+    associatedtype Element
     
-    init() {
-        self.handler = { _ in }
-    }
-    
-    func dispose() {
-        handler(self)
-    }
+    func asSingal() -> Singal<Element>
 }
 
-struct SingleCreater<Element> {
+open class Singal<Element>: SingalCompatibleType {
     
-    typealias DoHandler = (Result<Element, Error>) -> Void
-    let handler: DoHandler
-    init(doHandler: @escaping DoHandler) {
-        handler = doHandler
+    public func asSingal() -> Singal<Element> {
+        return self
     }
     
-    func `do`(on: Result<Element, Error>) {
-        handler(on)
-    }
-}
-
-struct Singal<Element> {
+    public typealias SingalCreater = (Driver<Element>) -> Disposeable
     
-    typealias Singler = (SingleCreater<Element>) -> DisposeToken
-    
-    let singleCreater: Singler
-    init(creater: @escaping Singler) {
+    public let singleCreater: SingalCreater
+    public init(creater: @escaping SingalCreater) {
         singleCreater = creater
     }
     
-    func subscribe(onSuccess: @escaping (Element) -> Void = { _ in }, onError: @escaping (Error) -> Void = { _ in }) -> DisposeToken {
-        return subscribe { result in
-            switch result {
-            case let .success(element):
-                onSuccess(element)
-            case let .failure(error):
-                onError(error)
-            }
-        }
-    }
+//    public func subscribe(onSuccess: @escaping (Element) -> Void = { _ in },
+//                   onError: @escaping (Error) -> Void = { _ in },
+//                   onCompleted: @escaping () -> Void = {}) -> Disposeable {
+//
+//        let disposeBag = DisposeBag()
+//
+//        let dispose = DisposeToken()
+//        let driver = Driver<Element> { event in
+//            switch event {
+//            case let .next(value):
+//                onSuccess(value)
+//            case let .error(error):
+//                onError(error)
+//                dispose.dispose()
+//            case .completed:
+//                dispose.dispose()
+//                onCompleted()
+//            }
+//        }
+//        let createrDispose = singleCreater(driver)
+//
+//        disposeBag.insert(disposes: dispose, createrDispose)
+//        return disposeBag.insert(disposes: DisposeToken({
+//
+//        }))
+//    }
     
-    func subscribe(handler: @escaping (Result<Element, Error>) -> Void) -> DisposeToken {
-        let dispose = self.singleCreater(SingleCreater(doHandler: handler))
-        return DisposeToken { _ in
-            dispose.dispose()
-        }
+    public func subscribe(on: @escaping (Event<Element>) -> Void) -> Disposeable {
+        return singleCreater(Driver(on))
     }
 }

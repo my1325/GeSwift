@@ -47,6 +47,5 @@ extension GeCompatible {
     }
 }
 
-extension String: GeCompatible {}
 extension NSObject: GeCompatible {}
 
