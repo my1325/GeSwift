@@ -18,6 +18,7 @@ internal final class CircularRotatedCollectionViewLayout: UICollectionViewFlowLa
         guard let collectionView = self.collectionView, collectionView.numberOfSections == 1 else { return 0 }
         return collectionView.bounds.width - self.sectionInset.left - self.sectionInset.right
     }
+    
     override func prepare() {
         self.attributes.removeAll()
         guard let collectionView = self.collectionView, collectionView.numberOfSections == 1 else { return }

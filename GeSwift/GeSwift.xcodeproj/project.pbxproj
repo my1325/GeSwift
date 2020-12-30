@@ -11,6 +11,7 @@
 		006EE7CD246A6864006EBBF0 /* ArraySort+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EE7CC246A6864006EBBF0 /* ArraySort+Ge.swift */; };
 		00B776C1245AC4BF002D4239 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C0245AC4BF002D4239 /* Function.swift */; };
 		00B776C4245AC579002D4239 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C3245AC579002D4239 /* PriorityQueue.swift */; };
+		0F0B55D8259AFDEA005E4207 /* FoldTransitionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0B55D7259AFDE9005E4207 /* FoldTransitionLayout.swift */; };
 		0F20E89224FD500F00EB3C13 /* Pods_GeSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */; };
 		0F3974032466A86D007445FE /* Array+PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974022466A86D007445FE /* Array+PriorityQueue.swift */; };
 		0F3974062466ABBE007445FE /* TestPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974052466ABBE007445FE /* TestPriorityQueue.swift */; };
@@ -105,6 +106,7 @@
 		006EE7CC246A6864006EBBF0 /* ArraySort+Ge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArraySort+Ge.swift"; sourceTree = "<group>"; };
 		00B776C0245AC4BF002D4239 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		00B776C3245AC579002D4239 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
+		0F0B55D7259AFDE9005E4207 /* FoldTransitionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldTransitionLayout.swift; sourceTree = "<group>"; };
 		0F3974022466A86D007445FE /* Array+PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+PriorityQueue.swift"; sourceTree = "<group>"; };
 		0F3974052466ABBE007445FE /* TestPriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPriorityQueue.swift; sourceTree = "<group>"; };
 		0F3974072466BF79007445FE /* TestTrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTrie.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				4A8726E62398D7CB0002CAC1 /* CircularCollectionViewLayout.swift */,
 				4A8726E42398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift */,
 				4A8726DD2398D5680002CAC1 /* WaterCollectionViewLayout.swift */,
+				0F0B55D7259AFDE9005E4207 /* FoldTransitionLayout.swift */,
 			);
 			path = CollectionVIewLayout;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 				4AC9AA74239A6CC100E6678B /* Defaults.swift in Sources */,
 				0F5D1202248B940200761461 /* Array+DataSource.swift in Sources */,
 				4AC9AA61239A6CC100E6678B /* UIView+Ge.swift in Sources */,
+				0F0B55D8259AFDEA005E4207 /* FoldTransitionLayout.swift in Sources */,
 				4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */,
 				0F3974032466A86D007445FE /* Array+PriorityQueue.swift in Sources */,
 				4AC9AA62239A6CC100E6678B /* UIControl+Ge.swift in Sources */,

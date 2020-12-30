@@ -14,22 +14,24 @@ internal final class LayoutViewController: BaseViewController {
 
     @IBOutlet weak var simpleScaleCollectionView: UICollectionView! {
         didSet {
-            self.simpleScaleCollectionView.contentInset = UIEdgeInsets(top: 30, left: 16, bottom: 30, right: 16)
+            self.simpleScaleCollectionView.backgroundColor = UIColor.green
             self.simpleScaleCollectionView.register(TestCell.self, forCellWithReuseIdentifier: "TestCell")
         }
     }
+    
     @IBOutlet weak var circularRotatedCollectionView: UICollectionView! {
         didSet {
             self.circularRotatedCollectionView.register(TestCell.self, forCellWithReuseIdentifier: "TestCell")
         }
     }
     
-    @IBOutlet weak var simpleScaleLayout: SimpleScaleCollectionViewLayout! {
+    @IBOutlet weak var simpleScaleLayout: FoldTransitionLayout! {
         didSet {
-            self.simpleScaleLayout.itemSize = CGSize(width: iphone_width - 60, height: (iphone_height - navigationBar_height - 60) / 2 - 60)
+            self.simpleScaleLayout.itemSize = CGSize(width: 200, height: (iphone_height - navigationBar_height - 60) / 2 - 60)
             self.simpleScaleLayout.scaleOffset = 100
         }
     }
+    
     @IBOutlet weak var circularRotatedLayout: CircularRotatedCollectionViewLayout! {
         didSet {
             self.circularRotatedLayout.sectionInset = UIEdgeInsets(top: 30, left: 16, bottom: 30, right: 16)
