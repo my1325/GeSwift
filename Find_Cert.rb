@@ -1,6 +1,6 @@
 require 'spaceship'
 
-Spaceship.login('ma.yong@vpclub.cn') #输入对应的苹果账号
+Spaceship.login('1173962595@qq.com') #输入对应的苹果账号
 Spaceship.select_team
 # ('GY929GT648')
 

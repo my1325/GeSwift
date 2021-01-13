@@ -6,13 +6,12 @@
 //  Copyright © 2018年 my. All rights reserved.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 import WCDBSwift
-//import IJKMediaFramework
+// import IJKMediaFramework
 
 internal final class WorkItem: Table, TableCodable {
-    
     static var tableName: String = "WorkItem"
 
     var identifier: Int?
@@ -39,10 +38,10 @@ internal final class WorkItem: Table, TableCodable {
         case expectedStartTime = "expected_start_time"
         case expectedEndTime = "expected_end_time"
         case createTime = "create_time"
-        case content = "content"
+        case content
         case extralCompleteContent = "extral_complete_content"
-        case remark = "remark"
-        case identifier = "identifier"
+        case remark
+        case identifier
     }
     
     init(content: String, expectedStartTime: TimeInterval, expectedEndTime: TimeInterval) {
@@ -54,10 +53,9 @@ internal final class WorkItem: Table, TableCodable {
 }
 
 internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_back_white"), style: .plain, target: self, action: #selector(popViewController))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_back_white"), style: .plain, target: self, action: #selector(self.popViewController))
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = false
@@ -76,66 +74,64 @@ internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate
 }
 
 internal final class ViewController: BaseViewController {
-    
-    lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: UITableView.Style.plain).ge {
+    lazy var tableView = UITableView(frame: CGRect.zero, style: UITableView.Style.plain).ge {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.tableFooterView = UIView()
         $0.delegate = self
-        $0.dataSource = self
         $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         $0.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
-//        let dataSource = TableViewDataSource<SectionModel<String, String>>(configureCell: { dataSource, tableView, indexPath, item in
-//            return tableView.dequeueReusableCell(withIdentifier: "UITableViewCell")!
-//        })
-//        self.viewControllers.map({ SectionModel(section: "", items: [$0]) }).bind(to: $0.ge.dataSource(dataSource))
-//        ["", ""].bindItems(to: $0.ge.items(reuseIdentifier: "UITableViewCell", cellType: UITableViewCell.self))({ tableView, item, cell in
-//
-//        })
-        
-//        [[""], [""]].bindSectionItems(to: $0.ge.items(reuseIdentifier: "UITableViewCell", cellType: UITableViewCell.self))({ tableView, item, cell in
-//            print(item)
-//        })
-        
-//        [[""], [""]].bindSectionItems(to: $0.ge.sectionItems(reuseIdentifier: "UITableViewCell", cellType: UITableViewCell.self))({ tableView, item ,cell in
-//            cell.textLabel?.text = item
-//        })
-        
         self.view.addSubview($0)
-        $0.snp.makeConstraints({ (make) in
+        $0.snp.makeConstraints { make in
             make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-        })
+        }
     }
-//    lazy var tableView: UITableView = {
-//        $0.translatesAutoresizingMaskIntoConstraints = false
-//        $0.tableFooterView = UIView()
-//        $0.delegate = self
-//        $0.dataSource = self
-//        $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        self.view.addSubview($0)
-//        $0.snp.makeConstraints({ (make) in
-//            make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-//        })
-//        return $0
-//    }(UITableView(frame: CGRect.zero, style: UITableView.Style.plain))
     
     struct ViewController {
         var name: String
         var controller: UIViewController
     }
+
     let viewControllers: [ViewController] = [ViewController(name: "HorizontalViewController", controller: HorizontalViewController()),
-                                     ViewController(name: "ScanViewController", controller: ScanViewController()),
-                                     ViewController(name: "CycleScrollViewController", controller: CycleScrollViewController()),
-                                     ViewController(name: "LayoutViewController", controller: LayoutViewController()),
-                                     ViewController(name: "CircularLayoutLayoutController", controller: CircularLayoutLayoutController()),]
+                                             ViewController(name: "ScanViewController", controller: ScanViewController()),
+                                             ViewController(name: "CycleScrollViewController", controller: CycleScrollViewController()),
+                                             ViewController(name: "LayoutViewController", controller: LayoutViewController()),
+                                             ViewController(name: "CircularLayoutLayoutController", controller: CircularLayoutLayoutController())]
 //                                     ViewController(name: "IJKPlayerViewController", controller: IJKPlayerViewController())]
-    
+    let dataSource = TableViewDataSource<SectionModel<String, ViewController>>(configureCell: { _, tableView, indexPath, controller in
+        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+            cell?.textLabel?.font = UIFont.systemFont(ofSize: 14)
+            cell?.textLabel?.textColor = "666666".ge.asColor
+            cell?.accessoryType = .disclosureIndicator
+        }
+        cell?.textLabel?.text = "\(indexPath.row + 1)、\(controller.name)"
+        return cell!
+    })
+
+    let driver = DataSourceDriver<[ViewController]>(initialValue: [])
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "GeSwift-Examples"
         self.navigationItem.leftBarButtonItem = nil
         self.view.backgroundColor = UIColor.white
-        self.tableView.reloadData()
+
+//        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+//        self.driver.map({ [SectionModel(section: "", items: $0)] }).bind(to: self.tableView.ge.dataSource(reuseIdentifier: "Cell", cell: UITableViewCell.self))({ tableView, item, cell in
+//            cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+//            cell.textLabel?.textColor = "666666".ge.asColor
+//            cell.accessoryType = .disclosureIndicator
+//            cell.textLabel?.text = "\(item.name)"
+//        })
+        
+        self.driver.map({ [SectionModel(section: "", items: $0)] }).bind(to: self.tableView.ge.dataSource(dataSource))
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            print("DispatchQueue.main.asyncAfter")
+            self.driver.accept(self.viewControllers)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -144,26 +140,9 @@ internal final class ViewController: BaseViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewControllers.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-            cell?.textLabel?.font = UIFont.systemFont(ofSize: 14)
-            cell?.textLabel?.textColor = "666666".ge.asColor
-            cell?.accessoryType = .disclosureIndicator
-        }
-        cell?.textLabel?.text = "\(indexPath.row + 1)、\(viewControllers[indexPath.row].name)"
-        return cell!
-    }
-    
+extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.navigationController?.pushViewController(viewControllers[indexPath.row].controller, animated: true)
+        self.navigationController?.pushViewController(self.viewControllers[indexPath.row].controller, animated: true)
     }
 }

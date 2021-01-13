@@ -32,20 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().barTintColor = UIColor.white
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        self.window?.rootViewController = UINavigationController(rootViewController: WrapViewController(ViewController()))
         self.window?.makeKeyAndVisible()
         
-        struct Test: Decodable {
-            @DefaultIntValue
-            var value: Int?
-        }
-        
-        func testDefaultCodable() throws {
-            let jsonData = #"{"value": "123123"}"#.data(using: .utf8)!
-            let test = try JSONDecoder().decode(Test.self, from: jsonData)
-            print(test)
-        }
-        try? testDefaultCodable()
         return true
     }
 

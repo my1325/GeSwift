@@ -10,7 +10,7 @@ import UIKit
 
 public final class FoldTransitionLayout: UICollectionViewFlowLayout {
     
-    var scaleOffset: CGFloat = 0
+    var scaleOffset: CGFloat = 100
     var minScale: CGFloat = 0.8
     var maxScale: CGFloat = 1
     var minAlpha: CGFloat = 0.75
@@ -64,20 +64,29 @@ public final class FoldTransitionLayout: UICollectionViewFlowLayout {
                     attribute.center.x = collectionView.bounds.midX - scaleOffset
                 }
                 
-                let scale = distance / scaleOffset * (maxScale - minScale)
+                if attribute.center.x > collectionView.bounds.midX + scaleOffset {
+                    attribute.center.x = collectionView.bounds.midX + scaleOffset
+                }
+                
+                let scale = abs(distance) / scaleOffset * (maxScale - minScale)
                 attribute.transform = CGAffineTransform(scaleX: maxScale - scale, y: maxScale - scale)
                 
-                let alpha = distance / scaleOffset * (maxAlpha - minAlpha)
+                let alpha = abs(distance) / scaleOffset * (maxAlpha - minAlpha)
                 attribute.alpha = maxAlpha - alpha
             } else if index == offsetIndex + 1 {
                 
                 attribute.center.x -= distance
                 
-                let scale = (scaleOffset - distance) / scaleOffset * (maxScale - minScale)
-                attribute.transform = CGAffineTransform(scaleX: maxScale - scale, y: maxScale - scale)
+                if attribute.center.x > collectionView.bounds.midX + scaleOffset {
+                    attribute.center.x = collectionView.bounds.midX + scaleOffset
+                }
+
+                let scale = abs(scaleOffset - distance) / scaleOffset * (maxScale - minScale)
+                let rScale = min(maxScale, max(minScale, maxScale - scale))
+                attribute.transform = CGAffineTransform(scaleX: rScale, y: rScale)
                 
-                let alpha = (scaleOffset - distance) / scaleOffset * (maxAlpha - minAlpha)
-                attribute.alpha = maxAlpha - alpha
+                let alpha = abs(scaleOffset - distance) / scaleOffset * (maxAlpha - minAlpha)
+                attribute.alpha = min(maxAlpha, max(minAlpha, maxAlpha - alpha))
             } else {
                 attribute.center = CGPoint(x: collectionView.bounds.midX + scaleOffset, y: collectionView.bounds.midY)
                 attribute.transform = CGAffineTransform(scaleX: minScale, y: minScale)
@@ -97,6 +106,23 @@ public final class FoldTransitionLayout: UICollectionViewFlowLayout {
     }
     
     public override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+        return linearContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
+    }
+    
+//    private func pagingEnableContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+//        guard let collectionView = collectionView else { return .zero }
+//        var contentOffset = collectionView.contentOffset
+//        let currentIndex = Int(contentOffset.x / scaleOffset)
+//        let ramainder = contentOffset.x.truncatingRemainder(dividingBy: scaleOffset)
+//        if velocity.x > 0 {
+//            contentOffset.x = (currentIndex + 1) < attributes.count ? CGFloat(currentIndex + 1) * scaleOffset : CGFloat(currentIndex) * scaleOffset
+//        } else {
+//            contentOffset.x = (currentIndex - 1) > 0 ? CGFloat(currentIndex - 1) * scaleOffset : CGFloat(currentIndex) * scaleOffset
+//        }
+//        return contentOffset
+//    }
+    
+    private func linearContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         var contentOffset = proposedContentOffset
         let divideValue = Int(contentOffset.x / scaleOffset)
         let ramainder = contentOffset.x.truncatingRemainder(dividingBy: scaleOffset)

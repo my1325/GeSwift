@@ -8,15 +8,14 @@
 
 import UIKit
 
-open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewDataSource{
-    
-    typealias ConfigureCell = (TableViewDataSource, UITableView, IndexPath, Section.I) -> UITableViewCell
-    typealias CanEditRow = (TableViewDataSource, UITableView, IndexPath, Section.I) -> Bool
-    typealias CanMoveRow = (TableViewDataSource, UITableView, IndexPath, Section.I) -> Bool
-    typealias MoveRow = (TableViewDataSource, UITableView, IndexPath, IndexPath) -> Void
-    typealias EditingStyleForRow = (TableViewDataSource, UITableView, UITableViewCell.EditingStyle, IndexPath) -> Void
-    typealias TitleForHeader = (UITableViewDataSource, UITableView, Int, Section.S) -> String?
-    typealias TitleForFooter = (UITableViewDataSource, UITableView, Int, Section.S) -> String?
+open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewDataSource {
+    public typealias ConfigureCell = (TableViewDataSource, UITableView, IndexPath, Section.I) -> UITableViewCell
+    public typealias CanEditRow = (TableViewDataSource, UITableView, IndexPath, Section.I) -> Bool
+    public typealias CanMoveRow = (TableViewDataSource, UITableView, IndexPath, Section.I) -> Bool
+    public typealias MoveRow = (TableViewDataSource, UITableView, IndexPath, IndexPath) -> Void
+    public typealias EditingStyleForRow = (TableViewDataSource, UITableView, UITableViewCell.EditingStyle, IndexPath) -> Void
+    public typealias TitleForHeader = (UITableViewDataSource, UITableView, Int, Section.S) -> String?
+    public typealias TitleForFooter = (UITableViewDataSource, UITableView, Int, Section.S) -> String?
 
     var dataSource: [Section]
     let sectionIndexTitles: [String]?
@@ -28,16 +27,16 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
     let titleForHeader: TitleForHeader
     let titleForFooter: TitleForFooter
     
-    init(sectionIndexTitles: [String]? = nil,
-        dataSource: [Section] = [],
-        configureCell: @escaping ConfigureCell,
-        canEditRow: @escaping CanEditRow = { _, _, _, _ in true },
-        canMoveRow: @escaping CanMoveRow = { _, _, _, _ in false },
-        moveRow: @escaping MoveRow = { _, _, _, _ in },
-        editingStyleForRow: @escaping EditingStyleForRow = { _, _, _, _ in },
-        titleForHeader: @escaping TitleForHeader = { _, _, _, _ in nil },
-        titleForFooter: @escaping TitleForFooter = { _, _, _, _ in nil }) {
-        
+    public init(sectionIndexTitles: [String]? = nil,
+         dataSource: [Section] = [],
+         configureCell: @escaping ConfigureCell,
+         canEditRow: @escaping CanEditRow = { _, _, _, _ in true },
+         canMoveRow: @escaping CanMoveRow = { _, _, _, _ in false },
+         moveRow: @escaping MoveRow = { _, _, _, _ in },
+         editingStyleForRow: @escaping EditingStyleForRow = { _, _, _, _ in },
+         titleForHeader: @escaping TitleForHeader = { _, _, _, _ in nil },
+         titleForFooter: @escaping TitleForFooter = { _, _, _, _ in nil })
+    {
         self.sectionIndexTitles = sectionIndexTitles
         self.dataSource = dataSource
         self.configureCell = configureCell
@@ -64,7 +63,7 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return configureCell(self, tableView, indexPath, dataSource[indexPath])
+        return configureCell(self, tableView, indexPath, dataSource[indexPath.section].items[indexPath.row])
     }
 
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -75,14 +74,12 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
         return titleForFooter(self, tableView, section, dataSource[section].section)
     }
 
-    
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return canEditRow(self, tableView, indexPath, dataSource[indexPath])
+        return canEditRow(self, tableView, indexPath, dataSource[indexPath.section].items[indexPath.row])
     }
 
-    
     public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return canMoveRow(self, tableView, indexPath, dataSource[indexPath])
+        return canMoveRow(self, tableView, indexPath, dataSource[indexPath.section].items[indexPath.row])
     }
     
     public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -99,12 +96,11 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
 }
 
 extension TableViewDataSource {
-    
     open subscript(section: Int) -> Section {
         return dataSource[section]
     }
     
     open subscript(indexPath: IndexPath) -> Section.I {
-        return dataSource[indexPath]
+        return dataSource[indexPath.section].items[indexPath.row]
     }
 }

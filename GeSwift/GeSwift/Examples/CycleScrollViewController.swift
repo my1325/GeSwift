@@ -26,7 +26,7 @@ internal final class CycleScrollViewController: BaseViewController {
         $0.dataSource = self
         $0.pageControl = CircleScalePageControl()
         $0.isHidePageControlWhenSinglePage = true
-        $0.scrollDirection = .horizontal
+        $0.scrollDirection = .vertical
         $0.scrollTimeInterval = 5
         self.view.addSubview($0)
         return $0

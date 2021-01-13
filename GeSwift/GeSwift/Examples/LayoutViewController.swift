@@ -28,14 +28,14 @@ internal final class LayoutViewController: BaseViewController {
     @IBOutlet weak var simpleScaleLayout: FoldTransitionLayout! {
         didSet {
             self.simpleScaleLayout.itemSize = CGSize(width: 200, height: (iphone_height - navigationBar_height - 60) / 2 - 60)
-            self.simpleScaleLayout.scaleOffset = 100
+            self.simpleScaleLayout.scaleOffset = 50
         }
     }
     
     @IBOutlet weak var circularRotatedLayout: CircularRotatedCollectionViewLayout! {
         didSet {
             self.circularRotatedLayout.sectionInset = UIEdgeInsets(top: 30, left: 16, bottom: 30, right: 16)
-            self.circularRotatedLayout.itemSize = CGSize(width: iphone_width - 60, height: (iphone_height - navigationBar_height - 60) / 2 - 60)
+            self.circularRotatedLayout.itemSize = CGSize(width: 200, height: (iphone_height - navigationBar_height - 60) / 2 - 60)
 //            self.circularRotatedLayout.offsetAngle = CGFloat(Double.pi / 5)
         }
     }
