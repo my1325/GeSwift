@@ -47,6 +47,10 @@ internal final class CycleScrollViewController: BaseViewController {
         self.cycleScrollView.reloadData()
         self.verticleCycleScrollView.reloadData()
     }
+    
+    deinit {
+        print("----------------\(self) deinit ------------------")
+    }
 }
 
 extension CycleScrollViewController: CycleScrollViewDelegate, CycleScrollViewDataSource {

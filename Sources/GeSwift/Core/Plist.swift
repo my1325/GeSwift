@@ -9,7 +9,6 @@
 import Foundation
 
 public final class Plist {
-
     public private(set) var path: Path
 
     public typealias Path = String
@@ -18,7 +17,7 @@ public final class Plist {
         self.path = path
     }
 
-    public static let `default`: Plist = Plist(path: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!.appending("/default.plist"))
+    public static let `default` = Plist(path: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!.appending("/default.plist"))
 
     public typealias Key = String
 
@@ -40,7 +39,7 @@ public final class Plist {
     }
 
     public func synchronize() {
-        (plistCache as NSDictionary).write(toFile: self.path, atomically: true)
+        (self.plistCache as NSDictionary).write(toFile: self.path, atomically: true)
     }
 
     public private(set) lazy var plistCache: [String: Any] = {
@@ -58,12 +57,12 @@ public final class Plist {
                 try FileManager.default.createDirectory(atPath: pathDir, withIntermediateDirectories: true, attributes: nil)
             }
 
-            if FileManager.default.fileExists(atPath: self.path, isDirectory: &isDir) && !isDir.boolValue {
+            if FileManager.default.fileExists(atPath: self.path, isDirectory: &isDir), !isDir.boolValue {
                 /// file exists
                 return NSDictionary(contentsOfFile: self.path) as! [String: Any]
             }
             /// create file
-            let retValue: NSDictionary = NSDictionary()
+            let retValue = NSDictionary()
             retValue.write(toFile: self.path, atomically: true)
             return retValue as! [String: Any]
         } catch {

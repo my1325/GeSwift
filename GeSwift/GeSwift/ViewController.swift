@@ -143,6 +143,6 @@ internal final class ViewController: BaseViewController {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.navigationController?.pushViewController(self.viewControllers[indexPath.row].controller, animated: true)
+        self.navigationController?.pushViewController(CycleScrollViewController(), animated: true)
     }
 }
