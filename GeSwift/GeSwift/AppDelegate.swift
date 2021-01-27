@@ -34,11 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = UINavigationController(rootViewController: WrapViewController(ViewController()))
         self.window?.makeKeyAndVisible()
-        
-        Logger.normal.log("哈哈哈哈哈哈哈哈哈")
-        Logger.warning.log("哈哈哈哈哈哈哈哈哈")
-        Logger.error.log("哈哈哈哈哈哈哈哈哈")
-
         return true
     }
 

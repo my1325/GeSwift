@@ -95,7 +95,8 @@ internal final class ViewController: BaseViewController {
                                              ViewController(name: "ScanViewController", controller: ScanViewController()),
                                              ViewController(name: "CycleScrollViewController", controller: CycleScrollViewController()),
                                              ViewController(name: "LayoutViewController", controller: LayoutViewController()),
-                                             ViewController(name: "CircularLayoutLayoutController", controller: CircularLayoutLayoutController())]
+                                             ViewController(name: "CircularLayoutLayoutController", controller: CircularLayoutLayoutController()),
+                                             ViewController(name: "InputFieldViewController", controller: InputFieldViewController())]
 //                                     ViewController(name: "IJKPlayerViewController", controller: IJKPlayerViewController())]
     let dataSource = TableViewDataSource<SectionModel<String, ViewController>>(configureCell: { _, tableView, indexPath, controller in
         var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
@@ -127,11 +128,7 @@ internal final class ViewController: BaseViewController {
 //        })
         
         self.driver.map({ [SectionModel(section: "", items: $0)] }).bind(to: self.tableView.ge.dataSource(dataSource))
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            print("DispatchQueue.main.asyncAfter")
-            self.driver.accept(self.viewControllers)
-        }
+        self.driver.accept(self.viewControllers)
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,6 +140,6 @@ internal final class ViewController: BaseViewController {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.navigationController?.pushViewController(CycleScrollViewController(), animated: true)
+        self.navigationController?.pushViewController(viewControllers[indexPath.item].controller, animated: true)
     }
 }

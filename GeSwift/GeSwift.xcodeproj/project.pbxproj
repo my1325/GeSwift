@@ -14,6 +14,10 @@
 		0F0B55D8259AFDEA005E4207 /* FoldTransitionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0B55D7259AFDE9005E4207 /* FoldTransitionLayout.swift */; };
 		0F20E89224FD500F00EB3C13 /* Pods_GeSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */; };
 		0F2D8E5125A592A700617FB7 /* WrapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D8E5025A592A700617FB7 /* WrapNavigationController.swift */; };
+		0F39236E25BFF1ED00CCDF5A /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39236D25BFF1ED00CCDF5A /* InputView.swift */; };
+		0F39237425BFF9C600CCDF5A /* InputViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39237325BFF9C600CCDF5A /* InputViewCell.swift */; };
+		0F39237825C002CD00CCDF5A /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39237725C002CD00CCDF5A /* Cursor.swift */; };
+		0F39237C25C010A200CCDF5A /* InpuFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39237B25C010A200CCDF5A /* InpuFieldViewController.swift */; };
 		0F3974032466A86D007445FE /* Array+PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974022466A86D007445FE /* Array+PriorityQueue.swift */; };
 		0F3974062466ABBE007445FE /* TestPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974052466ABBE007445FE /* TestPriorityQueue.swift */; };
 		0F3974082466BF79007445FE /* TestTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974072466BF79007445FE /* TestTrie.swift */; };
@@ -110,6 +114,10 @@
 		00B776C3245AC579002D4239 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		0F0B55D7259AFDE9005E4207 /* FoldTransitionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldTransitionLayout.swift; sourceTree = "<group>"; };
 		0F2D8E5025A592A700617FB7 /* WrapNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapNavigationController.swift; sourceTree = "<group>"; };
+		0F39236D25BFF1ED00CCDF5A /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		0F39237325BFF9C600CCDF5A /* InputViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewCell.swift; sourceTree = "<group>"; };
+		0F39237725C002CD00CCDF5A /* Cursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cursor.swift; sourceTree = "<group>"; };
+		0F39237B25C010A200CCDF5A /* InpuFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InpuFieldViewController.swift; sourceTree = "<group>"; };
 		0F3974022466A86D007445FE /* Array+PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+PriorityQueue.swift"; sourceTree = "<group>"; };
 		0F3974052466ABBE007445FE /* TestPriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPriorityQueue.swift; sourceTree = "<group>"; };
 		0F3974072466BF79007445FE /* TestTrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTrie.swift; sourceTree = "<group>"; };
@@ -261,6 +269,16 @@
 			path = PriorityQueue;
 			sourceTree = "<group>";
 		};
+		0F39236C25BFF1D000CCDF5A /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				0F39236D25BFF1ED00CCDF5A /* InputView.swift */,
+				0F39237325BFF9C600CCDF5A /* InputViewCell.swift */,
+				0F39237725C002CD00CCDF5A /* Cursor.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
 		0F3974042466AB9B007445FE /* TestFoundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +330,7 @@
 				4A8726EC2398E1CF0002CAC1 /* LayoutViewController.swift */,
 				4A8726ED2398E1CF0002CAC1 /* LayoutViewController.xib */,
 				4A8726F02398E7FA0002CAC1 /* CircularLayoutLayoutController.swift */,
+				0F39237B25C010A200CCDF5A /* InpuFieldViewController.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -500,6 +519,7 @@
 		5E4E7624219D646A0012F6A8 /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				0F39236C25BFF1D000CCDF5A /* Input */,
 				4A8726D62398D5350002CAC1 /* CollectionVIewLayout */,
 				4AFCFF3F2329F5EB00EDD09A /* ScanView */,
 				4AFCFF3C2329F5D800EDD09A /* CycleScrollView */,
@@ -734,8 +754,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F39237825C002CD00CCDF5A /* Cursor.swift in Sources */,
 				4AC9AA75239A6CC100E6678B /* Plist.swift in Sources */,
 				4AC9AA66239A6CC100E6678B /* UILabel+Ge.swift in Sources */,
+				0F39237C25C010A200CCDF5A /* InpuFieldViewController.swift in Sources */,
 				0F5D1CD325AEBE6800E533EB /* UICollectionView+DataSource.swift in Sources */,
 				4A8726F42398EB7C0002CAC1 /* CircleScalePageControl.swift in Sources */,
 				4AC9AA6C239A6CC100E6678B /* String+Ge.swift in Sources */,
@@ -749,6 +771,7 @@
 				4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */,
 				4A8726EB2398DF540002CAC1 /* SimpleScaleCollectionViewLayout.swift in Sources */,
 				006EE7CD246A6864006EBBF0 /* ArraySort+Ge.swift in Sources */,
+				0F39236E25BFF1ED00CCDF5A /* InputView.swift in Sources */,
 				4AC9AA5E239A6CC100E6678B /* DefaultCodable.swift in Sources */,
 				4AC9AA72239A6CC100E6678B /* PlistProperty.swift in Sources */,
 				00B776C1245AC4BF002D4239 /* Function.swift in Sources */,
@@ -758,6 +781,7 @@
 				4A8726E72398D7CB0002CAC1 /* CircularCollectionViewLayout.swift in Sources */,
 				4AC9AA6F239A6CC100E6678B /* UserDefaults+Ge.swift in Sources */,
 				4A8726E52398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift in Sources */,
+				0F39237425BFF9C600CCDF5A /* InputViewCell.swift in Sources */,
 				4AC9AA6E239A6CC100E6678B /* Notification+Ge.swift in Sources */,
 				4AFCFF3E2329F5D800EDD09A /* CycleScrollView.swift in Sources */,
 				0F2D8E5125A592A700617FB7 /* WrapNavigationController.swift in Sources */,
