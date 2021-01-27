@@ -64,7 +64,7 @@ internal final class InputFieldViewController: BaseViewController {
         $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         $0.isSecureTextEntry = true
         $0.style = InputFieldStyleBox()
-        $0.backgroundColor = UIColor.red
+//        $0.backgroundColor = UIColor.red
         self.stackView.addArrangedSubview($0)
         return $0
     }(InputField())

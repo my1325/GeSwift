@@ -229,9 +229,20 @@ extension InputField: UITextFieldDelegate {
             text = _limitText
             return
         }
+        
+        let _originTextCount = text?.count ?? 0
         text = _limitText
-        _collectionView.reloadData()
+        if _limitText.count > _originTextCount, _limitText.count < limitCount {
+                _collectionView.reloadItems(at: [IndexPath(item: _limitText.count, section: 0), IndexPath(item: _limitText.count - 1, section: 0)])
+        } else if _limitText.count > _originTextCount && _limitText.count == limitCount {
+            _collectionView.reloadItems(at: [IndexPath(item: _limitText.count - 1, section: 0)])
+        } else if _limitText.count <= _originTextCount && _limitText.count == limitCount - 1 {
+            _collectionView.reloadItems(at: [IndexPath(item: _limitText.count, section: 0)])
+        } else {
+            _collectionView.reloadItems(at: [IndexPath(item: _limitText.count + 1, section: 0), IndexPath(item: _limitText.count, section: 0)])
+        }
         _collectionView.layoutIfNeeded()
+
         if _limitText.count < limitCount || !invokeDelegateWhenTextArrivedLimitCount {
             delegate?.inputField(self, textDidChange: _limitText)
             if _limitText.count == limitCount {
