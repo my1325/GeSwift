@@ -33,7 +33,7 @@ extension DefaultValueCodable: Equatable where D.RawValue: Equatable { }
 extension DefaultValueCodable: Hashable where D.RawValue: Hashable { }
 
 /// 类型转换
-public protocol DefableTransformerCodableValue: DefaultCodableValue {
+public protocol DefaultTransformerCodableValue: DefaultCodableValue {
     associatedtype R: Codable
     static var transformer: (R) -> RawValue { get }
 }
