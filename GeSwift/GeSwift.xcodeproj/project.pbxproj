@@ -30,6 +30,10 @@
 		0F5D1CD325AEBE6800E533EB /* UICollectionView+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1CD225AEBE6800E533EB /* UICollectionView+DataSource.swift */; };
 		0F704A0E25ADA4E7003DD893 /* DataSourceDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F704A0D25ADA4E7003DD893 /* DataSourceDriver.swift */; };
 		0F704A1225ADA8BB003DD893 /* DataSourceDriver+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F704A1125ADA8BB003DD893 /* DataSourceDriver+Map.swift */; };
+		0FE1817425DFA72B0091088A /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1817325DFA72B0091088A /* UIViewController+Rx.swift */; };
+		0FE1817825DFA8E50091088A /* UITextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1817725DFA8E50091088A /* UITextField+Rx.swift */; };
+		0FE1817E25DFA9800091088A /* UIButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1817D25DFA9800091088A /* UIButton+Rx.swift */; };
+		0FE1819225DFAD540091088A /* UITextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1819125DFAD540091088A /* UITextView+Rx.swift */; };
 		4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */; };
 		4A1B1C732328D0E100DE7FBF /* FadeHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */; };
 		4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA94233B50F900B8E10D /* HorizontalView.swift */; };
@@ -131,6 +135,10 @@
 		0F704A0D25ADA4E7003DD893 /* DataSourceDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceDriver.swift; sourceTree = "<group>"; };
 		0F704A1125ADA8BB003DD893 /* DataSourceDriver+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSourceDriver+Map.swift"; sourceTree = "<group>"; };
 		0F75E40525678F2D00099FD5 /* GeSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		0FE1817325DFA72B0091088A /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		0FE1817725DFA8E50091088A /* UITextField+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Rx.swift"; sourceTree = "<group>"; };
+		0FE1817D25DFA9800091088A /* UIButton+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Rx.swift"; sourceTree = "<group>"; };
+		0FE1819125DFAD540091088A /* UITextView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Rx.swift"; sourceTree = "<group>"; };
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
 		4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalViewController.swift; sourceTree = "<group>"; };
 		4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeHorizontalView.swift; sourceTree = "<group>"; };
@@ -320,6 +328,17 @@
 			path = SystemExtension;
 			sourceTree = "<group>";
 		};
+		0FE1816625DFA4A20091088A /* RxSwift+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0FE1817325DFA72B0091088A /* UIViewController+Rx.swift */,
+				0FE1817725DFA8E50091088A /* UITextField+Rx.swift */,
+				0FE1817D25DFA9800091088A /* UIButton+Rx.swift */,
+				0FE1819125DFAD540091088A /* UITextView+Rx.swift */,
+			);
+			path = "RxSwift+Extensions";
+			sourceTree = "<group>";
+		};
 		4A1B1C6323288D0400DE7FBF /* Examples */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +514,7 @@
 		5E2FC39020DA5F59007FEF3E /* Ge */ = {
 			isa = PBXGroup;
 			children = (
+				0FE1816625DFA4A20091088A /* RxSwift+Extensions */,
 				0F46AA9925BE65D2002C4483 /* Logger */,
 				4AC9AA41239A6CC100E6678B /* Codable */,
 				4AC9AA56239A6CC100E6678B /* Core */,
@@ -778,6 +798,7 @@
 				4AC9AA64239A6CC100E6678B /* UITableView+Ge.swift in Sources */,
 				4AC9AA73239A6CC100E6678B /* UIResponder.swift in Sources */,
 				4AC9AA6D239A6CC100E6678B /* Date+Ge.swift in Sources */,
+				0FE1817425DFA72B0091088A /* UIViewController+Rx.swift in Sources */,
 				4A8726E72398D7CB0002CAC1 /* CircularCollectionViewLayout.swift in Sources */,
 				4AC9AA6F239A6CC100E6678B /* UserDefaults+Ge.swift in Sources */,
 				4A8726E52398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift in Sources */,
@@ -792,16 +813,19 @@
 				0F46AA9D25BE662D002C4483 /* Logger.swift in Sources */,
 				4AFCFF412329F5EB00EDD09A /* ScanView.swift in Sources */,
 				4A8726F52398EB7C0002CAC1 /* SizeFitPageControl.swift in Sources */,
+				0FE1817825DFA8E50091088A /* UITextField+Rx.swift in Sources */,
 				4AC9AA69239A6CC100E6678B /* UIScrollView+Ge.swift in Sources */,
 				5E2FC37F20DA59A6007FEF3E /* ViewController.swift in Sources */,
 				4A8726EE2398E1CF0002CAC1 /* LayoutViewController.swift in Sources */,
 				4AC9AA71239A6CC100E6678B /* GeSwift.swift in Sources */,
 				5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */,
+				0FE1817E25DFA9800091088A /* UIButton+Rx.swift in Sources */,
 				0F704A0E25ADA4E7003DD893 /* DataSourceDriver.swift in Sources */,
 				4AFCFF372329F14D00EDD09A /* ScanViewController.swift in Sources */,
 				4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */,
 				4AC9AA63239A6CC100E6678B /* UIColor+Ge.swift in Sources */,
 				4A8726E92398D9090002CAC1 /* CircularRotatedCollectionViewLayout.swift in Sources */,
+				0FE1819225DFAD540091088A /* UITextView+Rx.swift in Sources */,
 				0F5D1200248B913500761461 /* TableViewDataSource.swift in Sources */,
 				4AC9AA65239A6CC100E6678B /* UIWindow+Ge.swift in Sources */,
 				4AC9AA68239A6CC100E6678B /* UIAlertViewController+Ge.swift in Sources */,

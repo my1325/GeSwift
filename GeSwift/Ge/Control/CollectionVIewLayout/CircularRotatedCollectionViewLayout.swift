@@ -10,8 +10,7 @@ import UIKit
 
 /// 滚动旋转风车
 internal final class CircularRotatedCollectionViewLayout: UICollectionViewFlowLayout {
-    
-    var offsetAngle: CGFloat = CGFloat(Double.pi / 4)
+    var offsetAngle = CGFloat(Double.pi / 4)
     
     var attributes: [UICollectionViewLayoutAttributes] = []
     var contentWidth: CGFloat {
@@ -76,6 +75,6 @@ internal final class CircularRotatedCollectionViewLayout: UICollectionViewFlowLa
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return true 
+        return true
     }
 }

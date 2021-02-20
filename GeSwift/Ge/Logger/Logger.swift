@@ -12,30 +12,29 @@ public enum Logger {
     case normal
     case warning
     case error
+    case success
     
     public var prefix: String {
         switch self {
         case .normal:
             return "😀😀😀"
         case .error:
-            return "😱😱😱"
+            return "❌❌❌"
         case .warning:
-            return "😨😨😨"
+            return "⚠️⚠️⚠️"
+        case .success:
+            return "✔️✔️✔️"
         }
     }
     
     public var postfix: String {
-        switch self {
-        case .normal:
-            return "😁😁😁"
-        case .error:
-            return "😭😭😭"
-        case .warning:
-            return "😰😰😰"
-        }
+        return ""
     }
     
-    public func log(_ string: String) {
-        print("\(self.prefix)\(string)\(self.postfix)")
+    public func log(_ string: String,
+                    file: NSString = #file,
+                    function: String = #function,
+                    line: Int = #line) {
+        print("\(prefix) >> \(file.lastPathComponent) >> \(function) >> \(line) >> \(string) >> \(postfix)")
     }
 }

@@ -12,6 +12,9 @@ target 'GeSwift' do
   pod 'CryptoSwift'
   pod 'SnapKit'
   pod 'Schedule'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  
 #  pod 'SwiftyJSON'
 
 #  pod 'IJKMediaFramework', :path => 'IJKMediaFramework/'

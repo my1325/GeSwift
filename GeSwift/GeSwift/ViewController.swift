@@ -142,4 +142,8 @@ extension ViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(viewControllers[indexPath.item].controller, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.ge.height(forIndexPath: indexPath)
+    }
 }
