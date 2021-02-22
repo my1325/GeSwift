@@ -13,6 +13,9 @@
 		00B776C4245AC579002D4239 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C3245AC579002D4239 /* PriorityQueue.swift */; };
 		0F0B55D8259AFDEA005E4207 /* FoldTransitionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0B55D7259AFDE9005E4207 /* FoldTransitionLayout.swift */; };
 		0F20E89224FD500F00EB3C13 /* Pods_GeSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */; };
+		0F245E7D25E3A73C007146A0 /* UnionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F245E7C25E3A73C007146A0 /* UnionSet.swift */; };
+		0F245E8325E3A840007146A0 /* UnionSet_QF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F245E8225E3A840007146A0 /* UnionSet_QF.swift */; };
+		0F245E8725E3AB27007146A0 /* UnionSet_QU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F245E8625E3AB27007146A0 /* UnionSet_QU.swift */; };
 		0F2D8E5125A592A700617FB7 /* WrapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D8E5025A592A700617FB7 /* WrapNavigationController.swift */; };
 		0F39236E25BFF1ED00CCDF5A /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39236D25BFF1ED00CCDF5A /* InputView.swift */; };
 		0F39237425BFF9C600CCDF5A /* InputViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39237325BFF9C600CCDF5A /* InputViewCell.swift */; };
@@ -117,6 +120,9 @@
 		00B776C0245AC4BF002D4239 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		00B776C3245AC579002D4239 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		0F0B55D7259AFDE9005E4207 /* FoldTransitionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldTransitionLayout.swift; sourceTree = "<group>"; };
+		0F245E7C25E3A73C007146A0 /* UnionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnionSet.swift; sourceTree = "<group>"; };
+		0F245E8225E3A840007146A0 /* UnionSet_QF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnionSet_QF.swift; sourceTree = "<group>"; };
+		0F245E8625E3AB27007146A0 /* UnionSet_QU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnionSet_QU.swift; sourceTree = "<group>"; };
 		0F2D8E5025A592A700617FB7 /* WrapNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapNavigationController.swift; sourceTree = "<group>"; };
 		0F39236D25BFF1ED00CCDF5A /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		0F39237325BFF9C600CCDF5A /* InputViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewCell.swift; sourceTree = "<group>"; };
@@ -277,6 +283,16 @@
 			path = PriorityQueue;
 			sourceTree = "<group>";
 		};
+		0F245E7925E3A6BB007146A0 /* UnionSet */ = {
+			isa = PBXGroup;
+			children = (
+				0F245E7C25E3A73C007146A0 /* UnionSet.swift */,
+				0F245E8225E3A840007146A0 /* UnionSet_QF.swift */,
+				0F245E8625E3AB27007146A0 /* UnionSet_QU.swift */,
+			);
+			path = UnionSet;
+			sourceTree = "<group>";
+		};
 		0F39236C25BFF1D000CCDF5A /* Input */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +434,7 @@
 		4AC9AA4F239A6CC100E6678B /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				0F245E7925E3A6BB007146A0 /* UnionSet */,
 				0FB3EFFF248941740000CDCF /* SystemExtension */,
 				005BFB8724615D970090D2C7 /* Trie */,
 				00B776C2245AC566002D4239 /* PriorityQueue */,
@@ -775,6 +792,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F39237825C002CD00CCDF5A /* Cursor.swift in Sources */,
+				0F245E8725E3AB27007146A0 /* UnionSet_QU.swift in Sources */,
 				4AC9AA75239A6CC100E6678B /* Plist.swift in Sources */,
 				4AC9AA66239A6CC100E6678B /* UILabel+Ge.swift in Sources */,
 				0F39237C25C010A200CCDF5A /* InpuFieldViewController.swift in Sources */,
@@ -837,6 +855,7 @@
 				00B776C4245AC579002D4239 /* PriorityQueue.swift in Sources */,
 				4AC9AA67239A6CC100E6678B /* UIImage+Ge.swift in Sources */,
 				4AC9AA74239A6CC100E6678B /* Defaults.swift in Sources */,
+				0F245E8325E3A840007146A0 /* UnionSet_QF.swift in Sources */,
 				4AC9AA61239A6CC100E6678B /* UIView+Ge.swift in Sources */,
 				0F0B55D8259AFDEA005E4207 /* FoldTransitionLayout.swift in Sources */,
 				0F5D1CCD25AEBBEF00E533EB /* CollectionViewDataSource.swift in Sources */,
@@ -844,6 +863,7 @@
 				0F3974032466A86D007445FE /* Array+PriorityQueue.swift in Sources */,
 				4AC9AA62239A6CC100E6678B /* UIControl+Ge.swift in Sources */,
 				4AC9AA6A239A6CC100E6678B /* NSObject+Ge.swift in Sources */,
+				0F245E7D25E3A73C007146A0 /* UnionSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

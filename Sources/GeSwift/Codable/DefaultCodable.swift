@@ -39,7 +39,7 @@ public protocol DefaultTransformerCodableValue: DefaultCodableValue {
 }
 
 @propertyWrapper
-public struct DefaultValueTransformerCodable<D: DefableTransformerCodableValue>: Codable {
+public struct DefaultValueTransformerCodable<D: DefaultTransformerCodableValue>: Codable {
 
     public let wrappedValue: D.RawValue
 
