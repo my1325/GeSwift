@@ -16,14 +16,17 @@ public struct UnionSet_QU: UnionSetCompitable {
     var parents: [AncestorType] = []
     var ranks: [Int] = []
     
-    public init(_ ancestors: [AncestorType]) {
-        self.parents = ancestors
-        self.ranks = Array(repeating: 1, count: ancestors.count)
+    public init(_ capacity: Int) {
+        self.parents = Array(repeating: 1, count: capacity)
+        self.ranks = Array(repeating: 1, count: capacity)
+        for index in 0 ..< capacity {
+            self.parents[index] = index
+        }
     }
 
-    public mutating func findAncestor(_ value: ValueType) -> AncestorType {
+    public mutating func findAncestor(_ value: ValueType) -> AncestorType? {
         guard value >= 0 && value < parents.count else {
-            fatalError()
+            return nil
         }
         /// 一般实现
 //        var ancestor = parents[value]
@@ -57,11 +60,14 @@ public struct UnionSet_QU: UnionSetCompitable {
     public mutating func union(_ lhs: ValueType, _ rhs: ValueType) {
         guard lhs >= 0 && lhs < parents.count,
               rhs >= 0 && rhs < parents.count else {
-            fatalError()
+            return
         }
 
-        let ancestorLhs = findAncestor(lhs)
-        let ancestorRhs = findAncestor(rhs)
+        guard let ancestorLhs = findAncestor(lhs),
+              let ancestorRhs = findAncestor(rhs) else {
+            return
+        }
+        
         if ranks[lhs] < ranks[rhs] {
             parents[ancestorLhs] = ancestorRhs
         } else if ranks[rhs] < ranks[lhs] {

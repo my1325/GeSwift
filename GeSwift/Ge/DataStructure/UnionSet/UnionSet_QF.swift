@@ -15,11 +15,14 @@ public struct UnionSet_QF: UnionSetCompitable {
     
     var parents: [AncestorType] = []
     
-    public init(_ ancestors: [AncestorType]) {
-        self.parents = ancestors
+    public init(_ capacity: Int) {
+        self.parents = Array(repeating: 1, count: capacity)
+        for index in 0 ..< capacity {
+            self.parents[index] = index
+        }
     }
-    
-    public func findAncestor(_ value: ValueType) -> AncestorType {
+
+    public func findAncestor(_ value: ValueType) -> AncestorType? {
         guard value >= 0 && value < parents.count else {
             fatalError()
         }
@@ -34,10 +37,10 @@ public struct UnionSet_QF: UnionSetCompitable {
 
         let ancestorLhs = findAncestor(lhs)
         let ancestorRhs = findAncestor(rhs)
-        if ancestorLhs != ancestorRhs {
+        if let _ancestorLhs = ancestorLhs, let _ancestorRhs = ancestorRhs, _ancestorLhs != _ancestorRhs {
             for index in 0 ..< parents.count {
                 if ancestorLhs == parents[index] {
-                    parents[index] = ancestorRhs
+                    parents[index] = _ancestorRhs
                 }
             }
         }

@@ -24,6 +24,9 @@
 		0F3974032466A86D007445FE /* Array+PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974022466A86D007445FE /* Array+PriorityQueue.swift */; };
 		0F3974062466ABBE007445FE /* TestPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974052466ABBE007445FE /* TestPriorityQueue.swift */; };
 		0F3974082466BF79007445FE /* TestTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974072466BF79007445FE /* TestTrie.swift */; };
+		0F3A185D25E4A72100D9AC79 /* UnionSet_Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3A185C25E4A72100D9AC79 /* UnionSet_Enum.swift */; };
+		0F3A186125E4B19600D9AC79 /* TestUnion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3A186025E4B19600D9AC79 /* TestUnion.swift */; };
+		0F3A186925E4D0F000D9AC79 /* Array+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3A186825E4D0F000D9AC79 /* Array+Random.swift */; };
 		0F46AA9D25BE662D002C4483 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46AA9C25BE662D002C4483 /* Logger.swift */; };
 		0F5D1200248B913500761461 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D11FF248B913500761461 /* TableViewDataSource.swift */; };
 		0F5D1204248B940D00761461 /* SectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1203248B940D00761461 /* SectionProtocol.swift */; };
@@ -132,6 +135,9 @@
 		0F3974022466A86D007445FE /* Array+PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+PriorityQueue.swift"; sourceTree = "<group>"; };
 		0F3974052466ABBE007445FE /* TestPriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPriorityQueue.swift; sourceTree = "<group>"; };
 		0F3974072466BF79007445FE /* TestTrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTrie.swift; sourceTree = "<group>"; };
+		0F3A185C25E4A72100D9AC79 /* UnionSet_Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnionSet_Enum.swift; sourceTree = "<group>"; };
+		0F3A186025E4B19600D9AC79 /* TestUnion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUnion.swift; sourceTree = "<group>"; };
+		0F3A186825E4D0F000D9AC79 /* Array+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Random.swift"; sourceTree = "<group>"; };
 		0F46AA9C25BE662D002C4483 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		0F5D11FF248B913500761461 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		0F5D1203248B940D00761461 /* SectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionProtocol.swift; sourceTree = "<group>"; };
@@ -291,6 +297,7 @@
 				0F245E7C25E3A73C007146A0 /* UnionSet.swift */,
 				0F245E8225E3A840007146A0 /* UnionSet_QF.swift */,
 				0F245E8625E3AB27007146A0 /* UnionSet_QU.swift */,
+				0F3A185C25E4A72100D9AC79 /* UnionSet_Enum.swift */,
 			);
 			path = UnionSet;
 			sourceTree = "<group>";
@@ -310,6 +317,7 @@
 			children = (
 				0F3974052466ABBE007445FE /* TestPriorityQueue.swift */,
 				0F3974072466BF79007445FE /* TestTrie.swift */,
+				0F3A186025E4B19600D9AC79 /* TestUnion.swift */,
 			);
 			path = TestFoundation;
 			sourceTree = "<group>";
@@ -343,6 +351,7 @@
 				006EE7CC246A6864006EBBF0 /* ArraySort+Ge.swift */,
 				0F3974022466A86D007445FE /* Array+PriorityQueue.swift */,
 				0FFF541A25E48BBD001BDC6C /* Array+UnionSet.swift */,
+				0F3A186825E4D0F000D9AC79 /* Array+Random.swift */,
 			);
 			path = SystemExtension;
 			sourceTree = "<group>";
@@ -795,6 +804,7 @@
 				5E02E3BD228BB6BC002F8AF1 /* GeSwiftTests.swift in Sources */,
 				0F3974082466BF79007445FE /* TestTrie.swift in Sources */,
 				0F3974062466ABBE007445FE /* TestPriorityQueue.swift in Sources */,
+				0F3A186125E4B19600D9AC79 /* TestUnion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,6 +848,7 @@
 				0F2D8E5125A592A700617FB7 /* WrapNavigationController.swift in Sources */,
 				4AC9AA60239A6CC100E6678B /* UICollectionView+Ge.swift in Sources */,
 				0F5D1206248B989600761461 /* UITableView+DataSource.swift in Sources */,
+				0F3A186925E4D0F000D9AC79 /* Array+Random.swift in Sources */,
 				4AC9AA5F239A6CC100E6678B /* DefaultCodableWrapper.swift in Sources */,
 				005BFB8924615DAC0090D2C7 /* Trie.swift in Sources */,
 				0F46AA9D25BE662D002C4483 /* Logger.swift in Sources */,
@@ -875,6 +886,7 @@
 				0F3974032466A86D007445FE /* Array+PriorityQueue.swift in Sources */,
 				4AC9AA62239A6CC100E6678B /* UIControl+Ge.swift in Sources */,
 				4AC9AA6A239A6CC100E6678B /* NSObject+Ge.swift in Sources */,
+				0F3A185D25E4A72100D9AC79 /* UnionSet_Enum.swift in Sources */,
 				0F245E7D25E3A73C007146A0 /* UnionSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -929,7 +941,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeSwift.app/GeSwift";
-				VALID_ARCHS = "arm64 arm64e";
 			};
 			name = Debug;
 		};
@@ -960,7 +971,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeSwift.app/GeSwift";
-				VALID_ARCHS = "arm64 arm64e";
 			};
 			name = Release;
 		};
@@ -1088,7 +1098,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LS59MWP9WR;
+				DEVELOPMENT_TEAM = 3EQU965GX4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GeSwift/IJKPlayer",
@@ -1126,7 +1136,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LS59MWP9WR;
+				DEVELOPMENT_TEAM = 3EQU965GX4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GeSwift/IJKPlayer",

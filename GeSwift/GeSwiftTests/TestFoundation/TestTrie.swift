@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import GeSwift
+@testable import GeSwift 
 
 class TestTrie: XCTestCase {
 

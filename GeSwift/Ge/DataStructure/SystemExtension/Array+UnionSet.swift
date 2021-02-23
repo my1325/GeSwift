@@ -24,7 +24,7 @@ extension Array: UnionSetCompitable where Element == Int {
         }
     }
     
-    public func findAncestor(_ value: Int) -> Int {
+    public func findAncestor(_ value: Int) -> Int? {
         precondition(value < count && value >= 0)
         return self[value]
     }

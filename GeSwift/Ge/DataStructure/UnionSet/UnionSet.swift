@@ -11,10 +11,10 @@ public protocol UnionSetCompitable {
     associatedtype AncestorType
     associatedtype ValueType
     
-    mutating func findAncestor(_ value: ValueType) -> AncestorType
+    mutating func findAncestor(_ value: ValueType) -> AncestorType?
     
     mutating func union(_ lhs: ValueType, _ rhs: ValueType)
-    
+        
     mutating func isSameAncestor(_ lhs: ValueType, _ rhs: ValueType) -> Bool
 }
 
