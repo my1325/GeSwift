@@ -37,6 +37,7 @@
 		0FE1817825DFA8E50091088A /* UITextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1817725DFA8E50091088A /* UITextField+Rx.swift */; };
 		0FE1817E25DFA9800091088A /* UIButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1817D25DFA9800091088A /* UIButton+Rx.swift */; };
 		0FE1819225DFAD540091088A /* UITextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1819125DFAD540091088A /* UITextView+Rx.swift */; };
+		0FFF541B25E48BBD001BDC6C /* Array+UnionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF541A25E48BBD001BDC6C /* Array+UnionSet.swift */; };
 		4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */; };
 		4A1B1C732328D0E100DE7FBF /* FadeHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */; };
 		4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26FA94233B50F900B8E10D /* HorizontalView.swift */; };
@@ -145,6 +146,7 @@
 		0FE1817725DFA8E50091088A /* UITextField+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Rx.swift"; sourceTree = "<group>"; };
 		0FE1817D25DFA9800091088A /* UIButton+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Rx.swift"; sourceTree = "<group>"; };
 		0FE1819125DFAD540091088A /* UITextView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Rx.swift"; sourceTree = "<group>"; };
+		0FFF541A25E48BBD001BDC6C /* Array+UnionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+UnionSet.swift"; sourceTree = "<group>"; };
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
 		4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalViewController.swift; sourceTree = "<group>"; };
 		4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeHorizontalView.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 			children = (
 				006EE7CC246A6864006EBBF0 /* ArraySort+Ge.swift */,
 				0F3974022466A86D007445FE /* Array+PriorityQueue.swift */,
+				0FFF541A25E48BBD001BDC6C /* Array+UnionSet.swift */,
 			);
 			path = SystemExtension;
 			sourceTree = "<group>";
@@ -353,6 +356,17 @@
 				0FE1819125DFAD540091088A /* UITextView+Rx.swift */,
 			);
 			path = "RxSwift+Extensions";
+			sourceTree = "<group>";
+		};
+		0FFF541925E48B6A001BDC6C /* DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				0FB3EFFF248941740000CDCF /* SystemExtension */,
+				00B776C2245AC566002D4239 /* PriorityQueue */,
+				005BFB8724615D970090D2C7 /* Trie */,
+				0F245E7925E3A6BB007146A0 /* UnionSet */,
+			);
+			path = DataStructure;
 			sourceTree = "<group>";
 		};
 		4A1B1C6323288D0400DE7FBF /* Examples */ = {
@@ -434,10 +448,6 @@
 		4AC9AA4F239A6CC100E6678B /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				0F245E7925E3A6BB007146A0 /* UnionSet */,
-				0FB3EFFF248941740000CDCF /* SystemExtension */,
-				005BFB8724615D970090D2C7 /* Trie */,
-				00B776C2245AC566002D4239 /* PriorityQueue */,
 				4AC9AA50239A6CC100E6678B /* NSObject+Ge.swift */,
 				4AC9AA51239A6CC100E6678B /* Data+Ge.swift */,
 				4AC9AA52239A6CC100E6678B /* String+Ge.swift */,
@@ -531,6 +541,7 @@
 		5E2FC39020DA5F59007FEF3E /* Ge */ = {
 			isa = PBXGroup;
 			children = (
+				0FFF541925E48B6A001BDC6C /* DataStructure */,
 				0FE1816625DFA4A20091088A /* RxSwift+Extensions */,
 				0F46AA9925BE65D2002C4483 /* Logger */,
 				4AC9AA41239A6CC100E6678B /* Codable */,
@@ -799,6 +810,7 @@
 				0F5D1CD325AEBE6800E533EB /* UICollectionView+DataSource.swift in Sources */,
 				4A8726F42398EB7C0002CAC1 /* CircleScalePageControl.swift in Sources */,
 				4AC9AA6C239A6CC100E6678B /* String+Ge.swift in Sources */,
+				0FFF541B25E48BBD001BDC6C /* Array+UnionSet.swift in Sources */,
 				4A8726F12398E7FA0002CAC1 /* CircularLayoutLayoutController.swift in Sources */,
 				4A26FA9A233B594000B8E10D /* Protocols.swift in Sources */,
 				4AC9AA6B239A6CC100E6678B /* Data+Ge.swift in Sources */,

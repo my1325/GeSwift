@@ -10,6 +10,8 @@ import Foundation
 /// 并查集（快速查找实现，find: O(1), union: O(n)）
 
 public struct UnionSet_QF: UnionSetCompitable {
+    public typealias AncestorType = Int
+    public typealias ValueType = Int
     
     var parents: [AncestorType] = []
     
