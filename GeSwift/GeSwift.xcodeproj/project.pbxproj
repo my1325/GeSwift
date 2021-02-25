@@ -12,6 +12,9 @@
 		00B776C1245AC4BF002D4239 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C0245AC4BF002D4239 /* Function.swift */; };
 		00B776C4245AC579002D4239 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B776C3245AC579002D4239 /* PriorityQueue.swift */; };
 		0F0B55D8259AFDEA005E4207 /* FoldTransitionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0B55D7259AFDE9005E4207 /* FoldTransitionLayout.swift */; };
+		0F1FBBA925E5EBED0078D9EB /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1FBBA825E5EBED0078D9EB /* BinaryTree.swift */; };
+		0F1FBBAF25E5ECCA0078D9EB /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1FBBAE25E5ECCA0078D9EB /* BinarySearchTree.swift */; };
+		0F1FBBB525E629C00078D9EB /* TestTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1FBBB425E629C00078D9EB /* TestTree.swift */; };
 		0F20E89224FD500F00EB3C13 /* Pods_GeSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43667C1ED0CACF5FC847A95 /* Pods_GeSwift.framework */; };
 		0F245E7D25E3A73C007146A0 /* UnionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F245E7C25E3A73C007146A0 /* UnionSet.swift */; };
 		0F245E8325E3A840007146A0 /* UnionSet_QF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F245E8225E3A840007146A0 /* UnionSet_QF.swift */; };
@@ -28,6 +31,9 @@
 		0F3A186125E4B19600D9AC79 /* TestUnion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3A186025E4B19600D9AC79 /* TestUnion.swift */; };
 		0F3A186925E4D0F000D9AC79 /* Array+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3A186825E4D0F000D9AC79 /* Array+Random.swift */; };
 		0F46AA9D25BE662D002C4483 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46AA9C25BE662D002C4483 /* Logger.swift */; };
+		0F5B605825E7686B00041A41 /* RedBlackTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B605725E7686B00041A41 /* RedBlackTree.swift */; };
+		0F5B605C25E76A0900041A41 /* BalanceSearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B605B25E76A0900041A41 /* BalanceSearchTree.swift */; };
+		0F5B607325E7882900041A41 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B607225E7882900041A41 /* Optional+Extensions.swift */; };
 		0F5D1200248B913500761461 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D11FF248B913500761461 /* TableViewDataSource.swift */; };
 		0F5D1204248B940D00761461 /* SectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1203248B940D00761461 /* SectionProtocol.swift */; };
 		0F5D1206248B989600761461 /* UITableView+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1205248B989600761461 /* UITableView+DataSource.swift */; };
@@ -124,6 +130,9 @@
 		00B776C0245AC4BF002D4239 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		00B776C3245AC579002D4239 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		0F0B55D7259AFDE9005E4207 /* FoldTransitionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldTransitionLayout.swift; sourceTree = "<group>"; };
+		0F1FBBA825E5EBED0078D9EB /* BinaryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
+		0F1FBBAE25E5ECCA0078D9EB /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
+		0F1FBBB425E629C00078D9EB /* TestTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTree.swift; sourceTree = "<group>"; };
 		0F245E7C25E3A73C007146A0 /* UnionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnionSet.swift; sourceTree = "<group>"; };
 		0F245E8225E3A840007146A0 /* UnionSet_QF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnionSet_QF.swift; sourceTree = "<group>"; };
 		0F245E8625E3AB27007146A0 /* UnionSet_QU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnionSet_QU.swift; sourceTree = "<group>"; };
@@ -139,6 +148,9 @@
 		0F3A186025E4B19600D9AC79 /* TestUnion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUnion.swift; sourceTree = "<group>"; };
 		0F3A186825E4D0F000D9AC79 /* Array+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Random.swift"; sourceTree = "<group>"; };
 		0F46AA9C25BE662D002C4483 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		0F5B605725E7686B00041A41 /* RedBlackTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedBlackTree.swift; sourceTree = "<group>"; };
+		0F5B605B25E76A0900041A41 /* BalanceSearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceSearchTree.swift; sourceTree = "<group>"; };
+		0F5B607225E7882900041A41 /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		0F5D11FF248B913500761461 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		0F5D1203248B940D00761461 /* SectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionProtocol.swift; sourceTree = "<group>"; };
 		0F5D1205248B989600761461 /* UITableView+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+DataSource.swift"; sourceTree = "<group>"; };
@@ -291,6 +303,17 @@
 			path = PriorityQueue;
 			sourceTree = "<group>";
 		};
+		0F1FBBA725E5EBDF0078D9EB /* BinaryTree */ = {
+			isa = PBXGroup;
+			children = (
+				0F1FBBA825E5EBED0078D9EB /* BinaryTree.swift */,
+				0F1FBBAE25E5ECCA0078D9EB /* BinarySearchTree.swift */,
+				0F5B605B25E76A0900041A41 /* BalanceSearchTree.swift */,
+				0F5B605725E7686B00041A41 /* RedBlackTree.swift */,
+			);
+			path = BinaryTree;
+			sourceTree = "<group>";
+		};
 		0F245E7925E3A6BB007146A0 /* UnionSet */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +341,7 @@
 				0F3974052466ABBE007445FE /* TestPriorityQueue.swift */,
 				0F3974072466BF79007445FE /* TestTrie.swift */,
 				0F3A186025E4B19600D9AC79 /* TestUnion.swift */,
+				0F1FBBB425E629C00078D9EB /* TestTree.swift */,
 			);
 			path = TestFoundation;
 			sourceTree = "<group>";
@@ -328,6 +352,14 @@
 				0F46AA9C25BE662D002C4483 /* Logger.swift */,
 			);
 			path = Logger;
+			sourceTree = "<group>";
+		};
+		0F5B606F25E7881600041A41 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0F5B607225E7882900041A41 /* Optional+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		0F5D11FE248B912000761461 /* DataSource */ = {
@@ -370,6 +402,7 @@
 		0FFF541925E48B6A001BDC6C /* DataStructure */ = {
 			isa = PBXGroup;
 			children = (
+				0F1FBBA725E5EBDF0078D9EB /* BinaryTree */,
 				0FB3EFFF248941740000CDCF /* SystemExtension */,
 				00B776C2245AC566002D4239 /* PriorityQueue */,
 				005BFB8724615D970090D2C7 /* Trie */,
@@ -550,6 +583,7 @@
 		5E2FC39020DA5F59007FEF3E /* Ge */ = {
 			isa = PBXGroup;
 			children = (
+				0F5B606F25E7881600041A41 /* Extensions */,
 				0FFF541925E48B6A001BDC6C /* DataStructure */,
 				0FE1816625DFA4A20091088A /* RxSwift+Extensions */,
 				0F46AA9925BE65D2002C4483 /* Logger */,
@@ -804,6 +838,7 @@
 				5E02E3BD228BB6BC002F8AF1 /* GeSwiftTests.swift in Sources */,
 				0F3974082466BF79007445FE /* TestTrie.swift in Sources */,
 				0F3974062466ABBE007445FE /* TestPriorityQueue.swift in Sources */,
+				0F1FBBB525E629C00078D9EB /* TestTree.swift in Sources */,
 				0F3A186125E4B19600D9AC79 /* TestUnion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -813,6 +848,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F39237825C002CD00CCDF5A /* Cursor.swift in Sources */,
+				0F1FBBAF25E5ECCA0078D9EB /* BinarySearchTree.swift in Sources */,
 				0F245E8725E3AB27007146A0 /* UnionSet_QU.swift in Sources */,
 				4AC9AA75239A6CC100E6678B /* Plist.swift in Sources */,
 				4AC9AA66239A6CC100E6678B /* UILabel+Ge.swift in Sources */,
@@ -826,6 +862,7 @@
 				4AC9AA6B239A6CC100E6678B /* Data+Ge.swift in Sources */,
 				4AC9AA70239A6CC100E6678B /* Reusable.swift in Sources */,
 				0F5D1204248B940D00761461 /* SectionProtocol.swift in Sources */,
+				0F5B605825E7686B00041A41 /* RedBlackTree.swift in Sources */,
 				0F704A1225ADA8BB003DD893 /* DataSourceDriver+Map.swift in Sources */,
 				4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */,
 				4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */,
@@ -840,6 +877,7 @@
 				4AC9AA6D239A6CC100E6678B /* Date+Ge.swift in Sources */,
 				0FE1817425DFA72B0091088A /* UIViewController+Rx.swift in Sources */,
 				4A8726E72398D7CB0002CAC1 /* CircularCollectionViewLayout.swift in Sources */,
+				0F5B605C25E76A0900041A41 /* BalanceSearchTree.swift in Sources */,
 				4AC9AA6F239A6CC100E6678B /* UserDefaults+Ge.swift in Sources */,
 				4A8726E52398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift in Sources */,
 				0F39237425BFF9C600CCDF5A /* InputViewCell.swift in Sources */,
@@ -852,6 +890,7 @@
 				4AC9AA5F239A6CC100E6678B /* DefaultCodableWrapper.swift in Sources */,
 				005BFB8924615DAC0090D2C7 /* Trie.swift in Sources */,
 				0F46AA9D25BE662D002C4483 /* Logger.swift in Sources */,
+				0F5B607325E7882900041A41 /* Optional+Extensions.swift in Sources */,
 				4AFCFF412329F5EB00EDD09A /* ScanView.swift in Sources */,
 				4A8726F52398EB7C0002CAC1 /* SizeFitPageControl.swift in Sources */,
 				0FE1817825DFA8E50091088A /* UITextField+Rx.swift in Sources */,
@@ -862,6 +901,7 @@
 				5E2FC37D20DA59A6007FEF3E /* AppDelegate.swift in Sources */,
 				0FE1817E25DFA9800091088A /* UIButton+Rx.swift in Sources */,
 				0F704A0E25ADA4E7003DD893 /* DataSourceDriver.swift in Sources */,
+				0F1FBBA925E5EBED0078D9EB /* BinaryTree.swift in Sources */,
 				4AFCFF372329F14D00EDD09A /* ScanViewController.swift in Sources */,
 				4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */,
 				4AC9AA63239A6CC100E6678B /* UIColor+Ge.swift in Sources */,
