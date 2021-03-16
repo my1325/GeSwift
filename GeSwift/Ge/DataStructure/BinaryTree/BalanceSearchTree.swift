@@ -109,8 +109,8 @@ extension BalanceSearchTree: BinarySearchTreeCompatible where Node.Value == Elem
         add(container, to: root)
     }
     
-    public func remove(_ value: Value) -> Bool {
-        guard let node = findNode(value) else { return false }
+    public func remove(_ value: Value) {
+        guard let node = findNode(value) else { return }
         if let parent = findNodeParent(value) {
             var _parent = parent
             if node.left == nil, node.right == nil {
@@ -122,31 +122,23 @@ extension BalanceSearchTree: BinarySearchTreeCompatible where Node.Value == Elem
                 }
                 afterRemove(node)
                 count -= 1
-                return true
-            } else if let successor = successor(node), let successorParent = findNodeParent(successor.value) {
-                var _successorParent = successorParent
+            } else if let successor = successor(node) {
+                var _node = node
                 var _successor = successor
-                if _successorParent.value != node.value {
-                    _successor.right = node.right
-                    if isLeftContainer(_successorParent, _successor) {
-                        _successorParent.left = nil
-                    } else {
-                        _successorParent.right = nil
-                    }
-                }
-                _successor.left = node.left
-                /// 找到后继结点
+                let tempValue = node.value
+                _node.value = successor.value
+                _successor.value = tempValue
+                remove(tempValue)
+            } else {
+                /// 此处没有后继结点，可以说明没有右子节点,
                 if isLeftContainer(parent, node) {
-                    _parent.left = successor
+                    _parent.left = node.left
                 } else {
-                    _parent.right = successor
+                    _parent.right = node.left
                 }
                 var _node = node
                 _node.left = nil
-                _node.right = nil
-                count -= 1
                 afterRemove(node)
-                return true
             }
         } else {
             /// 移除根节点
@@ -167,8 +159,6 @@ extension BalanceSearchTree: BinarySearchTreeCompatible where Node.Value == Elem
             }
             count -= 1
             afterRemove(node)
-            return true
         }
-        return false
     }
 }

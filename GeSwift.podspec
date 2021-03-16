@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
 
  s.name             = "GeSwift"
- s.version           = "0.0.9"
+ s.version           = "0.1.0"
  s.summary         = "GeSwift for my's ioser"
  s.homepage        = "https://github.com/my1325/GeSwift.git"
  s.license            = "MIT"
  s.platform          = :ios, "10.0"
- s.authors           = { "mayong" => "ma.yong@vpclub.cn" }
+ s.authors           = { "mayong" => "1173962595@qq.com" }
  s.source             = { :git => "https://github.com/my1325/GeSwift.git", :tag => "#{s.version}" }
  s.swift_version = '5.1'
  s.default_subspecs = 'Core','UI','Foundation'
@@ -46,6 +46,14 @@ Pod::Spec.new do |s|
     ss.source_files = 'Sources/GeSwift/Codable/*.{swift}'
     ss.dependency 'GeSwift/Foundation'
     end 
+
+    s.subspec 'KeyChain' do |ss|
+    ss.source_files = 'Sources/GeSwift/KeyChain/*.{swift}'
+    end
+
+    s.subspec 'WrapNavgationController' do |ss|
+    ss.source_files = 'Sources/GeSwift/WrapNavigationController/*.{swift}'
+    end
 
     s.subspec 'LocationTask' do |ss|
     ss.source_files = 'Sources/GeSwift/LocationTask/*.{swift}'
