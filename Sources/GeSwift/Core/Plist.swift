@@ -8,12 +8,16 @@
 
 import Foundation
 
+public protocol PlistPropertyObserver: class {
+    func observe(_ key: Plist.Key, oldValue: Any?, newValue: Any?)
+}
+
 public final class Plist {
     public private(set) var path: Path
 
     public typealias Path = String
 
-    init(path: Path) {
+    public init(path: Path) {
         self.path = path
     }
 
@@ -22,24 +26,30 @@ public final class Plist {
     public typealias Key = String
 
     public func set(_ value: Any?, forKey key: Key) {
-        self.plistCache[key] = value
+        let oldValue = plistCache[key]
+        plistCache[key] = value
+        invokeObserverForKey(key, oldValue: oldValue, newValue: value)
     }
 
     public func value(forKey key: Key) -> Any? {
-        return self.plistCache[key]
+        return plistCache[key]
     }
 
     public func removeValue(for key: Key) {
-        self.plistCache.removeValue(forKey: key)
+        plistCache.removeValue(forKey: key)
     }
 
     public subscript<T>(key: Key) -> T? {
-        get { return self.plistCache[key] as? T }
-        set { self.plistCache[key] = newValue }
+        get { return plistCache[key] as? T }
+        set {
+            let oldValue = plistCache[key]
+            plistCache[key] = newValue
+            invokeObserverForKey(key, oldValue: oldValue, newValue: newValue)
+        }
     }
 
     public func synchronize() {
-        (self.plistCache as NSDictionary).write(toFile: self.path, atomically: true)
+        (plistCache as NSDictionary).write(toFile: path, atomically: true)
     }
 
     public private(set) lazy var plistCache: [String: Any] = {
@@ -69,4 +79,59 @@ public final class Plist {
             fatalError("create path dir error: \(error.localizedDescription)")
         }
     }()
+
+    // MARK: - observer
+
+    private var observerKeyList: [Key: NSPointerArray] = [:]
+
+    private var observerAllList = NSPointerArray.weakObjects()
+
+    public func addObserver<T: PlistPropertyObserver>(_ target: T, for key: Plist.Key?) {
+        if let key = key {
+            let pointerArray = observerKeyList[key] ?? NSPointerArray.weakObjects()
+            pointerArray.addPointer(nil)
+            pointerArray.compact()
+
+            let newPointer = Unmanaged.passUnretained(target).toOpaque()
+            for index in 0 ..< pointerArray.count {
+                if pointerArray.pointer(at: index) == newPointer {
+                    pointerArray.removePointer(at: index)
+                    break
+                }
+            }
+            pointerArray.addPointer(newPointer)
+            observerKeyList[key] = pointerArray
+        } else {
+            observerAllList.addPointer(nil)
+            observerAllList.compact()
+
+            let newPointer = Unmanaged.passUnretained(target).toOpaque()
+            for index in 0 ..< observerAllList.count {
+                if observerAllList.pointer(at: index) == newPointer {
+                    observerAllList.removePointer(at: index)
+                    break
+                }
+            }
+            observerAllList.addPointer(newPointer)
+        }
+    }
+
+    private func invokeObserverForKey(_ key: Plist.Key, oldValue: Any?, newValue: Any?) {
+        if let keyPointerArray = observerKeyList[key] {
+            invokeObserverFromPointerList(keyPointerArray, key: key, oldValue: oldValue, newValue: newValue)
+        }
+        invokeObserverFromPointerList(observerAllList, key: key, oldValue: oldValue, newValue: newValue)
+    }
+
+    private func invokeObserverFromPointerList(_ pointerList: NSPointerArray, key: Plist.Key, oldValue: Any?, newValue: Any?) {
+        pointerList.addPointer(nil)
+        pointerList.compact()
+        for index in 0 ..< pointerList.count {
+            if let pointer = pointerList.pointer(at: index),
+               let observer = Unmanaged<AnyObject>.fromOpaque(pointer).takeUnretainedValue() as? PlistPropertyObserver
+            {
+                observer.observe(key, oldValue: oldValue, newValue: newValue)
+            }
+        }
+    }
 }
