@@ -26,4 +26,5 @@ public extension Reactive where Base: UIViewController {
     var didDisappear: Observable<Void> {
         return methodInvoked(#selector(base.viewDidDisappear(_:))).map({ _ in () })
     }
+
 }

@@ -24,21 +24,21 @@ extension String {
 
 extension Ge where Base: UIColor {
     
-    public static func color(with hexString: String, transparency: CGFloat = 0) -> UIColor? {
+    public static func color(with hexString: String, transparency: CGFloat = 1) -> UIColor? {
         if let hexValue = hexString.trimmingCharacters(in: .colorPrefixSet).colorHex6Digit {
             return color(with: hexValue, transparency: transparency)
         }
         return nil
     }
     
-    public static func color(with hexValue: Int, transparency: CGFloat = 0) -> UIColor? {
+    public static func color(with hexValue: Int, transparency: CGFloat = 1) -> UIColor? {
         let red = (hexValue >> 16) & 0xFF
         let green = (hexValue >> 8) & 0xFF
         let blue = hexValue & 0xFF
         return color(with: red, green: green, blue: blue, transparency: transparency)
     }
     
-    public static func color(with red: Int, green: Int, blue: Int, transparency: CGFloat = 0) -> UIColor? {
+    public static func color(with red: Int, green: Int, blue: Int, transparency: CGFloat = 1) -> UIColor? {
         guard red >= 0 && red <= 255,
               green >= 0 && green <= 255,
               blue >= 0 && blue <= 255 else {

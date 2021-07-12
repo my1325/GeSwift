@@ -65,7 +65,7 @@ internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.white        
     }
     
     @objc func popViewController() {

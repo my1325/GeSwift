@@ -16,6 +16,29 @@ extension Array where Element: Comparable {
         self[j] = temp
     }
     
+    /// 快速排序
+    public mutating func quickSort() {
+        _quickSort(0, count - 1)
+    }
+    
+    private mutating func _quickSort(_ l: Int, _ r: Int) {
+        guard l < r else { return }
+        
+        let x = self[l]
+        var i = l - 1, j = r + 1
+        while i < j {
+            i += 1
+            while self[i] < x { i += 1 }
+            j -= 1
+            while self[j] > x { j -= 1 }
+            if i < j {
+                swapAt(i, j)
+            }
+        }
+        _quickSort(l, j)
+        _quickSort(j + 1, r)
+    }
+    
     /// 冒泡排序
     public mutating func bubbleSort() {
         var begin = count
