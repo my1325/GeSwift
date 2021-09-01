@@ -29,6 +29,21 @@ class TestSort: XCTestCase {
         print("xxxx")
     }
     
+    func testSortedOrder() {
+        var s: [Int] = []
+        let numbers = [ 450, -15, 393, -172, -62, -450, 370, -118, 844, -844, 446, -885, -419, 226, 415, -802, 361, 130, 83, -875, 367, 777, 891, 679, -104, -35, 665, -808, 232, -103, -766, -842, -513, -845, 161, 861, 520, 32, 551, 58, 631, -154, -840]
+        print(numbers)
+        for n in numbers {
+            s.insert(n)
+        }
+        print(s)
+        s.removeFirst(446)
+        s.removeFirst(58)
+        s.removeFirst(-875)
+        s.removeFirst(861)
+        print(s)
+    }
+    
     
 
     func testPerformanceExample() throws {

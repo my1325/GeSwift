@@ -192,5 +192,51 @@ extension Array where Element: Comparable {
             sIndex += 1
         }
     }
+    
+    /// 当成有序集合的添加
+    public mutating func insert(_ val: Element) {
+        if isEmpty {
+            append(val)
+        } else if count == 1 {
+            if self[0] >= val {
+                insert(val, at: 0)
+            } else {
+                append(val)
+            }
+        } else {
+            let index = findPrev(val)
+            if index == 0, self[0] >= val {
+                insert(val, at: 0)
+            } else if index == count - 1 {
+                append(val)
+            } else {
+                insert(val, at: index + 1)
+            }
+        }
+    }
+    
+    /// 有序集合的删除
+    public mutating func removeFirst(_ val: Element) {
+        guard !isEmpty else { return }
+        var l = 0, r = count - 1
+        while l < r {
+            let m = (l + r) / 2
+            if self[m] >= val { r = m }
+            else { l = m + 1 }
+        }
+        if self[r] == val {
+            remove(at: r)
+        }
+    }
+    
+    public func findPrev(_ val: Element) -> Index {
+        var l = 0, r = count - 1
+        while l < r {
+            let m = (l + r + 1) / 2
+            if self[m] >= val { r = m - 1 }
+            else { l = m }
+        }
+        return r
+    }
 }
 

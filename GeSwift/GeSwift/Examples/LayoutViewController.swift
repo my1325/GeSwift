@@ -32,10 +32,15 @@ internal final class LayoutViewController: BaseViewController {
         }
     }
     
-    @IBOutlet weak var circularRotatedLayout: CircularRotatedCollectionViewLayout! {
+    @IBOutlet weak var circularRotatedLayout: SimpleScaleCollectionViewLayout! {
         didSet {
-            self.circularRotatedLayout.sectionInset = UIEdgeInsets(top: 30, left: 16, bottom: 30, right: 16)
-            self.circularRotatedLayout.itemSize = CGSize(width: 200, height: (iphone_height - navigationBar_height - 60) / 2 - 60)
+            self.circularRotatedLayout.itemSize = CGSize(width: 270, height: (iphone_height - navigationBar_height - 60) / 2)
+            self.circularRotatedLayout.scrollDirection = .horizontal
+            self.circularRotatedLayout.minimumLineSpacing = 26
+            self.circularRotatedLayout.minimumInteritemSpacing = 26
+//            self.circularRotatedLayout.scaleOffset = 50
+            self.circularRotatedLayout.sectionInset = UIEdgeInsets(top: 0, left: (iphone_width - 270) * 0.5, bottom: 0, right: (iphone_width - 270) * 0.5)
+//            self.circularRotatedLayout.itemSize = CGSize(width: 200, height: (iphone_height - navigationBar_height - 60) / 2 - 60)
 //            self.circularRotatedLayout.offsetAngle = CGFloat(Double.pi / 5)
         }
     }
