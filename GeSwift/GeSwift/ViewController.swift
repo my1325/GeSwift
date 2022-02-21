@@ -9,6 +9,8 @@
 import SnapKit
 import UIKit
 import WCDBSwift
+import RxSwift
+import Combine
 // import IJKMediaFramework
 
 internal final class WorkItem: Table, TableCodable {
@@ -65,7 +67,8 @@ internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-        self.view.backgroundColor = UIColor.white        
+        self.view.backgroundColor = UIColor.white
+        
     }
     
     @objc func popViewController() {
@@ -111,6 +114,8 @@ internal final class ViewController: BaseViewController {
     })
 
     let driver = DataSourceDriver<[ViewController]>(initialValue: [])
+    
+    let plist = Plist.default
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,7 +131,7 @@ internal final class ViewController: BaseViewController {
 //            cell.accessoryType = .disclosureIndicator
 //            cell.textLabel?.text = "\(item.name)"
 //        })
-        
+                
         self.driver.map({ [SectionModel(section: "", items: $0)] }).bind(to: self.tableView.ge.dataSource(dataSource))
         self.driver.accept(self.viewControllers)
     }

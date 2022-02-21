@@ -8,10 +8,11 @@
 
 import Foundation
 
-public protocol PlistPropertyObserver: class {
+public protocol PlistPropertyObserver: AnyObject {
     func observe(_ key: Plist.Key, oldValue: Any?, newValue: Any?)
 }
 
+@dynamicMemberLookup
 public final class Plist {
     public private(set) var path: Path
 
@@ -39,6 +40,15 @@ public final class Plist {
         plistCache.removeValue(forKey: key)
     }
 
+    public subscript<T>(dynamicMember key: String) -> T? {
+        get { return plistCache[key] as? T }
+        set {
+            let oldValue = plistCache[key]
+            plistCache[key] = newValue
+            invokeObserverForKey(key, oldValue: oldValue, newValue: newValue)
+        }
+    }
+    
     public subscript<T>(key: Key) -> T? {
         get { return plistCache[key] as? T }
         set {
