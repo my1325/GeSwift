@@ -22,20 +22,20 @@ public struct DefaultPlistProperty<Value: Codable> {
     public var wrappedValue: Value? {
         get {
             if Plist.default.valueIsBaseType(Value.self) {
-                return Plist.default[self.key] ?? self.defaultValue
-            } else if let data: Data = Plist.default[self.key] {
+                return Plist.default[key] ?? defaultValue
+            } else if let data: Data = Plist.default[key] {
                 let jsonDecoder = JSONDecoder()
-                return try? jsonDecoder.decode(Value.self, from: data)
+                return (try? jsonDecoder.decode(Value.self, from: data)) ?? defaultValue
             } else {
-                return nil
+                return defaultValue
             }
         } set {
             if Plist.default.valueIsBaseType(Value.self) {
-                Plist.default[self.key] = newValue
+                Plist.default[key] = newValue
             } else {
                 let jsonEncoder = JSONEncoder()
                 let data = try? jsonEncoder.encode(newValue)
-                Plist.default[self.key] = data
+                Plist.default[key] = data
             }
         }
     }

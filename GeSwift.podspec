@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
     end
 
 
-    s.subspec 'DataBase' do |ss|
+    s.subspec 'Database' do |ss|
     ss.source_files = 'GeSwift/Ge/DataBase/*.{swift}'
     ss.dependency 'GeSwift/Core'
 	ss.dependency 'WCDB.swift'

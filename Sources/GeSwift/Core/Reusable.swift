@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol Reusable: class {
+public protocol Reusable: AnyObject {
     static var reuseIdentifier: String { get }
 }
 
@@ -18,7 +18,7 @@ extension Reusable {
     }
 }
 
-public protocol NibLoadable: class {
+public protocol NibLoadable: AnyObject {
     /// The nib file to use to load a new instance of the View designed in a XIB
     static var nib: UINib? { get }
 }

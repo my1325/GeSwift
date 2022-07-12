@@ -12,12 +12,22 @@ public protocol PlistPropertyObserver: AnyObject {
     func observe(_ key: Plist.Key, oldValue: Any?, newValue: Any?)
 }
 
+extension String {
+    fileprivate static let NotPath = "com.ge.not.path"
+}
+
 @dynamicMemberLookup
 public final class Plist {
     public private(set) var path: Path
 
     public typealias Path = String
 
+    private var memberCached: [String: Any] = [:]
+    public init(onlyMemberCached plist: [String: Any]) {
+        self.memberCached = plist
+        self.path = .NotPath
+    }
+    
     public init(path: Path) {
         self.path = path
     }
@@ -59,10 +69,12 @@ public final class Plist {
     }
 
     public func synchronize() {
+        guard path != .NotPath else { return }
         (plistCache as NSDictionary).write(toFile: path, atomically: true)
     }
 
     public private(set) lazy var plistCache: [String: Any] = {
+        guard path != .NotPath else { return memberCached }
         /// create file - check file dir
         let pathDir: String = {
             var pathComponts = self.path.components(separatedBy: "/")

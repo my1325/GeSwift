@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Foundation
-
 public class DefaultsKeys {
     public final class DefaultsKey<V>: DefaultsKeys {
         fileprivate var key: Plist.Key
@@ -44,7 +42,7 @@ extension Plist {
 }
 
 extension Plist {
-    public static let infoPlist: Plist = Plist(path: Bundle.main.path(forResource: "info", ofType: "plist")!)
+    public static let infoPlist: Plist = Plist(onlyMemberCached: Bundle.main.infoDictionary!)
 }
 
 extension DefaultsKeys {

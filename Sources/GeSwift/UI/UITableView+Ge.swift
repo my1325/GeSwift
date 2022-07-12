@@ -103,7 +103,7 @@ extension Ge where Base: UITableView {
         base.register(T.nib, forCellReuseIdentifier: T.reuseIdentifier)
     }
 
-    public func registe<T: UITableViewHeaderFooterView>(reusableHeaderFooterView type: T.Type) where T: Reusable {
+    public func register<T: UITableViewHeaderFooterView>(reusableHeaderFooterView type: T.Type) where T: Reusable {
         base.register(type, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
     }
 
