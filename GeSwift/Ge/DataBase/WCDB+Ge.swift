@@ -62,7 +62,7 @@ public final class TableFilter<T: WCDBSwift.TableCodable> {
     }
 }
 
-public protocol Table: TableCodable {
+public protocol TableProtocol: TableCodable {
 
     static var tableName: String { get }
     
@@ -81,7 +81,7 @@ public protocol Table: TableCodable {
     static func count(in database: Database, using filter: ((TableFilter<Self>) -> Void)?) throws -> UInt64
 }
 
-extension Table {
+extension TableProtocol {
     
     public static func getObjects(in database: Database, on columns: [Self.CodingKeys] = [], using filter: ((TableFilter<Self>) -> Void)? = nil) throws -> [Self] {
         

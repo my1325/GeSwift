@@ -37,6 +37,7 @@ public struct DefaultPlistProperty<Value: Codable> {
                 let data = try? jsonEncoder.encode(newValue)
                 Plist.default[key] = data
             }
+            Plist.default.synchronize()
         }
     }
 }
