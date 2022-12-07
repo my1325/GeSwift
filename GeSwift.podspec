@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
  s.name             = "GeSwift"
- s.version           = "0.1.2"
+ s.version           = "0.1.3"
  s.summary         = "GeSwift for my's ioser"
  s.homepage        = "https://github.com/my1325/GeSwift.git"
  s.license            = "MIT"
@@ -12,40 +12,48 @@ Pod::Spec.new do |s|
  s.default_subspecs = 'Core','UI','Foundation'
 
     s.subspec 'Core' do |ss|
-	ss.source_files = 'Sources/GeSwift/Core/*.{swift}'
+      ss.source_files = 'Sources/GeSwift/Core/*.{swift}'
     end
     
     s.subspec 'UI' do |ss|
-	ss.source_files = 'Sources/GeSwift/UI/*.{swift}'
- 	ss.dependency 'GeSwift/Core'
-    ss.dependency 'GeSwift/Foundation'
+      ss.source_files = 'Sources/GeSwift/UI/*.{swift}'
+      ss.dependency 'GeSwift/Core'
+      ss.dependency 'GeSwift/Foundation'
     end
    
     s.subspec 'Foundation' do |ss|
-	ss.source_files = 'Sources/GeSwift/Foundation/*.{swift}'
-	ss.dependency 'GeSwift/Core'
+      ss.source_files = 'Sources/GeSwift/Foundation/*.{swift}'
+      ss.dependency 'GeSwift/Core'
     end
 
 
     s.subspec 'Database' do |ss|
-    ss.source_files = 'GeSwift/Ge/DataBase/*.{swift}'
-    ss.dependency 'GeSwift/Core'
-	ss.dependency 'WCDB.swift'
+      ss.source_files = 'GeSwift/Ge/DataBase/*.{swift}'
+      ss.dependency 'GeSwift/Core'
+      ss.dependency 'WCDB.swift'
     end 
     
     s.subspec 'Control' do |ss|
-	ss.source_files = 'GeSwift/Ge/Control/**/*.{swift}'
-	ss.dependency 'GeSwift/UI'
-	ss.dependency 'GeSwift/Foundation'
-	ss.dependency 'Schedule'
-	ss.dependency 'SnapKit'
-	ss.dependency 'Kingfisher'
+      ss.source_files = 'GeSwift/Ge/Control/**/*.{swift}'
+      ss.dependency 'GeSwift/UI'
+      ss.dependency 'GeSwift/Foundation'
+      ss.dependency 'Schedule'
+      ss.dependency 'SnapKit'
+      ss.dependency 'Kingfisher'
     end
 
     s.subspec 'Codable' do |ss|
-    ss.source_files = 'Sources/GeSwift/Codable/*.{swift}'
-    ss.dependency 'GeSwift/Foundation'
+      ss.source_files = 'Sources/GeSwift/Codable/*.{swift}'
+      ss.dependency 'GeSwift/Foundation'
     end 
+
+    s.subspec 'Plist' do |ss|
+      ss.source_files = 'Sources/GeSwift/Plist/*.{swift}'
+      ss.subspec 'HandyJSON' do |sss|
+         sss.source_files = 'Sources/GeSwift/Plist/HandyJSON/*.{swift}'
+         sss.dependency 'HandyJSON'
+      end
+    end
 
     # s.subspec 'KeyChain' do |ss|
     # ss.source_files = 'Sources/GeSwift/KeyChain/*.{swift}'
@@ -56,6 +64,6 @@ Pod::Spec.new do |s|
     # end
 
     s.subspec 'LocationTask' do |ss|
-    ss.source_files = 'Sources/GeSwift/LocationTask/*.{swift}'
+      ss.source_files = 'Sources/GeSwift/LocationTask/*.{swift}'
     end 
 end

@@ -14,6 +14,7 @@ target 'GeSwift' do
   pod 'Schedule'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'HandyJSON'
   
 #  pod 'SwiftyJSON'
 

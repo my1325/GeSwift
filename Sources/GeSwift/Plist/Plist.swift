@@ -39,6 +39,7 @@ public final class Plist {
     public func set(_ value: Any?, forKey key: Key) {
         let oldValue = plistCache[key]
         plistCache[key] = value
+        synchronize()
         invokeObserverForKey(key, oldValue: oldValue, newValue: value)
     }
 
@@ -51,15 +52,6 @@ public final class Plist {
     }
 
     public subscript<T>(dynamicMember key: String) -> T? {
-        get { return plistCache[key] as? T }
-        set {
-            let oldValue = plistCache[key]
-            plistCache[key] = newValue
-            invokeObserverForKey(key, oldValue: oldValue, newValue: newValue)
-        }
-    }
-    
-    public subscript<T>(key: Key) -> T? {
         get { return plistCache[key] as? T }
         set {
             let oldValue = plistCache[key]
