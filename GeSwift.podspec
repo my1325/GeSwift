@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
  s.name             = "GeSwift"
- s.version           = "0.1.3"
+ s.version           = "0.1.4"
  s.summary         = "GeSwift for my's ioser"
  s.homepage        = "https://github.com/my1325/GeSwift.git"
  s.license            = "MIT"
@@ -48,10 +48,13 @@ Pod::Spec.new do |s|
     end 
 
     s.subspec 'Plist' do |ss|
-      ss.source_files = 'Sources/GeSwift/Plist/*.{swift}'
+      ss.subspec 'Core' do |sss|
+         sss.source_files = 'Sources/GeSwift/Plist/*.{swift}'
+      end
       ss.subspec 'HandyJSON' do |sss|
          sss.source_files = 'Sources/GeSwift/Plist/HandyJSON/*.{swift}'
          sss.dependency 'HandyJSON'
+         sss.dependency 'GeSwift/Plist/Core'
       end
     end
 

@@ -20,7 +20,10 @@
 		0F3974062466ABBE007445FE /* TestPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974052466ABBE007445FE /* TestPriorityQueue.swift */; };
 		0F3974082466BF79007445FE /* TestTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3974072466BF79007445FE /* TestTrie.swift */; };
 		0F3A186125E4B19600D9AC79 /* TestUnion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3A186025E4B19600D9AC79 /* TestUnion.swift */; };
-		0F42AE8D2940C4F3001A1ADE /* Plist+HandyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F42AE8C2940C4F3001A1ADE /* Plist+HandyJSON.swift */; };
+		0F42AE962940EC38001A1ADE /* Plist+HandyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F42AE922940EC38001A1ADE /* Plist+HandyJSON.swift */; };
+		0F42AE972940EC38001A1ADE /* PlistProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F42AE932940EC38001A1ADE /* PlistProperty.swift */; };
+		0F42AE982940EC38001A1ADE /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F42AE942940EC38001A1ADE /* Defaults.swift */; };
+		0F42AE992940EC38001A1ADE /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F42AE952940EC38001A1ADE /* Plist.swift */; };
 		0F46AA9D25BE662D002C4483 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46AA9C25BE662D002C4483 /* Logger.swift */; };
 		0F5B607325E7882900041A41 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B607225E7882900041A41 /* Optional+Extensions.swift */; };
 		0F5D1200248B913500761461 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D11FF248B913500761461 /* TableViewDataSource.swift */; };
@@ -81,10 +84,7 @@
 		4AC9AA6F239A6CC100E6678B /* UserDefaults+Ge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA55239A6CC100E6678B /* UserDefaults+Ge.swift */; };
 		4AC9AA70239A6CC100E6678B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA57239A6CC100E6678B /* Reusable.swift */; };
 		4AC9AA71239A6CC100E6678B /* GeSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA58239A6CC100E6678B /* GeSwift.swift */; };
-		4AC9AA72239A6CC100E6678B /* PlistProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA59239A6CC100E6678B /* PlistProperty.swift */; };
 		4AC9AA73239A6CC100E6678B /* UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA5A239A6CC100E6678B /* UIResponder.swift */; };
-		4AC9AA74239A6CC100E6678B /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA5B239A6CC100E6678B /* Defaults.swift */; };
-		4AC9AA75239A6CC100E6678B /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9AA5C239A6CC100E6678B /* Plist.swift */; };
 		4AFCFF372329F14D00EDD09A /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCFF362329F14D00EDD09A /* ScanViewController.swift */; };
 		4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCFF382329F55900EDD09A /* CycleScrollViewController.swift */; };
 		4AFCFF3E2329F5D800EDD09A /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCFF3D2329F5D800EDD09A /* CycleScrollView.swift */; };
@@ -122,7 +122,10 @@
 		0F3974052466ABBE007445FE /* TestPriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPriorityQueue.swift; sourceTree = "<group>"; };
 		0F3974072466BF79007445FE /* TestTrie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTrie.swift; sourceTree = "<group>"; };
 		0F3A186025E4B19600D9AC79 /* TestUnion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUnion.swift; sourceTree = "<group>"; };
-		0F42AE8C2940C4F3001A1ADE /* Plist+HandyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plist+HandyJSON.swift"; sourceTree = "<group>"; };
+		0F42AE922940EC38001A1ADE /* Plist+HandyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Plist+HandyJSON.swift"; sourceTree = "<group>"; };
+		0F42AE932940EC38001A1ADE /* PlistProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistProperty.swift; sourceTree = "<group>"; };
+		0F42AE942940EC38001A1ADE /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		0F42AE952940EC38001A1ADE /* Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		0F46AA9C25BE662D002C4483 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		0F5B607225E7882900041A41 /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		0F5D11FF248B913500761461 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
@@ -198,10 +201,7 @@
 		4AC9AA55239A6CC100E6678B /* UserDefaults+Ge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ge.swift"; sourceTree = "<group>"; };
 		4AC9AA57239A6CC100E6678B /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		4AC9AA58239A6CC100E6678B /* GeSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeSwift.swift; sourceTree = "<group>"; };
-		4AC9AA59239A6CC100E6678B /* PlistProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistProperty.swift; sourceTree = "<group>"; };
 		4AC9AA5A239A6CC100E6678B /* UIResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIResponder.swift; sourceTree = "<group>"; };
-		4AC9AA5B239A6CC100E6678B /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
-		4AC9AA5C239A6CC100E6678B /* Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		4AFCFF362329F14D00EDD09A /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		4AFCFF382329F55900EDD09A /* CycleScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleScrollViewController.swift; sourceTree = "<group>"; };
 		4AFCFF3D2329F5D800EDD09A /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
@@ -280,15 +280,24 @@
 			path = TestFoundation;
 			sourceTree = "<group>";
 		};
-		0F42AE8B2940C4C7001A1ADE /* Plist */ = {
+		0F42AE902940EC38001A1ADE /* Plist */ = {
 			isa = PBXGroup;
 			children = (
-				0F42AE8C2940C4F3001A1ADE /* Plist+HandyJSON.swift */,
-				4AC9AA59239A6CC100E6678B /* PlistProperty.swift */,
-				4AC9AA5B239A6CC100E6678B /* Defaults.swift */,
-				4AC9AA5C239A6CC100E6678B /* Plist.swift */,
+				0F42AE912940EC38001A1ADE /* HandyJSON */,
+				0F42AE932940EC38001A1ADE /* PlistProperty.swift */,
+				0F42AE942940EC38001A1ADE /* Defaults.swift */,
+				0F42AE952940EC38001A1ADE /* Plist.swift */,
 			);
-			path = Plist;
+			name = Plist;
+			path = ../../Sources/GeSwift/Plist;
+			sourceTree = "<group>";
+		};
+		0F42AE912940EC38001A1ADE /* HandyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				0F42AE922940EC38001A1ADE /* Plist+HandyJSON.swift */,
+			);
+			path = HandyJSON;
 			sourceTree = "<group>";
 		};
 		0F46AA9925BE65D2002C4483 /* Logger */ = {
@@ -491,7 +500,7 @@
 		5E2FC39020DA5F59007FEF3E /* Ge */ = {
 			isa = PBXGroup;
 			children = (
-				0F42AE8B2940C4C7001A1ADE /* Plist */,
+				0F42AE902940EC38001A1ADE /* Plist */,
 				0F5B606F25E7881600041A41 /* Extensions */,
 				0F46AA9925BE65D2002C4483 /* Logger */,
 				4AC9AA41239A6CC100E6678B /* Codable */,
@@ -757,7 +766,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F39237825C002CD00CCDF5A /* Cursor.swift in Sources */,
-				4AC9AA75239A6CC100E6678B /* Plist.swift in Sources */,
 				4AC9AA66239A6CC100E6678B /* UILabel+Ge.swift in Sources */,
 				0F39237C25C010A200CCDF5A /* InpuFieldViewController.swift in Sources */,
 				0F5D1CD325AEBE6800E533EB /* UICollectionView+DataSource.swift in Sources */,
@@ -772,12 +780,11 @@
 				4A26FA95233B50F900B8E10D /* HorizontalView.swift in Sources */,
 				4AFCFF392329F55900EDD09A /* CycleScrollViewController.swift in Sources */,
 				4A8726EB2398DF540002CAC1 /* SimpleScaleCollectionViewLayout.swift in Sources */,
+				0F42AE972940EC38001A1ADE /* PlistProperty.swift in Sources */,
 				0F39236E25BFF1ED00CCDF5A /* InputView.swift in Sources */,
 				4AC9AA5E239A6CC100E6678B /* DefaultCodable.swift in Sources */,
-				4AC9AA72239A6CC100E6678B /* PlistProperty.swift in Sources */,
 				00B776C1245AC4BF002D4239 /* Function.swift in Sources */,
 				4AC9AA64239A6CC100E6678B /* UITableView+Ge.swift in Sources */,
-				0F42AE8D2940C4F3001A1ADE /* Plist+HandyJSON.swift in Sources */,
 				4AC9AA73239A6CC100E6678B /* UIResponder.swift in Sources */,
 				4AC9AA6D239A6CC100E6678B /* Date+Ge.swift in Sources */,
 				4A8726E72398D7CB0002CAC1 /* CircularCollectionViewLayout.swift in Sources */,
@@ -794,6 +801,7 @@
 				0F5B607325E7882900041A41 /* Optional+Extensions.swift in Sources */,
 				4AFCFF412329F5EB00EDD09A /* ScanView.swift in Sources */,
 				4A8726F52398EB7C0002CAC1 /* SizeFitPageControl.swift in Sources */,
+				0F42AE982940EC38001A1ADE /* Defaults.swift in Sources */,
 				4AC9AA69239A6CC100E6678B /* UIScrollView+Ge.swift in Sources */,
 				5E2FC37F20DA59A6007FEF3E /* ViewController.swift in Sources */,
 				4A8726EE2398E1CF0002CAC1 /* LayoutViewController.swift in Sources */,
@@ -807,14 +815,15 @@
 				0F5D1200248B913500761461 /* TableViewDataSource.swift in Sources */,
 				4AC9AA65239A6CC100E6678B /* UIWindow+Ge.swift in Sources */,
 				4AC9AA68239A6CC100E6678B /* UIAlertViewController+Ge.swift in Sources */,
+				0F42AE992940EC38001A1ADE /* Plist.swift in Sources */,
 				4AC9AA5D239A6CC100E6678B /* LocationTask.swift in Sources */,
 				4A1B1C732328D0E100DE7FBF /* FadeHorizontalView.swift in Sources */,
 				4A8726E32398D5680002CAC1 /* WaterCollectionViewLayout.swift in Sources */,
 				5E4E7623219D63C30012F6A8 /* WCDB+Ge.swift in Sources */,
 				0F5D1CC725AE9DA900E533EB /* DataSourceDriver+Bind.swift in Sources */,
 				4AC9AA67239A6CC100E6678B /* UIImage+Ge.swift in Sources */,
-				4AC9AA74239A6CC100E6678B /* Defaults.swift in Sources */,
 				4AC9AA61239A6CC100E6678B /* UIView+Ge.swift in Sources */,
+				0F42AE962940EC38001A1ADE /* Plist+HandyJSON.swift in Sources */,
 				0F0B55D8259AFDEA005E4207 /* FoldTransitionLayout.swift in Sources */,
 				0F5D1CCD25AEBBEF00E533EB /* CollectionViewDataSource.swift in Sources */,
 				4A26FA9C233B59B100B8E10D /* HorizontalCell.swift in Sources */,

@@ -65,6 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
 //        Plist.default.set(test0, for: .test)
 //        Plist.default.set([test0, test1, test2], for: .test_array)
+        /// [Any]的存储，[String: Any]的存储
+        Plist.default["com.test.dictionary"] = ["a": 1, "b": 1, "c": 1]
+        Plist.default["com.test.array"] = ["asf", "b", "c", "d", "1"]
+        Plist.default["com.test.back"] = false
+        Plist.default["com.test.date"] = Date()
         print("------------")
         
         let test0_read = Plist.default.value(for: .test)

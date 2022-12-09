@@ -20,7 +20,7 @@ public struct DefaultPlistProperty<Value: Codable> {
     }
     
     public var wrappedValue: Value? {
-        get { Plist.default[key] }
+        get { Plist.default[key] ?? defaultValue }
         set { Plist.default[key] = newValue }
     }
 }
