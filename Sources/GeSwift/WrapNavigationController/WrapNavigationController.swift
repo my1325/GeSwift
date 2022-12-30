@@ -78,7 +78,7 @@ public final class WrapViewController: UIViewController {
         self.view.addSubview(navigationController.view)
     }
     
-    var contentViewController: UIViewController?
+    public var contentViewController: UIViewController?
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
