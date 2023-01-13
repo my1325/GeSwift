@@ -74,8 +74,6 @@ internal final class ViewController: BaseViewController {
 
     let driver = DataSourceDriver<[ViewController]>(initialValue: [])
     
-    let plist = Plist.default
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

@@ -31,6 +31,13 @@ extension Optional where Wrapped == String {
 
 extension Optional where Wrapped == Bool {
     
+    var boolValue: Bool {
+        switch self {
+        case .none: return false
+        case let .some(bool): return bool
+        }
+    }
+    
     static func ==(lhs: Optional<Bool>, _ value: Bool) -> Bool {
         switch lhs {
         case .none:
