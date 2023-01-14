@@ -8,9 +8,6 @@
 
 import SnapKit
 import UIKit
-import WCDBSwift
-import RxSwift
-import Combine
 // import IJKMediaFramework
 
 internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
@@ -96,6 +93,10 @@ internal final class ViewController: BaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 }
 

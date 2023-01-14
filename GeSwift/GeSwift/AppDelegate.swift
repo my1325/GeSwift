@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import HandyJSON
 
 let iphone_scale: CGFloat = UIScreen.main.scale
 let iphone_width: CGFloat = UIScreen.main.bounds.size.width

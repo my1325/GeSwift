@@ -30,8 +30,6 @@
 		0F5D1CD325AEBE6800E533EB /* UICollectionView+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D1CD225AEBE6800E533EB /* UICollectionView+DataSource.swift */; };
 		0F704A0E25ADA4E7003DD893 /* DataSourceDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F704A0D25ADA4E7003DD893 /* DataSourceDriver.swift */; };
 		0F704A1225ADA8BB003DD893 /* DataSourceDriver+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F704A1125ADA8BB003DD893 /* DataSourceDriver+Map.swift */; };
-		0FAAEE8D29718A5500DC7232 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAAEE8C29718A5500DC7232 /* Permission.swift */; };
-		0FAAEE8F29719AA300DC7232 /* PermissionDefaultPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAAEE8E29719AA300DC7232 /* PermissionDefaultPlugin.swift */; };
 		0FFE625826F2DE390052A01C /* TestKMPSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE625726F2DE390052A01C /* TestKMPSearch.swift */; };
 		4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */; };
 		4A1B1C732328D0E100DE7FBF /* FadeHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B1C722328D0E100DE7FBF /* FadeHorizontalView.swift */; };
@@ -130,8 +128,6 @@
 		0F704A0D25ADA4E7003DD893 /* DataSourceDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceDriver.swift; sourceTree = "<group>"; };
 		0F704A1125ADA8BB003DD893 /* DataSourceDriver+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSourceDriver+Map.swift"; sourceTree = "<group>"; };
 		0F75E40525678F2D00099FD5 /* GeSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeSwift-Bridging-Header.h"; sourceTree = "<group>"; };
-		0FAAEE8C29718A5500DC7232 /* Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
-		0FAAEE8E29719AA300DC7232 /* PermissionDefaultPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionDefaultPlugin.swift; sourceTree = "<group>"; };
 		0FFE625726F2DE390052A01C /* TestKMPSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestKMPSearch.swift; sourceTree = "<group>"; };
 		416C9C50DE715E9E10C15132 /* Pods-GeSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeSwift/Pods-GeSwift.release.xcconfig"; sourceTree = "<group>"; };
 		4A1B1C6423288D3A00DE7FBF /* HorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalViewController.swift; sourceTree = "<group>"; };
@@ -305,24 +301,6 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
-		0FAAEE8A29718A1500DC7232 /* Permission */ = {
-			isa = PBXGroup;
-			children = (
-				0FAAEE8B29718A1A00DC7232 /* Core */,
-			);
-			name = Permission;
-			path = ../../Sources/GeSwift/Permission;
-			sourceTree = "<group>";
-		};
-		0FAAEE8B29718A1A00DC7232 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				0FAAEE8C29718A5500DC7232 /* Permission.swift */,
-				0FAAEE8E29719AA300DC7232 /* PermissionDefaultPlugin.swift */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
 		4A1B1C6323288D0400DE7FBF /* Examples */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,7 +470,6 @@
 		5E2FC39020DA5F59007FEF3E /* Ge */ = {
 			isa = PBXGroup;
 			children = (
-				0FAAEE8A29718A1500DC7232 /* Permission */,
 				0F5B606F25E7881600041A41 /* Extensions */,
 				0F46AA9925BE65D2002C4483 /* Logger */,
 				4AC9AA41239A6CC100E6678B /* Codable */,
@@ -772,7 +749,6 @@
 				4A8726E72398D7CB0002CAC1 /* CircularCollectionViewLayout.swift in Sources */,
 				4AC9AA6F239A6CC100E6678B /* UserDefaults+Ge.swift in Sources */,
 				4A8726E52398D5FE0002CAC1 /* FixSpacingCollectionViewLayout.swift in Sources */,
-				0FAAEE8F29719AA300DC7232 /* PermissionDefaultPlugin.swift in Sources */,
 				0F39237425BFF9C600CCDF5A /* InputViewCell.swift in Sources */,
 				4AC9AA6E239A6CC100E6678B /* Notification+Ge.swift in Sources */,
 				4AFCFF3E2329F5D800EDD09A /* CycleScrollView.swift in Sources */,
@@ -793,7 +769,6 @@
 				4AFCFF372329F14D00EDD09A /* ScanViewController.swift in Sources */,
 				4A1B1C6523288D3A00DE7FBF /* HorizontalViewController.swift in Sources */,
 				4AC9AA63239A6CC100E6678B /* UIColor+Ge.swift in Sources */,
-				0FAAEE8D29718A5500DC7232 /* Permission.swift in Sources */,
 				4A8726E92398D9090002CAC1 /* CircularRotatedCollectionViewLayout.swift in Sources */,
 				0F5D1200248B913500761461 /* TableViewDataSource.swift in Sources */,
 				4AC9AA65239A6CC100E6678B /* UIWindow+Ge.swift in Sources */,

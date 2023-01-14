@@ -7,14 +7,9 @@ target 'GeSwift' do
   use_frameworks!
 
   # Pods for GeSwift
-  pod 'WCDB.swift'
   pod 'Kingfisher'
-  pod 'CryptoSwift'
   pod 'SnapKit'
   pod 'Schedule'
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'HandyJSON'
   
 #  pod 'GeSwift/Plist/HandyJSON'
   
