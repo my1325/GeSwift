@@ -60,10 +60,10 @@ public final class WrapViewController: UIViewController {
         fatalError()
     }
     
-    var style : UIStatusBarStyle = .default
+    public var style : UIStatusBarStyle = .default
 
     public override var preferredStatusBarStyle: UIStatusBarStyle{
-        return style
+        contentViewController?.preferredStatusBarStyle ?? style
     }
     
     public init(_ viewController: UIViewController) {
