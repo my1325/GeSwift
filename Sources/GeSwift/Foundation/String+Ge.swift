@@ -99,33 +99,7 @@ extension Ge where Base == String {
     
     // color
     public var asColor: UIColor {
-        precondition(self.base.count >= 6, "hex string's count must be more than 6")
-        
-        var cString = self.base.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-            .uppercased()
-            .replacingOccurrences(of: " ", with: "")
-            .replacingOccurrences(of: "#", with: "")
-            .replacingOccurrences(of: "0X", with: "")
-        
-        var alpha: CGFloat = 1
-        if self.base.count == 8, let alphaString = cString.ge.subString(to: 2) {
-            
-            var alphaValue: CUnsignedInt = 255
-            Scanner(string: alphaString).scanHexInt32(&alphaValue)
-            alpha = CGFloat(alphaValue / 255)
-            cString = cString.ge.subString(at: 2 ... 7)
-        }
-        
-        let rString = cString.ge.subString(to: 2)!
-        let gString = cString.ge.subString(at: 2 ..< 4)
-        let bString = cString.ge.subString(at: 4 ..< 6)
-        
-        var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
-        Scanner(string: rString).scanHexInt32(&r)
-        Scanner(string: gString).scanHexInt32(&g)
-        Scanner(string: bString).scanHexInt32(&b)
-        
-        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: alpha)
+        UIColor.ge.color(with: self)!
     }
     
     /// json
