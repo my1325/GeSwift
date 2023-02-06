@@ -99,7 +99,7 @@ extension Ge where Base == String {
     
     // color
     public var asColor: UIColor {
-        UIColor.ge.color(with: self)!
+        UIColor.ge.color(with: base)!
     }
     
     /// json

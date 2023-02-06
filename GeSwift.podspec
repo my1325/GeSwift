@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
  s.name             = "GeSwift"
- s.version           = "0.1.5"
+ s.version           = "0.1.8"
  s.summary         = "GeSwift for my's ioser"
  s.homepage        = "https://github.com/my1325/GeSwift.git"
  s.license            = "MIT"
@@ -25,13 +25,6 @@ Pod::Spec.new do |s|
       ss.source_files = 'Sources/GeSwift/Foundation/*.{swift}'
       ss.dependency 'GeSwift/Core'
     end
-
-
-    s.subspec 'Database' do |ss|
-      ss.source_files = 'GeSwift/Ge/DataBase/*.{swift}'
-      ss.dependency 'GeSwift/Core'
-      ss.dependency 'WCDB.swift'
-    end 
     
     s.subspec 'Control' do |ss|
       ss.source_files = 'GeSwift/Ge/Control/**/*.{swift}'

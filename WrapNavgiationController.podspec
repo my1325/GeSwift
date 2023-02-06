@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
  s.name             = "WrapNavgiationController"
- s.version           = "0.1.4"
+ s.version           = "0.1.8"
  s.summary         = "WrapNavgationController for custom navigation"
  s.homepage        = "https://github.com/my1325/GeSwift.git"
  s.license            = "MIT"
