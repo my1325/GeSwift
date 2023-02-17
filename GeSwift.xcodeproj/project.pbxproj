@@ -10,8 +10,6 @@
 		B7C6050F299E277A008A9D84 /* GeSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C6050E299E277A008A9D84 /* GeSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7C6051D299E27C8008A9D84 /* GeSwiftTools.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C6051C299E27C8008A9D84 /* GeSwiftTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7C6052C299E282A008A9D84 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C6052B299E282A008A9D84 /* StringUtils.swift */; };
-		B7C6052E299E2AF7008A9D84 /* DefaultCodableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C6052D299E2AF7008A9D84 /* DefaultCodableWrapper.swift */; };
-		B7C60530299E2AFA008A9D84 /* DefaultCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C6052F299E2AFA008A9D84 /* DefaultCodable.swift */; };
 		B7C60532299E2B80008A9D84 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C60531299E2B80008A9D84 /* ImageUtils.swift */; };
 		B7C60534299E32F0008A9D84 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C60533299E32F0008A9D84 /* DateUtils.swift */; };
 		B7CCD48B299F0F1D00FADD51 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD48A299F0F1D00FADD51 /* ColorUtils.swift */; };
@@ -23,6 +21,10 @@
 		B7CCD497299F1C6A00FADD51 /* UIScrollViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD496299F1C6A00FADD51 /* UIScrollViewUtils.swift */; };
 		B7CCD499299F1CE000FADD51 /* UIControlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD498299F1CE000FADD51 /* UIControlUtils.swift */; };
 		B7CCD49B299F1DF200FADD51 /* UIResponderUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD49A299F1DF200FADD51 /* UIResponderUtils.swift */; };
+		B7CCD49F299F1E9100FADD51 /* DefaultCodableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD49D299F1E9100FADD51 /* DefaultCodableWrapper.swift */; };
+		B7CCD4A0299F1E9100FADD51 /* DefaultCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD49E299F1E9100FADD51 /* DefaultCodable.swift */; };
+		B7CCD4A4299F20F700FADD51 /* OptionalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD4A3299F20F700FADD51 /* OptionalUtils.swift */; };
+		B7CCD4A7299F21B700FADD51 /* ArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD4A6299F21B700FADD51 /* ArrayUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +33,6 @@
 		B7C6051A299E27C8008A9D84 /* GeSwiftTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GeSwiftTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C6051C299E27C8008A9D84 /* GeSwiftTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeSwiftTools.h; sourceTree = "<group>"; };
 		B7C6052B299E282A008A9D84 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
-		B7C6052D299E2AF7008A9D84 /* DefaultCodableWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultCodableWrapper.swift; path = GeSwif0t/Codable/DefaultCodableWrapper.swift; sourceTree = SOURCE_ROOT; };
-		B7C6052F299E2AFA008A9D84 /* DefaultCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultCodable.swift; path = GeSwif0t/Codable/DefaultCodable.swift; sourceTree = SOURCE_ROOT; };
 		B7C60531299E2B80008A9D84 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		B7C60533299E32F0008A9D84 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		B7CCD48A299F0F1D00FADD51 /* ColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
@@ -44,6 +44,10 @@
 		B7CCD496299F1C6A00FADD51 /* UIScrollViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewUtils.swift; sourceTree = "<group>"; };
 		B7CCD498299F1CE000FADD51 /* UIControlUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlUtils.swift; sourceTree = "<group>"; };
 		B7CCD49A299F1DF200FADD51 /* UIResponderUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponderUtils.swift; sourceTree = "<group>"; };
+		B7CCD49D299F1E9100FADD51 /* DefaultCodableWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCodableWrapper.swift; sourceTree = "<group>"; };
+		B7CCD49E299F1E9100FADD51 /* DefaultCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCodable.swift; sourceTree = "<group>"; };
+		B7CCD4A3299F20F700FADD51 /* OptionalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalUtils.swift; sourceTree = "<group>"; };
+		B7CCD4A6299F21B700FADD51 /* ArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 		B7C60521299E27D5008A9D84 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				B7CCD4A5299F218F00FADD51 /* Array */,
+				B7CCD4A2299F20EB00FADD51 /* Optional */,
 				B7C60522299E27D5008A9D84 /* Strings */,
 				B7C60523299E27D5008A9D84 /* Codable */,
 				B7C60524299E27D5008A9D84 /* UIView */,
@@ -126,8 +132,8 @@
 		B7C60523299E27D5008A9D84 /* Codable */ = {
 			isa = PBXGroup;
 			children = (
-				B7C6052F299E2AFA008A9D84 /* DefaultCodable.swift */,
-				B7C6052D299E2AF7008A9D84 /* DefaultCodableWrapper.swift */,
+				B7CCD49E299F1E9100FADD51 /* DefaultCodable.swift */,
+				B7CCD49D299F1E9100FADD51 /* DefaultCodableWrapper.swift */,
 			);
 			path = Codable;
 			sourceTree = "<group>";
@@ -190,6 +196,22 @@
 				B7CCD49A299F1DF200FADD51 /* UIResponderUtils.swift */,
 			);
 			path = UIResponder;
+			sourceTree = "<group>";
+		};
+		B7CCD4A2299F20EB00FADD51 /* Optional */ = {
+			isa = PBXGroup;
+			children = (
+				B7CCD4A3299F20F700FADD51 /* OptionalUtils.swift */,
+			);
+			path = Optional;
+			sourceTree = "<group>";
+		};
+		B7CCD4A5299F218F00FADD51 /* Array */ = {
+			isa = PBXGroup;
+			children = (
+				B7CCD4A6299F21B700FADD51 /* ArrayUtils.swift */,
+			);
+			path = Array;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,19 +338,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7CCD4A0299F1E9100FADD51 /* DefaultCodable.swift in Sources */,
 				B7CCD493299F12B300FADD51 /* UICollectionViewUtils.swift in Sources */,
 				B7CCD491299F120D00FADD51 /* UITableViewUtils.swift in Sources */,
 				B7CCD495299F12F000FADD51 /* UIViewUtils.swift in Sources */,
+				B7CCD4A4299F20F700FADD51 /* OptionalUtils.swift in Sources */,
 				B7CCD497299F1C6A00FADD51 /* UIScrollViewUtils.swift in Sources */,
 				B7CCD49B299F1DF200FADD51 /* UIResponderUtils.swift in Sources */,
-				B7C60530299E2AFA008A9D84 /* DefaultCodable.swift in Sources */,
 				B7C60534299E32F0008A9D84 /* DateUtils.swift in Sources */,
-				B7C6052E299E2AF7008A9D84 /* DefaultCodableWrapper.swift in Sources */,
 				B7CCD48D299F110900FADD51 /* DataUtils.swift in Sources */,
 				B7CCD48F299F11A700FADD51 /* Reusable.swift in Sources */,
 				B7CCD48B299F0F1D00FADD51 /* ColorUtils.swift in Sources */,
+				B7CCD4A7299F21B700FADD51 /* ArrayUtils.swift in Sources */,
 				B7CCD499299F1CE000FADD51 /* UIControlUtils.swift in Sources */,
 				B7C6052C299E282A008A9D84 /* StringUtils.swift in Sources */,
+				B7CCD49F299F1E9100FADD51 /* DefaultCodableWrapper.swift in Sources */,
 				B7C60532299E2B80008A9D84 /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
