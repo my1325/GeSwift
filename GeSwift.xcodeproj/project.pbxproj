@@ -14,6 +14,15 @@
 		B7C60530299E2AFA008A9D84 /* DefaultCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C6052F299E2AFA008A9D84 /* DefaultCodable.swift */; };
 		B7C60532299E2B80008A9D84 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C60531299E2B80008A9D84 /* ImageUtils.swift */; };
 		B7C60534299E32F0008A9D84 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C60533299E32F0008A9D84 /* DateUtils.swift */; };
+		B7CCD48B299F0F1D00FADD51 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD48A299F0F1D00FADD51 /* ColorUtils.swift */; };
+		B7CCD48D299F110900FADD51 /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD48C299F110900FADD51 /* DataUtils.swift */; };
+		B7CCD48F299F11A700FADD51 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD48E299F11A700FADD51 /* Reusable.swift */; };
+		B7CCD491299F120D00FADD51 /* UITableViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD490299F120D00FADD51 /* UITableViewUtils.swift */; };
+		B7CCD493299F12B300FADD51 /* UICollectionViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD492299F12B300FADD51 /* UICollectionViewUtils.swift */; };
+		B7CCD495299F12F000FADD51 /* UIViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD494299F12F000FADD51 /* UIViewUtils.swift */; };
+		B7CCD497299F1C6A00FADD51 /* UIScrollViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD496299F1C6A00FADD51 /* UIScrollViewUtils.swift */; };
+		B7CCD499299F1CE000FADD51 /* UIControlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD498299F1CE000FADD51 /* UIControlUtils.swift */; };
+		B7CCD49B299F1DF200FADD51 /* UIResponderUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD49A299F1DF200FADD51 /* UIResponderUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +35,15 @@
 		B7C6052F299E2AFA008A9D84 /* DefaultCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultCodable.swift; path = GeSwif0t/Codable/DefaultCodable.swift; sourceTree = SOURCE_ROOT; };
 		B7C60531299E2B80008A9D84 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		B7C60533299E32F0008A9D84 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		B7CCD48A299F0F1D00FADD51 /* ColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		B7CCD48C299F110900FADD51 /* DataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
+		B7CCD48E299F11A700FADD51 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		B7CCD490299F120D00FADD51 /* UITableViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewUtils.swift; sourceTree = "<group>"; };
+		B7CCD492299F12B300FADD51 /* UICollectionViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewUtils.swift; sourceTree = "<group>"; };
+		B7CCD494299F12F000FADD51 /* UIViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewUtils.swift; sourceTree = "<group>"; };
+		B7CCD496299F1C6A00FADD51 /* UIScrollViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewUtils.swift; sourceTree = "<group>"; };
+		B7CCD498299F1CE000FADD51 /* UIControlUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlUtils.swift; sourceTree = "<group>"; };
+		B7CCD49A299F1DF200FADD51 /* UIResponderUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponderUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,11 +106,11 @@
 				B7C60523299E27D5008A9D84 /* Codable */,
 				B7C60524299E27D5008A9D84 /* UIView */,
 				B7C60525299E27D5008A9D84 /* Images */,
-				B7C60526299E27D5008A9D84 /* Notification */,
 				B7C60527299E27D5008A9D84 /* Date */,
 				B7C60528299E27D5008A9D84 /* UIControl */,
 				B7C60529299E27D5008A9D84 /* Colors */,
 				B7C6052A299E27D5008A9D84 /* Data */,
+				B7CCD49C299F1DF900FADD51 /* UIResponder */,
 			);
 			path = Tools;
 			sourceTree = SOURCE_ROOT;
@@ -117,6 +135,11 @@
 		B7C60524299E27D5008A9D84 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				B7CCD48E299F11A700FADD51 /* Reusable.swift */,
+				B7CCD490299F120D00FADD51 /* UITableViewUtils.swift */,
+				B7CCD492299F12B300FADD51 /* UICollectionViewUtils.swift */,
+				B7CCD494299F12F000FADD51 /* UIViewUtils.swift */,
+				B7CCD496299F1C6A00FADD51 /* UIScrollViewUtils.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -127,13 +150,6 @@
 				B7C60531299E2B80008A9D84 /* ImageUtils.swift */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		B7C60526299E27D5008A9D84 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Notification;
 			sourceTree = "<group>";
 		};
 		B7C60527299E27D5008A9D84 /* Date */ = {
@@ -147,6 +163,7 @@
 		B7C60528299E27D5008A9D84 /* UIControl */ = {
 			isa = PBXGroup;
 			children = (
+				B7CCD498299F1CE000FADD51 /* UIControlUtils.swift */,
 			);
 			path = UIControl;
 			sourceTree = "<group>";
@@ -154,6 +171,7 @@
 		B7C60529299E27D5008A9D84 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
+				B7CCD48A299F0F1D00FADD51 /* ColorUtils.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -161,8 +179,17 @@
 		B7C6052A299E27D5008A9D84 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				B7CCD48C299F110900FADD51 /* DataUtils.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		B7CCD49C299F1DF900FADD51 /* UIResponder */ = {
+			isa = PBXGroup;
+			children = (
+				B7CCD49A299F1DF200FADD51 /* UIResponderUtils.swift */,
+			);
+			path = UIResponder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,9 +316,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7CCD493299F12B300FADD51 /* UICollectionViewUtils.swift in Sources */,
+				B7CCD491299F120D00FADD51 /* UITableViewUtils.swift in Sources */,
+				B7CCD495299F12F000FADD51 /* UIViewUtils.swift in Sources */,
+				B7CCD497299F1C6A00FADD51 /* UIScrollViewUtils.swift in Sources */,
+				B7CCD49B299F1DF200FADD51 /* UIResponderUtils.swift in Sources */,
 				B7C60530299E2AFA008A9D84 /* DefaultCodable.swift in Sources */,
 				B7C60534299E32F0008A9D84 /* DateUtils.swift in Sources */,
 				B7C6052E299E2AF7008A9D84 /* DefaultCodableWrapper.swift in Sources */,
+				B7CCD48D299F110900FADD51 /* DataUtils.swift in Sources */,
+				B7CCD48F299F11A700FADD51 /* Reusable.swift in Sources */,
+				B7CCD48B299F0F1D00FADD51 /* ColorUtils.swift in Sources */,
+				B7CCD499299F1CE000FADD51 /* UIControlUtils.swift in Sources */,
 				B7C6052C299E282A008A9D84 /* StringUtils.swift in Sources */,
 				B7C60532299E2B80008A9D84 /* ImageUtils.swift in Sources */,
 			);
