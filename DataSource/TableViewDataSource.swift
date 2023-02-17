@@ -26,16 +26,16 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
     let editingStyleForRow: EditingStyleForRow
     let titleForHeader: TitleForHeader
     let titleForFooter: TitleForFooter
-    
+
     public init(sectionIndexTitles: [String]? = nil,
-         dataSource: [Section] = [],
-         configureCell: @escaping ConfigureCell,
-         canEditRow: @escaping CanEditRow = { _, _, _, _ in true },
-         canMoveRow: @escaping CanMoveRow = { _, _, _, _ in false },
-         moveRow: @escaping MoveRow = { _, _, _, _ in },
-         editingStyleForRow: @escaping EditingStyleForRow = { _, _, _, _ in },
-         titleForHeader: @escaping TitleForHeader = { _, _, _, _ in nil },
-         titleForFooter: @escaping TitleForFooter = { _, _, _, _ in nil })
+                dataSource: [Section] = [],
+                configureCell: @escaping ConfigureCell,
+                canEditRow: @escaping CanEditRow = { _, _, _, _ in true },
+                canMoveRow: @escaping CanMoveRow = { _, _, _, _ in false },
+                moveRow: @escaping MoveRow = { _, _, _, _ in },
+                editingStyleForRow: @escaping EditingStyleForRow = { _, _, _, _ in },
+                titleForHeader: @escaping TitleForHeader = { _, _, _, _ in nil },
+                titleForFooter: @escaping TitleForFooter = { _, _, _, _ in nil })
     {
         self.sectionIndexTitles = sectionIndexTitles
         self.dataSource = dataSource
@@ -47,13 +47,13 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
         self.titleForFooter = titleForFooter
         self.titleForHeader = titleForHeader
     }
-    
+
     public func updateDataSource(_ source: [Section]) {
         objc_sync_enter(self)
         defer { objc_sync_exit(self) }
         dataSource = source
     }
-    
+
     public func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource.count
     }
@@ -61,7 +61,7 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource[section].items.count
     }
-    
+
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return configureCell(self, tableView, indexPath, dataSource[indexPath.section].items[indexPath.row])
     }
@@ -81,11 +81,11 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
     public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return canMoveRow(self, tableView, indexPath, dataSource[indexPath.section].items[indexPath.row])
     }
-    
+
     public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return sectionIndexTitles
     }
-    
+
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         editingStyleForRow(self, tableView, editingStyle, indexPath)
     }
@@ -96,11 +96,11 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
 }
 
 extension TableViewDataSource {
-    open subscript(section: Int) -> Section {
+    public subscript(section: Int) -> Section {
         return dataSource[section]
     }
-    
-    open subscript(indexPath: IndexPath) -> Section.I {
+
+    public subscript(indexPath: IndexPath) -> Section.I {
         return dataSource[indexPath.section].items[indexPath.row]
     }
 }

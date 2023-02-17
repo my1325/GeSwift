@@ -22,12 +22,11 @@ open class CollectionViewDataSource<Section: SectionProtocol>: NSObject, UIColle
     let supplementaryReuseableViewOfKind: SupplementaryReuseableViewOfKind
     
     public init(sectionIndexTitles: [String]? = nil,
-         dataSource: [Section] = [],
-         configureCell: @escaping ConfigureCell,
-         canMoveRow: @escaping CanMoveRow = { _, _, _, _ in false },
-         moveRow: @escaping MoveRow = { _, _, _, _ in },
-         supplementaryReuseableViewOfKind: @escaping SupplementaryReuseableViewOfKind = { _, _, _, _ in UICollectionReusableView() }
-    )
+                dataSource: [Section] = [],
+                configureCell: @escaping ConfigureCell,
+                canMoveRow: @escaping CanMoveRow = { _, _, _, _ in false },
+                moveRow: @escaping MoveRow = { _, _, _, _ in },
+                supplementaryReuseableViewOfKind: @escaping SupplementaryReuseableViewOfKind = { _, _, _, _ in UICollectionReusableView() })
     {
         self.sectionIndexTitles = sectionIndexTitles
         self.dataSource = dataSource
@@ -73,11 +72,11 @@ open class CollectionViewDataSource<Section: SectionProtocol>: NSObject, UIColle
 }
 
 extension CollectionViewDataSource {
-    open subscript(section: Int) -> Section {
+    public subscript(section: Int) -> Section {
         return dataSource[section]
     }
     
-    open subscript(indexPath: IndexPath) -> Section.I {
+    public subscript(indexPath: IndexPath) -> Section.I {
         return dataSource[indexPath.section].items[indexPath.row]
     }
 }

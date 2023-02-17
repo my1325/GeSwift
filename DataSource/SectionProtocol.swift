@@ -11,7 +11,7 @@ import Foundation
 public protocol SectionProtocol {
     associatedtype S
     associatedtype I
-    
+
     var section: S { get }
     var items: [I] { get }
 }
