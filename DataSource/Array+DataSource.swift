@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Array {
+public extension Array {
     func bind(to: @escaping (Self) -> Void) {
         to(self)
     }

@@ -95,12 +95,12 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
     }
 }
 
-extension TableViewDataSource {
-    public subscript(section: Int) -> Section {
+public extension TableViewDataSource {
+    subscript(section: Int) -> Section {
         return dataSource[section]
     }
 
-    public subscript(indexPath: IndexPath) -> Section.I {
+    subscript(indexPath: IndexPath) -> Section.I {
         return dataSource[indexPath.section].items[indexPath.row]
     }
 }

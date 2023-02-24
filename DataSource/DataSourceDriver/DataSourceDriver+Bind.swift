@@ -10,7 +10,7 @@ import UIKit
 
 public extension DataSourceDriver {
     func bind(to: @escaping (Value) -> Void) {
-        drive { value in
+        inMainQueue().drive { value in
             to(value)
         }
     }
@@ -18,7 +18,7 @@ public extension DataSourceDriver {
     func bind<View, Element, Cell>(to: @escaping (@escaping (View, Element, Cell) -> Void) -> (Value) -> Void) -> (@escaping (View, Element, Cell) -> Void) -> Void {
         return { configCellData in
             let dataSource = to(configCellData)
-            self.drive { value in
+            self.inMainQueue().drive { value in
                 dataSource(value)
             }
         }

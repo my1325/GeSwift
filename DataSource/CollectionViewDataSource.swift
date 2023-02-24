@@ -71,12 +71,12 @@ open class CollectionViewDataSource<Section: SectionProtocol>: NSObject, UIColle
     }
 }
 
-extension CollectionViewDataSource {
-    public subscript(section: Int) -> Section {
+public extension CollectionViewDataSource {
+    subscript(section: Int) -> Section {
         return dataSource[section]
     }
     
-    public subscript(indexPath: IndexPath) -> Section.I {
+    subscript(indexPath: IndexPath) -> Section.I {
         return dataSource[indexPath.section].items[indexPath.row]
     }
 }

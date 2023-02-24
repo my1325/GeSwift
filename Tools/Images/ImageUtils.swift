@@ -118,7 +118,7 @@ public extension UIImage {
         return image
     }
 
-    internal func withBorder(_ borderColor: UIColor, borderWidth: CGFloat, with corner: UIRectCorner = .allCorners, radius: CGFloat) -> UIImage? {
+    func withBorder(_ borderColor: UIColor, borderWidth: CGFloat, with corner: UIRectCorner = .allCorners, radius: CGFloat) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, true, UIScreen.main.scale)
         defer { UIGraphicsEndImageContext() }
         borderColor.setStroke()
@@ -132,6 +132,18 @@ public extension UIImage {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corner, cornerRadii: CGSize(width: radius, height: _radius))
         path.lineWidth = borderWidth * UIScreen.main.scale
         path.stroke()
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+    
+    func redrawWithSize(_ size: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        defer { UIGraphicsEndImageContext() }
+        let context = UIGraphicsGetCurrentContext()
+        context?.translateBy(x: 0, y: size.height)
+        context?.scaleBy(x: 1, y: -1)
+        if let cgImage = self.cgImage {
+            context?.draw(cgImage, in: CGRect(origin: .zero, size: size))
+        }
         return UIGraphicsGetImageFromCurrentImageContext()
     }
 
