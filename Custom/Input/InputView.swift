@@ -20,37 +20,42 @@ public protocol InputFieldStyleProtocol {
     var inset: UIEdgeInsets { get }
     var borderColor: UIColor { get }
     var borderWidth: CGFloat { get }
+    var borderRadius: CGFloat { get }
     var cursorColor: UIColor { get }
     var borderStyle: BorderStyle { get }
 }
 
 public extension InputFieldStyleProtocol {
     var cellSize: CGSize {
-        return CGSize(width: 40, height: 40)
+        CGSize(width: 40, height: 40)
     }
     
     var spacing: CGFloat {
-        return 10
+        10
     }
     
     var inset: UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
     var borderColor: UIColor {
-        return .black
+        .black
     }
     
     var borderWidth: CGFloat {
-        return 1
+        1
+    }
+    
+    var borderRadius: CGFloat {
+        0
     }
     
     var cursorColor: UIColor {
-        return .red
+        .red
     }
     
     var borderStyle: BorderStyle {
-        return .box
+        .box
     }
 }
 
@@ -294,10 +299,13 @@ extension InputField: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InputViewCell", for: indexPath) as! InputViewCell
+        cell.label.textColor = textColor
+        cell.label.font = font
         cell.label.text = charactorForTextAtIndex(indexPath.item)
         cell.borderColor = style.borderColor
         cell.borderWidth = style.borderWidth
         cell.borderStyle = style.borderStyle
+        cell.borderRadius = style.borderRadius
         return cell
     }
     

@@ -42,6 +42,8 @@ internal final class InputViewCell: UICollectionViewCell {
         }
     }
     
+    var borderRadius: CGFloat = 4
+    
     func reloadBorder() {
         switch borderStyle {
         case .underline:
@@ -74,7 +76,7 @@ internal final class InputViewCell: UICollectionViewCell {
     }
     
     private func renderBoxBorder() {
-        let path = UIBezierPath(roundedRect: box.bounds, cornerRadius: 4)
+        let path = UIBezierPath(roundedRect: box.bounds, cornerRadius: borderRadius)
         shapeLayer.path = path.cgPath
     }
 }
