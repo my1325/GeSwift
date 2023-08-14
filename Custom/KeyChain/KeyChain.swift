@@ -139,9 +139,14 @@ public extension KeyChain {
             case errSecSuccess, errSecInteractionNotAllowed:
                 var query = self.option.query
                 query[KeyChainAttribute.AttributeAccount] = key
-                query[KeyChainAttribute.ValueData] = data
-
-                return SecItemUpdate(query as CFDictionary, query as CFDictionary) == errSecSuccess
+                
+                var rquery = self.option.query
+                rquery[KeyChainAttribute.Class] = nil
+                rquery[KeyChainAttribute.AttributeAccount] = key
+                rquery[KeyChainAttribute.ValueData] = data
+                                
+                let ret = SecItemUpdate(query as CFDictionary, rquery as CFDictionary)
+                return ret == errSecSuccess
             case errSecItemNotFound:
                 var query = self.option.query
                 query[KeyChainAttribute.AttributeAccount] = key
