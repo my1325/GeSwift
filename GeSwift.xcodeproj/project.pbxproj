@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F1364EA2A8A637200EB9A2B /* AttributeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1364E92A8A637200EB9A2B /* AttributeLabel.swift */; };
 		B7CCD4B0299F273700FADD51 /* Custom.h in Headers */ = {isa = PBXBuildFile; fileRef = B7CCD4AF299F273700FADD51 /* Custom.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7CCD4D1299F27AD00FADD51 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD4B6299F27AD00FADD51 /* StringUtils.swift */; };
 		B7CCD4D2299F27AD00FADD51 /* UIResponderUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCD4B8299F27AD00FADD51 /* UIResponderUtils.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F1364E92A8A637200EB9A2B /* AttributeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeLabel.swift; sourceTree = "<group>"; };
 		B7C6051A299E27C8008A9D84 /* Tools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CCD4AD299F273700FADD51 /* Custom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Custom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CCD4AF299F273700FADD51 /* Custom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Custom.h; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F1364E82A8A635E00EB9A2B /* AttributeLabel */ = {
+			isa = PBXGroup;
+			children = (
+				0F1364E92A8A637200EB9A2B /* AttributeLabel.swift */,
+			);
+			path = AttributeLabel;
+			sourceTree = "<group>";
+		};
 		B7C60501299E277A008A9D84 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +153,7 @@
 		B7CCD4AE299F273700FADD51 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				0F1364E82A8A635E00EB9A2B /* AttributeLabel */,
 				B7CCD50B299F2AB800FADD51 /* KeyChain */,
 				B7CCD509299F2AB800FADD51 /* WrapNavigationController */,
 				B7CCD4E7299F288000FADD51 /* CollectionVIewLayout */,
@@ -518,6 +529,7 @@
 				B7CCD504299F288000FADD51 /* InputView.swift in Sources */,
 				B7CCD50E299F2AB800FADD51 /* KeyChain.swift in Sources */,
 				B7CCD4FF299F288000FADD51 /* FixSpacingCollectionViewLayout.swift in Sources */,
+				0F1364EA2A8A637200EB9A2B /* AttributeLabel.swift in Sources */,
 				B7CCD50D299F2AB800FADD51 /* WrapNavigationController.swift in Sources */,
 				B7CCD501299F288000FADD51 /* WaterCollectionViewLayout.swift in Sources */,
 				B7CCD502299F288000FADD51 /* InputViewCell.swift in Sources */,
