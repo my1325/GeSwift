@@ -29,31 +29,32 @@ public final class CustomViewAttachment {
         self.view = view
         self.bounds = bounds
         self.willDisplayView = willDisplayView
-        self.width = bounds.width
+        self.width = bounds.width + bounds.origin.x
         self.alignment = alignment
         self.font = alignToFont
+        let height = bounds.height + bounds.origin.y
         switch alignment {
         case .top:
             ascent = alignToFont.ascender
-            descent = bounds.size.height - ascent
+            descent = height - ascent
             if descent < 0 {
-                ascent = bounds.size.height
+                ascent = height
                 descent = 0
             }
         case .center:
             let fontHeight = alignToFont.ascender - alignToFont.descender
             let yOffset = alignToFont.ascender - fontHeight * 0.5
-            ascent = bounds.height * 0.5 + yOffset
-            descent = bounds.height - ascent
+            ascent = height * 0.5 + yOffset
+            descent = height - ascent
             if descent < 0 {
-                ascent = bounds.size.height
+                ascent = height
                 descent = 0
             }
         case .bottom:
-            ascent = bounds.height + alignToFont.descender
+            ascent = height + alignToFont.descender
             descent = -alignToFont.descender
             if ascent < 0 {
-                descent = bounds.size.height
+                descent = height
                 ascent = 0
             }
         }
@@ -66,13 +67,17 @@ public final class CustomViewAttachment {
     
     var width: CGFloat
     
-    func pointYWithOrigin(_ y: CGFloat, lineHeight: CGFloat) -> CGFloat {
+    func pointYWithOrigin(_ origin: CGPoint, lineHeight: CGFloat) -> CGPoint {
+        let height = bounds.height + bounds.origin.y
         let fontHeight = font.ascender - font.descender
+        let x = origin.x + bounds.origin.x
+        var y = origin.y
         switch alignment {
-        case .top: return y - fontHeight - font.descender
-        case .center: return y - bounds.height * 0.5 + font.descender
-        case .bottom: return y - lineHeight - font.descender
+        case .top:  y = y - fontHeight - font.descender
+        case .center: y = y - height * 0.5 + font.descender
+        case .bottom: y = y - lineHeight - font.descender
         }
+        return CGPoint(x: x, y: y + bounds.origin.y)
     }
 }
 
@@ -236,17 +241,14 @@ public final class AttributeAsyncTextLayer: CALayer {
                let customAttachment = attributes[.customViewAttribute] as? CustomViewAttachment
             {
                 let x = lineOrigin.x + CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, nil)
-                let y = customAttachment.pointYWithOrigin(lineOrigin.y, lineHeight: lineHeight)
-                handleCustomViewAttachment(customAttachment, run: run, position: CGPoint(x: x, y: y))
+                let poisition = customAttachment.pointYWithOrigin(CGPoint(x: x, y: lineOrigin.y), lineHeight: lineHeight)
+                handleCustomViewAttachment(customAttachment, position: poisition)
             }
         }
     }
 
-    private func handleCustomViewAttachment(_ attachment: CustomViewAttachment, run: CTRun, position: CGPoint) {
-        var ascent: CGFloat = 0
-        var desent: CGFloat = 0
-        let width = CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &desent, nil)
-        let frame = CGRect(origin: position, size: CGSize(width: width, height: ascent + desent))
+    private func handleCustomViewAttachment(_ attachment: CustomViewAttachment, position: CGPoint) {
+        let frame = CGRect(origin: position, size: attachment.bounds.size)
         if let attributeLabel = delegate as? AttributeLabel {
             DispatchQueue.main.async {
                 attachment.willDisplayView(attachment.view)

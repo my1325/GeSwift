@@ -27,12 +27,12 @@ class ViewController: UIViewController {
         let customViewAttachment = NSAttributedString.customViewAttachmentString({
             $0.backgroundColor = .red
             return $0
-        }(UIView()), bounds: CGRect(origin: .zero, size: CGSize(width: 100, height: 20)), alignToFont: font, alignment: .center)
+        }(UIView()), bounds: CGRect(origin: CGPoint(x: -12, y: 0), size: CGSize(width: 100, height: 20)), alignToFont: font, alignment: .center)
         
         let customViewAttachment1 = NSAttributedString.customViewAttachmentString({
             $0.backgroundColor = .blue
             return $0
-        }(UIView()), bounds: CGRect(origin: .zero, size: CGSize(width: 50, height: 50)), alignToFont: font, alignment: .bottom)
+        }(UIView()), bounds: CGRect(origin: CGPoint(x: 20, y: 0), size: CGSize(width: 50, height: 50)), alignToFont: font, alignment: .center)
         
         attributeString.append(customViewAttachment)
         attributeString.append(attributeString1)
