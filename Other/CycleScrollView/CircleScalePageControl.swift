@@ -7,6 +7,9 @@
 //
 
 import UIKit
+#if canImport(Tools)
+import Tools
+#endif
 
 internal final class CircleScalePageControl: UIView, CyclePageControl {
     var currentPage: Int = 0 {
@@ -25,7 +28,7 @@ internal final class CircleScalePageControl: UIView, CyclePageControl {
         }
     }
     
-    var currentIndicatorColor: UIColor = "FF5A5F".ge.asColor
+    var currentIndicatorColor: UIColor = UIColor(with: 0xFF5A5F)!
     var indicatorColor: UIColor = .white
     
     private lazy var contentView: UIView = {

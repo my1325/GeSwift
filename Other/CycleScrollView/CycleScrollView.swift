@@ -88,9 +88,9 @@ private final class CycleScrollViewImageCell: UICollectionViewCell {
         didSet {
             switch titleLocation {
             case .left, .right:
-                titleContanerView.ge.updateConstraint(forWidth: titleMargin)
+                titleContanerView.updateConstraint(forWidth: titleMargin)
             case .top, .bottom, .center:
-                titleContanerView.ge.updateConstraint(forHeight: titleMargin)
+                titleContanerView.updateConstraint(forHeight: titleMargin)
             }
             contentView.layoutIfNeeded()
         }

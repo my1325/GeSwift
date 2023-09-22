@@ -7,6 +7,9 @@
 //
 
 import UIKit
+#if canImport(Tools)
+import Tools
+#endif
 
 internal final class SizeFitPageControl: UIView, CyclePageControl {
     var currentPage: Int = 0 {
@@ -25,7 +28,7 @@ internal final class SizeFitPageControl: UIView, CyclePageControl {
         }
     }
     
-    var currentIndicatorColor: UIColor = "FF5A5F".ge.asColor
+    var currentIndicatorColor: UIColor = UIColor(with: 0xFF5A5F)!
     var indicatorColor: UIColor = .white
     
     private lazy var contentView: UIView = {
@@ -73,13 +76,13 @@ internal final class SizeFitPageControl: UIView, CyclePageControl {
         precondition(index < self.numberOfPages)
         /// select current
         let indicator = self.indicators[index]
-        indicator.ge.updateConstraint(forWidth: 16)
+        indicator.updateConstraint(forWidth: 16)
         
         let oldIndicator: UIView?
         if oldIndex != index && oldIndex < self.numberOfPages {
             /// deselect old
             oldIndicator = self.indicators[oldIndex]
-            oldIndicator?.ge.updateConstraint(forWidth: 6)
+            oldIndicator?.updateConstraint(forWidth: 6)
         } else {
             oldIndicator = nil
         }
