@@ -22,4 +22,11 @@ Pod::Spec.new do |s|
  s.subspec 'Custom' do |ss|
    ss.source_files = 'Custom/**/*.swift'
  end
+
+ s.subspec 'CycleScrollView' do |ss|
+   ss.source_files = 'Other/CycleScrollView/*.swift'
+   ss.dependency 'Kingfisher'
+   ss.dependency 'Schedule'
+   ss.dependency 'SnapKit'
+ end 
 end
