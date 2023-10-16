@@ -82,7 +82,7 @@ public final class CustomViewAttachment {
 }
 
 public extension NSAttributedString.Key {
-    static let customViewAttribute: NSAttributedString.Key = .init("com.ge.attribute.string.customView.key")
+    static let customViewAttribute: NSAttributedString.Key = .init("com.bf.attribute.string.customView.key")
 }
 
 fileprivate func deallocCallback(_ pointer: UnsafeMutableRawPointer) {
@@ -172,6 +172,8 @@ public final class AttributeAsyncTextLayer: CALayer {
     public let queue: DispatchQueue = DispatchQueue(label: "com.ge.attribute.text.layer.queue")
     
     public var attributeText: NSAttributedString?
+    
+    public var isRTL: Bool = false
 
     override public func display() {
         if let attributeText {
@@ -240,7 +242,10 @@ public final class AttributeAsyncTextLayer: CALayer {
             if let attributes = CTRunGetAttributes(run) as? [NSAttributedString.Key: Any],
                let customAttachment = attributes[.customViewAttribute] as? CustomViewAttachment
             {
-                let x = lineOrigin.x + CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, nil)
+                var x = lineOrigin.x + CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, nil)
+                if isRTL {
+                    x -= customAttachment.width
+                }
                 let poisition = customAttachment.pointYWithOrigin(CGPoint(x: x, y: lineOrigin.y), lineHeight: lineHeight)
                 handleCustomViewAttachment(customAttachment, position: poisition)
             }
@@ -271,6 +276,8 @@ public final class AttributeLabel: UIView {
         didSet {
             textLayer.attributeText = attributeText
             textLayer.setNeedsDisplay()
+            textLayer.isRTL = semanticContentAttribute == .forceRightToLeft
+            subviews.forEach({ $0.removeFromSuperview() })
             invalidateIntrinsicContentSize()
         }
     }
