@@ -10,6 +10,9 @@ import Kingfisher
 import Schedule
 import SnapKit
 import UIKit
+#if canImport(GeSwift)
+import GeSwift
+#endif
 
 @objc
 public protocol CycleScrollViewDelegate: NSObjectProtocol {

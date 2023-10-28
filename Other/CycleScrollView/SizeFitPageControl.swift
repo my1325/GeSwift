@@ -7,8 +7,8 @@
 //
 
 import UIKit
-#if canImport(Tools)
-import Tools
+#if canImport(GeSwift)
+import GeSwift
 #endif
 
 public final class SizeFitPageControl: UIView, CyclePageControl {

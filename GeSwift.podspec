@@ -28,5 +28,6 @@ Pod::Spec.new do |s|
    ss.dependency 'Kingfisher'
    ss.dependency 'Schedule'
    ss.dependency 'SnapKit'
+   ss.dependency 'GeSwift/Tools'
  end 
 end

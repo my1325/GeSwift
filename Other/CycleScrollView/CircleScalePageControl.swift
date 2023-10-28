@@ -7,18 +7,19 @@
 //
 
 import UIKit
-#if canImport(Tools)
-import Tools
+#if canImport(GeSwift)
+import GeSwift
 #endif
 
-internal final class CircleScalePageControl: UIView, CyclePageControl {
-    var currentPage: Int = 0 {
+public final class CircleScalePageControl: UIView, CyclePageControl {
+    public var currentPage: Int = 0 {
         didSet {
+            guard currentPage < numberOfPages else { return }
             self.selecteIndex(self.currentPage, oldIndex: oldValue)
         }
     }
     
-    var numberOfPages: Int = 0 {
+    public var numberOfPages: Int = 0 {
         didSet {
             guard oldValue != self.numberOfPages else {
                 self.currentPage = 0
