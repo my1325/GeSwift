@@ -5,7 +5,10 @@
 //  Created by mayong on 2023/2/16.
 //
 
+import Accelerate
+import CoreVideo
 import UIKit
+import VideoToolbox
 
 extension CGImageSource {
     func frameDurationAtIndex(_ index: Int) -> Double {
@@ -49,7 +52,7 @@ public extension UIImage {
                 kCGImageSourceCreateThumbnailFromImageIfAbsent: NSNumber(value: true),
                 kCGImageSourceThumbnailMaxPixelSize: NSNumber(value: 120 * UIScreen.main.scale),
                 kCGImageSourceShouldCache: NSNumber(value: false),
-                kCGImageSourceCreateThumbnailWithTransform: NSNumber(value: true)
+                kCGImageSourceCreateThumbnailWithTransform: NSNumber(value: true),
             ] as CFDictionary
 
             if frameCount > 1 {
@@ -134,7 +137,7 @@ public extension UIImage {
         path.stroke()
         return UIGraphicsGetImageFromCurrentImageContext()
     }
-    
+
     func redrawWithSize(_ size: CGSize) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         defer { UIGraphicsEndImageContext() }
@@ -230,7 +233,7 @@ public extension UIImage {
 
     static func hightDefinitionImage(_ image: CIImage, size: CGFloat) -> UIImage {
         let integral: CGRect = image.extent.integral
-        let proportion: CGFloat = min(size/integral.width, size/integral.height)
+        let proportion: CGFloat = min(size / integral.width, size / integral.height)
 
         let width = integral.width * proportion
         let height = integral.height * proportion
@@ -245,5 +248,255 @@ public extension UIImage {
         bitmapRef.draw(bitmapImage, in: integral)
         let image: CGImage = bitmapRef.makeImage()!
         return UIImage(cgImage: image)
+    }
+
+    private func bitmapInfoWithPixelFormatType(_ inputPixelFormat: OSType, hasAlpha: Bool) -> UInt32 {
+        if inputPixelFormat == kCVPixelFormatType_32BGRA {
+            var bitmapInfo = CGImageAlphaInfo.premultipliedFirst.rawValue | kCGBitmapByteOrder32Host.rawValue
+            if !hasAlpha {
+                bitmapInfo = CGImageAlphaInfo.noneSkipFirst.rawValue | kCGBitmapByteOrder32Host.rawValue
+            }
+            return bitmapInfo
+        } else if inputPixelFormat == kCVPixelFormatType_32ARGB {
+            let bitmapInfo = CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Big.rawValue
+            return bitmapInfo
+        } else {
+            return 0
+        }
+    }
+
+    func toPixelBuffer(_ type: OSType) -> CVPixelBuffer? {
+        guard let image = self.cgImage else { return nil }
+        let width = image.width
+        let height = image.height
+        let hasAlpha = image.alphaInfo != .none
+        var keyCallbacks = kCFTypeDictionaryKeyCallBacks
+        var valueCallbacks = kCFTypeDictionaryValueCallBacks
+        let empty = CFDictionaryCreate(kCFAllocatorDefault, nil, nil, 0, &keyCallbacks, &valueCallbacks)
+        let options = [
+            kCVPixelBufferCGImageCompatibilityKey: NSNumber(value: true),
+            kCVPixelBufferCGBitmapContextCompatibilityKey: NSNumber(value: true),
+            kCVPixelBufferIOSurfacePropertiesKey: empty ?? ([:] as CFDictionary),
+        ] as [CFString: Any]
+
+        var pixelBuffer: CVPixelBuffer?
+        guard CVPixelBufferCreate(kCFAllocatorDefault, width, height, type, options as CFDictionary, &pixelBuffer) == kCVReturnSuccess,
+              let pixelBuffer
+        else {
+            return nil
+        }
+
+        CVPixelBufferLockBaseAddress(pixelBuffer, .readOnly)
+        defer { CVPixelBufferUnlockBaseAddress(pixelBuffer, .readOnly) }
+
+        guard let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer) else { return nil }
+
+        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+
+        let bitmapInfo = self.bitmapInfoWithPixelFormatType(kCVPixelFormatType_32BGRA, hasAlpha: hasAlpha)
+
+        guard let context = CGContext(data: pixelData, width: width, height: height, bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer), space: rgbColorSpace, bitmapInfo: bitmapInfo)
+        else {
+            return nil
+        }
+        context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+        return pixelBuffer
+    }
+
+    static func imageFrom420YpPixelBuffer(_ pixelBuffer: CVPixelBuffer) -> UIImage? {
+        // pixel format is Bi-Planar Component Y'CbCr 8-bit 4:2:0, full-range (luma=[0,255] chroma=[1,255]).
+        // baseAddr points to a big-endian CVPlanarPixelBufferInfo_YCbCrBiPlanar struct.
+        //
+        guard CVPixelBufferGetPixelFormatType(pixelBuffer) == kCVPixelFormatType_420YpCbCr8BiPlanarFullRange else {
+            return nil
+        }
+
+        guard CVPixelBufferLockBaseAddress(pixelBuffer, .readOnly) == kCVReturnSuccess else {
+            return nil
+        }
+
+        defer {
+            // be sure to unlock the base address before returning
+            CVPixelBufferUnlockBaseAddress(pixelBuffer, .readOnly)
+        }
+
+        // 1st plane is luminance, 2nd plane is chrominance
+        guard CVPixelBufferGetPlaneCount(pixelBuffer) == 2 else {
+            return nil
+        }
+
+        // 1st plane
+        guard let lumaBaseAddress = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 0) else {
+            return nil
+        }
+
+        let lumaWidth = CVPixelBufferGetWidthOfPlane(pixelBuffer, 0)
+        let lumaHeight = CVPixelBufferGetHeightOfPlane(pixelBuffer, 0)
+        let lumaBytesPerRow = CVPixelBufferGetBytesPerRowOfPlane(pixelBuffer, 0)
+        var lumaBuffer = vImage_Buffer(
+            data: lumaBaseAddress,
+            height: vImagePixelCount(lumaHeight),
+            width: vImagePixelCount(lumaWidth),
+            rowBytes: lumaBytesPerRow
+        )
+
+        // 2nd plane
+        guard let chromaBaseAddress = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 1) else {
+            return nil
+        }
+
+        let chromaWidth = CVPixelBufferGetWidthOfPlane(pixelBuffer, 1)
+        let chromaHeight = CVPixelBufferGetHeightOfPlane(pixelBuffer, 1)
+        let chromaBytesPerRow = CVPixelBufferGetBytesPerRowOfPlane(pixelBuffer, 1)
+        var chromaBuffer = vImage_Buffer(
+            data: chromaBaseAddress,
+            height: vImagePixelCount(chromaHeight),
+            width: vImagePixelCount(chromaWidth),
+            rowBytes: chromaBytesPerRow
+        )
+
+        var argbBuffer = vImage_Buffer()
+
+        defer {
+            // we are responsible for freeing the buffer data
+            free(argbBuffer.data)
+        }
+
+        // initialize the empty buffer
+        guard vImageBuffer_Init(
+            &argbBuffer,
+            lumaBuffer.height,
+            lumaBuffer.width,
+            32,
+            vImage_Flags(kvImageNoFlags)
+        ) == kvImageNoError else {
+            return nil
+        }
+
+        // full range 8-bit, clamped to full range, is necessary for correct color reproduction
+        var pixelRange = vImage_YpCbCrPixelRange(
+            Yp_bias: 0,
+            CbCr_bias: 128,
+            YpRangeMax: 255,
+            CbCrRangeMax: 255,
+            YpMax: 255,
+            YpMin: 1,
+            CbCrMax: 255,
+            CbCrMin: 0
+        )
+
+        var conversionInfo = vImage_YpCbCrToARGB()
+
+        // initialize the conversion info
+        guard vImageConvert_YpCbCrToARGB_GenerateConversion(
+            kvImage_YpCbCrToARGBMatrix_ITU_R_601_4, // Y'CbCr-to-RGB conversion matrix for ITU Recommendation BT.601-4.
+            &pixelRange,
+            &conversionInfo,
+            kvImage420Yp8_CbCr8, // converting from
+            kvImageARGB8888, // converting to
+            vImage_Flags(kvImageNoFlags)
+        ) == kvImageNoError else {
+            return nil
+        }
+
+        // do the conversion
+        guard vImageConvert_420Yp8_CbCr8ToARGB8888(
+            &lumaBuffer, // in
+            &chromaBuffer, // in
+            &argbBuffer, // out
+            &conversionInfo,
+            nil,
+            255,
+            vImage_Flags(kvImageNoFlags)
+        ) == kvImageNoError else {
+            return nil
+        }
+
+        // core foundation objects are automatically memory mananged. no need to call CGContextRelease() or CGColorSpaceRelease()
+        guard let context = CGContext(
+            data: argbBuffer.data,
+            width: Int(argbBuffer.width),
+            height: Int(argbBuffer.height),
+            bitsPerComponent: 8,
+            bytesPerRow: argbBuffer.rowBytes,
+            space: CGColorSpaceCreateDeviceRGB(),
+            bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue
+        ) else {
+            return nil
+        }
+
+        if let cgImage = context.makeImage() {
+            return UIImage(cgImage: cgImage)
+        }
+        return nil
+    }
+
+    // CVPixelBufferGetPixelFormatType(pixelBuffer) == kCVPixelFormatType_32ARGB
+    static func imageFrom32ARGBPixelBuffer(_ pixelBuffer: CVPixelBuffer) -> UIImage? {
+        let imageBuffer = pixelBuffer as CVImageBuffer
+        CVPixelBufferLockBaseAddress(pixelBuffer, .init(rawValue: 0))
+        defer { CVPixelBufferUnlockBaseAddress(pixelBuffer, .init(rawValue: 0)) }
+        let address = CVPixelBufferGetBaseAddress(imageBuffer)
+        let width = CVPixelBufferGetWidth(pixelBuffer)
+        let height = CVPixelBufferGetHeight(pixelBuffer)
+        let bitmapInfo = kCGBitmapByteOrder32Host.rawValue | CGImageAlphaInfo.noneSkipFirst.rawValue
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let context = CGContext(data: address, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 4 * width, space: colorSpace, bitmapInfo: bitmapInfo)
+        if let cgImage = context?.makeImage() {
+            return UIImage(cgImage: cgImage)
+        }
+        return nil
+    }
+
+    // videoToolBox , Not all CVPixelBuffer pixel formats support conversion into a  CGImage-compatible pixel format.
+    static func imageFromPixelBufferWithVideoToolBox(_ pixelBuffer: CVPixelBuffer) -> UIImage? {
+        var cgImage: CGImage?
+        VTCreateCGImageFromCVPixelBuffer(pixelBuffer, options: nil, imageOut: &cgImage)
+        if let cgImage {
+            return UIImage(cgImage: cgImage)
+        }
+        return nil
+    }
+
+    func resizeAspectFill(_ size: CGSize) -> UIImage? {
+        guard let image = self.cgImage else { return nil }
+        let width = image.width
+        let height = image.height
+        let imageRefW = CGFloat(width)
+        let imageRefH = CGFloat(height)
+        let winScale = size.width / size.height
+        let refScale = imageRefW / imageRefH
+        if winScale > refScale {
+            let newH = imageRefW * size.height / size.width
+            let newy = (imageRefH - newH) * 0.5
+            if let finalImageRef = image.cropping(to: CGRect(x: 0, y: newy, width: imageRefW, height: newH)) {
+                return UIImage(cgImage: finalImageRef)
+            }
+        }
+
+        if winScale < refScale {
+            let newW = imageRefH * winScale
+            let newx = imageRefW - newW
+            if let finalImageRef = image.cropping(to: CGRect(x: newx, y: 0, width: newW, height: imageRefH)) {
+                return UIImage(cgImage: finalImageRef)
+            }
+        }
+        return nil
+    }
+
+    func bf_clipsToSize(_ size: CGSize, radius: CGFloat) -> UIImage? {
+        guard let image = self.cgImage else { return nil }
+        UIGraphicsBeginImageContext(size)
+        defer { UIGraphicsEndImageContext() }
+        let context = UIGraphicsGetCurrentContext()
+//        context?.scaleBy(x: 1, y: -1)
+//        context?.translateBy(x: 0, y: -size.height)
+        let avatarRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIBezierPath(roundedRect: avatarRect, cornerRadius: radius).addClip()
+        context?.draw(image, in: CGRect(origin: .zero, size: size))
+        if let cgImage = context?.makeImage() {
+            return UIImage(cgImage: cgImage)
+        }
+        return nil
     }
 }

@@ -8,6 +8,17 @@
 import Foundation
 
 public extension Array {
+    
+    func toJSONData(_ options: JSONSerialization.WritingOptions = []) throws -> Data? {
+        guard JSONSerialization.isValidJSONObject(self) else { return nil }
+        return try JSONSerialization.data(withJSONObject: self, options: options)
+    }
+    
+    func toJSONString(_ options: JSONSerialization.WritingOptions = [], encoding: String.Encoding = .utf8) throws -> String? {
+        guard let data = try toJSONData(options) else { return nil }
+        return String(data: data, encoding: encoding)
+    }
+    
     func combine<T>(_ another: [T]) -> [(Element, T)] {
         let _count = Swift.min(self.count, another.count)
         var retList: [(Element, T)] = []

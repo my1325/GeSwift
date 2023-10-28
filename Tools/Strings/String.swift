@@ -8,6 +8,38 @@
 import Foundation
 
 public extension String {
+    
+    static let document = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+    
+    static let library = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
+
+    static let caches = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
+
+    static let desktop = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true)[0]
+
+    static let downloads = NSSearchPathForDirectoriesInDomains(.downloadsDirectory, .userDomainMask, true)[0]
+
+    static let user = NSSearchPathForDirectoriesInDomains(.userDirectory, .userDomainMask, true)[0]
+
+    static let application = NSSearchPathForDirectoriesInDomains(.applicationDirectory, .userDomainMask, true)[0]
+    
+    static let temp = NSTemporaryDirectory()
+    
+    static let home = NSHomeDirectory()
+
+    var intValue: Int {
+        Int(self) ?? 0
+    }
+    
+    var doubleValue: Double {
+        Double(self) ?? 0
+    }
+    
+    fileprivate static let yesConsts: [String] = ["YES", "yes", "Yes", "TRUE", "true", "True", "1"]
+    var boolValue: Bool {
+        String.yesConsts.contains(self)
+    }
+    
     subscript(offset: Int) -> Character {
         let index = self.index(self.startIndex, offsetBy: offset)
         precondition(index <= self.endIndex)

@@ -7,10 +7,11 @@ let package = Package(
     name: "GeSwift",
     platforms: [.iOS(.v12)],
     products: [
-        .library(name: "Tools", targets: ["Tools"]),
+        .library(name: "GeSwift", targets: ["Tools"]),
         .library(name: "DataSource", targets: ["DataSource"]),
         .library(name: "Custom", targets: ["Custom"]),
-        .library(name: "CycleScrollView", targets: ["CycleScrollView"])
+        .library(name: "CycleScrollView", targets: ["CycleScrollView"]),
+        
     ],
     dependencies: [
         .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "7.0.0")),

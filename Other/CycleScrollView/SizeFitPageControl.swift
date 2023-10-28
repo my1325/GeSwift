@@ -11,14 +11,15 @@ import UIKit
 import Tools
 #endif
 
-internal final class SizeFitPageControl: UIView, CyclePageControl {
-    var currentPage: Int = 0 {
+public final class SizeFitPageControl: UIView, CyclePageControl {
+    public var currentPage: Int = 0 {
         didSet {
+            guard currentPage < numberOfPages else { return }
             self.selecteIndex(self.currentPage, oldIndex: oldValue)
         }
     }
 
-    var numberOfPages: Int = 0 {
+    public var numberOfPages: Int = 0 {
         didSet {
             guard oldValue != self.numberOfPages else {
                 self.currentPage = 0

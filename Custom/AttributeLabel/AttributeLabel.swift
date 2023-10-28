@@ -200,9 +200,10 @@ public final class AttributeAsyncTextLayer: CALayer {
         // draw
         drawAttributeText(attributeText as CFAttributedString, in: context, bounds: bounds)
         let cgImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
-        DispatchQueue.main.async {
-            self.contents = cgImage
-        }
+//        DispatchQueue.main.async {
+        // 刷新的时候可能会闪烁
+        self.contents = cgImage
+//        }
     }
 
     private func drawAttributeText(_ attributeText: CFAttributedString, in context: CGContext, bounds: CGRect) {

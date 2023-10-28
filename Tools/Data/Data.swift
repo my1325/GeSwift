@@ -8,7 +8,7 @@
 import Foundation
 
 public extension Data {
-    var hexString: String? {
+    var hexString: String {
         var string = ""
         for index in 0 ..< self.count {
             let hexStr = String(format: "%x", self[index] & 0xff)

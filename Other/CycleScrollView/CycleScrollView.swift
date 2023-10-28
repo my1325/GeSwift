@@ -316,12 +316,6 @@ extension CycleScrollView: UICollectionViewDelegateFlowLayout {
         return collectionView.bounds.size
     }
     
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let index = Int(scrollView.contentOffset.x / scrollView.bounds.size.width + 0.5) % totalIndex
-        delegate?.cycleScrollView?(self, didScrollToItemAtIndex: index)
-        pageControl.currentPage = index
-    }
-    
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.cycleScrollView?(self, didSelectItemAtIndex: indexPath.item % totalIndex)
     }
@@ -333,6 +327,20 @@ extension CycleScrollView: UICollectionViewDelegateFlowLayout {
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         task?.resume()
+    }
+    
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+       scrollViewDidEndScroll(scrollView)
+    }
+    
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        scrollViewDidEndScroll(scrollView)
+    }
+    
+    private func scrollViewDidEndScroll(_ scrollView: UIScrollView) {
+        let index = Int(scrollView.contentOffset.x / scrollView.bounds.size.width + 0.5) % totalIndex
+        delegate?.cycleScrollView?(self, didScrollToItemAtIndex: index)
+        pageControl.currentPage = index
     }
 }
 

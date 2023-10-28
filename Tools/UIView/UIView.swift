@@ -184,11 +184,7 @@ public extension UIView {
     ///   - corners: 需要添加的
     ///   - radius: 圆角
     ///   - rect: 圆角在的矩形
-    func addRoundCorner(_ corners: UIRectCorner, radii: CGSize, rect: CGRect = .zero) {
-        var rect = rect
-        if rect == .zero {
-            rect = self.bounds
-        }
+    func addRoundCorner(_ corners: UIRectCorner, radii: CGSize, rect: CGRect) {
         let roundPath = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: radii)
         let shape = CAShapeLayer()
         shape.path = roundPath.cgPath
