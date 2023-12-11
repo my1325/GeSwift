@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
  s.name             = "GeSwift"
- s.version           = "0.2.1"
+ s.version           = "0.2.2"
  s.summary         = "GeSwift for my's ioser"
  s.homepage        = "https://github.com/my1325/GeSwift.git"
  s.license            = "MIT"
@@ -12,15 +12,15 @@ Pod::Spec.new do |s|
  s.default_subspecs = 'Tools'
 
  s.subspec 'Tools' do |ss|
-  ss.source_files = 'Tools/**/*.swift'
+  ss.source_files = 'Tools/*.swift'
  end 
   
  s.subspec 'DataSource' do |ss|
-   ss.source_files = 'DataSource/**/*.swift'
+   ss.source_files = 'DataSource/*.swift'
  end
 
  s.subspec 'Custom' do |ss|
-   ss.source_files = 'Custom/**/*.swift'
+   ss.source_files = 'Custom/*.swift'
  end
 
  s.subspec 'CycleScrollView' do |ss|
@@ -28,6 +28,11 @@ Pod::Spec.new do |s|
    ss.dependency 'Kingfisher'
    ss.dependency 'Schedule'
    ss.dependency 'SnapKit'
+   ss.dependency 'GeSwift/UIAbout'
    ss.dependency 'GeSwift/Tools'
+ end 
+
+  s.subspec 'UIAbout' do |ss|
+   ss.source_files = 'UIAbout/*.swift'
  end 
 end

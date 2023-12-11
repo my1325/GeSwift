@@ -7,19 +7,19 @@
 
 import UIKit
 
-public protocol GeResponderProtocol {
-    func intercept(event: GeResponderEvent)
+public protocol ResponderProtocol {
+    func intercept(event: ResponderEvent)
 }
 
-public protocol GeResponderEvent {}
+public protocol ResponderEvent {}
 
 public extension UIResponder {
     /// 事件路由
     ///
     /// - Parameters:
     ///   - event: 事件
-    func router(event: GeResponderEvent) {
-        if let intercept = next as? GeResponderProtocol {
+    func router(event: ResponderEvent) {
+        if let intercept = next as? ResponderProtocol {
             intercept.intercept(event: event)
             return
         }

@@ -1,1 +1,0 @@
-../../Custom/CollectionVIewLayout/SimpleScaleCollectionViewLayout.swift

@@ -7,8 +7,10 @@
 
 import UIKit
 
-/// associated key
-private var TableViewCacheHeightKey = "TableViewCacheHeightKey"
+extension AssociateKey {
+    static let tableViewCacheHeightKey = AssociateKey(intValue: 10012)
+    static let multiDelegateForTableViewKey = AssociateKey(intValue: 10013)
+}
 
 /// cache heights
 private class TableCacheHeights {
@@ -49,10 +51,10 @@ public extension UITableView {
 
     /// get cache heights
     fileprivate var cacheHeights: TableCacheHeights {
-        var _cacheHeights: TableCacheHeights? = objc_getAssociatedObject(self, &TableViewCacheHeightKey) as? TableCacheHeights
+        var _cacheHeights: TableCacheHeights? = objc_getAssociatedObject(self, AssociateKey.tableViewCacheHeightKey.key) as? TableCacheHeights
         if _cacheHeights == nil {
             _cacheHeights = TableCacheHeights()
-            objc_setAssociatedObject(self, &TableViewCacheHeightKey, _cacheHeights!, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, AssociateKey.tableViewCacheHeightKey.key, _cacheHeights!, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
         }
         return _cacheHeights!
     }
@@ -122,9 +124,6 @@ public extension UITableView {
     }
 }
 
-// TODO:
-private var multiDelegateForTableViewKey = "com.ge.multi.delegate.for.tableView"
-
 private final class TableViewDelegateWraper: NSObject {
     private let pointerArray: NSPointerArray = .weakObjects()
 
@@ -158,14 +157,14 @@ private final class TableViewDelegateWraper: NSObject {
 extension UITableView {
     private var delegateList: TableViewDelegateWraper? {
         get {
-            var list = objc_getAssociatedObject(self, &multiDelegateForTableViewKey) as? TableViewDelegateWraper
+            var list = objc_getAssociatedObject(self, AssociateKey.multiDelegateForTableViewKey.key) as? TableViewDelegateWraper
             if list == nil {
                 list = TableViewDelegateWraper()
-                objc_setAssociatedObject(self, &multiDelegateForTableViewKey, list, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, AssociateKey.multiDelegateForTableViewKey.key, list, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
             return list
         } set {
-            objc_setAssociatedObject(self, &multiDelegateForTableViewKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, AssociateKey.multiDelegateForTableViewKey.key, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 
