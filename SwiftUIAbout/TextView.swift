@@ -9,32 +9,92 @@ import Combine
 import SwiftUI
 import UIKit
 
+public struct TextViewPlaceholder {
+    let placeholderLabel: UILabel
+    
+    init(uiLabel: UILabel) {
+        placeholderLabel = uiLabel
+    }
+    
+    func applyToTextView(_ textView: UITextView) {
+        placeholderLabel.sizeToFit()
+        textView.addSubview(placeholderLabel)
+        textView.setValue(placeholderLabel, forKey: "_placeholderLabel")
+    }
+}
+
+public struct TextViewConfig {
+    let foregroundColor: UIColor
+    let returnKeyType: UIReturnKeyType
+    let tintColor: UIColor
+    let textAlignment: NSTextAlignment
+    let font: UIFont
+    let backgroundColor: UIColor
+    
+    public init(foregroundColor: UIColor = .black,
+                returnKeyType: UIReturnKeyType = .default,
+                tintColor: UIColor = .black,
+                textAlignment: NSTextAlignment = .left,
+                font: UIFont = .systemFont(ofSize: 17),
+                backgroundColor: UIColor = .clear)
+    {
+        self.foregroundColor = foregroundColor
+        self.returnKeyType = returnKeyType
+        self.tintColor = tintColor
+        self.textAlignment = textAlignment
+        self.font = font
+        self.backgroundColor = backgroundColor
+    }
+    
+    func applyToTextView(_ textView: UITextView) {
+        textView.textColor = foregroundColor
+        textView.returnKeyType = returnKeyType
+        textView.tintColor = tintColor
+        textView.textAlignment = textAlignment
+        textView.font = font
+        textView.backgroundColor = backgroundColor
+    }
+}
+
 public struct TextView: UIViewRepresentable {
     public typealias UIViewType = UITextView
     public typealias TextDidChange = (String) -> Void
     public typealias TextBeginChange = () -> Void
-    
+    public typealias PlaceholderGetter = () -> TextViewPlaceholder
+    public typealias ConfigGetter = () -> TextViewConfig
+    public typealias TextShouldChanged = (String, Range<String.Index>, String) -> Bool
+
     @Binding
     public var text: String
     
+    public let textShouldChange: TextShouldChanged
     public let textDidChange: TextDidChange
     public let textBeginChange: TextBeginChange
     public let textEndChange: TextBeginChange
+    public let textPlaceholder: PlaceholderGetter
+    public let textConfig: ConfigGetter
     public init(text: Binding<String>,
+                textConfig: @escaping ConfigGetter = { TextViewConfig() },
+                textPlaceholder: @escaping PlaceholderGetter = { TextViewPlaceholder("") },
+                textShouldChange: @escaping TextShouldChanged = { _, _, _ in true },
                 textDidChange: @escaping TextDidChange = { _ in },
                 textBeginChange: @escaping TextBeginChange = {},
                 textEndChange: @escaping TextBeginChange = {})
     {
-        self._text = text
+        _text = text
+        self.textPlaceholder = textPlaceholder
         self.textDidChange = textDidChange
         self.textBeginChange = textBeginChange
         self.textEndChange = textEndChange
+        self.textConfig = textConfig
+        self.textShouldChange = textShouldChange
     }
     
     public func makeUIView(context: UIViewRepresentableContext<Self>) -> UIViewType {
         let textView = UIViewType()
+        textConfig().applyToTextView(textView)
+        textPlaceholder().applyToTextView(textView)
         textView.delegate = context.coordinator
-        textView.backgroundColor = .clear
         let linefragmentPadding = textView.textContainer.lineFragmentPadding
         textView.textContainerInset = UIEdgeInsets(top: 0, left: -linefragmentPadding, bottom: 0, right: -linefragmentPadding)
         textView.layoutManager.allowsNonContiguousLayout = false
@@ -56,7 +116,7 @@ public struct TextView: UIViewRepresentable {
     public class Coordinator: NSObject, UITextViewDelegate {
         let parent: TextView
         init(textView: TextView) {
-            self.parent = textView
+            parent = textView
         }
         
         public func textViewDidChange(_ textView: UITextView) {
@@ -71,44 +131,235 @@ public struct TextView: UIViewRepresentable {
         public func textViewDidEndEditing(_ textView: UITextView) {
             parent.textEndChange()
         }
+        
+        public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+            let origin = textView.text ?? ""
+            if let from16 = origin.utf16.index(origin.utf16.startIndex, offsetBy: range.location, limitedBy: origin.utf16.endIndex),
+               let to16 = origin.utf16.index(from16, offsetBy: range.length, limitedBy: origin.utf16.endIndex),
+               let from = String.Index(from16, within: origin),
+               let to = String.Index(to16, within: origin)
+            {
+                return parent.textShouldChange(origin, from ..< to, text)
+            } else {
+                let startIndex = origin.index(origin.startIndex, offsetBy: range.lowerBound)
+                let endIndex = origin.index(origin.startIndex, offsetBy: range.upperBound)
+                return parent.textShouldChange(textView.text, startIndex ..< endIndex, text)
+            }
+        }
     }
 }
 
-public struct PlaceholderStyle: View {
-    public var body: some View {
-        Rectangle()
-            .fill(Color.clear)
+public extension TextViewPlaceholder {
+    init(_ placeholder: String) {
+        placeholderLabel = UILabel()
+        placeholderLabel.text = placeholder
     }
     
-    public let forgroundColor: Color
-    public let font: Font
-    public init(forgroundColor: Color = .clear, font: Font = .system(size: 17)) {
-        self.forgroundColor = forgroundColor
-        self.font = font
+    init(_ attributeString: NSAttributedString) {
+        placeholderLabel = UILabel()
+        placeholderLabel.attributedText = attributeString
+    }
+
+    func forgroundColor(_ uiColor: UIColor) -> TextViewPlaceholder {
+        placeholderLabel.textColor = uiColor
+        return TextViewPlaceholder(uiLabel: placeholderLabel)
+    }
+    
+    func forgroundColor(_ hexValue: UInt, alpha: CGFloat = 1) -> TextViewPlaceholder {
+        let red = CGFloat((hexValue >> 16) & 0xFF) / 255
+        let green = CGFloat((hexValue >> 8) & 0xFF) / 255
+        let blue = CGFloat(hexValue & 0xFF) / 255
+        let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        return forgroundColor(color)
+    }
+    
+    func font(_ uiFont: UIFont) -> TextViewPlaceholder {
+        placeholderLabel.font = uiFont
+        return TextViewPlaceholder(uiLabel: placeholderLabel)
+    }
+    
+    func systemFont(_ size: CGFloat, weight: UIFont.Weight = .regular) -> TextViewPlaceholder {
+        font(.systemFont(ofSize: size, weight: weight))
+    }
+    
+    func textAlignment(_ alignment: NSTextAlignment) -> TextViewPlaceholder {
+        placeholderLabel.textAlignment = alignment
+        return TextViewPlaceholder(uiLabel: placeholderLabel)
+    }
+    
+    func numberOfLines(_ lines: Int) -> TextViewPlaceholder {
+        placeholderLabel.numberOfLines = lines
+        return TextViewPlaceholder(uiLabel: placeholderLabel)
+    }
+}
+
+public extension TextViewConfig {
+    func forgroundColor(_ uiColor: UIColor) -> TextViewConfig {
+        .init(foregroundColor: uiColor,
+              returnKeyType: returnKeyType,
+              tintColor: tintColor,
+              textAlignment: textAlignment,
+              font: font,
+              backgroundColor: backgroundColor)
+    }
+    
+    func forgroundColor(_ hexValue: UInt, alpha: CGFloat = 1) -> TextViewConfig {
+        let red = CGFloat((hexValue >> 16) & 0xFF) / 255
+        let green = CGFloat((hexValue >> 8) & 0xFF) / 255
+        let blue = CGFloat(hexValue & 0xFF) / 255
+        let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        return forgroundColor(color)
+    }
+    
+    func font(_ uiFont: UIFont) -> TextViewConfig {
+        .init(foregroundColor: foregroundColor,
+              returnKeyType: returnKeyType,
+              tintColor: tintColor,
+              textAlignment: textAlignment,
+              font: uiFont,
+              backgroundColor: backgroundColor)
+    }
+    
+    func systemFont(_ size: CGFloat, weight: UIFont.Weight = .regular) -> TextViewConfig {
+        font(.systemFont(ofSize: size, weight: weight))
+    }
+    
+    func textAlignment(_ alignment: NSTextAlignment) -> TextViewConfig {
+        .init(foregroundColor: foregroundColor,
+              returnKeyType: returnKeyType,
+              tintColor: tintColor,
+              textAlignment: alignment,
+              font: font,
+              backgroundColor: backgroundColor)
+    }
+    
+    func returnKeyType(_ returnKeyType: UIReturnKeyType) -> TextViewConfig {
+        .init(foregroundColor: foregroundColor,
+              returnKeyType: returnKeyType,
+              tintColor: tintColor,
+              textAlignment: textAlignment,
+              font: font,
+              backgroundColor: backgroundColor)
+    }
+    
+    func tintColor(_ tintColor: UIColor) -> TextViewConfig {
+        .init(foregroundColor: foregroundColor,
+              returnKeyType: returnKeyType,
+              tintColor: tintColor,
+              textAlignment: textAlignment,
+              font: font,
+              backgroundColor: backgroundColor)
+    }
+    
+    func tintColor(_ hexValue: UInt, alpha: CGFloat = 1) -> TextViewConfig {
+        let red = CGFloat((hexValue >> 16) & 0xFF) / 255
+        let green = CGFloat((hexValue >> 8) & 0xFF) / 255
+        let blue = CGFloat(hexValue & 0xFF) / 255
+        let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        return tintColor(color)
+    }
+    
+    func backgroundColor(_ backgroundColor: UIColor) -> TextViewConfig {
+        .init(foregroundColor: foregroundColor,
+              returnKeyType: returnKeyType,
+              tintColor: tintColor,
+              textAlignment: textAlignment,
+              font: font,
+              backgroundColor: backgroundColor)
+    }
+    
+    func backgroundColor(_ hexValue: UInt, alpha: CGFloat = 1) -> TextViewConfig {
+        let red = CGFloat((hexValue >> 16) & 0xFF) / 255
+        let green = CGFloat((hexValue >> 8) & 0xFF) / 255
+        let blue = CGFloat(hexValue & 0xFF) / 255
+        let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        return backgroundColor(color)
     }
 }
 
 public extension TextView {
-    func placeholderStyle(_ placeholderStyle: PlaceholderStyle) -> TextView {
-        
+    func textPlaceholder(_ textPlaceholder: @escaping PlaceholderGetter) -> TextView {
+        TextView(text: _text,
+                 textConfig: textConfig,
+                 textPlaceholder: textPlaceholder,
+                 textShouldChange: textShouldChange,
+                 textDidChange: textDidChange,
+                 textBeginChange: textBeginChange,
+                 textEndChange: textEndChange)
     }
     
-    private init(textView: TextView, placeholderStyle: PlaceholderStyle) {
-        
+    func textConfig(_ textConfig: @escaping ConfigGetter) -> TextView {
+        TextView(text: _text,
+                 textConfig: textConfig,
+                 textPlaceholder: textPlaceholder,
+                 textShouldChange: textShouldChange,
+                 textDidChange: textDidChange,
+                 textBeginChange: textBeginChange,
+                 textEndChange: textEndChange)
+    }
+    
+    func textDidChange(_ textDidChange: @escaping TextDidChange) -> TextView {
+        TextView(text: _text,
+                 textConfig: textConfig,
+                 textPlaceholder: textPlaceholder,
+                 textShouldChange: textShouldChange,
+                 textDidChange: textDidChange,
+                 textBeginChange: textBeginChange,
+                 textEndChange: textEndChange)
+    }
+    
+    func textBeginChange(_ textBeginChange: @escaping TextBeginChange) -> TextView {
+        TextView(text: _text,
+                 textConfig: textConfig,
+                 textPlaceholder: textPlaceholder,
+                 textShouldChange: textShouldChange,
+                 textDidChange: textDidChange,
+                 textBeginChange: textBeginChange,
+                 textEndChange: textEndChange)
+    }
+    
+    func textEndChange(_ textEndChange: @escaping TextBeginChange) -> TextView {
+        TextView(text: _text,
+                 textConfig: textConfig,
+                 textPlaceholder: textPlaceholder,
+                 textShouldChange: textShouldChange,
+                 textDidChange: textDidChange,
+                 textBeginChange: textBeginChange,
+                 textEndChange: textEndChange)
+    }
+    
+    func textShouldChange(_ textShouldChange: @escaping TextShouldChanged) -> TextView {
+        TextView(text: _text,
+                 textConfig: textConfig,
+                 textPlaceholder: textPlaceholder,
+                 textShouldChange: textShouldChange,
+                 textDidChange: textDidChange,
+                 textBeginChange: textBeginChange,
+                 textEndChange: textEndChange)
     }
 }
 
 #Preview(body: {
     TextView(text: .constant(""))
-        .foregroundColor(.blue)
-        .frame(maxWidth: .infinity)
+        .textConfig {
+            TextViewConfig()
+                .forgroundColor(.red)
+                .systemFont(14)
+                .returnKeyType(.done)
+                .textAlignment(.right)
+                .tintColor(.yellow)
+        }
+        .textPlaceholder {
+            TextViewPlaceholder("afjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasld")
+                .forgroundColor(.lightGray)
+                .systemFont(12)
+                .textAlignment(.right)
+                .numberOfLines(0)
+        }
         .frame(height: 100)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color.black, lineWidth: 1.0)
         )
         .padding()
-        .overlay(
-            PlaceholderStyle(forgroundColor: <#Color#>, font: <#Font#>)
-        )
 })
