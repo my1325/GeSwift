@@ -5,13 +5,14 @@ import PackageDescription
 
 let package = Package(
     name: "GeSwift",
-    platforms: [.iOS(.v12)],
+    platforms: [.iOS(.v13)],
     products: [
         .library(name: "Tools", targets: ["Tools"]),
         .library(name: "UIAbout", targets: ["UIAbout"]),
         .library(name: "DataSource", targets: ["DataSource"]),
         .library(name: "Custom", targets: ["Custom"]),
         .library(name: "CycleScrollView", targets: ["CycleScrollView"]),
+        .library(name: "SwiftUIAbout", targets: ["SwiftUIAbout"])
     ],
     dependencies: [
         .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "7.0.0")),
@@ -19,16 +20,36 @@ let package = Package(
         .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.0"))
     ],
     targets: [
-        .target(name: "Tools", path: "Tools"),
-        .target(name: "DataSource", path: "DataSource"),
-        .target(name: "Custom", path: "Custom"),
-        .target(name: "UIAbout", path: "UIAbout"),
-        .target(name: "CycleScrollView", dependencies: [
-        "Kingfisher",
-        "SnapKit",
-        "Schedule",
-        "Tools",
-        "UIAbout"
-        ], path: "Other/CycleScrollView"),
+        .target(
+            name: "Tools",
+            path: "Tools"
+        ),
+        .target(
+            name: "DataSource",
+            path: "DataSource"
+        ),
+        .target(
+            name: "Custom",
+            path: "Custom")
+        ,
+        .target(
+            name: "UIAbout",
+            path: "UIAbout"
+        ),
+        .target(
+            name: "SwiftUIAbout",
+            path: "SwiftUIAbout"
+        ),
+        .target(
+            name: "CycleScrollView",
+            dependencies: [
+                "Kingfisher",
+                "SnapKit",
+                "Schedule",
+                "Tools",
+                "UIAbout"
+            ],
+            path: "Other/CycleScrollView"
+        )
     ]
 )

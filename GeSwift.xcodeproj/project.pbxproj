@@ -50,7 +50,7 @@
 		B753FC962B27009A004C9947 /* DataSourceDriver+Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = B753FC932B270099004C9947 /* DataSourceDriver+Bind.swift */; };
 		B753FC972B27009A004C9947 /* DataSourceDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B753FC942B270099004C9947 /* DataSourceDriver.swift */; };
 		B753FC982B27009A004C9947 /* DataSourceDriver+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B753FC952B270099004C9947 /* DataSourceDriver+Map.swift */; };
-		B753FCA12B27040A004C9947 /* SwiftUI.h in Headers */ = {isa = PBXBuildFile; fileRef = B753FCA02B27040A004C9947 /* SwiftUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B753FCA12B27040A004C9947 /* SwiftUIAbout.h in Headers */ = {isa = PBXBuildFile; fileRef = B753FCA02B27040A004C9947 /* SwiftUIAbout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B753FCA62B270414004C9947 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B753FCA52B270414004C9947 /* TextView.swift */; };
 		B753FCA82B27041A004C9947 /* TextFiledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B753FCA72B27041A004C9947 /* TextFiledView.swift */; };
 		B753FCAC2B270456004C9947 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B753FCAB2B270456004C9947 /* ImagePickerView.swift */; };
@@ -118,7 +118,7 @@
 		B753FC942B270099004C9947 /* DataSourceDriver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceDriver.swift; sourceTree = "<group>"; };
 		B753FC952B270099004C9947 /* DataSourceDriver+Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSourceDriver+Map.swift"; sourceTree = "<group>"; };
 		B753FC9E2B27040A004C9947 /* SwiftUIAbout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIAbout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B753FCA02B27040A004C9947 /* SwiftUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUI.h; sourceTree = "<group>"; };
+		B753FCA02B27040A004C9947 /* SwiftUIAbout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIAbout.h; sourceTree = "<group>"; };
 		B753FCA52B270414004C9947 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		B753FCA72B27041A004C9947 /* TextFiledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFiledView.swift; sourceTree = "<group>"; };
 		B753FCAB2B270456004C9947 /* ImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 		B753FC9F2B27040A004C9947 /* SwiftUIAbout */ = {
 			isa = PBXGroup;
 			children = (
-				B753FCA02B27040A004C9947 /* SwiftUI.h */,
+				B753FCA02B27040A004C9947 /* SwiftUIAbout.h */,
 				B753FCAF2B27045F004C9947 /* RoundedCorners.swift */,
 				B753FCA52B270414004C9947 /* TextView.swift */,
 				B753FCAD2B27045B004C9947 /* ActivityIndicator.swift */,
@@ -368,7 +368,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B753FCA12B27040A004C9947 /* SwiftUI.h in Headers */,
+				B753FCA12B27040A004C9947 /* SwiftUIAbout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

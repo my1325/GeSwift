@@ -91,14 +91,3 @@ public struct RoundedCorners: Shape {
         }
     }
 }
-
-#Preview(body: {
-    VStack {
-        Text("ajsdlkfjslkdjfklasd")
-            .padding()
-            .overlay(
-                RoundedCorners()
-                    .stroke(Color.black, lineWidth: 1)
-            )
-    }
-})

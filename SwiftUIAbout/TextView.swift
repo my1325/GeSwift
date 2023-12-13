@@ -5,7 +5,6 @@
 //  Created by mayong on 2023/12/11.
 //
 
-import Combine
 import SwiftUI
 import UIKit
 
@@ -67,6 +66,9 @@ public struct TextView: UIViewRepresentable {
     @Binding
     public var text: String
     
+    @Binding
+    public var editing: Bool
+    
     public let textShouldChange: TextShouldChanged
     public let textDidChange: TextDidChange
     public let textBeginChange: TextBeginChange
@@ -74,6 +76,7 @@ public struct TextView: UIViewRepresentable {
     public let textPlaceholder: PlaceholderGetter
     public let textConfig: ConfigGetter
     public init(text: Binding<String>,
+                editing: Binding<Bool>,
                 textConfig: @escaping ConfigGetter = { TextViewConfig() },
                 textPlaceholder: @escaping PlaceholderGetter = { TextViewPlaceholder("") },
                 textShouldChange: @escaping TextShouldChanged = { _, _, _ in true },
@@ -82,6 +85,7 @@ public struct TextView: UIViewRepresentable {
                 textEndChange: @escaping TextBeginChange = {})
     {
         _text = text
+        _editing = editing
         self.textPlaceholder = textPlaceholder
         self.textDidChange = textDidChange
         self.textBeginChange = textBeginChange
@@ -103,6 +107,11 @@ public struct TextView: UIViewRepresentable {
     }
     
     public func updateUIView(_ uiView: UIViewType, context: UIViewRepresentableContext<Self>) {
+        if editing {
+            _ = uiView.becomeFirstResponder()
+        } else {
+            _ = uiView.resignFirstResponder()
+        }
         uiView.text = text
         if !text.isEmpty {
             textDidChange(text)
@@ -143,7 +152,7 @@ public struct TextView: UIViewRepresentable {
             } else {
                 let startIndex = origin.index(origin.startIndex, offsetBy: range.lowerBound)
                 let endIndex = origin.index(origin.startIndex, offsetBy: range.upperBound)
-                return parent.textShouldChange(textView.text, startIndex ..< endIndex, text)
+                return parent.textShouldChange(origin, startIndex ..< endIndex, text)
             }
         }
     }
@@ -280,6 +289,7 @@ public extension TextViewConfig {
 public extension TextView {
     func textPlaceholder(_ textPlaceholder: @escaping PlaceholderGetter) -> TextView {
         TextView(text: _text,
+                 editing: _editing,
                  textConfig: textConfig,
                  textPlaceholder: textPlaceholder,
                  textShouldChange: textShouldChange,
@@ -290,6 +300,7 @@ public extension TextView {
     
     func textConfig(_ textConfig: @escaping ConfigGetter) -> TextView {
         TextView(text: _text,
+                 editing: _editing,
                  textConfig: textConfig,
                  textPlaceholder: textPlaceholder,
                  textShouldChange: textShouldChange,
@@ -300,6 +311,7 @@ public extension TextView {
     
     func textDidChange(_ textDidChange: @escaping TextDidChange) -> TextView {
         TextView(text: _text,
+                 editing: _editing,
                  textConfig: textConfig,
                  textPlaceholder: textPlaceholder,
                  textShouldChange: textShouldChange,
@@ -310,6 +322,7 @@ public extension TextView {
     
     func textBeginChange(_ textBeginChange: @escaping TextBeginChange) -> TextView {
         TextView(text: _text,
+                 editing: _editing,
                  textConfig: textConfig,
                  textPlaceholder: textPlaceholder,
                  textShouldChange: textShouldChange,
@@ -320,6 +333,7 @@ public extension TextView {
     
     func textEndChange(_ textEndChange: @escaping TextBeginChange) -> TextView {
         TextView(text: _text,
+                 editing: _editing,
                  textConfig: textConfig,
                  textPlaceholder: textPlaceholder,
                  textShouldChange: textShouldChange,
@@ -330,6 +344,7 @@ public extension TextView {
     
     func textShouldChange(_ textShouldChange: @escaping TextShouldChanged) -> TextView {
         TextView(text: _text,
+                 editing: _editing,
                  textConfig: textConfig,
                  textPlaceholder: textPlaceholder,
                  textShouldChange: textShouldChange,
@@ -338,28 +353,3 @@ public extension TextView {
                  textEndChange: textEndChange)
     }
 }
-
-#Preview(body: {
-    TextView(text: .constant(""))
-        .textConfig {
-            TextViewConfig()
-                .forgroundColor(.red)
-                .systemFont(14)
-                .returnKeyType(.done)
-                .textAlignment(.right)
-                .tintColor(.yellow)
-        }
-        .textPlaceholder {
-            TextViewPlaceholder("afjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasldafjsdlafkasld")
-                .forgroundColor(.lightGray)
-                .systemFont(12)
-                .textAlignment(.right)
-                .numberOfLines(0)
-        }
-        .frame(height: 100)
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.black, lineWidth: 1.0)
-        )
-        .padding()
-})

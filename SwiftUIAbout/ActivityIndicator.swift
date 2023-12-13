@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct ActivityIndicator: UIViewRepresentable {
-    typealias UIViewType = UIActivityIndicatorView
+public struct ActivityIndicator: UIViewRepresentable {
+    public typealias UIViewType = UIActivityIndicatorView
 
-    @Binding var isAnimating: Bool
+    @Binding
+    public var isAnimating: Bool
     
-    let style: UIActivityIndicatorView.Style
+    public let style: UIActivityIndicatorView.Style
     
-    func makeUIView(context: Context) -> UIActivityIndicatorView {
+    public func makeUIView(context: Context) -> UIActivityIndicatorView {
         UIActivityIndicatorView(style: style)
     }
     
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {
+    public func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {
         isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
     }
 }
