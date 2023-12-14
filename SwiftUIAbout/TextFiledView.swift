@@ -137,6 +137,7 @@ public struct TextFiledView: UIViewRepresentable {
         
         @objc
         func textFiledEditingChanged(_ textFiled: UITextField) {
+            parent.text = textFiled.text ?? ""
             parent.editingEventListener(.editingChanged, textFiled.text!)
         }
         
