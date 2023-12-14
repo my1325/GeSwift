@@ -20,7 +20,7 @@ public struct TextFiledViewConfig {
     let clearButtonMode: UITextField.ViewMode
     let backgroundColor: UIColor
     
-    init(textColor: UIColor = .black,
+    public init(textColor: UIColor = .black,
          font: UIFont = .systemFont(ofSize: 17, weight: .regular),
          alignemnt: NSTextAlignment = .left,
          returnKeyType: UIReturnKeyType = .default,
@@ -80,12 +80,12 @@ public struct TextFiledView: UIViewRepresentable {
     let shouldChangeCharacters: ShouldChangeCharacters
     
     public init(text: Binding<String>,
-         editing: Binding<Bool>,
-         isSecureTextEntry: Binding<Bool> = .constant(false),
-         configGetter: @escaping ConfigGetter,
-         editingEventListener: @escaping EditingEventListener,
-         shouldBeginEditing: @escaping ShouldBeginEditing,
-         shouldChangeCharacters: @escaping ShouldChangeCharacters)
+                editing: Binding<Bool>,
+                isSecureTextEntry: Binding<Bool> = .constant(false),
+                configGetter: @escaping ConfigGetter = { TextFiledViewConfig() },
+                editingEventListener: @escaping EditingEventListener = { _, _ in },
+                shouldBeginEditing: @escaping ShouldBeginEditing = { true },
+                shouldChangeCharacters: @escaping ShouldChangeCharacters = { _, _, _ in true })
     {
         self._text = text
         self._editing = editing
@@ -214,7 +214,6 @@ public extension TextFiledView {
 }
 
 public extension TextFiledViewConfig {
-
     func foregroundColor(_ foregroundColor: UIColor) -> TextFiledViewConfig {
         .init(textColor: foregroundColor,
               font: font,
@@ -225,8 +224,7 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor
-        )
+              backgroundColor: backgroundColor)
     }
     
     func font(_ font: UIFont) -> TextFiledViewConfig {
@@ -239,8 +237,7 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor
-        )
+              backgroundColor: backgroundColor)
     }
     
     func alignemnt(_ alignemnt: NSTextAlignment) -> TextFiledViewConfig {
@@ -253,8 +250,7 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor
-        )
+              backgroundColor: backgroundColor)
     }
     
     func returnKeyType(_ returnKeyType: UIReturnKeyType) -> TextFiledViewConfig {
@@ -267,8 +263,7 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor
-        )
+              backgroundColor: backgroundColor)
     }
     
     func keyboardType(_ keyboardType: UIKeyboardType) -> TextFiledViewConfig {
@@ -281,8 +276,7 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor
-        )
+              backgroundColor: backgroundColor)
     }
     
     func tintColor(_ tintColor: UIColor) -> TextFiledViewConfig {
@@ -295,8 +289,7 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor
-        )
+              backgroundColor: backgroundColor)
     }
     
     func borderStyle(_ borderStyle: UITextField.BorderStyle) -> TextFiledViewConfig {
@@ -309,8 +302,7 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor
-        )
+              backgroundColor: backgroundColor)
     }
     
     func placeholder(_ placeholder: NSAttributedString) -> TextFiledViewConfig {
@@ -323,8 +315,7 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor
-        )
+              backgroundColor: backgroundColor)
     }
     
     func clearButtonMode(_ clearButtonMode: UITextField.ViewMode) -> TextFiledViewConfig {
@@ -337,8 +328,7 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor
-        )
+              backgroundColor: backgroundColor)
     }
     
     func backgroundColor(_ backgroundColor: UIColor) -> TextFiledViewConfig {
@@ -351,7 +341,6 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor
-        )
+              backgroundColor: backgroundColor)
     }
 }
