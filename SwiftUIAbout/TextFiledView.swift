@@ -227,6 +227,14 @@ public extension TextFiledViewConfig {
               backgroundColor: backgroundColor)
     }
     
+    func foregroundColor(_ hexValue: UInt, alpha: CGFloat = 1) -> TextFiledViewConfig {
+        let red = CGFloat((hexValue >> 16) & 0xFF) / 255
+        let green = CGFloat((hexValue >> 8) & 0xFF) / 255
+        let blue = CGFloat(hexValue & 0xFF) / 255
+        let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        return foregroundColor(color)
+    }
+    
     func font(_ font: UIFont) -> TextFiledViewConfig {
         .init(textColor: textColor,
               font: font,
@@ -292,6 +300,14 @@ public extension TextFiledViewConfig {
               backgroundColor: backgroundColor)
     }
     
+    func tintColor(_ hexValue: UInt, alpha: CGFloat = 1) -> TextFiledViewConfig {
+        let red = CGFloat((hexValue >> 16) & 0xFF) / 255
+        let green = CGFloat((hexValue >> 8) & 0xFF) / 255
+        let blue = CGFloat(hexValue & 0xFF) / 255
+        let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        return tintColor(color)
+    }
+    
     func borderStyle(_ borderStyle: UITextField.BorderStyle) -> TextFiledViewConfig {
         .init(textColor: textColor,
               font: font,
@@ -318,6 +334,30 @@ public extension TextFiledViewConfig {
               backgroundColor: backgroundColor)
     }
     
+    func placeholder(_ string: String) -> TextFiledViewConfig {
+        placeholder(NSAttributedString(string: string))
+    }
+    
+    func placeholderForgroundColor(_ color: UIColor) -> TextFiledViewConfig {
+        let attributeString = NSMutableAttributedString(attributedString: placeholder)
+        attributeString.addAttribute(.foregroundColor, value: color, range: NSMakeRange(0, placeholder.length))
+        return placeholder(attributeString)
+    }
+    
+    func placeholderForgroundColor(_ hexValue: UInt, alpha: CGFloat = 1) -> TextFiledViewConfig {
+        let red = CGFloat((hexValue >> 16) & 0xFF) / 255
+        let green = CGFloat((hexValue >> 8) & 0xFF) / 255
+        let blue = CGFloat(hexValue & 0xFF) / 255
+        let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        return placeholderForgroundColor(color)
+    }
+    
+    func placeholderFont(_ font: UIFont) -> TextFiledViewConfig {
+        let attributeString = NSMutableAttributedString(attributedString: placeholder)
+        attributeString.addAttribute(.font, value: font, range: NSMakeRange(0, placeholder.length))
+        return placeholder(attributeString)
+    }
+    
     func clearButtonMode(_ clearButtonMode: UITextField.ViewMode) -> TextFiledViewConfig {
         .init(textColor: textColor,
               font: font,
@@ -342,5 +382,13 @@ public extension TextFiledViewConfig {
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
               backgroundColor: backgroundColor)
+    }
+    
+    func backgroundColor(_ hexValue: UInt, alpha: CGFloat = 1) -> TextFiledViewConfig {
+        let red = CGFloat((hexValue >> 16) & 0xFF) / 255
+        let green = CGFloat((hexValue >> 8) & 0xFF) / 255
+        let blue = CGFloat(hexValue & 0xFF) / 255
+        let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        return backgroundColor(color)
     }
 }
