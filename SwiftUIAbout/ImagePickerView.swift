@@ -5,13 +5,12 @@
 //  Created by mayong on 2023/11/27.
 //
 
-import UIKit
-import SwiftUI
-import Photos
 import AVFoundation
+import Photos
+import SwiftUI
+import UIKit
 
 public struct ImagePickerView: UIViewControllerRepresentable {
-        
     public enum SourceType {
         case photoLibrary
         case camera
@@ -31,6 +30,15 @@ public struct ImagePickerView: UIViewControllerRepresentable {
     public let sourceType: SourceType
     
     public let didSelectImageAction: DidSelectImageAction
+    
+    public init(allowsEditing: Bool = true,
+                sourceType: SourceType = .photoLibrary,
+                didSelectImageAction: @escaping DidSelectImageAction)
+    {
+        self.allowsEditing = allowsEditing
+        self.sourceType = sourceType
+        self.didSelectImageAction = didSelectImageAction
+    }
     
     @Environment(\.presentationMode)
     var presentationMode // 获取环境变量
@@ -68,7 +76,6 @@ public struct ImagePickerView: UIViewControllerRepresentable {
 }
 
 public extension ImagePickerView.SourceType {
-        
     var isAuthorized: Bool {
         switch self {
         case .photoLibrary:
