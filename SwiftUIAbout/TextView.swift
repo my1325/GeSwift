@@ -107,14 +107,10 @@ public struct TextView: UIViewRepresentable {
     }
     
     public func updateUIView(_ uiView: UIViewType, context: UIViewRepresentableContext<Self>) {
-        if editing {
-            _ = uiView.becomeFirstResponder()
-        } else {
-            _ = uiView.resignFirstResponder()
-        }
         uiView.text = text
-        if !text.isEmpty {
-            textDidChange(text)
+        if uiView.isFirstResponder, !context.coordinator.didBecomeFirstResponder {
+            uiView.becomeFirstResponder()
+            context.coordinator.didBecomeFirstResponder = true
         }
     }
     
@@ -123,6 +119,7 @@ public struct TextView: UIViewRepresentable {
     }
     
     public class Coordinator: NSObject, UITextViewDelegate {
+        var didBecomeFirstResponder: Bool = false 
         let parent: TextView
         init(textView: TextView) {
             parent = textView

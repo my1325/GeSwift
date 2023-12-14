@@ -69,9 +69,6 @@ public struct TextFiledView: UIViewRepresentable {
     public var text: String
     
     @Binding
-    public var editing: Bool
-    
-    @Binding
     public var isSecureTextEntry: Bool
     
     let configGetter: ConfigGetter
@@ -80,7 +77,6 @@ public struct TextFiledView: UIViewRepresentable {
     let shouldChangeCharacters: ShouldChangeCharacters
     
     public init(text: Binding<String>,
-                editing: Binding<Bool>,
                 isSecureTextEntry: Binding<Bool> = .constant(false),
                 configGetter: @escaping ConfigGetter = { TextFiledViewConfig() },
                 editingEventListener: @escaping EditingEventListener = { _, _ in },
@@ -88,7 +84,6 @@ public struct TextFiledView: UIViewRepresentable {
                 shouldChangeCharacters: @escaping ShouldChangeCharacters = { _, _, _ in true })
     {
         self._text = text
-        self._editing = editing
         self._isSecureTextEntry = isSecureTextEntry
         self.configGetter = configGetter
         self.editingEventListener = editingEventListener
@@ -111,13 +106,12 @@ public struct TextFiledView: UIViewRepresentable {
     }
     
     public func updateUIView(_ uiView: UITextField, context: Context) {
-        if editing {
-            _ = uiView.becomeFirstResponder()
-        } else {
-            _ = uiView.resignFirstResponder()
-        }
-        uiView.isSecureTextEntry = isSecureTextEntry
         uiView.text = text
+        uiView.isSecureTextEntry = isSecureTextEntry
+        if uiView.isFirstResponder, !context.coordinator.didBecomeFirstResponder {
+            uiView.becomeFirstResponder()
+            context.coordinator.didBecomeFirstResponder = true
+        }
     }
     
     public func makeCoordinator() -> Coordinator {
@@ -125,6 +119,8 @@ public struct TextFiledView: UIViewRepresentable {
     }
     
     public class Coordinator: NSObject, UITextFieldDelegate {
+        var didBecomeFirstResponder: Bool = false
+
         let parent: TextFiledView
         init(parent: TextFiledView) {
             self.parent = parent
@@ -175,7 +171,6 @@ public struct TextFiledView: UIViewRepresentable {
 public extension TextFiledView {
     func configuration(_ config: @escaping ConfigGetter) -> TextFiledView {
         .init(text: _text,
-              editing: _editing,
               isSecureTextEntry: _isSecureTextEntry,
               configGetter: config,
               editingEventListener: editingEventListener,
@@ -185,7 +180,6 @@ public extension TextFiledView {
     
     func editingEventListener(_ editingEventListener: @escaping EditingEventListener) -> TextFiledView {
         .init(text: _text,
-              editing: _editing,
               isSecureTextEntry: _isSecureTextEntry,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
@@ -195,7 +189,6 @@ public extension TextFiledView {
     
     func shouldBeginEditing(_ shouldBeginEditing: @escaping ShouldBeginEditing) -> TextFiledView {
         .init(text: _text,
-              editing: _editing,
               isSecureTextEntry: _isSecureTextEntry,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
@@ -205,7 +198,6 @@ public extension TextFiledView {
     
     func shouldChangeCharacters(_ shouldChangeCharacters: @escaping ShouldChangeCharacters) -> TextFiledView {
         .init(text: _text,
-              editing: _editing,
               isSecureTextEntry: _isSecureTextEntry,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
