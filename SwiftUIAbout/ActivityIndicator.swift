@@ -13,6 +13,11 @@ public struct ActivityIndicator: UIViewRepresentable {
     @Binding
     public var isAnimating: Bool
     
+    public init(isAnimating: Bool, style: UIActivityIndicatorView.Style) {
+        self.isAnimating = isAnimating
+        self.style = style
+    }
+    
     public let style: UIActivityIndicatorView.Style
     
     public func makeUIView(context: Context) -> UIActivityIndicatorView {
