@@ -13,8 +13,8 @@ public struct ActivityIndicator: UIViewRepresentable {
     @Binding
     public var isAnimating: Bool
     
-    public init(isAnimating: Bool, style: UIActivityIndicatorView.Style) {
-        self.isAnimating = isAnimating
+    public init(isAnimating: Binding<Bool>, style: UIActivityIndicatorView.Style) {
+        self._isAnimating = isAnimating
         self.style = style
     }
     
