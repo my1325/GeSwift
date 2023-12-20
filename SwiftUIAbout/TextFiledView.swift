@@ -113,13 +113,10 @@ public struct TextFiledView: UIViewRepresentable {
     public func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.text = text
         uiView.isSecureTextEntry = isSecureTextEntry
-        if uiView.isFirstResponder, !context.coordinator.didBecomeFirstResponder {
+        if (isEditing || uiView.isFirstResponder), !context.coordinator.didBecomeFirstResponder {
             uiView.becomeFirstResponder()
             context.coordinator.didBecomeFirstResponder = true
-        } else if !uiView.isFirstResponder, isEditing {
-            uiView.becomeFirstResponder()
-            context.coordinator.didBecomeFirstResponder = true
-        } else if uiView.isFirstResponder, !isEditing {
+        } else if !isEditing {
             uiView.resignFirstResponder()
             context.coordinator.didBecomeFirstResponder = false
         }
@@ -159,7 +156,16 @@ public struct TextFiledView: UIViewRepresentable {
         }
         
         public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-            parent.shouldBeginEditing()
+            let shouldBegin = parent.shouldBeginEditing()
+            if shouldBegin, !parent.isEditing {
+                parent.isEditing = true
+            }
+            return shouldBegin
+        }
+        
+        public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+            guard parent.isEditing else { return }
+            parent.isEditing = false
         }
         
         public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
