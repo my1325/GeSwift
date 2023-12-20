@@ -21,15 +21,15 @@ public struct TextFiledViewConfig {
     let backgroundColor: UIColor
     
     public init(textColor: UIColor = .black,
-         font: UIFont = .systemFont(ofSize: 17, weight: .regular),
-         alignemnt: NSTextAlignment = .left,
-         returnKeyType: UIReturnKeyType = .default,
-         keyboardType: UIKeyboardType = .default,
-         tintColor: UIColor = .black,
-         borderStyle: UITextField.BorderStyle = .none,
-         placeholder: NSAttributedString = NSAttributedString(string: ""),
-         clearButtonMode: UITextField.ViewMode = .never,
-         backgroundColor: UIColor = .clear)
+                font: UIFont = .systemFont(ofSize: 17, weight: .regular),
+                alignemnt: NSTextAlignment = .left,
+                returnKeyType: UIReturnKeyType = .default,
+                keyboardType: UIKeyboardType = .default,
+                tintColor: UIColor = .black,
+                borderStyle: UITextField.BorderStyle = .none,
+                placeholder: NSAttributedString = NSAttributedString(string: ""),
+                clearButtonMode: UITextField.ViewMode = .never,
+                backgroundColor: UIColor = .clear)
     {
         self.textColor = textColor
         self.font = font
@@ -69,19 +69,17 @@ public struct TextFiledView: UIViewRepresentable {
     public var text: String
     
     @Binding
-    public var isEditing: Bool
-    
-    @Binding
     public var isSecureTextEntry: Bool
-    
+        
     let configGetter: ConfigGetter
     let editingEventListener: EditingEventListener
     let shouldBeginEditing: ShouldBeginEditing
     let shouldChangeCharacters: ShouldChangeCharacters
-    
+    let isEditing: Bool
+
     public init(text: Binding<String>,
-                isEditing: Binding<Bool>,
                 isSecureTextEntry: Binding<Bool> = .constant(false),
+                isEditing: Bool,
                 configGetter: @escaping ConfigGetter = { TextFiledViewConfig() },
                 editingEventListener: @escaping EditingEventListener = { _, _ in },
                 shouldBeginEditing: @escaping ShouldBeginEditing = { true },
@@ -89,7 +87,7 @@ public struct TextFiledView: UIViewRepresentable {
     {
         self._text = text
         self._isSecureTextEntry = isSecureTextEntry
-        self._isEditing = isEditing
+        self.isEditing = isEditing
         self.configGetter = configGetter
         self.editingEventListener = editingEventListener
         self.shouldBeginEditing = shouldBeginEditing
@@ -113,11 +111,13 @@ public struct TextFiledView: UIViewRepresentable {
     public func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.text = text
         uiView.isSecureTextEntry = isSecureTextEntry
-        if (isEditing || uiView.isFirstResponder), !context.coordinator.didBecomeFirstResponder {
+        if isEditing, !context.coordinator.didBecomeFirstResponder {
             uiView.becomeFirstResponder()
             context.coordinator.didBecomeFirstResponder = true
-        } else if !isEditing {
+            context.coordinator.didResignFirstResponder = false
+        } else if !isEditing, !context.coordinator.didResignFirstResponder {
             uiView.resignFirstResponder()
+            context.coordinator.didResignFirstResponder = true
             context.coordinator.didBecomeFirstResponder = false
         }
     }
@@ -128,6 +128,7 @@ public struct TextFiledView: UIViewRepresentable {
     
     public class Coordinator: NSObject, UITextFieldDelegate {
         var didBecomeFirstResponder: Bool = false
+        var didResignFirstResponder: Bool = false
 
         let parent: TextFiledView
         init(parent: TextFiledView) {
@@ -156,17 +157,10 @@ public struct TextFiledView: UIViewRepresentable {
         }
         
         public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-            let shouldBegin = parent.shouldBeginEditing()
-            if shouldBegin, !parent.isEditing {
-                parent.isEditing = true
-            }
-            return shouldBegin
+            parent.shouldBeginEditing()
         }
         
-        public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-            guard parent.isEditing else { return }
-            parent.isEditing = false
-        }
+        public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {}
         
         public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
             let origin = textField.text ?? ""
@@ -188,8 +182,8 @@ public struct TextFiledView: UIViewRepresentable {
 public extension TextFiledView {
     func configuration(_ config: @escaping ConfigGetter) -> TextFiledView {
         .init(text: _text,
-              isEditing: _isEditing,
               isSecureTextEntry: _isSecureTextEntry,
+              isEditing: isEditing,
               configGetter: config,
               editingEventListener: editingEventListener,
               shouldBeginEditing: shouldBeginEditing,
@@ -198,8 +192,8 @@ public extension TextFiledView {
     
     func editingEventListener(_ editingEventListener: @escaping EditingEventListener) -> TextFiledView {
         .init(text: _text,
-              isEditing: _isEditing,
               isSecureTextEntry: _isSecureTextEntry,
+              isEditing: isEditing,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
               shouldBeginEditing: shouldBeginEditing,
@@ -208,8 +202,8 @@ public extension TextFiledView {
     
     func shouldBeginEditing(_ shouldBeginEditing: @escaping ShouldBeginEditing) -> TextFiledView {
         .init(text: _text,
-              isEditing: _isEditing,
               isSecureTextEntry: _isSecureTextEntry,
+              isEditing: isEditing,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
               shouldBeginEditing: shouldBeginEditing,
@@ -218,8 +212,8 @@ public extension TextFiledView {
     
     func shouldChangeCharacters(_ shouldChangeCharacters: @escaping ShouldChangeCharacters) -> TextFiledView {
         .init(text: _text,
-              isEditing: _isEditing,
               isSecureTextEntry: _isSecureTextEntry,
+              isEditing: isEditing,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
               shouldBeginEditing: shouldBeginEditing,
