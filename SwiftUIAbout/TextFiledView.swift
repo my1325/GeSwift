@@ -182,6 +182,7 @@ public struct TextFiledView: UIViewRepresentable {
 public extension TextFiledView {
     func configuration(_ config: @escaping ConfigGetter) -> TextFiledView {
         .init(text: _text,
+              isEditing: _isEditing,
               isSecureTextEntry: _isSecureTextEntry,
               configGetter: config,
               editingEventListener: editingEventListener,
@@ -191,6 +192,7 @@ public extension TextFiledView {
     
     func editingEventListener(_ editingEventListener: @escaping EditingEventListener) -> TextFiledView {
         .init(text: _text,
+              isEditing: _isEditing,
               isSecureTextEntry: _isSecureTextEntry,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
@@ -200,6 +202,7 @@ public extension TextFiledView {
     
     func shouldBeginEditing(_ shouldBeginEditing: @escaping ShouldBeginEditing) -> TextFiledView {
         .init(text: _text,
+              isEditing: _isEditing,
               isSecureTextEntry: _isSecureTextEntry,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
@@ -209,6 +212,7 @@ public extension TextFiledView {
     
     func shouldChangeCharacters(_ shouldChangeCharacters: @escaping ShouldChangeCharacters) -> TextFiledView {
         .init(text: _text,
+              isEditing: _isEditing,
               isSecureTextEntry: _isSecureTextEntry,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
