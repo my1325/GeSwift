@@ -69,6 +69,9 @@ public struct TextFiledView: UIViewRepresentable {
     public var text: String
     
     @Binding
+    public var isEditing: Bool
+    
+    @Binding
     public var isSecureTextEntry: Bool
     
     let configGetter: ConfigGetter
@@ -77,6 +80,7 @@ public struct TextFiledView: UIViewRepresentable {
     let shouldChangeCharacters: ShouldChangeCharacters
     
     public init(text: Binding<String>,
+                isEditing: Binding<Bool>,
                 isSecureTextEntry: Binding<Bool> = .constant(false),
                 configGetter: @escaping ConfigGetter = { TextFiledViewConfig() },
                 editingEventListener: @escaping EditingEventListener = { _, _ in },
@@ -85,6 +89,7 @@ public struct TextFiledView: UIViewRepresentable {
     {
         self._text = text
         self._isSecureTextEntry = isSecureTextEntry
+        self._isEditing = isEditing
         self.configGetter = configGetter
         self.editingEventListener = editingEventListener
         self.shouldBeginEditing = shouldBeginEditing
@@ -111,6 +116,12 @@ public struct TextFiledView: UIViewRepresentable {
         if uiView.isFirstResponder, !context.coordinator.didBecomeFirstResponder {
             uiView.becomeFirstResponder()
             context.coordinator.didBecomeFirstResponder = true
+        } else if !uiView.isFirstResponder, isEditing {
+            uiView.becomeFirstResponder()
+            context.coordinator.didBecomeFirstResponder = true
+        } else if uiView.isFirstResponder, !isEditing {
+            uiView.resignFirstResponder()
+            context.coordinator.didBecomeFirstResponder = false
         }
     }
     
