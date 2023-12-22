@@ -67,26 +67,23 @@ public struct TextFiledView: UIViewRepresentable {
     
     @Binding
     public var text: String
-    
-    @Binding
-    public var isSecureTextEntry: Bool
-        
-    let configGetter: ConfigGetter
-    let editingEventListener: EditingEventListener
-    let shouldBeginEditing: ShouldBeginEditing
-    let shouldChangeCharacters: ShouldChangeCharacters
-    let isEditing: Bool
+    public let isEditing: Bool
+    public let isSecureTextEntry: Bool
+    public let configGetter: ConfigGetter
+    public let editingEventListener: EditingEventListener
+    public let shouldBeginEditing: ShouldBeginEditing
+    public let shouldChangeCharacters: ShouldChangeCharacters
 
     public init(text: Binding<String>,
-                isSecureTextEntry: Binding<Bool> = .constant(false),
                 isEditing: Bool,
+                isSecureTextEntry: Bool = false,
                 configGetter: @escaping ConfigGetter = { TextFiledViewConfig() },
                 editingEventListener: @escaping EditingEventListener = { _, _ in },
                 shouldBeginEditing: @escaping ShouldBeginEditing = { true },
                 shouldChangeCharacters: @escaping ShouldChangeCharacters = { _, _, _ in true })
     {
         self._text = text
-        self._isSecureTextEntry = isSecureTextEntry
+        self.isSecureTextEntry = isSecureTextEntry
         self.isEditing = isEditing
         self.configGetter = configGetter
         self.editingEventListener = editingEventListener
@@ -101,6 +98,7 @@ public struct TextFiledView: UIViewRepresentable {
         textFiled.isSecureTextEntry = isSecureTextEntry
         textFiled.text = text
         textFiled.delegate = coordinator
+        textFiled.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textFiled.addTarget(coordinator, action: #selector(Coordinator.textFieldEditingDidEndOnExit(_:)), for: .editingDidEndOnExit)
         textFiled.addTarget(coordinator, action: #selector(Coordinator.textFiledEditingChanged(_:)), for: .editingChanged)
         textFiled.addTarget(coordinator, action: #selector(Coordinator.textFiledEditingDidEnd(_:)), for: .editingDidEnd)
@@ -182,8 +180,8 @@ public struct TextFiledView: UIViewRepresentable {
 public extension TextFiledView {
     func configuration(_ config: @escaping ConfigGetter) -> TextFiledView {
         .init(text: _text,
-              isSecureTextEntry: _isSecureTextEntry,
               isEditing: isEditing,
+              isSecureTextEntry: isSecureTextEntry,
               configGetter: config,
               editingEventListener: editingEventListener,
               shouldBeginEditing: shouldBeginEditing,
@@ -192,8 +190,8 @@ public extension TextFiledView {
     
     func editingEventListener(_ editingEventListener: @escaping EditingEventListener) -> TextFiledView {
         .init(text: _text,
-              isSecureTextEntry: _isSecureTextEntry,
               isEditing: isEditing,
+              isSecureTextEntry: isSecureTextEntry,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
               shouldBeginEditing: shouldBeginEditing,
@@ -202,8 +200,8 @@ public extension TextFiledView {
     
     func shouldBeginEditing(_ shouldBeginEditing: @escaping ShouldBeginEditing) -> TextFiledView {
         .init(text: _text,
-              isSecureTextEntry: _isSecureTextEntry,
               isEditing: isEditing,
+              isSecureTextEntry: isSecureTextEntry,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
               shouldBeginEditing: shouldBeginEditing,
@@ -212,8 +210,8 @@ public extension TextFiledView {
     
     func shouldChangeCharacters(_ shouldChangeCharacters: @escaping ShouldChangeCharacters) -> TextFiledView {
         .init(text: _text,
-              isSecureTextEntry: _isSecureTextEntry,
               isEditing: isEditing,
+              isSecureTextEntry: isSecureTextEntry,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
               shouldBeginEditing: shouldBeginEditing,

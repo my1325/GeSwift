@@ -65,10 +65,7 @@ public struct TextView: UIViewRepresentable {
 
     @Binding
     public var text: String
-    
-    @Binding
-    public var editing: Bool
-    
+    public let isEditing: Bool
     public let textShouldChange: TextShouldChanged
     public let textDidChange: TextDidChange
     public let textBeginChange: TextBeginChange
@@ -76,7 +73,7 @@ public struct TextView: UIViewRepresentable {
     public let textPlaceholder: PlaceholderGetter
     public let textConfig: ConfigGetter
     public init(text: Binding<String>,
-                editing: Binding<Bool>,
+                isEditing: Bool,
                 textConfig: @escaping ConfigGetter = { TextViewConfig() },
                 textPlaceholder: @escaping PlaceholderGetter = { TextViewPlaceholder("") },
                 textShouldChange: @escaping TextShouldChanged = { _, _, _ in true },
@@ -85,7 +82,7 @@ public struct TextView: UIViewRepresentable {
                 textEndChange: @escaping TextBeginChange = {})
     {
         _text = text
-        _editing = editing
+        self.isEditing = isEditing
         self.textPlaceholder = textPlaceholder
         self.textDidChange = textDidChange
         self.textBeginChange = textBeginChange
@@ -108,9 +105,14 @@ public struct TextView: UIViewRepresentable {
     
     public func updateUIView(_ uiView: UIViewType, context: UIViewRepresentableContext<Self>) {
         uiView.text = text
-        if uiView.isFirstResponder, !context.coordinator.didBecomeFirstResponder {
+        if isEditing, !context.coordinator.didBecomeFirstResponder {
             uiView.becomeFirstResponder()
             context.coordinator.didBecomeFirstResponder = true
+            context.coordinator.didResignFirstResponder = false
+        } else if !isEditing, !context.coordinator.didResignFirstResponder {
+            uiView.resignFirstResponder()
+            context.coordinator.didResignFirstResponder = true
+            context.coordinator.didBecomeFirstResponder = false
         }
     }
     
@@ -120,6 +122,7 @@ public struct TextView: UIViewRepresentable {
     
     public class Coordinator: NSObject, UITextViewDelegate {
         var didBecomeFirstResponder: Bool = false 
+        var didResignFirstResponder: Bool = false
         let parent: TextView
         init(textView: TextView) {
             parent = textView
@@ -286,7 +289,7 @@ public extension TextViewConfig {
 public extension TextView {
     func textPlaceholder(_ textPlaceholder: @escaping PlaceholderGetter) -> TextView {
         TextView(text: _text,
-                 editing: _editing,
+                 isEditing: isEditing,
                  textConfig: textConfig,
                  textPlaceholder: textPlaceholder,
                  textShouldChange: textShouldChange,
@@ -297,7 +300,7 @@ public extension TextView {
     
     func textConfig(_ textConfig: @escaping ConfigGetter) -> TextView {
         TextView(text: _text,
-                 editing: _editing,
+                 isEditing: isEditing,
                  textConfig: textConfig,
                  textPlaceholder: textPlaceholder,
                  textShouldChange: textShouldChange,
@@ -308,7 +311,7 @@ public extension TextView {
     
     func textDidChange(_ textDidChange: @escaping TextDidChange) -> TextView {
         TextView(text: _text,
-                 editing: _editing,
+                 isEditing: isEditing,
                  textConfig: textConfig,
                  textPlaceholder: textPlaceholder,
                  textShouldChange: textShouldChange,
@@ -319,7 +322,7 @@ public extension TextView {
     
     func textBeginChange(_ textBeginChange: @escaping TextBeginChange) -> TextView {
         TextView(text: _text,
-                 editing: _editing,
+                 isEditing: isEditing,
                  textConfig: textConfig,
                  textPlaceholder: textPlaceholder,
                  textShouldChange: textShouldChange,
@@ -330,7 +333,7 @@ public extension TextView {
     
     func textEndChange(_ textEndChange: @escaping TextBeginChange) -> TextView {
         TextView(text: _text,
-                 editing: _editing,
+                 isEditing: isEditing,
                  textConfig: textConfig,
                  textPlaceholder: textPlaceholder,
                  textShouldChange: textShouldChange,
@@ -341,7 +344,7 @@ public extension TextView {
     
     func textShouldChange(_ textShouldChange: @escaping TextShouldChanged) -> TextView {
         TextView(text: _text,
-                 editing: _editing,
+                 isEditing: isEditing,
                  textConfig: textConfig,
                  textPlaceholder: textPlaceholder,
                  textShouldChange: textShouldChange,
