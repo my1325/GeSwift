@@ -40,6 +40,19 @@ public extension String {
         String.yesConsts.contains(self)
     }
     
+    var md5: String {
+        data(using: .utf8)!.md5.hexString
+    }
+    
+    var base64EncodedString: String {
+        data(using: .utf8)!.base64EncodedString()
+    }
+    
+    var base64DecodedString: String {
+        guard let data = Data(base64Encoded: self) else { return self }
+        return String(data: data, encoding: .utf8) ?? self
+    }
+    
     subscript(offset: Int) -> Character {
         let index = self.index(self.startIndex, offsetBy: offset)
         precondition(index <= self.endIndex)

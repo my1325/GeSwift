@@ -8,7 +8,7 @@
 import UIKit
 import CoreImage
 
-extension CIContext {
+public extension CIContext {
     func cgImageWithPixelBuffer(_ pixelBuffer: CVPixelBuffer) -> UIImage? {
         let width = CVPixelBufferGetWidth(pixelBuffer)
         let height = CVPixelBufferGetHeight(pixelBuffer)

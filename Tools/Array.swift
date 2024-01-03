@@ -45,7 +45,7 @@ public extension Array {
         first != nil && first! == e
     }
     
-    func groupedBy(_ count: Int) -> [[Element]] {
+    func grouped(_ count: Int) -> [[Element]] {
         var _list = self
         var list: [[Element]] = []
         while _list.count > count {
@@ -56,15 +56,17 @@ public extension Array {
         return list
     }
     
-    mutating func intersect(_ other: [Element]) where Element: Equatable {
+    func intersect(_ other: [Element]) -> [Element] where Element: Equatable {
+        var retList: [Element] = []
         for e in other {
-            if !contains(e) {
-                append(e)
+            if !retList.contains(e) {
+                retList.append(e)
             }
         }
+        return retList
     }
     
-    func transformOffset(_ offset: Int) -> Self {
+    func offset(_ offset: Int) -> [Element] {
         var list = self
         let _list: [Element] = Array(list[0 ..< offset])
         list.removeSubrange(0 ..< offset)
