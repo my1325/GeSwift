@@ -6,7 +6,7 @@
  # Corporation : ****
  # Description : Key Chain Tool
   *******************************************************************************/
-
+#if canImport(UIKit)
 import UIKit
 #if canImport(Security)
 import Security
@@ -320,3 +320,4 @@ public extension KeyChain {
 //        return NSError(domain: domain, code: code, userInfo: userInfo)
 //    }
 // }
+#endif

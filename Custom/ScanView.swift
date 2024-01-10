@@ -4,7 +4,7 @@
 //
 //  Copyright © 2019 my. All rights reserved.
 //
-
+#if canImport(UIKit)
 import AVFoundation
 import UIKit
 
@@ -224,3 +224,4 @@ extension ScanView: UIGestureRecognizerDelegate {
 }
 
 // #endif
+#endif

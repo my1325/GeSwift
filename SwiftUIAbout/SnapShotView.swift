@@ -5,6 +5,8 @@
 //  Created by mayong on 2023/12/21.
 //
 
+#if canImport(UIKit)
+import UIKit
 import SwiftUI
 
 extension UIView {
@@ -91,3 +93,4 @@ public struct ScreenshotableView<Content: View>: View {
         return self.content(.inView).background(GeometryReader(content: internalView(proxy:)))
     }
 }
+#endif

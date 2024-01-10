@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "GeSwift",
-    platforms: [.iOS(.v13)],
+    platforms: [.iOS(.v13), .macOS(.v10_15)],
     products: [
         .library(name: "Tools", targets: ["Tools"]),
         .library(name: "UIAbout", targets: ["UIAbout"]),

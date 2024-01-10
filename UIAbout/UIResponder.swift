@@ -4,7 +4,7 @@
 //
 //  Created by mayong on 2023/2/17.
 //
-
+#if canImport(UIKit)
 import UIKit
 
 public protocol ResponderProtocol {
@@ -26,3 +26,4 @@ public extension UIResponder {
         next?.router(event: event)
     }
 }
+#endif

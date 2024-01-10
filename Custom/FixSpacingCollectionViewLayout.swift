@@ -3,6 +3,7 @@
 //
 //  Copyright © 2019 st. All rights reserved.
 //
+#if canImport(UIKit)
 
 import UIKit
 
@@ -112,3 +113,4 @@ internal final class FixSpacingCollectionViewLayout: UICollectionViewFlowLayout 
         return CGSize(width: collectionView.bounds.width - sectionInset.left - sectionInset.right - collectionView.contentInset.left - collectionView.contentInset.right, height: last.frame.maxY)
     }
 }
+#endif

@@ -4,7 +4,7 @@
 //
 //  Created by mayong on 2023/2/17.
 //
-
+#if canImport(UIKit)
 import UIKit
 
 public extension UIColor {
@@ -34,3 +34,4 @@ public extension UIColor {
         return UIColor(with: Int.random(in: 0 ..< 256), green: .random(in: 0 ..< 256), blue: .random(in: 0 ..< 256))!
     }
 }
+#endif

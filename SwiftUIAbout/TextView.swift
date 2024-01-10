@@ -4,6 +4,7 @@
 //
 //  Created by mayong on 2023/12/11.
 //
+#if canImport(UIKit)
 
 import SwiftUI
 import UIKit
@@ -353,3 +354,4 @@ public extension TextView {
                  textEndChange: textEndChange)
     }
 }
+#endif

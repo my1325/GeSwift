@@ -4,6 +4,7 @@
 //
 //  Created by mayong on 2023/2/17.
 //
+#if canImport(UIKit)
 
 import UIKit
 
@@ -172,3 +173,4 @@ extension UITableView {
         delegateList?.addObject(delegate)
     }
 }
+#endif

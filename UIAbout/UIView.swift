@@ -4,6 +4,7 @@
 //
 //  Created by mayong on 2023/2/17.
 //
+#if canImport(UIKit)
 
 import UIKit
 
@@ -262,3 +263,4 @@ public extension UIView {
         objc_setAssociatedObject(self, event.key, eventObject, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 }
+#endif

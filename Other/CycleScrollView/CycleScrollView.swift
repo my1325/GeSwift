@@ -6,6 +6,7 @@
 ////  Copyright © 2018 my. All rights reserved.
 ////
 //
+#if canImport(UIKit)
 import Kingfisher
 import Schedule
 import SnapKit
@@ -383,3 +384,4 @@ extension CycleScrollView: UICollectionViewDataSource {
         }
     }
 }
+#endif

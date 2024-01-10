@@ -3,7 +3,7 @@
 //
 //  Created by my on 2020/12/15.
 //
-
+#if canImport(UIKit)
 import UIKit
 
 private final class WrapNavigationController: UINavigationController {
@@ -88,3 +88,4 @@ public final class WrapViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
+#endif
