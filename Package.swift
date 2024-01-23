@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "Custom", targets: ["Custom"]),
         .library(name: "CycleScrollView", targets: ["CycleScrollView"]),
         .library(name: "SwiftUIAbout", targets: ["SwiftUIAbout"]),
-        .library(name: "CombineTool", targets: ["CombineTool"])
+//        .library(name: "CombineTool", targets: ["CombineTool"])
     ],
     dependencies: [
         .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "7.0.0")),
@@ -41,10 +41,10 @@ let package = Package(
             name: "SwiftUIAbout",
             path: "SwiftUIAbout"
         ),
-        .target(
-            name: "CombineTool",
-            path: "CombineTool"
-        ),
+//        .target(
+//            name: "CombineTool",
+//            path: "CombineTool"
+//        ),
         .target(
             name: "CycleScrollView",
             dependencies: [

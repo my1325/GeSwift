@@ -10,11 +10,11 @@ import AuthenticationServices
 import Combine
 
 public struct AppleLoginResposne {
-    let nickName: String
-    let openId: String
-    let email: String
-    let code: String
-    let token: String
+    public let nickName: String
+    public let openId: String
+    public let email: String
+    public let code: String
+    public let token: String
     
     var accountEmail: String {
         email.isEmpty ? String(openId[openId.startIndex ..< openId.index(openId.startIndex, offsetBy: 11)]) : email
