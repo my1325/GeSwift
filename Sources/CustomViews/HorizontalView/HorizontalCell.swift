@@ -7,6 +7,9 @@
 //
 
 import UIKit
+#if canImport(UITools)
+import UITools
+#endif
 
 public final class HorizontalCell: UICollectionViewCell {
     internal lazy var titleLabel: UILabel = {
@@ -14,9 +17,8 @@ public final class HorizontalCell: UICollectionViewCell {
         $0.textColor = UIColor.clear
         $0.textAlignment = .center
         self.contentView.addSubview($0)
-        $0.snp.makeConstraints { make in
-            make.center.equalTo(self.contentView.snp.center).offset(0)
-        }
+        $0.addConstraint(inSuper: .centerX, constant: 0)
+        $0.addConstraint(inSuper: .centerY, constant: 0)
         return $0
     }(UILabel())
     
@@ -29,12 +31,11 @@ public final class HorizontalCell: UICollectionViewCell {
         $0.clipsToBounds = true
         self.contentView.addSubview($0)
         self.contentView.bringSubviewToFront($0)
-        $0.snp.makeConstraints { make in
-            make.top.equalTo(self.titleLabel.snp.top).offset(-10)
-            make.left.equalTo(self.titleLabel.snp.right).offset(-10)
-            make.height.equalTo(14)
-            make.width.equalTo(20)
-        }
+        $0.addConstraint(width: 20)
+        $0.addConstraint(height: 14)
+        let topConstraint = NSLayoutConstraint(item: $0, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .top, multiplier: 1.0, constant: -10)
+        let leftConstraint = NSLayoutConstraint(item: $0, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .right, multiplier: 1.0, constant: -10)
+        self.contentView.addConstraints([topConstraint, leftConstraint])
         return $0
     }(UILabel())
     

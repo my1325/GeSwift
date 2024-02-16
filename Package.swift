@@ -3,53 +3,36 @@
 
 import PackageDescription
 
+struct PackageName {
+    let name: String
+    let dependencies: [String]
+    
+    init(name: String, dependencies: [String] = []) {
+        self.name = name
+        self.dependencies = dependencies
+    }
+    
+    var target: Target {
+        .target(name: name, dependencies: dependencies.map(Target.Dependency.init(stringLiteral:)))
+    }
+    
+    var product: Product {
+        .library(name: name, targets: [name])
+    }
+}
+
+let names: [PackageName] = [
+    .init(name: "FoundationTools"),
+    .init(name: "SwiftUITools"),
+    .init(name: "UITools"),
+    .init(name: "DataSources"),
+    .init(name: "CustomViews"),
+    .init(name: "CollectionViewLayouts"),
+]
+
 let package = Package(
     name: "GeSwift",
     platforms: [.iOS(.v13)],
-    products: [
-        .library(name: "Tools", targets: ["Tools"]),
-        .library(name: "UIAbout", targets: ["UIAbout"]),
-        .library(name: "DataSource", targets: ["DataSource"]),
-        .library(name: "Custom", targets: ["Custom"]),
-        .library(name: "CycleScrollView", targets: ["CycleScrollView"]),
-        .library(name: "SwiftUIAbout", targets: ["SwiftUIAbout"])
-    ],
-    dependencies: [
-        .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "7.0.0")),
-        .package(url: "https://github.com/luoxiu/Schedule.git", .upToNextMajor(from: "2.0.0")),
-        .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.0"))
-    ],
-    targets: [
-        .target(
-            name: "Tools",
-            path: "Tools"
-        ),
-        .target(
-            name: "DataSource",
-            path: "DataSource"
-        ),
-        .target(
-            name: "Custom",
-            path: "Custom")
-        ,
-        .target(
-            name: "UIAbout",
-            path: "UIAbout"
-        ),
-        .target(
-            name: "SwiftUIAbout",
-            path: "SwiftUIAbout"
-        ),
-        .target(
-            name: "CycleScrollView",
-            dependencies: [
-                "Kingfisher",
-                "SnapKit",
-                "Schedule",
-                "Tools",
-                "UIAbout"
-            ],
-            path: "Other/CycleScrollView"
-        )
-    ]
+    products: names.map(\.product),
+    targets: names.map(\.target)
 )

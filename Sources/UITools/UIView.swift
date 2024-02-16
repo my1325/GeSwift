@@ -153,6 +153,21 @@ public extension UIView {
             }
         }
     }
+    
+    func removeConstraintsInSuper() {
+        let selfConstraints = self.superview!.constraints.filter({ $0.firstItem as? UIView == self || $0.secondItem as? UIView == self })
+        self.superview!.removeConstraints(selfConstraints)
+    }
+    
+    func removeWidthConstraint() {
+        let selfConstraints = self.constraints.filter({ $0.firstAttribute == .width && $0.firstItem as? UIView == self })
+        self.removeConstraints(selfConstraints)
+    }
+    
+    func removeHeightConstraint() {
+        let selfConstraints = self.constraints.filter({ $0.firstAttribute == .height && $0.firstItem as? UIView == self })
+        self.removeConstraints(selfConstraints)
+    }
 
     /// 虚线边框
     ///

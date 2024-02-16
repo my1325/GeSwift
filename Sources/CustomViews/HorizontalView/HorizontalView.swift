@@ -7,6 +7,9 @@
 //
 
 import UIKit
+#if canImport(UITools)
+import UITools
+#endif
 
 extension UIControl.State: Hashable {
     public var hashValue: Int { return Int(rawValue) }
@@ -17,9 +20,10 @@ public final class HorizontalView: UIView {
     private lazy var contentView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview($0)
-        $0.snp.makeConstraints { make in
-            make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-        }
+        $0.addConstraint(inSuper: .top, constant: 0)
+        $0.addConstraint(inSuper: .left, constant: 0)
+        $0.addConstraint(inSuper: .right, constant: 0)
+        $0.addConstraint(inSuper: .bottom, constant: 0)
         return $0
     }(UIView())
     
@@ -34,21 +38,30 @@ public final class HorizontalView: UIView {
         $0.backgroundColor = UIColor.white
         $0.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview($0)
-        $0.snp.makeConstraints { make in
-            make.edges.equalTo(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-        }
+        $0.addConstraint(inSuper: .top, constant: 0)
+        $0.addConstraint(inSuper: .left, constant: 0)
+        $0.addConstraint(inSuper: .right, constant: 0)
+        $0.addConstraint(inSuper: .bottom, constant: 0)
         return $0
     }(UICollectionView(frame: .zero, collectionViewLayout: layout))
     
-    private var attributes: [UIControl.State: [NSAttributedString.Key: Any]] = [.normal: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: "333333".ge.asColor],
-                                                                                .selected: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: "333333".ge.asColor]]
+    private var attributes: [UIControl.State: [NSAttributedString.Key: Any]] = [
+        .normal: [
+            .font: UIFont.systemFont(ofSize: 15),
+            .foregroundColor: UIColor(with: 0x333333)!
+        ],
+        .selected: [
+            .font: UIFont.systemFont(ofSize: 15),
+            .foregroundColor: UIColor(with: 0x333333)!
+        ]
+    ]
       
     private var selectedButtonIndex: Int = 0
 
     private var cacheSize: [IndexPath: CGSize] = [:]
     
     private let indicator: UIView = {
-        $0.backgroundColor = "125fa7".ge.asColor
+        $0.backgroundColor = UIColor(with: 0x125fa7)
         $0.clipsToBounds = true
         return $0
     }(UIView())
@@ -83,7 +96,7 @@ public final class HorizontalView: UIView {
     public var indicatorHeight: CGFloat = 2
 
     @IBInspectable
-    public var indicatorColor: UIColor = "125fa7".ge.asColor
+    public var indicatorColor = UIColor(with: 0x125fa7)!
    
     @IBInspectable
     public var contentInset: UIEdgeInsets = .zero
@@ -119,7 +132,7 @@ public final class HorizontalView: UIView {
                            options: .curveLinear,
                            animations: {
                                self.indicator.frame = CGRect(x: cellRect.minX + self.indicatorPadding.left,
-                                                             y: self.contentView.ge.height - self.indicatorHeight,
+                                                             y: self.contentView.height - self.indicatorHeight,
                                                              width: cellRect.size.width - self.indicatorPadding.left - self.indicatorPadding.right,
                                                              height: self.indicatorHeight)
                            }, completion: nil)
@@ -127,7 +140,7 @@ public final class HorizontalView: UIView {
             oldCell.state = .normal
             newCell.state = .selected
             self.indicator.frame = CGRect(x: cellRect.minX + self.indicatorPadding.left,
-                                          y: self.contentView.ge.height - self.indicatorHeight,
+                                          y: self.contentView.height - self.indicatorHeight,
                                           width: cellRect.size.width - self.indicatorPadding.left - self.indicatorPadding.right,
                                           height: self.indicatorHeight)
         }
@@ -178,7 +191,7 @@ public extension HorizontalView {
             let cellAttribute = self.collectionView.layoutAttributesForItem(at: IndexPath(item: self.selectedButtonIndex, section: 0))
             let cellRect = cellAttribute?.frame ?? .zero
             self.indicator.frame = CGRect(x: cellRect.minX + self.indicatorPadding.left,
-                                          y: self.contentView.ge.height - self.indicatorHeight,
+                                          y: self.contentView.height - self.indicatorHeight,
                                           width: cellRect.size.width - self.indicatorPadding.left - self.indicatorPadding.right,
                                           height: self.indicatorHeight)
             self.collectionView.selectItem(at: IndexPath(item: self.selectedButtonIndex, section: 0), animated: false, scrollPosition: .centeredHorizontally)
@@ -195,7 +208,7 @@ public extension HorizontalView {
 extension HorizontalView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let width = delegate?.horizontalView(self, widthForItemAtIndex: indexPath.item), width > 0 {
-            return CGSize(width: width, height: collectionView.ge.height)
+            return CGSize(width: width, height: collectionView.height)
         }
         
         if let size = cacheSize[indexPath] {
@@ -211,7 +224,7 @@ extension HorizontalView: UICollectionViewDelegateFlowLayout, UICollectionViewDa
                                                                                                                 options: .usesLineFragmentOrigin,
                                                                                                                 context: nil).size.width
 
-            let size = CGSize(width: max(width1, width2) + self.minimumInteritemSpacing, height: collectionView.ge.height)
+            let size = CGSize(width: max(width1, width2) + self.minimumInteritemSpacing, height: collectionView.height)
             self.cacheSize[indexPath] = size
             
             return size
@@ -228,8 +241,8 @@ extension HorizontalView: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if self.centerButtons && collectionView.contentSize.width < self.ge.width {
-            return UIEdgeInsets(top: self.contentInset.top, left: (self.ge.width - collectionView.contentSize.width) / 2, bottom: self.contentInset.bottom, right: (self.ge.width - collectionView.contentSize.width) / 2)
+        if self.centerButtons, collectionView.contentSize.width < self.width {
+            return UIEdgeInsets(top: self.contentInset.top, left: (self.width - collectionView.contentSize.width) / 2, bottom: self.contentInset.bottom, right: (self.width - collectionView.contentSize.width) / 2)
         }
         return self.contentInset
     }

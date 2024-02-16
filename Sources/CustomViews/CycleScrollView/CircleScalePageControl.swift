@@ -7,8 +7,8 @@
 //
 
 import UIKit
-#if canImport(GeSwift)
-import GeSwift
+#if canImport(UITools)
+import UITools
 #endif
 
 public final class CircleScalePageControl: UIView, CyclePageControl {
@@ -32,46 +32,36 @@ public final class CircleScalePageControl: UIView, CyclePageControl {
     var currentIndicatorColor: UIColor = UIColor(with: 0xFF5A5F)!
     var indicatorColor: UIColor = .white
     
-    private lazy var contentView: UIView = {
+    private lazy var contentView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .horizontal
+        $0.distribution = .fillEqually
+        $0.spacing = 8
         self.addSubview($0)
-        $0.snp.makeConstraints { make in
-            make.centerX.equalTo(self.snp.centerX).offset(0)
-            make.centerY.equalTo(self.snp.centerY).offset(0)
-            make.height.equalTo(6)
-        }
+        $0.addConstraint(height: 6)
+        $0.addConstraint(inSuper: .centerY, constant: 0)
+        $0.addConstraint(inSuper: .centerX, constant: 0)
         return $0
-    }(UIView())
+    }(UIStackView())
 
     private var indicators: [UIView] = []
+    
+    private func newIndicator(_ atIndex: Int) -> UIView {
+        let indicator = UIView()
+        indicator.backgroundColor = self.indicatorColor
+        indicator.layer.cornerRadius = 3
+        indicator.alpha = 0.8
+        return indicator
+    }
+    
     func reloadData() {
-        self.indicators.forEach { $0.removeFromSuperview() }
-        self.indicators.removeAll()
-        guard self.numberOfPages > 0 else { return }
-        var lastIndicator: UIView?
-        for index in 0 ..< self.numberOfPages {
-            let indicator = UIView()
-            indicator.backgroundColor = self.indicatorColor
-            indicator.layer.cornerRadius = 3
-            indicator.alpha = 0.8
-            self.contentView.addSubview(indicator)
-            self.indicators.append(indicator)
-            indicator.snp.makeConstraints { make in
-                make.top.bottom.equalTo(0)
-                make.width.equalTo(6)
-                if let last = lastIndicator {
-                    make.left.equalTo(last.snp.right).offset(8)
-                } else {
-                    make.left.equalTo(8)
-                }
-                
-                if index == self.numberOfPages - 1 {
-                    make.right.equalTo(-8)
-                }
-            }
-            lastIndicator = indicator
+        indicators.forEach {
+            $0.removeFromSuperview()
+            contentView.removeArrangedSubview($0)
         }
-        self.currentPage = 0
+        indicators = (0 ..< numberOfPages).map(newIndicator)
+        indicators.forEach(contentView.addArrangedSubview)
+        currentPage = 0
     }
     
     func selecteIndex(_ index: Int, oldIndex: Int) {
