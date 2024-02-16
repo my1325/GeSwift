@@ -4,7 +4,7 @@
 //
 //  Created by my on 2023/8/14.
 //
-
+#if canImport(UIKit)
 import CoreText
 import UIKit
 
@@ -304,3 +304,4 @@ public final class AttributeLabel: UIView {
         textLayer.perferredSizeFits(CGSize(width: preferredMaxLayoutWidth, height: CGFloat(MAXFLOAT)))
     }
 }
+#endif

@@ -5,7 +5,7 @@
 //  Created by my on 2021/1/13.
 //  Copyright © 2021 my. All rights reserved.
 //
-
+#if canImport(UIKit)
 import UIKit
 open class CollectionViewDataSource<Section: SectionProtocol>: NSObject, UICollectionViewDataSource {
     public typealias ConfigureCell = (CollectionViewDataSource, UICollectionView, IndexPath, Section.I) -> UICollectionViewCell
@@ -80,3 +80,4 @@ public extension CollectionViewDataSource {
         return dataSource[indexPath.section].items[indexPath.row]
     }
 }
+#endif

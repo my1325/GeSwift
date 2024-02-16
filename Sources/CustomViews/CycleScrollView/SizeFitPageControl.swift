@@ -5,7 +5,7 @@
 //  Created by 超神—mayong on 2019/11/6.
 //  Copyright © 2019 st. All rights reserved.
 //
-
+#if canImport(UIKit)
 import UIKit
 #if canImport(UITools)
 import UITools
@@ -87,3 +87,4 @@ public final class SizeFitPageControl: UIView, CyclePageControl {
         }
     }
 }
+#endif

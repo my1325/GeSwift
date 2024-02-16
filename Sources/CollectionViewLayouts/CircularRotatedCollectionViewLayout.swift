@@ -3,6 +3,7 @@
 //
 //  Copyright © 2019 st. All rights reserved.
 //
+#if canImport(UIKit)
 
 import UIKit
 
@@ -76,3 +77,4 @@ internal final class CircularRotatedCollectionViewLayout: UICollectionViewFlowLa
         return true
     }
 }
+#endif

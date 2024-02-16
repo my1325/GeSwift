@@ -3,7 +3,7 @@
 //
 //  Copyright © 2019 st. All rights reserved.
 //
-
+#if canImport(UIKit)
 import UIKit
 
 protocol WaterCollectionViewLayoutDataSource: NSObjectProtocol {
@@ -74,3 +74,4 @@ internal final class WaterCollectionViewLayout: UICollectionViewFlowLayout {
         return CGSize(width: UIScreen.main.bounds.width - 16, height: colHeight.max()! + sectionInset.bottom - minimumLineSpacing)
     }
 }
+#endif

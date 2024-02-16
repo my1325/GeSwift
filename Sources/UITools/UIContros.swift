@@ -4,6 +4,7 @@
 //
 //  Created by mayong on 2023/2/17.
 //
+#if canImport(UIKit)
 import UIKit
 
 struct AssociateKey {
@@ -86,3 +87,4 @@ public extension UISegmentedControl {
         self.addTarget(target, action: #selector(ControlEventObject.selectorAction(_:)), for: .valueChanged)
     }
 }
+#endif

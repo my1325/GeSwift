@@ -5,10 +5,13 @@
 //  Created by my on 2023/10/28.
 //
 
+#if canImport(UIKit)
 import UIKit
+#endif
 import CoreImage
 
-extension CIContext {
+public extension CIContext {
+#if canImport(UIKit)
     func cgImageWithPixelBuffer(_ pixelBuffer: CVPixelBuffer) -> UIImage? {
         let width = CVPixelBufferGetWidth(pixelBuffer)
         let height = CVPixelBufferGetHeight(pixelBuffer)
@@ -18,6 +21,7 @@ extension CIContext {
         }
         return nil
     }
+    #endif
     
     func pixelBufferWithCGImage(_ cgImage: CGImage) -> CVPixelBuffer? {
         let properties: [String: Any] = [:]
@@ -40,7 +44,8 @@ extension CIContext {
         render(CIImage(cgImage: cgImage), to: pixelBuffer)
         return pixelBuffer
     }
-   
+#if canImport(UIKit)
+
     func blurImage(_ image: CGImage, blurNumber: Double = 50) -> UIImage? {
         let ciImage = CIImage(cgImage: image)
         guard let clampFilter = CIFilter(name: "CIAffineClamp") else { return nil }
@@ -60,4 +65,5 @@ extension CIContext {
         }
         return nil
     }
+    #endif
 }

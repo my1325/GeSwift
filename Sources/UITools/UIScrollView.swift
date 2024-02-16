@@ -4,7 +4,7 @@
 //
 //  Created by mayong on 2023/2/17.
 //
-
+#if canImport(UIKit)
 import UIKit
 
 public extension UIScrollView {
@@ -33,3 +33,4 @@ public extension UIScrollView {
         return shotImage
     }
 }
+#endif

@@ -5,7 +5,7 @@
 //  Created by my on 2020/6/6.
 //  Copyright © 2020 my. All rights reserved.
 //
-
+#if canImport(UIKit)
 import UIKit
 
 public struct Empty {
@@ -38,3 +38,4 @@ public extension UITableView {
         }
     }
 }
+#endif

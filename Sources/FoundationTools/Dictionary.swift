@@ -18,18 +18,32 @@ public extension Dictionary {
         return String(data: data, encoding: encoding)
     }
     
+    subscript<T>(_ key: Key, default: T) -> T where Value == Any {
+        self[key, default: `default`] as! T
+    }
+}
+
+public extension Dictionary where Key == String, Value == Any {
     /// ["a": ["b": ["c": 1]]]
     /// valueForKeyPath("a.b.c") return 1
     /// valueForKeyPath("a.b.c.d") return 1
-    func valueForKeyPath(_ string: String, separator: String = ".") -> Any? where Key == String, Value == Any {
+    func valueForKeyPath(_ string: String, separator: String = ".") -> Any? {
         valueForKeyComponents(string.components(separatedBy: separator))
     }
     
-    mutating func setValueForKeyPath(_ string: String, separator: String = ".", value: Any?) where Key == String, Value == Any {
+    mutating func setValueForKeyPath(_ string: String, separator: String = ".", value: Any?) {
         setValueForKeyComponents(string.components(separatedBy: separator), value: value)
     }
     
-    private func valueForKeyComponents(_ keyComponents: [String]) -> Any? where Key == String, Value == Any {
+    subscript(_ keyPath: String, separator: String = ".", default: Value? = nil) -> Value?  {
+        get {
+            valueForKeyPath(keyPath, separator: separator) ?? `default`
+        } set {
+            setValueForKeyPath(keyPath, separator: separator, value: newValue)
+        }
+    }
+    
+    private func valueForKeyComponents(_ keyComponents: [String]) -> Any? {
         guard !keyComponents.isEmpty else { return nil }
         
         var stringComponents = keyComponents
@@ -44,7 +58,7 @@ public extension Dictionary {
         }
     }
     
-    private mutating func setValueForKeyComponents(_ keyComponents: [String], value: Any?) where Key == String, Value == Any {
+    private mutating func setValueForKeyComponents(_ keyComponents: [String], value: Any?) {
         guard !keyComponents.isEmpty else { return }
         
         var stringComponents = keyComponents

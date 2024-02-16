@@ -5,6 +5,7 @@
 //  Created by mayong on 2023/11/27.
 //
 
+#if canImport(UIKit)
 import AVFoundation
 import Photos
 import SwiftUI
@@ -160,3 +161,4 @@ public extension ImagePickerView.SourceType {
         }
     }
 }
+#endif 

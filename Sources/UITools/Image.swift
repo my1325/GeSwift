@@ -5,6 +5,7 @@
 //  Created by mayong on 2023/2/16.
 //
 
+#if canImport(UIKit)
 import Accelerate
 import CoreVideo
 import UIKit
@@ -500,3 +501,4 @@ public extension UIImage {
         return nil
     }
 }
+#endif

@@ -4,7 +4,7 @@
 //
 //  Copyright © 2020 my. All rights reserved.
 //
-
+#if canImport(UIKit)
 import UIKit
 
 public final class FoldTransitionLayout: UICollectionViewFlowLayout {
@@ -131,3 +131,4 @@ public final class FoldTransitionLayout: UICollectionViewFlowLayout {
         return contentOffset
     }
 }
+#endif

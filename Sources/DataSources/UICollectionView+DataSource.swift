@@ -5,6 +5,7 @@
 //  Created by my on 2021/1/13.
 //  Copyright © 2021 my. All rights reserved.
 //
+#if canImport(UIKit)
 
 import UIKit
 
@@ -33,3 +34,4 @@ public extension UICollectionView {
         }
     }
 }
+#endif

@@ -5,7 +5,7 @@
 //  Created by 超神—mayong on 2019/11/7.
 //  Copyright © 2019 st. All rights reserved.
 //
-
+#if canImport(UIKit)
 import UIKit
 #if canImport(UITools)
 import UITools
@@ -82,3 +82,4 @@ public final class CircleScalePageControl: UIView, CyclePageControl {
         }
     }
 }
+#endif

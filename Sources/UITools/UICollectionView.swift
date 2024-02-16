@@ -4,7 +4,7 @@
 //
 //  Created by mayong on 2023/2/17.
 //
-
+#if canImport(UIKit)
 import UIKit
 
 public extension UICollectionView {
@@ -32,3 +32,4 @@ public extension UICollectionView {
         self.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T
     }
 }
+#endif
