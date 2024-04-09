@@ -357,7 +357,7 @@ extension CycleScrollView: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if registeredCustomCellIndex.contains(indexPath.item),
-           let customCell = dataSource?.scrollView(self, customCellAtIndex: indexPath.item)
+           let customCell = dataSource?.scrollView(self, customCellAtIndex: indexPath.item % totalIndex)
         {
             return customCell
         }
@@ -365,7 +365,7 @@ extension CycleScrollView: UICollectionViewDataSource {
         let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CycleScrollViewImageCell", for: indexPath) as! CycleScrollViewImageCell
         imageCell.imageView.contentMode = contentModel
         imageCell.titleContanerView.isHidden = true
-        if let imageSetter = dataSource?.scrollView(self, imageAtIndex: indexPath.item) {
+        if let imageSetter = dataSource?.scrollView(self, imageAtIndex: indexPath.item % totalIndex) {
             imageSetter(imageCell.imageView)
         }
             
