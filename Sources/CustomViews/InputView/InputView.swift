@@ -312,7 +312,7 @@ extension InputField: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         cell.borderStyle = style.borderStyle
         cell.borderRadius = style.borderRadius
 //        cell.box.backgroundColor = style.cellBackgroundColor
-        cell.shapeLayer.backgroundColor = style.cellBackgroundColor?.cgColor
+        cell.boxBackgroundColor = style.cellBackgroundColor
         return cell
     }
     

@@ -23,7 +23,7 @@ internal final class InputViewCell: UICollectionViewCell {
     lazy var shapeLayer: CAShapeLayer = {
         $0.lineWidth = borderWidth
         $0.strokeColor = borderColor.cgColor
-        $0.fillColor = UIColor.clear.cgColor
+        $0.fillColor = boxBackgroundColor?.cgColor
         box.layer.addSublayer($0)
         return $0
     }(CAShapeLayer())
@@ -43,6 +43,12 @@ internal final class InputViewCell: UICollectionViewCell {
     }
     
     var borderRadius: CGFloat = 4
+    
+    var boxBackgroundColor: UIColor? {
+        didSet {
+            shapeLayer.fillColor = boxBackgroundColor?.cgColor
+        }
+    }
     
     func reloadBorder() {
         switch borderStyle {
