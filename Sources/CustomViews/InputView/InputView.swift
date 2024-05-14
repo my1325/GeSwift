@@ -23,6 +23,7 @@ public protocol InputFieldStyleProtocol {
     var borderRadius: CGFloat { get }
     var cursorColor: UIColor { get }
     var borderStyle: BorderStyle { get }
+    var cellBackgroundColor: UIColor? { get }
 }
 
 public extension InputFieldStyleProtocol {
@@ -56,6 +57,10 @@ public extension InputFieldStyleProtocol {
     
     var borderStyle: BorderStyle {
         .box
+    }
+    
+    var cellBackgroundColor: UIColor? {
+        .clear
     }
 }
 
@@ -306,6 +311,8 @@ extension InputField: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         cell.borderWidth = style.borderWidth
         cell.borderStyle = style.borderStyle
         cell.borderRadius = style.borderRadius
+        cell.backgroundColor = style.cellBackgroundColor
+        cell.contentView.backgroundColor = style.cellBackgroundColor
         return cell
     }
     
