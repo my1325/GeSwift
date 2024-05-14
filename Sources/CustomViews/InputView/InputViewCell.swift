@@ -10,13 +10,13 @@ import UIKit
 
 internal final class InputViewCell: UICollectionViewCell {
     internal lazy var box: UIView = {
-        self.addSubview($0)
+        self.contentView.addSubview($0)
         return $0
     }(UIView())
     
     internal lazy var label: UILabel = {
         $0.textAlignment = .center
-        self.addSubview($0)
+        self.contentView.insertSubview($0, aboveSubview: box)
         return $0
     }(UILabel())
     
