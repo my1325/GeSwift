@@ -311,8 +311,7 @@ extension InputField: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         cell.borderWidth = style.borderWidth
         cell.borderStyle = style.borderStyle
         cell.borderRadius = style.borderRadius
-        cell.backgroundColor = style.cellBackgroundColor
-        cell.contentView.backgroundColor = style.cellBackgroundColor
+        cell.box.backgroundColor = style.cellBackgroundColor
         return cell
     }
     
