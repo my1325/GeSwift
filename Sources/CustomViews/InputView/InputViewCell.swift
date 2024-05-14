@@ -20,7 +20,7 @@ internal final class InputViewCell: UICollectionViewCell {
         return $0
     }(UILabel())
     
-    private lazy var shapeLayer: CAShapeLayer = {
+    lazy var shapeLayer: CAShapeLayer = {
         $0.lineWidth = borderWidth
         $0.strokeColor = borderColor.cgColor
         $0.fillColor = UIColor.clear.cgColor
