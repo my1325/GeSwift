@@ -400,7 +400,7 @@ extension CycleScrollView: UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if registeredCustomCellIndex.contains(indexPath.item),
+        if registeredCustomCellIndex.contains(indexPath.item % totalIndex),
            let customCell = dataSource?.scrollView(self, customCellAtIndex: indexPath.item % totalIndex)
         {
             return customCell
