@@ -333,6 +333,7 @@ public final class CycleScrollView: UIView {
         }
         currentIndex = index
         pageControl.currentPage = index
+        scrollTimeOffset = 1
     }
     
     private lazy var collectionView: UICollectionView = {
