@@ -185,6 +185,8 @@ public final class CycleScrollView: UIView {
     
     public var scrollDirection: ScrollViewDirection = .horizontal
     
+    public var currentIndex: Int = 0
+    
     private var totalIndex: Int = 0
     
     private var registeredCustomCellIndex: Set<Int> = []
@@ -243,54 +245,65 @@ public final class CycleScrollView: UIView {
         }
         
         cancelSet = []
-        if totalIndex > 0 {
-            pageControl.isHidden = totalIndex == 1 && isHidePageControlWhenSinglePage
-            collectionView.scrollToItem(at: IndexPath(item: totalIndex > 1 ? totalIndex * 150 : 0, section: 0), at: .init(rawValue: 0), animated: false)
-            Timer.publish(every: 1, on: .main, in: .common)
-                .autoconnect()
-                .filter { [unowned self] _ in !self.isSuspend }
-                .map({ [unowned self] _ in self.scrollTimeOffset })
-                .filter({ [unowned self] in
-                    if $0 == self.scrollTimeInterval {
-                        self.scrollTimeOffset = 1
-                        return true
-                    }
-                    self.scrollTimeOffset += 1
-                    return false
-                })
-                .map({ [unowned self] _ in
+        guard totalIndex > 0 else { return }
+        
+        pageControl.isHidden = totalIndex == 1 && isHidePageControlWhenSinglePage
+        var currentPage = totalIndex > 1 ? totalIndex * 150 : 0
+        if currentIndex > 0 && currentIndex < totalIndex {
+            currentPage = currentIndex * 150
+            pageControl.currentPage = currentPage
+        }
+        
+        collectionView.scrollToItem(
+            at: IndexPath(item: currentPage, section: 0),
+            at: .init(rawValue: 0),
+            animated: false
+        )
+        Timer.publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .filter { [unowned self] _ in !self.isSuspend }
+            .map { [unowned self] _ in self.scrollTimeOffset }
+            .filter { [unowned self] in
+                if $0 == self.scrollTimeInterval {
+                    self.scrollTimeOffset = 1
+                    return true
+                }
+                self.scrollTimeOffset += 1
+                return false
+            }
+            .map { [unowned self] _ in
+                switch self.scrollDirection {
+                case .horizontal:
+                    return Int(self.collectionView.contentOffset.x / self.collectionView.bounds.size.width + 0.5) + 1
+                case .vertical:
+                    return Int(self.collectionView.contentOffset.y / self.collectionView.bounds.size.height + 0.5) + 1
+                @unknown default:
+                    fatalError()
+                }
+            }
+            .sink(receiveValue: { [unowned self] in
+                let indexPath = IndexPath(item: $0, section: 0)
+                let totalIndex = self.totalIndex > 1 ? self.totalIndex * 300 - 1 : self.totalIndex
+                let scrollToIndexPath = { (animated: Bool, currentPage: Int) in
                     switch self.scrollDirection {
                     case .horizontal:
-                        return Int(self.collectionView.contentOffset.x / self.collectionView.bounds.size.width + 0.5) + 1
+                        self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: animated)
                     case .vertical:
-                        return Int(self.collectionView.contentOffset.y / self.collectionView.bounds.size.height + 0.5) + 1
+                        self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: animated)
                     @unknown default:
                         fatalError()
                     }
-                })
-                .sink(receiveValue: { [unowned self] in
-                    let indexPath = IndexPath(item: $0, section: 0)
-                    let totalIndex = self.totalIndex > 1 ? self.totalIndex * 300 - 1 : self.totalIndex
-                    let scrollToIndexPath = { (animated: Bool, currentPage: Int) in
-                        switch self.scrollDirection {
-                        case .horizontal:
-                            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: animated)
-                        case .vertical:
-                            self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: animated)
-                        @unknown default:
-                            fatalError()
-                        }
-                        self.pageControl.currentPage = currentPage
-                    }
+                    self.pageControl.currentPage = currentPage
+                    self.currentIndex = currentPage
+                }
                     
-                    if $0 < totalIndex {
-                        scrollToIndexPath(true, $0 % self.totalIndex)
-                    } else {
-                        scrollToIndexPath(false, 0)
-                    }
-                })
-                .store(in: &cancelSet)
-        }
+                if $0 < totalIndex {
+                    scrollToIndexPath(true, $0 % self.totalIndex)
+                } else {
+                    scrollToIndexPath(false, 0)
+                }
+            })
+            .store(in: &cancelSet)
     }
     
     private lazy var collectionView: UICollectionView = {
@@ -347,6 +360,7 @@ extension CycleScrollView: UICollectionViewDelegateFlowLayout {
         let index = Int(scrollView.contentOffset.x / scrollView.bounds.size.width + 0.5) % totalIndex
         delegate?.cycleScrollView(self, didScrollToItemAtIndex: index)
         pageControl.currentPage = index
+        currentIndex = index
     }
 }
 
