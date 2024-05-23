@@ -250,8 +250,8 @@ public final class CycleScrollView: UIView {
         pageControl.isHidden = totalIndex == 1 && isHidePageControlWhenSinglePage
         var currentPage = totalIndex > 1 ? totalIndex * 150 : 0
         if currentIndex > 0 && currentIndex < totalIndex {
-            currentPage = currentIndex * 150
-            pageControl.currentPage = currentPage
+            currentPage = totalIndex * 150 + currentIndex
+            pageControl.currentPage = currentIndex
         }
         
         collectionView.scrollToItem(
@@ -304,6 +304,35 @@ public final class CycleScrollView: UIView {
                 }
             })
             .store(in: &cancelSet)
+    }
+    
+    public func scrollToIndex(_ index: Int, animated: Bool) {
+        guard index < totalIndex, index != currentIndex else { return }
+        let currentItem: Int
+        switch self.scrollDirection {
+        case .horizontal:
+            currentItem = Int(self.collectionView.contentOffset.x / self.collectionView.bounds.size.width + 0.5) + 1
+        case .vertical:
+            currentItem = Int(self.collectionView.contentOffset.y / self.collectionView.bounds.size.height + 0.5) + 1
+        @unknown default:
+            fatalError()
+        }
+        var targetItem = currentItem - currentIndex + index
+        let totalIndex = self.totalIndex > 1 ? self.totalIndex * 300 - 1 : self.totalIndex
+        if targetItem >= totalIndex {
+            targetItem = totalIndex * 150 + index
+        }
+        let indexPath = IndexPath(item: targetItem, section: 0)
+        switch self.scrollDirection {
+        case .horizontal:
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: animated)
+        case .vertical:
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: animated)
+        @unknown default:
+            fatalError()
+        }
+        currentIndex = index
+        pageControl.currentPage = index
     }
     
     private lazy var collectionView: UICollectionView = {
