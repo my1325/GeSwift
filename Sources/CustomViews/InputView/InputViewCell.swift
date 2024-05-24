@@ -10,20 +10,20 @@ import UIKit
 
 internal final class InputViewCell: UICollectionViewCell {
     internal lazy var box: UIView = {
-        self.addSubview($0)
+        self.contentView.addSubview($0)
         return $0
     }(UIView())
     
     internal lazy var label: UILabel = {
         $0.textAlignment = .center
-        self.addSubview($0)
+        self.contentView.insertSubview($0, aboveSubview: box)
         return $0
     }(UILabel())
     
-    private lazy var shapeLayer: CAShapeLayer = {
+    lazy var shapeLayer: CAShapeLayer = {
         $0.lineWidth = borderWidth
         $0.strokeColor = borderColor.cgColor
-        $0.fillColor = UIColor.clear.cgColor
+        $0.fillColor = boxBackgroundColor?.cgColor
         box.layer.addSublayer($0)
         return $0
     }(CAShapeLayer())
@@ -43,6 +43,12 @@ internal final class InputViewCell: UICollectionViewCell {
     }
     
     var borderRadius: CGFloat = 4
+    
+    var boxBackgroundColor: UIColor? {
+        didSet {
+            shapeLayer.fillColor = boxBackgroundColor?.cgColor
+        }
+    }
     
     func reloadBorder() {
         switch borderStyle {
