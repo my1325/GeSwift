@@ -146,7 +146,7 @@ public struct TextFiledView: UIViewRepresentable {
         
         @objc
         func textFiledEditingDidEnd(_ textFiled: UITextField) {
-            parent.editingEventListener(.editingDidEnd, textFiled.text!)
+            parent.editingEventListener(.editingDidEndOnExit, textFiled.text!)
         }
         
         @objc
