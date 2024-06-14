@@ -13,7 +13,11 @@ struct PackageName {
     }
     
     var target: Target {
-        .target(name: name, dependencies: dependencies.map(Target.Dependency.init(stringLiteral:)))
+        .target(
+            name: name,
+            dependencies: dependencies
+                .map{ .init(stringLiteral: $0) }
+        )
     }
     
     var product: Product {
@@ -22,12 +26,13 @@ struct PackageName {
 }
 
 let names: [PackageName] = [
-    .init(name: "FoundationTools"),
+//    .init(name: "FoundationTools"),
     .init(name: "SwiftUITools"),
-    .init(name: "UITools"),
+//    .init(name: "UITools"),
     .init(name: "DataSources"),
     .init(name: "CustomViews"),
     .init(name: "CollectionViewLayouts"),
+    .init(name: "Core")
 ]
 
 let package = Package(

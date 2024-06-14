@@ -5,24 +5,23 @@
 //  Created by my on 2023/10/28.
 //
 
-#if canImport(UIKit)
-import UIKit
-#endif
 import CoreImage
+import UIKit
 
-public extension CIContext {
-#if canImport(UIKit)
+public extension GeTool where Base: CIContext {
     func cgImageWithPixelBuffer(_ pixelBuffer: CVPixelBuffer) -> UIImage? {
         let width = CVPixelBufferGetWidth(pixelBuffer)
         let height = CVPixelBufferGetHeight(pixelBuffer)
         let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-        if let cgImage = createCGImage(ciImage, from: CGRect(x: 0, y: 0, width: width, height: height)) {
+        if let cgImage = base.createCGImage(
+            ciImage,
+            from: CGRect(x: 0, y: 0, width: width, height: height)
+        ) {
             return UIImage(cgImage: cgImage)
         }
         return nil
     }
-    #endif
-    
+
     func pixelBufferWithCGImage(_ cgImage: CGImage) -> CVPixelBuffer? {
         let properties: [String: Any] = [:]
         let options: [CFString: Any] = [
@@ -30,21 +29,27 @@ public extension CIContext {
             kCVPixelBufferCGBitmapContextCompatibilityKey: true,
             kCVPixelBufferIOSurfacePropertiesKey: properties,
         ]
-        
+
         var pixelBuffer: CVPixelBuffer?
         let width = cgImage.width
         let height = cgImage.height
-        let retStatus = CVPixelBufferCreate(kCFAllocatorDefault, width, height, kCVPixelFormatType_32BGRA, options as CFDictionary, &pixelBuffer)
+        let retStatus = CVPixelBufferCreate(
+            kCFAllocatorDefault,
+            width,
+            height,
+            kCVPixelFormatType_32BGRA,
+            options as CFDictionary,
+            &pixelBuffer
+        )
         guard retStatus == kCVReturnSuccess, let pixelBuffer else {
             return nil
         }
-        
+
         CVPixelBufferLockBaseAddress(pixelBuffer, .init(rawValue: 0))
         defer { CVPixelBufferUnlockBaseAddress(pixelBuffer, .init(rawValue: 0)) }
-        render(CIImage(cgImage: cgImage), to: pixelBuffer)
+        base.render(CIImage(cgImage: cgImage), to: pixelBuffer)
         return pixelBuffer
     }
-#if canImport(UIKit)
 
     func blurImage(_ image: CGImage, blurNumber: Double = 50) -> UIImage? {
         let ciImage = CIImage(cgImage: image)
@@ -56,14 +61,20 @@ public extension CIContext {
         else {
             return nil
         }
-       
-        filter.setValue(clampImage, forKey: kCIInputImageKey)
-        filter.setValue(NSNumber(value: blurNumber), forKey: "inputRadius")
+
+        filter.setValue(
+            clampImage,
+            forKey: kCIInputImageKey
+        )
+        filter.setValue(
+            NSNumber(value: blurNumber),
+            forKey: "inputRadius"
+        )
         if let result = filter.value(forKey: kCIOutputImageKey) as? CIImage,
-           let cgImage = createCGImage(result, from: ciImage.extent) {
+           let cgImage = base.createCGImage(result, from: ciImage.extent)
+        {
             return UIImage(cgImage: cgImage)
         }
         return nil
     }
-    #endif
 }

@@ -5,7 +5,6 @@
 //  Created by mayong on 2023/2/16.
 //
 
-#if canImport(UIKit)
 import Accelerate
 import CoreVideo
 import UIKit
@@ -39,50 +38,85 @@ extension CGImageSource {
     }
 }
 
-public extension UIImage {
+extension UIImage {
     var thumbanilImage: UIImage? {
         guard let data = self.jpegData(compressionQuality: 0.6),
-              let imageSource = CGImageSourceCreateWithData(data as CFData, [kCGImageSourceShouldCache: NSNumber(value: false)] as CFDictionary),
+              let imageSource = CGImageSourceCreateWithData(
+                  data as CFData,
+                  [kCGImageSourceShouldCache: NSNumber(value: false)] as CFDictionary
+              ),
               let writeData = CFDataCreateMutable(nil, 0),
               let imageType = CGImageSourceGetType(imageSource)
-        else { return self }
+        else {
+            return self
+        }
 
         let frameCount = CGImageSourceGetCount(imageSource)
-        if let imageDestination = CGImageDestinationCreateWithData(writeData, imageType, frameCount, nil) {
-            let options = [
-                kCGImageSourceCreateThumbnailFromImageIfAbsent: NSNumber(value: true),
-                kCGImageSourceThumbnailMaxPixelSize: NSNumber(value: 120 * UIScreen.main.scale),
-                kCGImageSourceShouldCache: NSNumber(value: false),
-                kCGImageSourceCreateThumbnailWithTransform: NSNumber(value: true),
-            ] as CFDictionary
+        let imageDestination = CGImageDestinationCreateWithData(
+            writeData,
+            imageType,
+            frameCount,
+            nil
+        )
+        guard let imageDestination else { return self }
+        let options = [
+            kCGImageSourceCreateThumbnailFromImageIfAbsent: NSNumber(value: true),
+            kCGImageSourceThumbnailMaxPixelSize: NSNumber(value: 120 * UIScreen.main.scale),
+            kCGImageSourceShouldCache: NSNumber(value: false),
+            kCGImageSourceCreateThumbnailWithTransform: NSNumber(value: true),
+        ] as CFDictionary
 
-            if frameCount > 1 {
-                let frameDurations = imageSource.frameDurations
-                let resizedImageFrames = (0 ..< frameCount).compactMap { CGImageSourceCreateThumbnailAtIndex(imageSource, $0, options) }
-                zip(resizedImageFrames, frameDurations).forEach {
-                    let frameProperties = [kCGImagePropertyGIFDictionary: [kCGImagePropertyGIFDelayTime: $1, kCGImagePropertyGIFUnclampedDelayTime: $1]]
-                    CGImageDestinationAddImage(imageDestination, $0, frameProperties as CFDictionary)
+        if frameCount > 1 {
+            let frameDurations = imageSource.frameDurations
+            let resizedImageFrames = (0 ..< frameCount)
+                .compactMap {
+                    CGImageSourceCreateThumbnailAtIndex(
+                        imageSource,
+                        $0,
+                        options
+                    )
                 }
-            } else {
-                if let imageRef = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, options) {
-                    CGImageDestinationAddImage(imageDestination, imageRef, nil)
-                }
+            zip(resizedImageFrames, frameDurations).forEach {
+                let frameProperties = [
+                    kCGImagePropertyGIFDictionary: [
+                        kCGImagePropertyGIFDelayTime: $1,
+                        kCGImagePropertyGIFUnclampedDelayTime: $1,
+                    ],
+                ]
+                CGImageDestinationAddImage(
+                    imageDestination,
+                    $0,
+                    frameProperties as CFDictionary
+                )
             }
-            CGImageDestinationFinalize(imageDestination)
-            return UIImage(data: writeData as Data)
+        } else if let imageRef = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, options) {
+            CGImageDestinationAddImage(imageDestination, imageRef, nil)
+        } else {
+            /// do nothing
         }
-        return self
+        CGImageDestinationFinalize(imageDestination)
+        return UIImage(data: writeData as Data)
     }
 
     /// 检测到的二维码
     var qrCode: String? {
         var qrCode: String?
         /// 检测图片中是否有二维码
-        let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
-        if let cgImage = self.cgImage {
+        let detector = CIDetector(
+            ofType: CIDetectorTypeQRCode,
+            context: nil,
+            options: [CIDetectorAccuracy: CIDetectorAccuracyHigh]
+        )
+
+        if let cgImage {
             let ciImages = CIImage(cgImage: cgImage)
-            let features = detector?.features(in: ciImages, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh]) ?? []
-            if let feature = features.first as? CIQRCodeFeature, let messageString = feature.messageString {
+            let features = detector?.features(
+                in: ciImages,
+                options: [CIDetectorAccuracy: CIDetectorAccuracyHigh]
+            ) ?? []
+            if let feature = features.first as? CIQRCodeFeature,
+               let messageString = feature.messageString
+            {
                 qrCode = messageString
             }
         }
@@ -90,7 +124,10 @@ public extension UIImage {
     }
 
     /// colorimage
-    static func imageWithColor(_ color: UIColor, size: CGSize) -> UIImage? {
+    static func imageWithColor(
+        _ color: UIColor,
+        size: CGSize
+    ) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
 
         let context = UIGraphicsGetCurrentContext()
@@ -106,14 +143,24 @@ public extension UIImage {
     ///
     /// - Parameter cornerRadius: cornerRadius
     /// - Returns: new image
-    func withCornerRadius(_ cornerRadius: CGFloat, corners: UIRectCorner = .allCorners) -> UIImage? {
+    func withCornerRadius(
+        _ cornerRadius: CGFloat,
+        corners: UIRectCorner = .allCorners
+    ) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
 
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         if corners == .allCorners {
-            UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).addClip()
+            UIBezierPath(
+                roundedRect: rect,
+                cornerRadius: cornerRadius
+            ).addClip()
         } else {
-            UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).addClip()
+            UIBezierPath(
+                roundedRect: rect,
+                byRoundingCorners: corners,
+                cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)
+            ).addClip()
         }
         draw(in: rect)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -122,18 +169,31 @@ public extension UIImage {
         return image
     }
 
-    func withBorder(_ borderColor: UIColor, borderWidth: CGFloat, with corner: UIRectCorner = .allCorners, radius: CGFloat) -> UIImage? {
+    func withBorder(
+        _ borderColor: UIColor,
+        borderWidth: CGFloat,
+        with corner: UIRectCorner = .allCorners,
+        radius: CGFloat
+    ) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, true, UIScreen.main.scale)
         defer { UIGraphicsEndImageContext() }
         borderColor.setStroke()
         var _radius = radius
         if _radius == -1 { _radius = size.height * 0.5 }
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        let _path = UIBezierPath(roundedRect: rect, byRoundingCorners: corner, cornerRadii: CGSize(width: radius, height: _radius))
+        let _path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corner,
+            cornerRadii: CGSize(width: radius, height: _radius)
+        )
         _path.addClip()
 
         draw(in: rect)
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corner, cornerRadii: CGSize(width: radius, height: _radius))
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corner,
+            cornerRadii: CGSize(width: radius, height: _radius)
+        )
         path.lineWidth = borderWidth * UIScreen.main.scale
         path.stroke()
         return UIGraphicsGetImageFromCurrentImageContext()
@@ -146,7 +206,10 @@ public extension UIImage {
         context?.translateBy(x: 0, y: size.height)
         context?.scaleBy(x: 1, y: -1)
         if let cgImage = self.cgImage {
-            context?.draw(cgImage, in: CGRect(origin: .zero, size: size))
+            context?.draw(
+                cgImage,
+                in: CGRect(origin: .zero, size: size)
+            )
         }
         return UIGraphicsGetImageFromCurrentImageContext()
     }
@@ -159,12 +222,13 @@ public extension UIImage {
     ///   - ePoint: endPoint
     ///   - size: image size
     /// - Returns: image
-    static func gradientImage(colors: [UIColor],
-                              startPoint sPoint: CGPoint,
-                              endPoint ePoint: CGPoint,
-                              locations: [CGFloat],
-                              size: CGSize) -> UIImage
-    {
+    static func gradientImage(
+        colors: [UIColor],
+        startPoint sPoint: CGPoint,
+        endPoint ePoint: CGPoint,
+        locations: [CGFloat],
+        size: CGSize
+    ) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, true, 0)
         defer {
             UIGraphicsEndImageContext()
@@ -173,12 +237,18 @@ public extension UIImage {
         let context = UIGraphicsGetCurrentContext()
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let colors = colors.map { $0.cgColor }
-        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: locations)!
+        let gradient = CGGradient(
+            colorsSpace: colorSpace,
+            colors: colors as CFArray,
+            locations: locations
+        )!
         // 第二个参数是起始位置，第三个参数是终止位置
-        context?.drawLinearGradient(gradient,
-                                    start: CGPoint(x: sPoint.x * size.width, y: sPoint.y * size.height),
-                                    end: CGPoint(x: ePoint.x * size.width, y: ePoint.y * size.height),
-                                    options: .drawsAfterEndLocation)
+        context?.drawLinearGradient(
+            gradient,
+            start: CGPoint(x: sPoint.x * size.width, y: sPoint.y * size.height),
+            end: CGPoint(x: ePoint.x * size.width, y: ePoint.y * size.height),
+            options: .drawsAfterEndLocation
+        )
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
 
@@ -188,36 +258,51 @@ public extension UIImage {
     ///   - url: 二维码
     ///   - image: 中间的icon
     /// - Returns: UIImage
-    static func imageWithQrCodeURL(_ url: String, image: UIImage? = nil) -> UIImage {
+    static func imageWithQrCodeURL(
+        _ url: String,
+        image: UIImage? = nil
+    ) -> UIImage {
         // 创建滤镜
         let filter = CIFilter(name: "CIQRCodeGenerator")
         filter?.setDefaults()
         // 将url加入二维码
-        filter?.setValue(url.data(using: String.Encoding.utf8), forKey: "inputMessage")
+        filter?.setValue(
+            url.data(using: String.Encoding.utf8),
+            forKey: "inputMessage"
+        )
         // 取出生成的二维码（不清晰）
-        if let outputImage = filter?.outputImage {
-            // 生成清晰度更好的二维码
-            let qrCodeImage = self.hightDefinitionImage(outputImage, size: 300)
-            // 如果有一个头像的话，将头像加入二维码中心
-            if let image = image {
-                // 合成图片
-                let newImage = qrCodeImage.withSyntheticImage(image, width: 60, height: 60)
-                return newImage
-            }
-            return qrCodeImage
+        guard let outputImage = filter?.outputImage else { return .init() }
+        // 生成清晰度更好的二维码
+        let qrCodeImage = self.hightDefinitionImage(
+            outputImage,
+            size: 300
+        )
+        // 如果有一个头像的话，将头像加入二维码中心
+        if let image = image {
+            // 合成图片
+            let newImage = qrCodeImage.withSyntheticImage(
+                image,
+                width: 60,
+                height: 60
+            )
+            return newImage
         }
-        return UIImage()
+        return qrCodeImage
     }
 
     // image: 二维码 iconImage:头像图片 width: 头像的宽 height: 头像的宽
-    func withSyntheticImage(_ iconImage: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
+    func withSyntheticImage(
+        _ iconImage: UIImage,
+        width: CGFloat,
+        height: CGFloat
+    ) -> UIImage {
         // 开启图片上下文
         UIGraphicsBeginImageContext(self.size)
         // 绘制背景图片
-        self.draw(in: CGRect(origin: CGPoint.zero, size: self.size))
+        draw(in: CGRect(origin: CGPoint.zero, size: size))
 
-        let x = (self.size.width - width) * 0.5
-        let y = (self.size.height - height) * 0.5
+        let x = (size.width - width) * 0.5
+        let y = (size.height - height) * 0.5
         iconImage.draw(in: CGRect(x: x, y: y, width: width, height: height))
         // 取出绘制好的图片
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -232,14 +317,25 @@ public extension UIImage {
 
     // MARK: - 生成高清的UIImage
 
-    static func hightDefinitionImage(_ image: CIImage, size: CGFloat) -> UIImage {
+    static func hightDefinitionImage(
+        _ image: CIImage,
+        size: CGFloat
+    ) -> UIImage {
         let integral: CGRect = image.extent.integral
         let proportion: CGFloat = min(size / integral.width, size / integral.height)
 
         let width = integral.width * proportion
         let height = integral.height * proportion
         let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceGray()
-        let bitmapRef = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: 0)!
+        let bitmapRef = CGContext(
+            data: nil,
+            width: Int(width),
+            height: Int(height),
+            bitsPerComponent: 8,
+            bytesPerRow: 0,
+            space: colorSpace,
+            bitmapInfo: 0
+        )!
 
         let context = CIContext(options: nil)
         let bitmapImage: CGImage = context.createCGImage(image, from: integral)!
@@ -251,7 +347,10 @@ public extension UIImage {
         return UIImage(cgImage: image)
     }
 
-    private func bitmapInfoWithPixelFormatType(_ inputPixelFormat: OSType, hasAlpha: Bool) -> UInt32 {
+    private func bitmapInfoWithPixelFormatType(
+        _ inputPixelFormat: OSType,
+        hasAlpha: Bool
+    ) -> UInt32 {
         if inputPixelFormat == kCVPixelFormatType_32BGRA {
             var bitmapInfo = CGImageAlphaInfo.premultipliedFirst.rawValue | kCGBitmapByteOrder32Host.rawValue
             if !hasAlpha {
@@ -273,7 +372,14 @@ public extension UIImage {
         let hasAlpha = image.alphaInfo != .none
         var keyCallbacks = kCFTypeDictionaryKeyCallBacks
         var valueCallbacks = kCFTypeDictionaryValueCallBacks
-        let empty = CFDictionaryCreate(kCFAllocatorDefault, nil, nil, 0, &keyCallbacks, &valueCallbacks)
+        let empty = CFDictionaryCreate(
+            kCFAllocatorDefault,
+            nil,
+            nil,
+            0,
+            &keyCallbacks,
+            &valueCallbacks
+        )
         let options = [
             kCVPixelBufferCGImageCompatibilityKey: NSNumber(value: true),
             kCVPixelBufferCGBitmapContextCompatibilityKey: NSNumber(value: true),
@@ -281,7 +387,15 @@ public extension UIImage {
         ] as [CFString: Any]
 
         var pixelBuffer: CVPixelBuffer?
-        guard CVPixelBufferCreate(kCFAllocatorDefault, width, height, type, options as CFDictionary, &pixelBuffer) == kCVReturnSuccess,
+        let success = CVPixelBufferCreate(
+            kCFAllocatorDefault,
+            width,
+            height,
+            type,
+            options as CFDictionary,
+            &pixelBuffer
+        )
+        guard success == kCVReturnSuccess,
               let pixelBuffer
         else {
             return nil
@@ -294,13 +408,26 @@ public extension UIImage {
 
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
 
-        let bitmapInfo = self.bitmapInfoWithPixelFormatType(kCVPixelFormatType_32BGRA, hasAlpha: hasAlpha)
-
-        guard let context = CGContext(data: pixelData, width: width, height: height, bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer), space: rgbColorSpace, bitmapInfo: bitmapInfo)
-        else {
+        let bitmapInfo = self.bitmapInfoWithPixelFormatType(
+            kCVPixelFormatType_32BGRA,
+            hasAlpha: hasAlpha
+        )
+        let context = CGContext(
+            data: pixelData,
+            width: width,
+            height: height,
+            bitsPerComponent: 8,
+            bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer),
+            space: rgbColorSpace,
+            bitmapInfo: bitmapInfo
+        )
+        guard let context else {
             return nil
         }
-        context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+        context.draw(
+            image,
+            in: CGRect(x: 0, y: 0, width: width, height: height)
+        )
         return pixelBuffer
     }
 
@@ -401,7 +528,7 @@ public extension UIImage {
         }
 
         // do the conversion
-        guard vImageConvert_420Yp8_CbCr8ToARGB8888(
+        let convert = vImageConvert_420Yp8_CbCr8ToARGB8888(
             &lumaBuffer, // in
             &chromaBuffer, // in
             &argbBuffer, // out
@@ -409,7 +536,8 @@ public extension UIImage {
             nil,
             255,
             vImage_Flags(kvImageNoFlags)
-        ) == kvImageNoError else {
+        )
+        guard convert == kvImageNoError else {
             return nil
         }
 
@@ -442,7 +570,15 @@ public extension UIImage {
         let height = CVPixelBufferGetHeight(pixelBuffer)
         let bitmapInfo = kCGBitmapByteOrder32Host.rawValue | CGImageAlphaInfo.noneSkipFirst.rawValue
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let context = CGContext(data: address, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 4 * width, space: colorSpace, bitmapInfo: bitmapInfo)
+        let context = CGContext(
+            data: address,
+            width: width,
+            height: height,
+            bitsPerComponent: 8,
+            bytesPerRow: 4 * width,
+            space: colorSpace,
+            bitmapInfo: bitmapInfo
+        )
         if let cgImage = context?.makeImage() {
             return UIImage(cgImage: cgImage)
         }
@@ -452,7 +588,11 @@ public extension UIImage {
     // videoToolBox , Not all CVPixelBuffer pixel formats support conversion into a  CGImage-compatible pixel format.
     static func imageFromPixelBufferWithVideoToolBox(_ pixelBuffer: CVPixelBuffer) -> UIImage? {
         var cgImage: CGImage?
-        VTCreateCGImageFromCVPixelBuffer(pixelBuffer, options: nil, imageOut: &cgImage)
+        VTCreateCGImageFromCVPixelBuffer(
+            pixelBuffer,
+            options: nil,
+            imageOut: &cgImage
+        )
         if let cgImage {
             return UIImage(cgImage: cgImage)
         }
@@ -470,7 +610,8 @@ public extension UIImage {
         if winScale > refScale {
             let newH = imageRefW * size.height / size.width
             let newy = (imageRefH - newH) * 0.5
-            if let finalImageRef = image.cropping(to: CGRect(x: 0, y: newy, width: imageRefW, height: newH)) {
+            let finalImageRef = image.cropping(to: CGRect(x: 0, y: newy, width: imageRefW, height: newH))
+            if let finalImageRef {
                 return UIImage(cgImage: finalImageRef)
             }
         }
@@ -478,14 +619,15 @@ public extension UIImage {
         if winScale < refScale {
             let newW = imageRefH * winScale
             let newx = imageRefW - newW
-            if let finalImageRef = image.cropping(to: CGRect(x: newx, y: 0, width: newW, height: imageRefH)) {
+            let finalImageRef = image.cropping(to: CGRect(x: newx, y: 0, width: newW, height: imageRefH))
+            if let finalImageRef {
                 return UIImage(cgImage: finalImageRef)
             }
         }
         return nil
     }
 
-    func bf_clipsToSize(_ size: CGSize, radius: CGFloat) -> UIImage? {
+    func clipsToSize(_ size: CGSize, radius: CGFloat) -> UIImage? {
         guard let image = self.cgImage else { return nil }
         UIGraphicsBeginImageContext(size)
         defer { UIGraphicsEndImageContext() }
@@ -493,7 +635,10 @@ public extension UIImage {
 //        context?.scaleBy(x: 1, y: -1)
 //        context?.translateBy(x: 0, y: -size.height)
         let avatarRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        UIBezierPath(roundedRect: avatarRect, cornerRadius: radius).addClip()
+        UIBezierPath(
+            roundedRect: avatarRect,
+            cornerRadius: radius
+        ).addClip()
         context?.draw(image, in: CGRect(origin: .zero, size: size))
         if let cgImage = context?.makeImage() {
             return UIImage(cgImage: cgImage)
@@ -501,4 +646,98 @@ public extension UIImage {
         return nil
     }
 }
-#endif
+
+public extension GeTool where Base: UIImage {
+    
+    var thumbanilImage: UIImage? {
+        base.thumbanilImage
+    }
+    
+    var qrCode: String? {
+        base.qrCode
+    }
+    
+    func withCornerRadius(
+        _ cornerRadius: CGFloat,
+        corners: UIRectCorner = .allCorners
+    ) -> UIImage? {
+        base.withCornerRadius(cornerRadius, corners: corners)
+    }
+    
+    func withBorder(
+        _ borderColor: GeToolColorCompatible,
+        borderWidth: CGFloat,
+        with corner: UIRectCorner = .allCorners,
+        radius: CGFloat
+    ) -> UIImage? {
+        base.withBorder(
+            borderColor.uiColor ?? .black,
+            borderWidth: borderWidth,
+            with: corner,
+            radius: radius
+        )
+    }
+    
+    func redrawWithSize(_ size: CGSize) -> UIImage? {
+        base.redrawWithSize(size)
+    }
+    
+    func clipsToSize(_ size: CGSize, radius: CGFloat) -> UIImage? {
+        base.clipsToSize(size, radius: radius)
+    }
+    
+    func resizeAspectFill(_ size: CGSize) -> UIImage? {
+        base.resizeAspectFill(size)
+    }
+
+    static func imageWithColor(
+        _ color: GeToolColorCompatible,
+        size: CGSize = CGSize(width: 1, height: 1)
+    ) -> UIImage? {
+        .imageWithColor(
+            color.uiColor ?? .black,
+            size: size
+        )
+    }
+    
+    static func imageWithQrCodeURL(
+        _ url: String,
+        image: UIImage? = nil
+    ) -> UIImage {
+        .imageWithQrCodeURL(url, image: image)
+    }
+    
+    static func gradientImage(
+        colors: [GeToolColorCompatible],
+        startPoint sPoint: CGPoint,
+        endPoint ePoint: CGPoint,
+        locations: [CGFloat],
+        size: CGSize
+    ) -> UIImage {
+        .gradientImage(
+            colors: colors.compactMap(\.uiColor),
+            startPoint: sPoint,
+            endPoint: ePoint,
+            locations: locations,
+            size: size
+        )
+    }
+}
+
+public protocol GeToolImageCompatible {
+    var uiImage: UIImage? { get }
+}
+
+public extension GeToolImageCompatible where Self: GeToolColorCompatible {
+    var uiImage: UIImage? {
+        .ge.imageWithColor(self)
+    }
+}
+
+extension UIImage: GeToolImageCompatible {
+    public var uiImage: UIImage? { self }
+}
+
+extension String: GeToolImageCompatible {}
+extension UIColor: GeToolImageCompatible {}
+extension Int: GeToolImageCompatible {}

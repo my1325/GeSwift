@@ -287,9 +287,17 @@ public final class CycleScrollView: UIView {
                 let scrollToIndexPath = { (animated: Bool, currentPage: Int) in
                     switch self.scrollDirection {
                     case .horizontal:
-                        self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: animated)
+                        self.collectionView.scrollToItem(
+                            at: indexPath,
+                            at: .centeredHorizontally,
+                            animated: animated
+                        )
                     case .vertical:
-                        self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: animated)
+                        self.collectionView.scrollToItem(
+                            at: indexPath,
+                            at: .centeredVertically,
+                            animated: animated
+                        )
                     @unknown default:
                         fatalError()
                     }
@@ -309,11 +317,11 @@ public final class CycleScrollView: UIView {
     public func scrollToIndex(_ index: Int, animated: Bool) {
         guard index < totalIndex, index != currentIndex else { return }
         let currentItem: Int
-        switch self.scrollDirection {
+        switch scrollDirection {
         case .horizontal:
-            currentItem = Int(self.collectionView.contentOffset.x / self.collectionView.bounds.size.width + 0.5) + 1
+            currentItem = Int(collectionView.contentOffset.x / collectionView.bounds.size.width + 0.5) + 1
         case .vertical:
-            currentItem = Int(self.collectionView.contentOffset.y / self.collectionView.bounds.size.height + 0.5) + 1
+            currentItem = Int(collectionView.contentOffset.y / collectionView.bounds.size.height + 0.5) + 1
         @unknown default:
             fatalError()
         }
@@ -322,12 +330,23 @@ public final class CycleScrollView: UIView {
         if targetItem >= totalIndex {
             targetItem = totalIndex * 150 + index
         }
-        let indexPath = IndexPath(item: targetItem, section: 0)
-        switch self.scrollDirection {
+        let indexPath = IndexPath(
+            item: targetItem,
+            section: 0
+        )
+        switch scrollDirection {
         case .horizontal:
-            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: animated)
+            collectionView.scrollToItem(
+                at: indexPath,
+                at: .centeredHorizontally,
+                animated: animated
+            )
         case .vertical:
-            self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: animated)
+            collectionView.scrollToItem(
+                at: indexPath,
+                at: .centeredVertically,
+                animated: animated
+            )
         @unknown default:
             fatalError()
         }
@@ -344,8 +363,14 @@ public final class CycleScrollView: UIView {
         $0.dataSource = self
         $0.isPagingEnabled = true
         $0.backgroundColor = UIColor.clear
-        $0.register(CycleScrollViewCustomViewCell.self, forCellWithReuseIdentifier: "CycleScrollViewCustomViewCell")
-        $0.register(CycleScrollViewImageCell.self, forCellWithReuseIdentifier: "CycleScrollViewImageCell")
+        $0.register(
+            CycleScrollViewCustomViewCell.self,
+            forCellWithReuseIdentifier: "CycleScrollViewCustomViewCell"
+        )
+        $0.register(
+            CycleScrollViewImageCell.self,
+            forCellWithReuseIdentifier: "CycleScrollViewImageCell"
+        )
         self.addSubview($0)
         $0.addConstraint(inSuper: .top, constant: 0)
         $0.addConstraint(inSuper: .left, constant: 0)
@@ -361,11 +386,18 @@ public final class CycleScrollView: UIView {
 }
 
 extension CycleScrollView: UICollectionViewDelegateFlowLayout {
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         return collectionView.bounds.size
     }
     
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         delegate?.cycleScrollView(self, didSelectItemAtIndex: indexPath.item % totalIndex)
     }
     
@@ -374,7 +406,10 @@ extension CycleScrollView: UICollectionViewDelegateFlowLayout {
         scrollTimeOffset = 1
     }
     
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(
+        _ scrollView: UIScrollView,
+        willDecelerate decelerate: Bool
+    ) {
         isSuspend = false
     }
     
@@ -395,25 +430,42 @@ extension CycleScrollView: UICollectionViewDelegateFlowLayout {
 }
 
 extension CycleScrollView: UICollectionViewDataSource {
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return totalIndex > 1 ? totalIndex * 300 : totalIndex
     }
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         if registeredCustomCellIndex.contains(indexPath.item % totalIndex),
            let customCell = dataSource?.scrollView(self, customCellAtIndex: indexPath.item % totalIndex)
         {
             return customCell
         }
 
-        let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CycleScrollViewImageCell", for: indexPath) as! CycleScrollViewImageCell
+        let imageCell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "CycleScrollViewImageCell",
+            for: indexPath
+        ) as! CycleScrollViewImageCell
         imageCell.imageView.contentMode = contentModel
         imageCell.titleContanerView.isHidden = true
-        if let imageSetter = dataSource?.scrollView(self, imageAtIndex: indexPath.item % totalIndex) {
+        let imageSetter = dataSource?.scrollView(
+            self,
+            imageAtIndex: indexPath.item % totalIndex
+        )
+        if let imageSetter {
             imageSetter(imageCell.imageView)
         }
             
-        if isShowTitleView, let title = dataSource?.scrollView(self, titleAtIndex: indexPath.item % totalIndex) {
+        let title = dataSource?.scrollView(
+            self,
+            titleAtIndex: indexPath.item % totalIndex
+        )
+        if isShowTitleView, let title {
             imageCell.titleMargin = referredTitleViewHeight
             imageCell.titleLocation = titleLocation
             imageCell.titleLabel.attributedText = NSAttributedString(string: title, attributes: titleAttribute)

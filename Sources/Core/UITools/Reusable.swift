@@ -5,7 +5,6 @@
 //  Created by mayong on 2023/2/17.
 //
 
-#if canImport(UIKit)
 import UIKit
 
 public protocol Reusable: AnyObject {
@@ -30,4 +29,3 @@ public extension NibLoadable {
 }
 
 public protocol NibReusable: Reusable, NibLoadable {}
-#endif

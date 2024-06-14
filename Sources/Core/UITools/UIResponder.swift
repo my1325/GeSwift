@@ -4,7 +4,6 @@
 //
 //  Created by mayong on 2023/2/17.
 //
-#if canImport(UIKit)
 import UIKit
 
 public protocol ResponderProtocol {
@@ -13,17 +12,16 @@ public protocol ResponderProtocol {
 
 public protocol ResponderEvent {}
 
-public extension UIResponder {
+public extension GeTool where Base: UIResponder {
     /// 事件路由
     ///
     /// - Parameters:
     ///   - event: 事件
     func router(event: ResponderEvent) {
-        if let intercept = next as? ResponderProtocol {
+        if let intercept = base as? ResponderProtocol {
             intercept.intercept(event: event)
             return
         }
-        next?.router(event: event)
+        base.next?.ge.router(event: event)
     }
 }
-#endif
