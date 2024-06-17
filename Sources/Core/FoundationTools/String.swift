@@ -100,8 +100,14 @@ public extension String {
 //        guard let data = Data(base64Encoded: base) else { return base }
 //        return String(data: data, encoding: .utf8) ?? base
 //    }
+    
+    func substring(from start: Int? = nil, to end: Int? = nil) -> String {
+        let left = start ?? 0
+        let right = end ?? count
+        return String(self[left ..< right])
+    }
 
-    func characterAt(_ offset: Int) -> Character {
+    subscript(_ offset: Int) -> Character {
         let index = self.index(self.startIndex, offsetBy: offset)
         precondition(index <= self.endIndex)
         return self[index]
@@ -122,18 +128,18 @@ public extension String {
         return String.Index(index16, within: self)
     }
 
-    func substring(_ range: Range<Int>) -> String {
+    subscript(_ range: Range<Int>) -> String {
         guard let from = indexOffset(offset: range.lowerBound),
-              let to = indexOffset(offset: range.count)
+              let to = indexOffset(from, offset: range.count)
         else {
             return self
         }
         return String(self[from ..< to])
     }
 
-    func substring(_ range: ClosedRange<Int>) -> String {
+    subscript(_ range: ClosedRange<Int>) -> String {
         guard let from = indexOffset(offset: range.lowerBound),
-              let to = indexOffset(offset: range.count)
+              let to = indexOffset(from, offset: range.count)
         else {
             return self
         }

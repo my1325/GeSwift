@@ -7,22 +7,22 @@
 
 import Foundation
 
-struct PrefixAddCodingKey: CodingKey {
-    var stringValue: String
+public struct PrefixAddCodingKey: CodingKey {
+    public var stringValue: String
 
-    var intValue: Int?
+    public var intValue: Int?
 
-    init?(intValue: Int) {
+    public init?(intValue: Int) {
         self.intValue = intValue
         self.stringValue = String(intValue)
     }
 
-    init?(stringValue: String) {
+    public init?(stringValue: String) {
         self.stringValue = stringValue
         self.intValue = nil
     }
 
-    init(_ prefix: String, codingsKeys: [CodingKey]) {
+    public init(_ prefix: String, codingsKeys: [CodingKey]) {
         self.stringValue = codingsKeys.map { String(format: "%@%@", prefix, $0.stringValue) }.last!
     }
 }
@@ -35,17 +35,17 @@ public extension JSONDecoder {
     }
 }
 
-struct PrefixDeleteCodingKey: CodingKey {
-    var stringValue: String
+public struct PrefixDeleteCodingKey: CodingKey {
+    public var stringValue: String
 
-    var intValue: Int?
+    public var intValue: Int?
 
-    init?(intValue: Int) {
+    public init?(intValue: Int) {
         self.intValue = intValue
         self.stringValue = String(intValue)
     }
 
-    init?(stringValue: String) {
+    public init?(stringValue: String) {
         self.stringValue = stringValue
         self.intValue = nil
     }
@@ -71,7 +71,7 @@ public extension JSONEncoder {
 
 public extension Decodable {
     init(
-        _ json: Any,
+        json: Any,
         decoder: JSONDecoder = .init(),
         options: JSONSerialization.WritingOptions = []
     ) throws {
