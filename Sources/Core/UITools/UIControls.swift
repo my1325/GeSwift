@@ -46,10 +46,12 @@ private final class ControlEventObject<T: UIControl> {
     
     private let action: ControlEventStoreAction
     private let associateKey: AssociateKey
-    init(associateKey: AssociateKey,
+    init(
+        associateKey: AssociateKey,
          target: AnyObject,
          policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC,
-         action: @escaping ControlEventStoreAction) {
+         action: @escaping ControlEventStoreAction
+    ) {
         self.associateKey = associateKey
         self.action = action
         objc_setAssociatedObject(target, associateKey.key, self, policy)
@@ -85,6 +87,30 @@ public extension GeTool where Base: UIControl {
 }
 
 public extension GeTool where Base: UIButton {
+    func setBackgroundImage(
+        _ backgroundImage: GeToolImageCompatible,
+        for state: UIControl.State
+    ) {
+        base.setBackgroundImage(
+            backgroundImage.uiImage,
+            for: state
+        )
+    }
+    
+    func setImage(
+        _ image: GeToolImageCompatible,
+        for state: UIControl.State
+    ) {
+        base.setImage(image.uiImage, for: state)
+    }
+    
+    func setTitleColor(
+        _ color: GeToolColorCompatible,
+        for state: UIControl.State
+    ) {
+        base.setTitleColor(color.uiColor, for: .normal)
+    }
+    
     func tap(_ block: @escaping (UIButton) -> Void) {
         addEvent(.touchUpInside, block: block)
     }

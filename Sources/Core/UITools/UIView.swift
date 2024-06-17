@@ -7,50 +7,20 @@
 import UIKit
 
 public extension GeTool where Base: UIView {
-    func modifyFrame(_ modifier: (inout CGRect) -> Void) {
+    var backgroundColor: GeToolColorCompatible? {
+        get { base.backgroundColor }
+        set { base.backgroundColor = newValue?.uiColor }
+    }
+    
+    var tintColor: GeToolColorCompatible? {
+        get { base.tintColor }
+        set { base.tintColor = newValue?.uiColor }
+    }
+     
+    func frame(_ modifier: (inout CGRect) -> Void) {
         var frame = base.frame
         modifier(&frame)
         base.frame = frame
-    }
-    
-    var x: CGFloat {
-        base.frame.origin.x
-    }
-
-    var y: CGFloat {
-        base.frame.origin.y
-    }
-
-    var width: CGFloat {
-        base.frame.size.width
-    }
-
-    var height: CGFloat {
-        base.frame.size.height
-    }
-
-    var midX: CGFloat {
-        base.frame.midX
-    }
-
-    var midY: CGFloat {
-        base.frame.midY
-    }
-
-    var maxX: CGFloat {
-        base.frame.maxX
-    }
-
-    var maxY: CGFloat {
-        base.frame.maxY
-    }
-
-    var origin: CGPoint {
-        base.frame.origin
-    }
-
-    var size: CGSize {
-        base.frame.size
     }
 
     func snapShot(size: CGSize?) -> UIImage? {
@@ -67,7 +37,10 @@ public extension GeTool where Base: UIView {
         return shotImage
     }
 
-    func addConstraint(inSuper attribute: NSLayoutConstraint.Attribute, constant: CGFloat) {
+    func addConstraint(
+        inSuper attribute: NSLayoutConstraint.Attribute,
+        constant: CGFloat
+    ) {
         let constraint = NSLayoutConstraint(
             item: base,
             attribute: attribute,
@@ -105,16 +78,23 @@ public extension GeTool where Base: UIView {
         )
         base.superview?.addConstraint(constraint)
     }
-
-    func updateConstraint(inSuper attribute: NSLayoutConstraint.Attribute, constant: CGFloat) {
+    
+    func constraint(inSuper attribute: NSLayoutConstraint.Attribute) -> NSLayoutConstraint? {
         for constraint in base.superview!.constraints {
             if (constraint.firstAttribute == attribute && constraint.firstItem as? UIView == base) ||
                 (constraint.firstAttribute == attribute && constraint.secondItem as? UIView == base)
             {
-                constraint.constant = constant
-                break
+                return constraint
             }
         }
+        return nil 
+    }
+
+    func updateConstraint(
+        inSuper attribute: NSLayoutConstraint.Attribute,
+        constant: CGFloat
+    ) {
+        constraint(inSuper: attribute)?.constant = constant
     }
 
     func updateConstraint(forWidth width: CGFloat) {
@@ -213,35 +193,34 @@ private final class EventObject<T: UIGestureRecognizer> {
     }
 
     @objc private func gestureAction(_ gesture: UIGestureRecognizer) {
-        self.event.action(gesture as! T)
+        event.action(gesture as! T)
     }
 }
 
-private enum ControlEventKeyStore {
-    private static var _index: Int = 0
-    private static let lock = DispatchSemaphore(value: 1)
-    static var index: Int {
-        lock.wait()
-        defer { _index += 1; lock.signal() }
-        return _index
+public enum ControlEventKey: UInt {
+    case tap = 12000
+    case longPress
+    case pan
+    case swipe
+    case pin
+
+    var associateKey: AssociateKey {
+        .init(intValue: rawValue)
     }
 }
 
 public struct ControlEvent<T: UIGestureRecognizer> {
     let action: (T) -> Void
     let configuration: (T) -> Void
-    let key: String
+    let eventKey: ControlEventKey
     init(
+        eventKey: ControlEventKey,
         action: @escaping (T) -> Void,
         configuration: @escaping (T) -> Void
     ) {
+        self.eventKey = eventKey
         self.action = action
         self.configuration = configuration
-        self.key = String(
-            format: "%.0f_%d",
-            Date().timeIntervalSince1970,
-            ControlEventKeyStore.index
-        )
     }
 
     public static func tap(
@@ -249,6 +228,7 @@ public struct ControlEvent<T: UIGestureRecognizer> {
         configuration: @escaping (UITapGestureRecognizer) -> Void = { _ in }
     ) -> ControlEvent<UITapGestureRecognizer> {
         ControlEvent<UITapGestureRecognizer>(
+            eventKey: .tap,
             action: action,
             configuration: configuration
         )
@@ -260,6 +240,7 @@ public struct ControlEvent<T: UIGestureRecognizer> {
         configuration: @escaping (UILongPressGestureRecognizer) -> Void = { _ in }
     ) -> ControlEvent<UILongPressGestureRecognizer> {
         ControlEvent<UILongPressGestureRecognizer>(
+            eventKey: .longPress,
             action: action,
             configuration: {
                 $0.minimumPressDuration = minimumPressDuration
@@ -273,6 +254,7 @@ public struct ControlEvent<T: UIGestureRecognizer> {
         configuration: @escaping (UIPanGestureRecognizer) -> Void = { _ in }
     ) -> ControlEvent<UIPanGestureRecognizer> {
         ControlEvent<UIPanGestureRecognizer>(
+            eventKey: .pan,
             action: action,
             configuration: configuration
         )
@@ -284,6 +266,7 @@ public struct ControlEvent<T: UIGestureRecognizer> {
         configuration: @escaping (UIPinchGestureRecognizer) -> Void = { _ in }
     ) -> ControlEvent<UIPinchGestureRecognizer> {
         ControlEvent<UIPinchGestureRecognizer>(
+            eventKey: .pin,
             action: action,
             configuration: {
                 $0.scale = scale
@@ -298,10 +281,76 @@ public struct ControlEvent<T: UIGestureRecognizer> {
         configuration: @escaping (UISwipeGestureRecognizer) -> Void = { _ in }
     ) -> ControlEvent<UISwipeGestureRecognizer> {
         ControlEvent<UISwipeGestureRecognizer>(
+            eventKey: .swipe,
             action: action,
             configuration: {
                 $0.direction = direction
                 configuration($0)
+            }
+        )
+    }
+}
+
+public final class KeyboardListener {
+    let keyboardAssociatedKey: AssociateKey = .init(intValue: 13000)
+
+    public let view: UIView
+    public init(view: UIView) {
+        self.view = view
+        objc_setAssociatedObject(
+            view,
+            keyboardAssociatedKey.key,
+            self,
+            .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+        )
+
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(keyboardWillShowNotification(_:)),
+                name: UIApplication.keyboardWillShowNotification,
+                object: nil
+            )
+
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(keyboardWillHideNotification(_:)),
+                name: UIApplication.keyboardWillHideNotification,
+                object: nil
+            )
+    }
+    
+    @objc public func keyboardWillShowNotification(_ notification: Notification) {
+        let durationKey = UIApplication.keyboardAnimationDurationUserInfoKey
+        let endFrameKey = UIApplication.keyboardFrameEndUserInfoKey
+        guard let duration = notification.userInfo?[durationKey] as? Double,
+              let frame = notification.userInfo?[endFrameKey] as? CGRect,
+              let bottomConstraint = view.ge.constraint(inSuper: .bottom)
+        else {
+            return
+        }
+        UIView.animate(
+            withDuration: duration,
+            animations: {
+                bottomConstraint.constant += frame.height
+            }
+        )
+    }
+
+    @objc public func keyboardWillHideNotification(_ notification: Notification) {
+        let durationKey = UIApplication.keyboardAnimationDurationUserInfoKey
+        let endFrameKey = UIApplication.keyboardFrameEndUserInfoKey
+        guard let duration = notification.userInfo?[durationKey] as? Double,
+              let frame = notification.userInfo?[endFrameKey] as? CGRect,
+              let bottomConstraint = view.ge.constraint(inSuper: .bottom)
+        else {
+            return
+        }
+        UIView.animate(
+            withDuration: duration,
+            animations: {
+                bottomConstraint.constant -= frame.height
             }
         )
     }
@@ -314,9 +363,13 @@ public extension GeTool where Base: UIView {
         base.addGestureRecognizer(eventObject.gestureRecognizer)
         objc_setAssociatedObject(
             self,
-            event.key,
+            event.eventKey.associateKey.key,
             eventObject,
             objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
         )
+    }
+
+    func addNotificationListener() {
+        _ = KeyboardListener(view: base)
     }
 }

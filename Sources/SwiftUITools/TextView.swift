@@ -4,7 +4,6 @@
 //
 //  Created by mayong on 2023/12/11.
 //
-#if canImport(UIKit)
 
 import SwiftUI
 import UIKit
@@ -122,7 +121,7 @@ public struct TextView: UIViewRepresentable {
     }
     
     public class Coordinator: NSObject, UITextViewDelegate {
-        var didBecomeFirstResponder: Bool = false 
+        var didBecomeFirstResponder: Bool = false
         var didResignFirstResponder: Bool = false
         let parent: TextView
         init(textView: TextView) {
@@ -354,4 +353,5 @@ public extension TextView {
                  textEndChange: textEndChange)
     }
 }
-#endif
+
+// #endIf

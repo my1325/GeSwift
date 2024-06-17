@@ -14,7 +14,8 @@ public struct ProgressView<Content: View>: View {
     public let changed: (CGFloat) -> Void
     public let interactiveEnabled: Bool
 
-    public init(progress: Binding<CGFloat>,
+    public init(
+        progress: Binding<CGFloat>,
                 interactiveEnabled: Bool = true,
                 changed: @escaping (CGFloat) -> Void = { _ in },
                 content: @escaping () -> Content = { Rectangle() })

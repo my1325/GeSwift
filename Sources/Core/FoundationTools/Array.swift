@@ -8,19 +8,30 @@
 import Foundation
 
 public extension Array {
-    
-    func toJSONData(_ options: JSONSerialization.WritingOptions = []) throws -> Data? {
-        guard JSONSerialization.isValidJSONObject(self) else { return nil }
-        return try JSONSerialization.data(withJSONObject: self, options: options)
+    func jsonData(_ options: JSONSerialization.WritingOptions = []) throws -> Data? {
+        try JSONSerialization.data(
+            withJSONObject: self,
+            options: options
+        )
     }
     
-    func toJSONString(_ options: JSONSerialization.WritingOptions = [], encoding: String.Encoding = .utf8) throws -> String? {
-        guard let data = try toJSONData(options) else { return nil }
-        return String(data: data, encoding: encoding)
+    func sorted<Value: Comparable>(
+        keyPath: KeyPath<Element, Value>
+    ) -> [Element] {
+        sorted(keyPath: keyPath, by: <)
+    }
+    
+    func sorted<Value>(
+        keyPath: KeyPath<Element, Value>,
+        by areInIncreasingOrder: (Value, Value) throws -> Bool
+    ) rethrows -> [Element] {
+        try sorted {
+            try areInIncreasingOrder($0[keyPath: keyPath], $1[keyPath: keyPath])
+        }
     }
     
     func combine<T>(_ another: [T]) -> [(Element, T)] {
-        let _count = Swift.min(self.count, another.count)
+        let _count = Swift.min(count, another.count)
         var retList: [(Element, T)] = []
         for i in 0 ..< _count {
             if i < count, i < another.count {

@@ -5,7 +5,7 @@
 //  Created by mayong on 2023/12/11.
 //
 
-#if canImport(UIKit)
+
 import UIKit
 import SwiftUI
 import WebKit
@@ -160,4 +160,4 @@ public struct WebView: UIViewRepresentable {
         }
     }
 }
-#endif
+//#endIf

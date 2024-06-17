@@ -5,7 +5,7 @@
 //  Created by mayong on 2023/11/27.
 //
 
-#if canImport(UIKit)
+
 import AVFoundation
 import Photos
 import SwiftUI
@@ -117,7 +117,10 @@ public extension ImagePickerView.SourceType {
         AVCaptureDevice.authorizationStatus(for: .video)
     }
     
-    private func requestAuthorizationForPhotoLibrary(_ denied: @escaping AuthenticationCheckAction, authorized: @escaping AuthenticationCheckAction) {
+    private func requestAuthorizationForPhotoLibrary(
+        _ denied: @escaping AuthenticationCheckAction,
+        authorized: @escaping AuthenticationCheckAction
+    ) {
         if #available(iOS 14.0, *) {
             PHPhotoLibrary.requestAuthorization(for: .readWrite, handler: {
                 switch $0 {
@@ -147,7 +150,10 @@ public extension ImagePickerView.SourceType {
         }
     }
     
-    private func requestAuthorizationForCamera(_ denied: @escaping AuthenticationCheckAction, authorized: @escaping AuthenticationCheckAction) {
+    private func requestAuthorizationForCamera(
+        _ denied: @escaping AuthenticationCheckAction,
+        authorized: @escaping AuthenticationCheckAction
+    ) {
         AVCaptureDevice.requestAccess(for: .video) { granted in
             if granted {
                 DispatchQueue.main.async {
@@ -161,4 +167,4 @@ public extension ImagePickerView.SourceType {
         }
     }
 }
-#endif 
+//#endIf 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-internal final class GradientLabel: UIView {
+public final class GradientLabel: UIView {
     
     private lazy var gradientLayer: CAGradientLayer = {
         $0.startPoint = .zero
@@ -22,57 +22,57 @@ internal final class GradientLabel: UIView {
         return $0
     }(UILabel())
     
-    var numberOfLines: Int {
+    public var numberOfLines: Int {
         get { label.numberOfLines }
         set { label.numberOfLines = newValue }
     }
     
-    var font: UIFont! {
+    public var font: UIFont! {
         get { label.font }
         set { label.font = newValue }
     }
     
-    var startPoint: CGPoint = CGPoint.zero {
+    public var startPoint: CGPoint = CGPoint.zero {
         didSet {
             gradientLayer.startPoint = startPoint
         }
     }
     
-    var locations: [CGFloat] = [] {
+    public var locations: [CGFloat] = [] {
         didSet {
             gradientLayer.locations = locations.map({ NSNumber(value: $0) })
         }
     }
     
-    var endPoint: CGPoint = CGPoint(x: 1, y: 1) {
+    public var endPoint: CGPoint = CGPoint(x: 1, y: 1) {
         didSet {
             gradientLayer.endPoint = endPoint
         }
     }
     
-    var colors: [UIColor] = [.black] {
+    public var colors: [UIColor] = [.black] {
         didSet {
             gradientLayer.colors = colors.map(\.cgColor)
         }
     }
     
-    var text: String! {
+    public var text: String! {
         get { label.text }
         set { label.text = newValue }
     }
     
-    var textAlignment: NSTextAlignment {
+    public var textAlignment: NSTextAlignment {
         get { label.textAlignment }
         set { label.textAlignment = newValue }
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         label.frame = bounds
         gradientLayer.frame = bounds
         gradientLayer.mask = label.layer
     }
     
-    override var intrinsicContentSize: CGSize {
+    public override var intrinsicContentSize: CGSize {
         label.intrinsicContentSize
     }
 }

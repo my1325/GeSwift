@@ -741,3 +741,15 @@ extension UIImage: GeToolImageCompatible {
 extension String: GeToolImageCompatible {}
 extension UIColor: GeToolImageCompatible {}
 extension Int: GeToolImageCompatible {}
+
+extension Array: GeToolImageCompatible where Element: GeToolColorCompatible {
+    public var uiImage: UIImage? {
+        .gradientImage(
+            colors: compactMap(\.uiColor),
+            startPoint: .zero,
+            endPoint: CGPoint(x: 1, y: 0),
+            locations: [0, 1],
+            size: CGSize(width: 1, height: 1)
+        )
+    }
+}

@@ -76,7 +76,12 @@ public struct RoundedCorners: Shape {
         self.cornersRadius = .init(topLeft: cornerRadius, topRight: cornerRadius, bottomLeft: cornerRadius, bottomRight: cornerRadius)
     }
     
-    public init(topLeft: CGFloat = 0, topRight: CGFloat = 0, bottomLeft: CGFloat = 0, bottomRight: CGFloat = 0) {
+    public init(
+        topLeft: CGFloat = 0,
+        topRight: CGFloat = 0,
+        bottomLeft: CGFloat = 0,
+        bottomRight: CGFloat = 0
+    ) {
         self.cornersRadius = .init(topLeft: topLeft, topRight: topRight, bottomLeft: bottomLeft, bottomRight: bottomRight)
     }
     

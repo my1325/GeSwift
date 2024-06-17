@@ -15,8 +15,8 @@ public extension Optional {
         }
     }
 }
-
-public extension Optional where Wrapped == String {
+ 
+public extension Optional where Wrapped: Collection {
     var isEmpty: Bool {
         switch self {
         case .none:
@@ -34,7 +34,9 @@ public extension Optional where Wrapped == String {
             return value.count
         }
     }
+}
 
+extension Optional where Wrapped == String {
     var orEmpty: Wrapped {
         self ?? ""
     }

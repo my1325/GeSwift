@@ -10,16 +10,17 @@ import Foundation
 extension String: GeToolCompatible {}
 
 private let yesConsts: [String] = ["YES", "yes", "Yes", "TRUE", "true", "True", "1"]
-public extension GeTool where Base == String {
-    
-    static func searchPathForUserDomainMask(_ directory: FileManager.SearchPathDirectory) -> String {
+public extension String {
+    static func searchPathForUserDomainMask(
+        _ directory: FileManager.SearchPathDirectory
+    ) -> String {
         NSSearchPathForDirectoriesInDomains(
             directory,
             .userDomainMask,
             true
         )[0]
     }
-    
+
     static var document: String {
         searchPathForUserDomainMask(.documentDirectory)
     }
@@ -35,98 +36,133 @@ public extension GeTool where Base == String {
     static var temp: String { NSTemporaryDirectory() }
 
     static var home: String { NSHomeDirectory() }
-    
+
     var url: URL? {
-        URLComponents(string: base)?.url
+        URLComponents(string: self)?.url
     }
-    
+
     func appendPathComponent(_ component: String) -> String {
-        url?.appendPathComponent(component)
+        if let url {
+            return url.appendingPathComponent(component)
+                .absoluteString
+        }
+        var components = self.components(separatedBy: "/")
+        components.append(component)
+        return components.joined(separator: "/")
+    }
+
+    var deleteLastPathComponent: String {
+        if let url {
+            return url.deletingLastPathComponent()
+                .absoluteString
+        }
+        var components = self.components(separatedBy: "/")
+        if !components.isEmpty {
+            components.removeLast()
+        }
+        return components.joined(separator: "/")
+    }
+
+    var lastPathComponent: String {
+        if let url {
+            return url.lastPathComponent
+        }
+        let components = self.components(separatedBy: "/")
+        return components.last ?? self
+    }
+
+    var pathExtension: String {
+        if let url {
+            return url.pathExtension
+        }
+        return lastPathComponent
+            .components(separatedBy: ".")
+            .last ?? self
     }
 
     var intValue: Int {
-        Int(base) ?? 0
+        Int(self) ?? 0
     }
 
     var doubleValue: Double {
-        Double(base) ?? 0
+        Double(self) ?? 0
     }
 
     var boolValue: Bool {
-        yesConsts.contains(base)
+        yesConsts.contains(self)
     }
 
-    var md5: String {
-        base.data(using: .utf8)!.md5.hexString
+//    var base64EncodedString: String {
+//        base.data(using: .utf8)!.base64EncodedString()
+//    }
+//
+//    var base64DecodedString: String {
+//        guard let data = Data(base64Encoded: base) else { return base }
+//        return String(data: data, encoding: .utf8) ?? base
+//    }
+
+    func characterAt(_ offset: Int) -> Character {
+        let index = self.index(self.startIndex, offsetBy: offset)
+        precondition(index <= self.endIndex)
+        return self[index]
     }
 
-    var base64EncodedString: String {
-        base.data(using: .utf8)!.base64EncodedString()
+    func indexOffset(
+        _ from: String.Index? = nil,
+        offset: Int,
+        limited: String.Index? = nil
+    ) -> String.Index? {
+        guard let index16 = self.utf16.index(
+            from ?? self.utf16.startIndex,
+            offsetBy: offset,
+            limitedBy: limited ?? self.utf16.endIndex
+        ) else {
+            return nil
+        }
+        return String.Index(index16, within: self)
     }
 
-    var base64DecodedString: String {
-        guard let data = Data(base64Encoded: base) else { return base }
-        return String(data: data, encoding: .utf8) ?? base
+    func substring(_ range: Range<Int>) -> String {
+        guard let from = indexOffset(offset: range.lowerBound),
+              let to = indexOffset(offset: range.count)
+        else {
+            return self
+        }
+        return String(self[from ..< to])
     }
 
-    subscript(offset: Int) -> Character {
-        let index = base.index(base.startIndex, offsetBy: offset)
-        precondition(index <= base.endIndex)
-        return base[index]
-    }
-
-    subscript(offset: Int) -> String {
-        let index = base.index(base.startIndex, offsetBy: offset)
-        precondition(index <= base.endIndex)
-        return String(base[index])
-    }
-
-    subscript(range: Range<Int>) -> String {
-        let startIndex = base.index(base.startIndex, offsetBy: range.lowerBound)
-        let endIndex = base.index(base.startIndex, offsetBy: range.upperBound)
-        precondition(startIndex >= base.startIndex && endIndex <= base.endIndex)
-        return String(base[startIndex ..< endIndex])
-    }
-
-    subscript(range: ClosedRange<Int>) -> String {
-        let startIndex = base.index(base.startIndex, offsetBy: range.lowerBound)
-        let endIndex = base.index(base.startIndex, offsetBy: range.upperBound)
-        precondition(startIndex >= base.startIndex && endIndex <= base.endIndex)
-        return String(base[startIndex ... endIndex])
+    func substring(_ range: ClosedRange<Int>) -> String {
+        guard let from = indexOffset(offset: range.lowerBound),
+              let to = indexOffset(offset: range.count)
+        else {
+            return self
+        }
+        return String(self[from ... to])
     }
 
     /// range
-    func nsRangeForSubString(_ subString: String) -> NSRange? {
-        guard let range = base.range(of: subString) else {
+    func nsRange(of subString: String) -> NSRange? {
+        guard let range = self.range(of: subString) else {
             return nil
         }
         return toNSRange(range)
     }
 
     func toNSRange(_ range: Range<String.Index>) -> NSRange {
-        guard let from = range.lowerBound.samePosition(in: base.utf16),
-              let to = range.upperBound.samePosition(in: base.utf16)
+        guard let from = range.lowerBound.samePosition(in: self.utf16),
+              let to = range.upperBound.samePosition(in: self.utf16)
         else {
             return NSMakeRange(0, 0)
         }
         return NSMakeRange(
-            base.utf16.distance(from: base.utf16.startIndex, to: from),
-            base.utf16.distance(from: from, to: to)
+            self.utf16.distance(from: self.utf16.startIndex, to: from),
+            self.utf16.distance(from: from, to: to)
         )
     }
 
     func toRange(_ range: NSRange) -> Range<String.Index>? {
-        guard let from16 = base.utf16.index(
-            base.utf16.startIndex,
-            offsetBy: range.location, limitedBy: base.utf16.endIndex
-        ),
-            let to16 = base.utf16.index(
-                from16,
-                offsetBy: range.length,
-                limitedBy: base.utf16.endIndex
-            ),
-            let from = String.Index(from16, within: base),
-            let to = String.Index(to16, within: base)
+        guard let from = indexOffset(offset: range.location),
+            let to = indexOffset(from, offset: range.length)
         else {
             return nil
         }

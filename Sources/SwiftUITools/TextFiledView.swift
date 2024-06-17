@@ -4,7 +4,7 @@
 //
 //  Created by mayong on 2023/12/11.
 //
-#if canImport(UIKit)
+
 import SwiftUI
 import UIKit
 
@@ -20,7 +20,8 @@ public struct TextFiledViewConfig {
     let clearButtonMode: UITextField.ViewMode
     let backgroundColor: UIColor
     
-    public init(textColor: UIColor = .black,
+    public init(
+        textColor: UIColor = .black,
                 font: UIFont = .systemFont(ofSize: 17, weight: .regular),
                 alignemnt: NSTextAlignment = .left,
                 returnKeyType: UIReturnKeyType = .default,
@@ -29,7 +30,8 @@ public struct TextFiledViewConfig {
                 borderStyle: UITextField.BorderStyle = .none,
                 placeholder: NSAttributedString = NSAttributedString(string: ""),
                 clearButtonMode: UITextField.ViewMode = .never,
-                backgroundColor: UIColor = .clear)
+                backgroundColor: UIColor = .clear
+    )
     {
         self.textColor = textColor
         self.font = font
@@ -74,7 +76,8 @@ public struct TextFiledView: UIViewRepresentable {
     public let shouldBeginEditing: ShouldBeginEditing
     public let shouldChangeCharacters: ShouldChangeCharacters
 
-    public init(text: Binding<String>,
+    public init(
+        text: Binding<String>,
                 isEditing: Bool,
                 isSecureTextEntry: Bool = false,
                 configGetter: @escaping ConfigGetter = { TextFiledViewConfig() },
@@ -135,7 +138,7 @@ public struct TextFiledView: UIViewRepresentable {
         
         @objc
         func textFieldEditingDidEndOnExit(_ textFiled: UITextField) {
-            parent.editingEventListener(.editingDidBegin, textFiled.text!)
+            parent.editingEventListener(.editingDidEndOnExit, textFiled.text!)
         }
         
         @objc
@@ -146,7 +149,7 @@ public struct TextFiledView: UIViewRepresentable {
         
         @objc
         func textFiledEditingDidEnd(_ textFiled: UITextField) {
-            parent.editingEventListener(.editingDidEndOnExit, textFiled.text!)
+            parent.editingEventListener(.editingDidEnd, textFiled.text!)
         }
         
         @objc
@@ -179,49 +182,58 @@ public struct TextFiledView: UIViewRepresentable {
 
 public extension TextFiledView {
     func configuration(_ config: @escaping ConfigGetter) -> TextFiledView {
-        .init(text: _text,
+        .init(
+            text: _text,
               isEditing: isEditing,
               isSecureTextEntry: isSecureTextEntry,
               configGetter: config,
               editingEventListener: editingEventListener,
               shouldBeginEditing: shouldBeginEditing,
-              shouldChangeCharacters: shouldChangeCharacters)
+              shouldChangeCharacters: shouldChangeCharacters
+        )
     }
     
     func editingEventListener(_ editingEventListener: @escaping EditingEventListener) -> TextFiledView {
-        .init(text: _text,
+        .init(
+            text: _text,
               isEditing: isEditing,
               isSecureTextEntry: isSecureTextEntry,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
               shouldBeginEditing: shouldBeginEditing,
-              shouldChangeCharacters: shouldChangeCharacters)
+              shouldChangeCharacters: shouldChangeCharacters
+        )
     }
     
     func shouldBeginEditing(_ shouldBeginEditing: @escaping ShouldBeginEditing) -> TextFiledView {
-        .init(text: _text,
+        .init(
+            text: _text,
               isEditing: isEditing,
               isSecureTextEntry: isSecureTextEntry,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
               shouldBeginEditing: shouldBeginEditing,
-              shouldChangeCharacters: shouldChangeCharacters)
+              shouldChangeCharacters: shouldChangeCharacters
+        )
     }
     
     func shouldChangeCharacters(_ shouldChangeCharacters: @escaping ShouldChangeCharacters) -> TextFiledView {
-        .init(text: _text,
+        .init(
+            text: _text,
               isEditing: isEditing,
               isSecureTextEntry: isSecureTextEntry,
               configGetter: configGetter,
               editingEventListener: editingEventListener,
               shouldBeginEditing: shouldBeginEditing,
-              shouldChangeCharacters: shouldChangeCharacters)
+              shouldChangeCharacters: shouldChangeCharacters
+        )
     }
 }
 
 public extension TextFiledViewConfig {
     func foregroundColor(_ foregroundColor: UIColor) -> TextFiledViewConfig {
-        .init(textColor: foregroundColor,
+        .init(
+            textColor: foregroundColor,
               font: font,
               alignemnt: alignemnt,
               returnKeyType: returnKeyType,
@@ -230,7 +242,8 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor)
+              backgroundColor: backgroundColor
+        )
     }
     
     func foregroundColor(_ hexValue: UInt, alpha: CGFloat = 1) -> TextFiledViewConfig {
@@ -242,7 +255,8 @@ public extension TextFiledViewConfig {
     }
     
     func font(_ font: UIFont) -> TextFiledViewConfig {
-        .init(textColor: textColor,
+        .init(
+            textColor: textColor,
               font: font,
               alignemnt: alignemnt,
               returnKeyType: returnKeyType,
@@ -251,11 +265,13 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor)
+              backgroundColor: backgroundColor
+        )
     }
     
     func alignemnt(_ alignemnt: NSTextAlignment) -> TextFiledViewConfig {
-        .init(textColor: textColor,
+        .init(
+            textColor: textColor,
               font: font,
               alignemnt: alignemnt,
               returnKeyType: returnKeyType,
@@ -264,11 +280,13 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor)
+              backgroundColor: backgroundColor
+        )
     }
     
     func returnKeyType(_ returnKeyType: UIReturnKeyType) -> TextFiledViewConfig {
-        .init(textColor: textColor,
+        .init(
+            textColor: textColor,
               font: font,
               alignemnt: alignemnt,
               returnKeyType: returnKeyType,
@@ -277,11 +295,13 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor)
+              backgroundColor: backgroundColor
+        )
     }
     
     func keyboardType(_ keyboardType: UIKeyboardType) -> TextFiledViewConfig {
-        .init(textColor: textColor,
+        .init(
+            textColor: textColor,
               font: font,
               alignemnt: alignemnt,
               returnKeyType: returnKeyType,
@@ -290,11 +310,13 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor)
+              backgroundColor: backgroundColor
+        )
     }
     
     func tintColor(_ tintColor: UIColor) -> TextFiledViewConfig {
-        .init(textColor: textColor,
+        .init(
+            textColor: textColor,
               font: font,
               alignemnt: alignemnt,
               returnKeyType: returnKeyType,
@@ -303,7 +325,8 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor)
+              backgroundColor: backgroundColor
+        )
     }
     
     func tintColor(_ hexValue: UInt, alpha: CGFloat = 1) -> TextFiledViewConfig {
@@ -315,7 +338,8 @@ public extension TextFiledViewConfig {
     }
     
     func borderStyle(_ borderStyle: UITextField.BorderStyle) -> TextFiledViewConfig {
-        .init(textColor: textColor,
+        .init(
+            textColor: textColor,
               font: font,
               alignemnt: alignemnt,
               returnKeyType: returnKeyType,
@@ -324,11 +348,13 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor)
+              backgroundColor: backgroundColor
+        )
     }
     
     func placeholder(_ placeholder: NSAttributedString) -> TextFiledViewConfig {
-        .init(textColor: textColor,
+        .init(
+            textColor: textColor,
               font: font,
               alignemnt: alignemnt,
               returnKeyType: returnKeyType,
@@ -337,7 +363,8 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor)
+              backgroundColor: backgroundColor
+        )
     }
     
     func placeholder(_ string: String) -> TextFiledViewConfig {
@@ -365,7 +392,8 @@ public extension TextFiledViewConfig {
     }
     
     func clearButtonMode(_ clearButtonMode: UITextField.ViewMode) -> TextFiledViewConfig {
-        .init(textColor: textColor,
+        .init(
+            textColor: textColor,
               font: font,
               alignemnt: alignemnt,
               returnKeyType: returnKeyType,
@@ -374,11 +402,13 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor)
+              backgroundColor: backgroundColor
+        )
     }
     
     func backgroundColor(_ backgroundColor: UIColor) -> TextFiledViewConfig {
-        .init(textColor: textColor,
+        .init(
+            textColor: textColor,
               font: font,
               alignemnt: alignemnt,
               returnKeyType: returnKeyType,
@@ -387,7 +417,8 @@ public extension TextFiledViewConfig {
               borderStyle: borderStyle,
               placeholder: placeholder,
               clearButtonMode: clearButtonMode,
-              backgroundColor: backgroundColor)
+              backgroundColor: backgroundColor
+        )
     }
     
     func backgroundColor(_ hexValue: UInt, alpha: CGFloat = 1) -> TextFiledViewConfig {
@@ -398,4 +429,4 @@ public extension TextFiledViewConfig {
         return backgroundColor(color)
     }
 }
-#endif
+//#endIf

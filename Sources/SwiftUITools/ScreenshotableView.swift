@@ -4,7 +4,7 @@
 //
 //  Created by mayong on 2023/12/22.
 //
-#if canImport(UIKit)
+
 
 import UIKit
 import SwiftUI
@@ -96,4 +96,4 @@ public struct ScreenshotableView<Content: View>: View {
         return self.content(.inView).background(GeometryReader(content: internalView(proxy:)))
     }
 }
-#endif
+//#endIf

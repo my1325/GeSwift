@@ -40,4 +40,3 @@ public extension GeToolCompatible where Self: Any {
 }
 
 extension NSObject: GeToolCompatible {}
-

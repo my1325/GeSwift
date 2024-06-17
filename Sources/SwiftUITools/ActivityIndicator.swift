@@ -5,7 +5,7 @@
 //  Created by mayong on 2023/11/28.
 //
 
-#if canImport(UIKit)
+
 import UIKit
 import SwiftUI
 
@@ -30,4 +30,4 @@ public struct ActivityIndicator: UIViewRepresentable {
         isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
     }
 }
-#endif
+//#endIf

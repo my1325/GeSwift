@@ -7,16 +7,15 @@
 
 import UIKit
 
-internal final class StrokeLabel: UILabel {
-        
-    var strokeWidth: CGFloat?
+public final class StrokeLabel: UILabel {
+    public var strokeWidth: CGFloat?
     
-    var strokeColor: UIColor?
+    public var strokeColor: UIColor?
     
-    override func drawText(in rect: CGRect) {
+    override public func drawText(in rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext(),
               let strokeWidth,
-                let strokeColor
+              let strokeColor
         else {
             super.drawText(in: rect)
             return
@@ -42,7 +41,7 @@ internal final class StrokeLabel: UILabel {
         }
     }
     
-    override var intrinsicContentSize: CGSize {
+    override public var intrinsicContentSize: CGSize {
         guard let strokeWidth else {
             return super.intrinsicContentSize
         }

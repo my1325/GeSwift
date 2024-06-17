@@ -113,13 +113,15 @@ public extension Date {
     func isMonthEqual(_ date: Date) -> Bool {
         let selfYearAndMonth = components(dateSets: [.year, .month])
         let dateYearAndMonth = date.components(dateSets: [.year, .month])
-        return selfYearAndMonth.year == dateYearAndMonth.year && selfYearAndMonth.month == dateYearAndMonth.month
+        return selfYearAndMonth.year == dateYearAndMonth.year && 
+        selfYearAndMonth.month == dateYearAndMonth.month
     }
 
     func isWeakEqual(_ date: Date) -> Bool {
         let selfYearAndWeak = components(dateSets: [.year, .weekOfYear])
         let dateYearAndWeak = date.components(dateSets: [.year, .weekOfYear])
-        return selfYearAndWeak.year == dateYearAndWeak.year && selfYearAndWeak.weekOfYear == dateYearAndWeak.weekOfYear
+        return selfYearAndWeak.year == dateYearAndWeak.year && 
+        selfYearAndWeak.weekOfYear == dateYearAndWeak.weekOfYear
     }
 
     func isDayEqual(_ date: Date) -> Bool {
@@ -134,7 +136,10 @@ public extension Date {
     ///
     /// - Parameter dateSets: components
     /// - Returns: DateComponents
-    func components(_ calendar: Calendar = Calendar.current, dateSets: Set<Calendar.Component>) -> DateComponents {
+    func components(
+        _ calendar: Calendar = Calendar.current,
+        dateSets: Set<Calendar.Component>
+    ) -> DateComponents {
         return calendar.dateComponents(dateSets, from: self)
     }
         

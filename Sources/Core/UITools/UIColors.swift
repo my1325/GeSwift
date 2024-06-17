@@ -15,8 +15,6 @@ extension UIColor {
         var hexInt: Int64 = 0
         if scanner.scanHexInt64(&hexInt) {
             self.init(Int(hexInt))
-        } else if scanner.scanInt64(&hexInt) {
-            self.init(Int(hexInt))
         } else {
             return nil
         }
