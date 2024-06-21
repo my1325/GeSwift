@@ -40,7 +40,7 @@ public final class GradientLabel: UIView {
     
     public var locations: [CGFloat] = [] {
         didSet {
-            gradientLayer.locations = locations.map({ NSNumber(value: $0) })
+            gradientLayer.locations = locations.map(NSNumber.init)
         }
     }
     

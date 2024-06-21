@@ -5,7 +5,6 @@
 //  Created by my on 2021/1/26.
 //  Copyright © 2021 my. All rights reserved.
 //
-#if canImport(UIKit)
 import UIKit
 
 internal final class InputViewCell: UICollectionViewCell {
@@ -86,4 +85,3 @@ internal final class InputViewCell: UICollectionViewCell {
         shapeLayer.path = path.cgPath
     }
 }
-#endif

@@ -3,52 +3,86 @@
 //
 //  Created by my on 2020/12/15.
 //
-#if canImport(UIKit)
+
 import UIKit
 
 private final class WrapNavigationController: UINavigationController {
     fileprivate weak var parentWrapViewController: WrapViewController?
-    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+    override func pushViewController(
+        _ viewController: UIViewController,
+        animated: Bool
+    ) {
         let vc = WrapViewController(viewController)
         vc.hidesBottomBarWhenPushed = true
-        parentWrapViewController?.navigationController?.pushViewController(vc, animated: animated)
+        parentWrapViewController?.navigationController?
+            .pushViewController(vc, animated: animated)
     }
     
     override func popViewController(animated: Bool) -> UIViewController? {
-        return parentWrapViewController?.navigationController?.popViewController(animated: animated)
+        return parentWrapViewController?.navigationController?
+            .popViewController(animated: animated)
     }
     
     override var viewControllers: [UIViewController] {
-        get { return parentWrapViewController?.navigationController?.viewControllers ?? [] }
-        set { self.setViewControllers(newValue, animated: false) }
+        get {
+            return parentWrapViewController?
+                .navigationController?
+                .viewControllers ?? []
+        }
+        set {
+            self.setViewControllers(newValue, animated: false)
+        }
     }
     
-    override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
+    override func setViewControllers(
+        _ viewControllers: [UIViewController],
+        animated: Bool
+    ) {
         if animated {
-            parentWrapViewController?.navigationController?.setViewControllers(viewControllers, animated: animated)
+            parentWrapViewController?.navigationController?
+                .setViewControllers(viewControllers, animated: animated)
         } else {
             super.setViewControllers(viewControllers, animated: false)
         }
     }
     
     override func popToRootViewController(animated: Bool) -> [UIViewController]? {
-        return parentWrapViewController?.navigationController?.popToRootViewController(animated: animated)
+        return parentWrapViewController?.navigationController?
+            .popToRootViewController(animated: animated)
     }
     
-    override func popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? {
-        return parentWrapViewController?.navigationController?.popToViewController(viewController, animated: animated)
+    override func popToViewController(
+        _ viewController: UIViewController,
+        animated: Bool
+    ) -> [UIViewController]? {
+        return parentWrapViewController?.navigationController?
+            .popToViewController(viewController, animated: animated)
     }
 
     override var delegate: UINavigationControllerDelegate? {
-        get { return parentWrapViewController?.navigationController?.delegate }
-        set { parentWrapViewController?.navigationController?.delegate = newValue }
+        get {
+            parentWrapViewController?
+                .navigationController?
+                .delegate
+        }
+        set {
+            parentWrapViewController?
+                .navigationController?
+                .delegate = newValue
+        }
     }
     
-    override var interactivePopGestureRecognizer: UIGestureRecognizer? { return parentWrapViewController?.navigationController?.interactivePopGestureRecognizer }
+    override var interactivePopGestureRecognizer: UIGestureRecognizer? {
+        parentWrapViewController?.navigationController?
+            .interactivePopGestureRecognizer
+    }
 }
 
 public final class WrapViewController: UIViewController {
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override init(
+        nibName nibNameOrNil: String?,
+        bundle nibBundleOrNil: Bundle?
+    ) {
         fatalError()
     }
     
@@ -79,8 +113,6 @@ public final class WrapViewController: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
-//        extendedLayoutIncludesOpaqueBars = true
-//        edgesForExtendedLayout = .all
     }
     
     override public func viewWillAppear(_ animated: Bool) {
@@ -88,4 +120,3 @@ public final class WrapViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
-#endif

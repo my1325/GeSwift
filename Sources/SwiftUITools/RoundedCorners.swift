@@ -32,31 +32,64 @@ public struct RoundedCorners: Shape {
             }
         }
         
-        func drawCorner(in size: CGSize, radius: CGFloat, with path: inout Path) {
-            let centerRadius = min(min(radius, size.height * 0.5), size.width * 0.5)
+        func drawCorner(
+            in size: CGSize,
+            radius: CGFloat,
+            with path: inout Path
+        ) {
+            let centerRadius = min(
+                min(radius, size.height * 0.5),
+                size.width * 0.5
+            )
             let startPoint: CGPoint
             let center: CGPoint
             switch self {
             case .topRight:
-                startPoint = CGPoint(x: size.width - centerRadius, y: 0)
-                center = CGPoint(x: size.width - centerRadius, y: centerRadius)
+                startPoint = CGPoint(
+                    x: size.width - centerRadius,
+                    y: 0
+                )
+                center = CGPoint(
+                    x: size.width - centerRadius,
+                    y: centerRadius
+                )
             case .bottomRight:
-                startPoint = CGPoint(x: size.width, y: size.height - centerRadius)
-                center = CGPoint(x: size.width - centerRadius, y: size.height - centerRadius)
+                startPoint = CGPoint(
+                    x: size.width,
+                    y: size.height - centerRadius
+                )
+                center = CGPoint(
+                    x: size.width - centerRadius,
+                    y: size.height - centerRadius
+                )
             case .bottomLeft:
-                startPoint = CGPoint(x: centerRadius, y: size.height)
-                center = CGPoint(x: centerRadius, y: size.height - centerRadius)
+                startPoint = CGPoint(
+                    x: centerRadius,
+                    y: size.height
+                )
+                center = CGPoint(
+                    x: centerRadius,
+                    y: size.height - centerRadius
+                )
             case .topLeft:
-                startPoint = CGPoint(x: 0, y: centerRadius)
-                center = CGPoint(x: centerRadius, y: centerRadius)
+                startPoint = CGPoint(
+                    x: 0,
+                    y: centerRadius
+                )
+                center = CGPoint(
+                    x: centerRadius,
+                    y: centerRadius
+                )
             }
             
             path.addLine(to: startPoint)
-            path.addArc(center: center,
-                        radius: radius,
-                        startAngle: startAngle,
-                        endAngle: endAngle,
-                        clockwise: false)
+            path.addArc(
+                center: center,
+                radius: radius,
+                startAngle: startAngle,
+                endAngle: endAngle,
+                clockwise: false
+            )
         }
     }
     
@@ -73,7 +106,12 @@ public struct RoundedCorners: Shape {
     }
     
     public init(cornerRadius: CGFloat) {
-        self.cornersRadius = .init(topLeft: cornerRadius, topRight: cornerRadius, bottomLeft: cornerRadius, bottomRight: cornerRadius)
+        self.cornersRadius = .init(
+            topLeft: cornerRadius,
+            topRight: cornerRadius,
+            bottomLeft: cornerRadius,
+            bottomRight: cornerRadius
+        )
     }
     
     public init(
@@ -82,16 +120,41 @@ public struct RoundedCorners: Shape {
         bottomLeft: CGFloat = 0,
         bottomRight: CGFloat = 0
     ) {
-        self.cornersRadius = .init(topLeft: topLeft, topRight: topRight, bottomLeft: bottomLeft, bottomRight: bottomRight)
+        self.cornersRadius = .init(
+            topLeft: topLeft,
+            topRight: topRight,
+            bottomLeft: bottomLeft,
+            bottomRight: bottomRight
+        )
     }
     
     public func path(in rect: CGRect) -> Path {
         Path { path in
             path.move(to: CGPoint(x: rect.size.width * 0.5, y: 0))
-            Corner.topRight.drawCorner(in: rect.size, radius: cornersRadius.topRight, with: &path)
-            Corner.bottomRight.drawCorner(in: rect.size, radius: cornersRadius.bottomRight, with: &path)
-            Corner.bottomLeft.drawCorner(in: rect.size, radius: cornersRadius.bottomLeft, with: &path)
-            Corner.topLeft.drawCorner(in: rect.size, radius: cornersRadius.topLeft, with: &path)
+            Corner.topRight
+                .drawCorner(
+                    in: rect.size,
+                    radius: cornersRadius.topRight,
+                    with: &path
+                )
+            Corner.bottomRight
+                .drawCorner(
+                    in: rect.size,
+                    radius: cornersRadius.bottomRight,
+                    with: &path
+                )
+            Corner.bottomLeft
+                .drawCorner(
+                    in: rect.size,
+                    radius: cornersRadius.bottomLeft,
+                    with: &path
+                )
+            Corner.topLeft
+                .drawCorner(
+                    in: rect.size,
+                    radius: cornersRadius.topLeft,
+                    with: &path
+                )
             path.closeSubpath()
         }
     }

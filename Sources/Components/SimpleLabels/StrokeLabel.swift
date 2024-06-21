@@ -25,7 +25,16 @@ public final class StrokeLabel: UILabel {
         context.setLineJoin(.round)
         
         let strokeOffset = strokeWidth * 0.5
-        let drawRect = CGRect(origin: CGPoint(x: rect.origin.x + strokeOffset, y: rect.origin.y), size: CGSize(width: rect.size.width + strokeWidth, height: rect.size.height + strokeWidth))
+        let drawRect = CGRect(
+            origin: CGPoint(
+                x: rect.origin.x + strokeOffset,
+                y: rect.origin.y
+            ),
+            size: CGSize(
+                width: rect.size.width + strokeWidth,
+                height: rect.size.height + strokeWidth
+            )
+        )
         let oldTextColor = textColor
 
         do {
@@ -36,7 +45,7 @@ public final class StrokeLabel: UILabel {
         
         do {
             context.setTextDrawingMode(.fill)
-            textColor = textColor
+            textColor = oldTextColor
             super.drawText(in: drawRect)
         }
     }

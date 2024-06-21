@@ -26,13 +26,11 @@ struct PackageName {
 }
 
 let names: [PackageName] = [
-//    .init(name: "FoundationTools"),
     .init(name: "SwiftUITools"),
-//    .init(name: "UITools"),
     .init(name: "DataSources"),
-    .init(name: "CustomViews"),
-    .init(name: "CollectionViewLayouts"),
-    .init(name: "Core")
+    .init(name: "Components", dependencies: ["GeTools"]),
+    .init(name: "WrapNavigationController"),
+    .init(name: "GeTools")
 ]
 
 let package = Package(

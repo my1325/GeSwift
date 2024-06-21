@@ -5,7 +5,6 @@
 //  Created by mayong on 2023/11/27.
 //
 
-
 import AVFoundation
 import Photos
 import SwiftUI
@@ -32,17 +31,17 @@ public struct ImagePickerView: UIViewControllerRepresentable {
     
     public let didSelectImageAction: DidSelectImageAction
     
-    public init(allowsEditing: Bool = true,
-                sourceType: SourceType = .photoLibrary,
-                didSelectImageAction: @escaping DidSelectImageAction)
-    {
+    public init(
+        allowsEditing: Bool = true,
+        sourceType: SourceType = .photoLibrary,
+        didSelectImageAction: @escaping DidSelectImageAction
+    ) {
         self.allowsEditing = allowsEditing
         self.sourceType = sourceType
         self.didSelectImageAction = didSelectImageAction
     }
     
-    @Environment(\.presentationMode)
-    var presentationMode // 获取环境变量
+    @Environment(\.presentationMode) var presentationMode // 获取环境变量
     
     public func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -65,7 +64,10 @@ public struct ImagePickerView: UIViewControllerRepresentable {
             self.parent = parent
         }
         
-        public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        public func imagePickerController(
+            _ picker: UIImagePickerController,
+            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+        ) {
             if picker.allowsEditing, let uiImage = info[.editedImage] as? UIImage {
                 parent.didSelectImageAction(uiImage)
             } else if let uiImage = info[.originalImage] as? UIImage {
@@ -73,6 +75,14 @@ public struct ImagePickerView: UIViewControllerRepresentable {
             }
             parent.presentationMode.wrappedValue.dismiss()
         }
+    }
+}
+
+typealias AuthorizationError = ImagePickerView.AuthorizationError
+public extension ImagePickerView {
+    enum AuthorizationError: Error {
+        case photoLibrary(PHAuthorizationStatus)
+        case camera(AVAuthorizationStatus)
     }
 }
 
@@ -96,12 +106,12 @@ public extension ImagePickerView.SourceType {
     }
     
     typealias AuthenticationCheckAction = () -> Void
-    func checkAuthorization(_ denied: @escaping AuthenticationCheckAction, authorized: @escaping AuthenticationCheckAction) {
+    func checkAuthorization() async throws {
         switch self {
         case .camera:
-            requestAuthorizationForCamera(denied, authorized: authorized)
+            try await requestAuthorizationForCamera()
         case .photoLibrary:
-            requestAuthorizationForPhotoLibrary(denied, authorized: authorized)
+            try await requestAuthorizationForPhotoLibrary()
         }
     }
     
@@ -117,54 +127,37 @@ public extension ImagePickerView.SourceType {
         AVCaptureDevice.authorizationStatus(for: .video)
     }
     
-    private func requestAuthorizationForPhotoLibrary(
-        _ denied: @escaping AuthenticationCheckAction,
-        authorized: @escaping AuthenticationCheckAction
-    ) {
-        if #available(iOS 14.0, *) {
-            PHPhotoLibrary.requestAuthorization(for: .readWrite, handler: {
+    private func requestAuthorizationForPhotoLibrary() async throws {
+        try await withUnsafeThrowingContinuation { continuation in
+            let handler: (PHAuthorizationStatus) -> Void = {
                 switch $0 {
                 case .authorized:
-                    DispatchQueue.main.async {
-                        authorized()
-                    }
+                    continuation.resume(returning: ())
                 default:
-                    DispatchQueue.main.async {
-                        denied()
-                    }
+                    continuation.resume(throwing: AuthorizationError.photoLibrary($0))
                 }
-            })
-        } else {
-            PHPhotoLibrary.requestAuthorization {
-                switch $0 {
-                case .authorized:
-                    DispatchQueue.main.async {
-                        authorized()
-                    }
-                default:
-                    DispatchQueue.main.async {
-                        denied()
-                    }
-                }
+            }
+            if #available(iOS 14.0, *) {
+                PHPhotoLibrary.requestAuthorization(for: .readWrite, handler: handler)
+            } else {
+                PHPhotoLibrary.requestAuthorization(handler)
             }
         }
     }
     
-    private func requestAuthorizationForCamera(
-        _ denied: @escaping AuthenticationCheckAction,
-        authorized: @escaping AuthenticationCheckAction
-    ) {
-        AVCaptureDevice.requestAccess(for: .video) { granted in
-            if granted {
-                DispatchQueue.main.async {
-                    authorized()
-                }
-            } else {
-                DispatchQueue.main.async {
-                    denied()
+    private func requestAuthorizationForCamera() async throws {
+        try await withUnsafeThrowingContinuation { continuation in
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    continuation.resume(returning: ())
+                } else {
+                    continuation.resume(
+                        throwing: AuthorizationError.camera(
+                            AVCaptureDevice.authorizationStatus(for: .video)
+                        )
+                    )
                 }
             }
         }
     }
 }
-//#endIf 
