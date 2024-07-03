@@ -6,7 +6,6 @@
 //  Copyright © 2021 my. All rights reserved.
 //
 
-#if canImport(UIKit)
 import UIKit
 
 public extension DataSourceDriver {
@@ -25,4 +24,3 @@ public extension DataSourceDriver {
         }
     }
 }
-#endif

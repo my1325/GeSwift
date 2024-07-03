@@ -5,9 +5,8 @@
 //  Created by mayong on 2023/12/11.
 //
 
-
-import UIKit
 import SwiftUI
+import UIKit
 import WebKit
 
 public typealias StringBlock = (String) -> Void
@@ -64,13 +63,14 @@ public struct WebView: UIViewRepresentable {
     private var listenEstimatedProgress: DoubleBlock?
     private var decidePolicyForAction: DecidePolicyForAction?
     
-    public init(_ manager: WebViewManager,
-                listenTitle: StringBlock? = nil,
-                listenCanGoBack: BoolBlock? = nil,
-                listenLoadingStatus: WebLoadingStatusBlock? = nil,
-                listenEstimatedProgress: DoubleBlock? = nil,
-                decidePolicyForAction: DecidePolicyForAction? = nil)
-    {
+    public init(
+        _ manager: WebViewManager,
+        listenTitle: StringBlock? = nil,
+        listenCanGoBack: BoolBlock? = nil,
+        listenLoadingStatus: WebLoadingStatusBlock? = nil,
+        listenEstimatedProgress: DoubleBlock? = nil,
+        decidePolicyForAction: DecidePolicyForAction? = nil
+    ) {
         self.manager = manager
         
         self.listenTitle = listenTitle
@@ -160,4 +160,5 @@ public struct WebView: UIViewRepresentable {
         }
     }
 }
-//#endIf
+
+// #endIf

@@ -56,6 +56,15 @@ public extension Array {
         first != nil && first! == e
     }
     
+    func grouped<V>(_ keyPath: KeyPath<Element, V>) -> [[Element]] where V: Hashable {
+        Dictionary(
+            grouping: self,
+            by: { $0[keyPath: keyPath] }
+        )
+        .values
+        .map { $0 }
+    }
+    
     func grouped(_ count: Int) -> [[Element]] {
         var _list = self
         var list: [[Element]] = []

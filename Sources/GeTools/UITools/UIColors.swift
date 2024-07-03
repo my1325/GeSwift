@@ -6,7 +6,7 @@
 //
 import UIKit
 
-extension UIColor {
+public extension UIColor {
     convenience init?(
         _ stringValue: String,
         transparency: CGFloat = 1

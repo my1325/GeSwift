@@ -101,7 +101,10 @@ public extension String {
 //        return String(data: data, encoding: .utf8) ?? base
 //    }
     
-    func substring(from start: Int? = nil, to end: Int? = nil) -> String {
+    func substring(
+        _ start: Int? = nil,
+        to end: Int? = nil
+    ) -> String {
         let left = start ?? 0
         let right = end ?? count
         return String(self[left ..< right])

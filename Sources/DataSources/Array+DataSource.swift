@@ -12,8 +12,10 @@ public extension Array {
         to(self)
     }
 
-    func bind<View, Cell>(to: @escaping (@escaping (View, Element, Cell) -> Void) -> ([Element]) -> Void) -> (@escaping (View, Element, Cell) -> Void) -> Void {
-        return { configCellData in
+    func bind<View, Cell>(
+        to: @escaping (@escaping (View, Element, Cell) -> Void) -> ([Element]) -> Void
+    ) -> (@escaping (View, Element, Cell) -> Void) -> Void {
+        { configCellData in
             let dataSource = to(configCellData)
             dataSource(self)
         }

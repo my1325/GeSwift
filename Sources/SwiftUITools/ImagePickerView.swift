@@ -78,14 +78,6 @@ public struct ImagePickerView: UIViewControllerRepresentable {
     }
 }
 
-typealias AuthorizationError = ImagePickerView.AuthorizationError
-public extension ImagePickerView {
-    enum AuthorizationError: Error {
-        case photoLibrary(PHAuthorizationStatus)
-        case camera(AVAuthorizationStatus)
-    }
-}
-
 public extension ImagePickerView.SourceType {
     var isAuthorized: Bool {
         switch self {
@@ -106,12 +98,12 @@ public extension ImagePickerView.SourceType {
     }
     
     typealias AuthenticationCheckAction = () -> Void
-    func checkAuthorization() async throws {
+    func checkAuthorization() async -> Bool {
         switch self {
         case .camera:
-            try await requestAuthorizationForCamera()
+            await requestAuthorizationForCamera()
         case .photoLibrary:
-            try await requestAuthorizationForPhotoLibrary()
+            await requestAuthorizationForPhotoLibrary()
         }
     }
     
@@ -127,14 +119,14 @@ public extension ImagePickerView.SourceType {
         AVCaptureDevice.authorizationStatus(for: .video)
     }
     
-    private func requestAuthorizationForPhotoLibrary() async throws {
-        try await withUnsafeThrowingContinuation { continuation in
+    private func requestAuthorizationForPhotoLibrary() async -> Bool {
+        try await withUnsafeContinuation { continuation in
             let handler: (PHAuthorizationStatus) -> Void = {
                 switch $0 {
                 case .authorized:
-                    continuation.resume(returning: ())
+                    continuation.resume(returning: true)
                 default:
-                    continuation.resume(throwing: AuthorizationError.photoLibrary($0))
+                    continuation.resume(returning: false)
                 }
             }
             if #available(iOS 14.0, *) {
@@ -145,18 +137,10 @@ public extension ImagePickerView.SourceType {
         }
     }
     
-    private func requestAuthorizationForCamera() async throws {
-        try await withUnsafeThrowingContinuation { continuation in
+    private func requestAuthorizationForCamera() async -> Bool {
+        try await withUnsafeContinuation { continuation in
             AVCaptureDevice.requestAccess(for: .video) { granted in
-                if granted {
-                    continuation.resume(returning: ())
-                } else {
-                    continuation.resume(
-                        throwing: AuthorizationError.camera(
-                            AVCaptureDevice.authorizationStatus(for: .video)
-                        )
-                    )
-                }
+                continuation.resume(returning: granted)
             }
         }
     }

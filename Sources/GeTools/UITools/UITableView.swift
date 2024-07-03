@@ -24,7 +24,7 @@ private class TableCacheHeights {
     /// setter & getter
     ///
     /// - Parameter indexPath: indexPath in tableView
-    subscript(indexPath: IndexPath) -> CGFloat? {
+    subscript(_ indexPath: IndexPath) -> CGFloat? {
         get {
             return cacheHeights[indexPath]
         } set {
@@ -40,7 +40,7 @@ private class TableCacheHeights {
     /// clear cache at indexPath
     ///
     /// - Parameter indexPath: indexPath
-    func clearCache(atIndexPath indexPath: IndexPath) {
+    func clearCache(_ indexPath: IndexPath) {
         cacheHeights.removeValue(forKey: indexPath)
     }
 }
@@ -68,7 +68,7 @@ public extension GeTool where Base: UITableView {
     ///
     /// - Parameter indexPath: cell at indexPath
     /// - Returns: height
-    func height(forIndexPath indexPath: IndexPath) -> CGFloat {
+    func height(_ indexPath: IndexPath) -> CGFloat {
         if let _height = base.cacheHeights[indexPath] {
             return _height
         }
@@ -95,41 +95,41 @@ public extension GeTool where Base: UITableView {
     /// clear cahce height at indexPath
     ///
     /// - Parameter indexPath: indexPath
-    func clearCacheHeight(atIndexPath indexPath: IndexPath) {
-        base.cacheHeights.clearCache(atIndexPath: indexPath)
+    func clearCacheHeight(_ indexPath: IndexPath) {
+        base.cacheHeights.clearCache(indexPath)
     }
 }
 
 public extension GeTool where Base: UITableView {
-    func register<T: UITableViewCell>(reusableCell cellType: T.Type) where T: Reusable {
+    func register<T: UITableViewCell>(_ cellType: T.Type) where T: Reusable {
         base.register(
             cellType,
             forCellReuseIdentifier: T.reuseIdentifier
         )
     }
 
-    func register<T: UITableViewCell>(reusableNibCell cellType: T.Type) where T: NibReusable {
+    func register<T: UITableViewCell>(_ cellType: T.Type) where T: NibReusable {
         base.register(
             T.nib,
             forCellReuseIdentifier: T.reuseIdentifier
         )
     }
 
-    func register<T: UITableViewHeaderFooterView>(reusableHeaderFooterView type: T.Type) where T: Reusable {
+    func register<T: UITableViewHeaderFooterView>(_ type: T.Type) where T: Reusable {
         base.register(
             type,
             forHeaderFooterViewReuseIdentifier: T.reuseIdentifier
         )
     }
 
-    func register<T: UITableViewHeaderFooterView>(reuseableNibHeaderFooterView type: T.Type) where T: NibReusable {
+    func register<T: UITableViewHeaderFooterView>(_ type: T.Type) where T: NibReusable {
         base.register(
             T.nib,
             forHeaderFooterViewReuseIdentifier: T.reuseIdentifier
         )
     }
 
-    func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath? = nil) -> T where T: Reusable {
+    func dequeueReusableCell<T: UITableViewCell>(_ indexPath: IndexPath? = nil) -> T where T: Reusable {
         if let indexPath = indexPath {
             return base.dequeueReusableCell(
                 withIdentifier: T.reuseIdentifier,

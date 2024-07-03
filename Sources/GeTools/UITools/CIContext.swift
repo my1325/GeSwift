@@ -51,7 +51,10 @@ public extension GeTool where Base: CIContext {
         return pixelBuffer
     }
 
-    func blurImage(_ image: CGImage, blurNumber: Double = 50) -> UIImage? {
+    func blurImage(
+        _ image: CGImage,
+        blurNumber: Double = 50
+    ) -> UIImage? {
         let ciImage = CIImage(cgImage: image)
         guard let clampFilter = CIFilter(name: "CIAffineClamp") else { return nil }
         clampFilter.setDefaults()

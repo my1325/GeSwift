@@ -20,7 +20,7 @@ public extension Optional where Wrapped: Collection {
     var isEmpty: Bool {
         switch self {
         case .none:
-            return false
+            return true
         case let .some(value):
             return value.isEmpty
         }
@@ -39,6 +39,15 @@ public extension Optional where Wrapped: Collection {
 extension Optional where Wrapped == String {
     var orEmpty: Wrapped {
         self ?? ""
+    }
+    
+    var isEmpty: Bool {
+        switch self {
+        case .none:
+            return true
+        case let .some(value):
+            return value.isEmpty
+        }
     }
 }
 
