@@ -197,24 +197,20 @@ private final class EventObject<T: UIGestureRecognizer> {
     }
 }
 
-public enum ControlEventKey: UInt {
-    case tap = 12000
-    case longPress
-    case pan
-    case swipe
-    case pin
-
-    var associateKey: AssociateKey {
-        .init(intValue: rawValue)
-    }
+extension AssociateKey {
+    static let tapKey: AssociateKey = .init(intValue: 12000)
+    static let longPressKey: AssociateKey = .init(intValue: 12001)
+    static let panKey: AssociateKey = .init(intValue: 12002)
+    static let swipeKey: AssociateKey = .init(intValue: 12003)
+    static let pinKey: AssociateKey = .init(intValue: 12004)
 }
 
 public struct ControlEvent<T: UIGestureRecognizer> {
     let action: (T) -> Void
     let configuration: (T) -> Void
-    let eventKey: ControlEventKey
+    let eventKey: AssociateKey
     init(
-        eventKey: ControlEventKey,
+        eventKey: AssociateKey,
         action: @escaping (T) -> Void,
         configuration: @escaping (T) -> Void
     ) {
@@ -228,7 +224,7 @@ public struct ControlEvent<T: UIGestureRecognizer> {
         configuration: @escaping (UITapGestureRecognizer) -> Void = { _ in }
     ) -> ControlEvent<UITapGestureRecognizer> {
         ControlEvent<UITapGestureRecognizer>(
-            eventKey: .tap,
+            eventKey: .tapKey,
             action: action,
             configuration: configuration
         )
@@ -240,7 +236,7 @@ public struct ControlEvent<T: UIGestureRecognizer> {
         configuration: @escaping (UILongPressGestureRecognizer) -> Void = { _ in }
     ) -> ControlEvent<UILongPressGestureRecognizer> {
         ControlEvent<UILongPressGestureRecognizer>(
-            eventKey: .longPress,
+            eventKey: .longPressKey,
             action: action,
             configuration: {
                 $0.minimumPressDuration = minimumPressDuration
@@ -254,7 +250,7 @@ public struct ControlEvent<T: UIGestureRecognizer> {
         configuration: @escaping (UIPanGestureRecognizer) -> Void = { _ in }
     ) -> ControlEvent<UIPanGestureRecognizer> {
         ControlEvent<UIPanGestureRecognizer>(
-            eventKey: .pan,
+            eventKey: .panKey,
             action: action,
             configuration: configuration
         )
@@ -266,7 +262,7 @@ public struct ControlEvent<T: UIGestureRecognizer> {
         configuration: @escaping (UIPinchGestureRecognizer) -> Void = { _ in }
     ) -> ControlEvent<UIPinchGestureRecognizer> {
         ControlEvent<UIPinchGestureRecognizer>(
-            eventKey: .pin,
+            eventKey: .pinKey,
             action: action,
             configuration: {
                 $0.scale = scale
@@ -281,7 +277,7 @@ public struct ControlEvent<T: UIGestureRecognizer> {
         configuration: @escaping (UISwipeGestureRecognizer) -> Void = { _ in }
     ) -> ControlEvent<UISwipeGestureRecognizer> {
         ControlEvent<UISwipeGestureRecognizer>(
-            eventKey: .swipe,
+            eventKey: .swipeKey,
             action: action,
             configuration: {
                 $0.direction = direction
@@ -362,8 +358,8 @@ public extension GeTool where Base: UIView {
         base.isUserInteractionEnabled = true
         base.addGestureRecognizer(eventObject.gestureRecognizer)
         objc_setAssociatedObject(
-            self,
-            event.eventKey.associateKey.key,
+            base,
+            event.eventKey.key,
             eventObject,
             objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
         )

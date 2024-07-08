@@ -12,28 +12,23 @@ Pod::Spec.new do |s|
  s.default_subspecs = 'Tools'
 
  s.subspec 'Tools' do |ss|
-  ss.source_files = 'Sources/FoundationTools/*.swift'
+  ss.source_files = 'Sources/GeTools/**/*.swift'
  end 
   
   s.subspec 'DataSource' do |ss|
     ss.source_files = 'Sources/DataSources/*.swift'
   end
 
-  s.subspec 'Custom' do |ss|
-    ss.source_files = 'Sources/CustomViews/**/*.swift'
+  s.subspec 'Components' do |ss|
+    ss.source_files = 'Sources/Components/**/*.swift'
     ss.dependency 'GeSwift/Tools'
-    ss.dependency 'GeSwift/UIAbout'
   end
-
-  s.subspec 'UIAbout' do |ss|
-    ss.source_files = 'Sources/UITools/*.swift'
-  end 
-
-  s.subspec 'CollectionViewLayouts' do |ss|
-    ss.source_files = 'Sources/CollectionViewLayouts/*.swift'
-  end 
 
   s.subspec 'SwiftUITools' do |ss|
     ss.source_files = 'Sources/SwiftUITools/*.swift'
-  end 
+  end
+
+  s.subspec 'WrapNavigationController' do |ss|
+    ss.source_files = 'Sources/WrapNavigationController/*.swift'
+  end  
 end

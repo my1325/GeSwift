@@ -15,6 +15,11 @@ public extension Array {
         )
     }
     
+    func just(_ action: (Element) -> Void) -> Self {
+        forEach(action)
+        return self
+    }
+    
     func sorted<Value: Comparable>(
         keyPath: KeyPath<Element, Value>
     ) -> [Element] {

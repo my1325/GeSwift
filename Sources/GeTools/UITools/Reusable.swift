@@ -26,6 +26,10 @@ public extension NibLoadable {
     static var nib: UINib? {
         return UINib(nibName: "\(Self.self)", bundle: Bundle(for: Self.self))
     }
+    
+    static var nibView: Self? {
+        nib?.instantiate(withOwner: nil, options: nil).first as? Self
+    }
 }
 
 public protocol NibReusable: Reusable, NibLoadable {}

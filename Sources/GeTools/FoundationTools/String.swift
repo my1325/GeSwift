@@ -79,6 +79,32 @@ public extension String {
             .components(separatedBy: ".")
             .last ?? self
     }
+    
+    var isNotEmpty: Bool {
+        !isEmpty
+    }
+    
+    var lowercased: String {
+        lowercased()
+    }
+    
+    var uppercased: String {
+        uppercased()
+    }
+    
+    var snakeCased: String {
+        components(separatedBy: .alphanumerics.inverted)
+            .filter(\.isNotEmpty)
+            .map(\.lowercased)
+            .joined(separator: "_")
+    }
+    
+    var camelCased: String {
+        components(separatedBy: "_")
+            .filter(\.isNotEmpty)
+            .map(\.capitalized)
+            .joined()
+    }
 
     var intValue: Int {
         Int(self) ?? 0
