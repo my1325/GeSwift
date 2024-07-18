@@ -5,6 +5,7 @@
 //  Created by mayong on 2023/2/17.
 //
 import UIKit
+import Combine
 
 struct AssociateKey {
     let key: UnsafeRawPointer
@@ -46,9 +47,12 @@ private final class ControlEventObject<T: UIControl> {
     
     private let action: ControlEventStoreAction
     private let associateKey: AssociateKey
+    
+    let publisher: PassthroughSubject<T, Never> = .init()
+    
     init(
         associateKey: AssociateKey,
-         target: AnyObject,
+         target: T,
          policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC,
          action: @escaping ControlEventStoreAction
     ) {
@@ -59,6 +63,7 @@ private final class ControlEventObject<T: UIControl> {
 
     @objc func selectorAction(_ sender: UIControl) {
         self.action(sender as! T)
+        publisher.send(sender as! T)
     }
 }
 
@@ -83,6 +88,20 @@ public extension GeTool where Base: UIControl {
             action: #selector(ControlEventObject.selectorAction(_:)),
             for: event
         )
+    }
+    
+    func publisher(_ event: UIControl.Event) -> AnyPublisher<Base, Never> {
+        let target = ControlEventObject(
+            associateKey: event.eventAssociateKey,
+            target: base,
+            action: { _ in }
+        )
+        base.addTarget(
+            target,
+            action: #selector(ControlEventObject.selectorAction(_:)),
+            for: event
+        )
+        return target.publisher.eraseToAnyPublisher()
     }
 }
 
@@ -114,6 +133,10 @@ public extension GeTool where Base: UIButton {
     func tap(_ block: @escaping (UIButton) -> Void) {
         addEvent(.touchUpInside, block: block)
     }
+    
+    var tapPublisher: AnyPublisher<Base, Never> {
+        publisher(.touchUpInside)
+    }
 }
 
 public extension GeTool where Base: UITextField {
@@ -138,10 +161,20 @@ public extension GeTool where Base: UISwitch {
     func valueChanged(_ block: @escaping (UISwitch) -> Void) {
         addEvent(.valueChanged, block: block)
     }
+    
+    var valuePublisher: AnyPublisher<Bool, Never> {
+        base.publisher(for: \.isOn)
+            .eraseToAnyPublisher()
+    }
 }
 
 public extension GeTool where Base: UISegmentedControl {
     func valueChanged(_ block: @escaping (UISegmentedControl) -> Void) {
         addEvent(.valueChanged, block: block)
+    }
+    
+    var valuePublisher: AnyPublisher<Int, Never> {
+        base.publisher(for: \.selectedSegmentIndex)
+            .eraseToAnyPublisher()
     }
 }

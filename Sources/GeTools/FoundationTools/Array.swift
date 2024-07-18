@@ -20,9 +20,9 @@ public extension Array {
         return self
     }
     
-    func sorted<Value: Comparable>(
+    func sorted<Value>(
         keyPath: KeyPath<Element, Value>
-    ) -> [Element] {
+    ) -> [Element] where Value: Comparable {
         sorted(keyPath: keyPath, by: <)
     }
     
@@ -97,5 +97,53 @@ public extension Array {
         list.removeSubrange(0 ..< offset)
         list.append(contentsOf: _list)
         return list
+    }
+    
+    func removeDuplicates() -> Self where Element: Hashable {
+        Array(Set(self))
+    }
+    
+    func first<V>(
+        _ keyPath: KeyPath<Element, V>,
+        equalTo value: V
+    ) -> Element? where V: Equatable {
+        first(keyPath, with: value, by: ==)
+    }
+    
+    func first<V>(
+        _ keyPath: KeyPath<Element, V>,
+        with value: V,
+        by block: (V, V) throws -> Bool
+    ) rethrows -> Element? where V: Equatable {
+        try first(where: { try block($0[keyPath: keyPath], value) })
+    }
+    
+    func firstIndex<V>(
+        _ keyPath: KeyPath<Element, V>,
+        equalTo value: V
+    ) -> Index? where V: Equatable {
+        firstIndex(keyPath, with: value, by: ==)
+    }
+    
+    func firstIndex<V>(
+        _ keyPath: KeyPath<Element, V>,
+        with value: V,
+        by block: (V, V) throws -> Bool
+    ) rethrows -> Index? {
+        try firstIndex(where: { try block($0[keyPath: keyPath], value) })
+    }
+    
+    mutating func insertOrRemove(_ value: Element) where Element: Comparable {
+        if let index = firstIndex(where: { $0 == value }) {
+            remove(at: index)
+        } else {
+            append(value)
+        }
+    }
+    
+    mutating func insertWithDuplicates(_ value: Element) where Element: Comparable {
+        if !contains(where: { $0 == value }) {
+            append(value)
+        }
     }
 }

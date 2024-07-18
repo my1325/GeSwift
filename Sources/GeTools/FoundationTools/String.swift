@@ -9,8 +9,73 @@ import Foundation
 
 extension String: GeToolCompatible {}
 
+public struct AsciiCharacter {
+    let asciiValue: UInt8
+    init(_ asciiValue: UInt8) {
+        self.asciiValue = asciiValue
+    }
+    
+    public static func +(_ lhs: AsciiCharacter, rhs: UInt8) -> AsciiCharacter {
+        AsciiCharacter(lhs.asciiValue + rhs)
+    }
+    
+    public static func -(_ lhs: AsciiCharacter, rhs: UInt8) -> AsciiCharacter {
+        AsciiCharacter(lhs.asciiValue - rhs)
+    }
+    
+    public static func +(_ lhs: AsciiCharacter, rhs: AsciiCharacter) -> AsciiCharacter {
+        AsciiCharacter(lhs.asciiValue + rhs.asciiValue)
+    }
+    
+    public static func -(_ lhs: AsciiCharacter, rhs: AsciiCharacter) -> AsciiCharacter {
+        AsciiCharacter(lhs.asciiValue - rhs.asciiValue)
+    }
+}
+
+extension AsciiCharacter: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        String(UnicodeScalar(asciiValue))
+    }
+}
+
+public extension Character {
+    var asciiCharater: AsciiCharacter? {
+        guard let asciiValue else {
+            return nil
+        }
+        
+        return .init(asciiValue)
+    }
+    
+    init(_ asciiChar: AsciiCharacter) {
+        self.init(UnicodeScalar(asciiChar.asciiValue))
+    }
+}
+
 private let yesConsts: [String] = ["YES", "yes", "Yes", "TRUE", "true", "True", "1"]
 public extension String {
+    
+    init(_ asciiCharater: AsciiCharacter) {
+        self.init(UnicodeScalar(asciiCharater.asciiValue))
+    }
+    
+    init(_ asciiCharaters: [AsciiCharacter]) {
+        self.init(asciiCharaters.map(Character.init))
+    }
+    
+    var asciiCharaters: [AsciiCharacter] {
+        unicodeScalars.lazy
+            .filter(\.isASCII)
+            .map(UInt8.init)
+            .map(AsciiCharacter.init)
+    }
+    
+    func charAt(_ index: Int) -> AsciiCharacter? {
+        let stringIndex = self.index(startIndex, offsetBy: index)
+        let character = self[stringIndex]
+        return character.asciiCharater
+    }
+    
     static func searchPathForUserDomainMask(
         _ directory: FileManager.SearchPathDirectory
     ) -> String {

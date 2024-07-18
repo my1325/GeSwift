@@ -59,3 +59,12 @@ public extension Optional where Wrapped == Bool {
         }
     }
 }
+
+extension Optional: Comparable where Wrapped: Comparable {
+    public static func < (lhs: Optional, rhs: Optional) -> Bool {
+        switch (lhs, rhs) {
+        case let (.some(lv), .some(rv)): lv < rv
+        default: false
+        }
+    }
+}

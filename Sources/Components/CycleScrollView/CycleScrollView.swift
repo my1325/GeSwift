@@ -36,7 +36,16 @@ public protocol CycleScrollViewDataSource: AnyObject {
     func scrollView(
         _ scrollView: CycleScrollView,
         customCellAtIndex index: Int
-    ) -> UICollectionViewCell
+    ) -> UICollectionViewCell?
+}
+
+public extension CycleScrollViewDataSource {
+    func scrollView(
+        _ scrollView: CycleScrollView,
+        customCellAtIndex index: Int
+    ) -> UICollectionViewCell? {
+        nil
+    }
 }
 
 private final class CycleScrollViewCustomViewCell: UICollectionViewCell {
@@ -92,6 +101,8 @@ public final class CycleScrollView: UIView {
     public var contentModel: UIView.ContentMode = .scaleToFill
     
     public var currentIndex: Int = 0
+    
+    public var itemSize: CGSize?
     
     private var totalIndex: Int = 0
     
@@ -205,6 +216,7 @@ public final class CycleScrollView: UIView {
         $0.dataSource = self
         $0.isPagingEnabled = true
         $0.backgroundColor = UIColor.clear
+        $0.contentInsetAdjustmentBehavior = .never
         $0.register(
             CycleScrollViewCustomViewCell.self,
             forCellWithReuseIdentifier: "CycleScrollViewCustomViewCell"
@@ -233,14 +245,17 @@ extension CycleScrollView: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return collectionView.bounds.size
+        itemSize ?? collectionView.bounds.size
     }
     
     public func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        delegate?.cycleScrollView(self, didSelectItemAtIndex: indexPath.item % totalIndex)
+        delegate?.cycleScrollView(
+            self,
+            didSelectItemAtIndex: indexPath.item % totalIndex
+        )
     }
     
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -264,6 +279,7 @@ extension CycleScrollView: UICollectionViewDelegateFlowLayout {
     }
     
     private func scrollViewDidEndScroll(_ scrollView: UIScrollView) {
+        guard totalIndex > 0 else { return }
         let index = Int(scrollView.contentOffset.x / scrollView.bounds.size.width + 0.5) % totalIndex
         delegate?.cycleScrollView(self, didScrollToItemAtIndex: index)
         currentIndex = index

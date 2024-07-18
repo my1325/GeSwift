@@ -6,6 +6,31 @@
 //
 import UIKit
 
+extension CGAffineTransform {
+    public static func translation(_ point: CGPoint) -> CGAffineTransform {
+        translation(point.x, y: point.y)
+    }
+    
+    public static func translation(_ x: CGFloat = 0, y: CGFloat = 0) -> CGAffineTransform {
+        CGAffineTransform(translationX: x, y: y)
+    }
+    
+    public static func rotation(degree: Double) -> CGAffineTransform {
+        rotation(angle: degree / 360 * Double.pi * 2)
+    }
+    
+    public static func rotation(angle: Double) -> CGAffineTransform {
+        CGAffineTransform(rotationAngle: angle)
+    }
+    
+    public static func scale(_ x: CGFloat = 1, y: CGFloat = 1) -> CGAffineTransform {
+        CGAffineTransform(
+            scaleX: x.in(0, 1),
+            y: y.in(0, 1)
+        )
+    }
+}
+
 public extension GeTool where Base: UIView {
     var backgroundColor: GeToolColorCompatible? {
         get { base.backgroundColor }
@@ -15,6 +40,11 @@ public extension GeTool where Base: UIView {
     var tintColor: GeToolColorCompatible? {
         get { base.tintColor }
         set { base.tintColor = newValue?.uiColor }
+    }
+    
+    var transform: CGAffineTransform {
+        get { base.transform }
+        set { base.transform = newValue }
     }
      
     func frame(_ modifier: (inout CGRect) -> Void) {
@@ -289,10 +319,14 @@ public struct ControlEvent<T: UIGestureRecognizer> {
 
 public final class KeyboardListener {
     let keyboardAssociatedKey: AssociateKey = .init(intValue: 13000)
-
+    let modifier: (CGFloat) -> CGFloat
     public let view: UIView
-    public init(view: UIView) {
+    public init(
+        _ view: UIView,
+        modifier: @escaping (CGFloat) -> CGFloat
+    ) {
         self.view = view
+        self.modifier = modifier
         objc_setAssociatedObject(
             view,
             keyboardAssociatedKey.key,
@@ -326,10 +360,11 @@ public final class KeyboardListener {
         else {
             return
         }
+        bottomConstraint.constant -= self.modifier(frame.height)
         UIView.animate(
             withDuration: duration,
             animations: {
-                bottomConstraint.constant += frame.height
+                self.view.superview?.layoutIfNeeded()
             }
         )
     }
@@ -343,10 +378,11 @@ public final class KeyboardListener {
         else {
             return
         }
+        bottomConstraint.constant += self.modifier(frame.height)
         UIView.animate(
             withDuration: duration,
             animations: {
-                bottomConstraint.constant -= frame.height
+                self.view.superview?.layoutIfNeeded()
             }
         )
     }
@@ -365,7 +401,7 @@ public extension GeTool where Base: UIView {
         )
     }
 
-    func addNotificationListener() {
-        _ = KeyboardListener(view: base)
+    func addNotificationListener(_ modifier: @escaping (CGFloat) -> CGFloat = { $0 }) {
+        _ = KeyboardListener(base, modifier: modifier)
     }
 }
