@@ -36,7 +36,7 @@ public extension Optional where Wrapped: Collection {
     }
 }
 
-extension Optional where Wrapped == String {
+public extension Optional where Wrapped == String {
     var orEmpty: Wrapped {
         self ?? ""
     }
