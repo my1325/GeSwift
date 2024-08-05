@@ -6,6 +6,7 @@
 //  Copyright © 2021 my. All rights reserved.
 //
 import UIKit
+
 open class CollectionViewDataSource<Section: SectionProtocol>: NSObject, UICollectionViewDataSource {
     public typealias ConfigureCell = (CollectionViewDataSource, UICollectionView, IndexPath, Section.I) -> UICollectionViewCell
     public typealias CanEditRow = (CollectionViewDataSource, UICollectionView, IndexPath, Section.I) -> Bool
@@ -21,7 +22,7 @@ open class CollectionViewDataSource<Section: SectionProtocol>: NSObject, UIColle
     let supplementaryReuseableViewOfKind: SupplementaryReuseableViewOfKind
     
     public init(
-        sectionIndexTitles: [String]? = nil,
+        _ sectionIndexTitles: [String]? = nil,
         dataSource: [Section] = [],
         configureCell: @escaping ConfigureCell,
         canMoveRow: @escaping CanMoveRow = { _, _, _, _ in false },
@@ -109,11 +110,11 @@ open class CollectionViewDataSource<Section: SectionProtocol>: NSObject, UIColle
 }
 
 public extension CollectionViewDataSource {
-    subscript(section: Int) -> Section {
+    subscript(_ section: Int) -> Section {
         dataSource[section]
     }
     
-    subscript(indexPath: IndexPath) -> Section.I {
+    subscript(_ indexPath: IndexPath) -> Section.I {
         dataSource[indexPath.section].items[indexPath.row]
     }
 }

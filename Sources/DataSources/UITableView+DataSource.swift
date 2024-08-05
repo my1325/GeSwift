@@ -5,30 +5,19 @@
 //  Created by my on 2020/6/6.
 //  Copyright © 2020 my. All rights reserved.
 //
-#if canImport(UIKit)
 import UIKit
-
-public struct Empty {
-    static let `default` = Empty()
-}
 
 public extension UITableView {
     func dataSource<S: SectionProtocol>(_ dataSource: TableViewDataSource<S>) -> ([S]) -> Void {
-        return { element in
+        self.dataSource = dataSource
+        return { [weak self] element in
             dataSource.updateDataSource(element)
-            objc_setAssociatedObject(
-                self,
-                "com.ge.dataSource.tableView",
-                dataSource,
-                .OBJC_ASSOCIATION_RETAIN_NONATOMIC
-            )
-            self.dataSource = dataSource
-            self.reloadData()
+            self?.reloadData()
         }
     }
 
     func dataSource<I, Cell: UITableViewCell>(
-        reuseIdentifier: String,
+        _ reuseIdentifier: String,
         cell _: Cell.Type
     ) -> (@escaping (UITableView, I, Cell) -> Void) -> ([I]) -> Void {
         return { configCell in
@@ -41,11 +30,10 @@ public extension UITableView {
                 return cell
             })
             self.dataSource = tableViewDataSource
-            return { data in
+            return { [weak self] data in
                 tableViewDataSource.updateDataSource([SectionModel(section: "", items: data)])
-                self.reloadData()
+                self?.reloadData()
             }
         }
     }
 }
-#endif

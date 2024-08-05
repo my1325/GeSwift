@@ -10,21 +10,15 @@ import UIKit
 
 public extension UICollectionView {
     func dataSource<S: SectionProtocol>(_ dataSource: CollectionViewDataSource<S>) -> ([S]) -> Void {
-        return { element in
+        self.dataSource = dataSource
+        return { [weak self] element in
             dataSource.updateDataSource(element)
-            objc_setAssociatedObject(
-                self,
-                "com.ge.dataSource.collectionView",
-                dataSource,
-                .OBJC_ASSOCIATION_RETAIN_NONATOMIC
-            )
-            self.dataSource = dataSource
-            self.reloadData()
+            self?.reloadData()
         }
     }
 
     func dataSource<I, Cell: UICollectionViewCell>(
-        reuseIdentifier: String,
+        _ reuseIdentifier: String,
         cell _: Cell.Type
     ) -> (@escaping (UICollectionView, I, Cell) -> Void) -> ([I]) -> Void {
         return { configCell in
@@ -37,9 +31,9 @@ public extension UICollectionView {
                 return cell
             }
             self.dataSource = collectionViewDataSource
-            return { data in
+            return { [weak self] data in
                 collectionViewDataSource.updateDataSource([SectionModel(section: "", items: data)])
-                self.reloadData()
+                self?.reloadData()
             }
         }
     }
