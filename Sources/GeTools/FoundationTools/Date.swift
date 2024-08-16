@@ -19,7 +19,10 @@ public extension Date {
     }
     
     /// 时区
-    static func dateWithTimeIntervalSinceStartDate(_ timeInterval: TimeInterval, date: Date) -> Date {
+    static func dateWithTimeIntervalSinceStartDate(
+        _ timeInterval: TimeInterval,
+        date: Date
+    ) -> Date {
         let zone = NSTimeZone.system
         let interval = zone.secondsFromGMT()
         return date.addingTimeInterval(Double(interval))
@@ -147,9 +150,9 @@ public extension Date {
     ///
     /// - Parameter format: format
     /// - Returns: time string
-    func serializeToString(using format: String = "yyyy-MM-dd HH:mm:ss") -> String {
+    func serializeToString(_ using: String = "yyyy-MM-dd HH:mm:ss") -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
+        dateFormatter.dateFormat = using
         return dateFormatter.string(from: self)
     }
 }

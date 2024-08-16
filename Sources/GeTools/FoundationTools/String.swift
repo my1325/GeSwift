@@ -241,7 +241,7 @@ public extension String {
     }
 
     /// range
-    func nsRange(of subString: String) -> NSRange? {
+    func nsRange(_ subString: String) -> NSRange? {
         guard let range = self.range(of: subString) else {
             return nil
         }

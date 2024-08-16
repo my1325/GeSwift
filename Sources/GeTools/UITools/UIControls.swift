@@ -105,40 +105,6 @@ public extension GeTool where Base: UIControl {
     }
 }
 
-public extension GeTool where Base: UIButton {
-    func setBackgroundImage(
-        _ backgroundImage: GeToolImageCompatible,
-        for state: UIControl.State
-    ) {
-        base.setBackgroundImage(
-            backgroundImage.uiImage,
-            for: state
-        )
-    }
-    
-    func setImage(
-        _ image: GeToolImageCompatible,
-        for state: UIControl.State
-    ) {
-        base.setImage(image.uiImage, for: state)
-    }
-    
-    func setTitleColor(
-        _ color: GeToolColorCompatible,
-        for state: UIControl.State
-    ) {
-        base.setTitleColor(color.uiColor, for: .normal)
-    }
-    
-    func tap(_ block: @escaping (UIButton) -> Void) {
-        addEvent(.touchUpInside, block: block)
-    }
-    
-    var tapPublisher: AnyPublisher<Base, Never> {
-        publisher(.touchUpInside)
-    }
-}
-
 public extension GeTool where Base: UITextField {
     func editingChanged(_ block: @escaping (UITextField) -> Void) {
         addEvent(.editingChanged, block: block)

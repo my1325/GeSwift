@@ -47,3 +47,14 @@ public extension Comparable {
         min(right, max(self, left))
     }
 }
+
+
+public func jsonObject(
+    _ data: Data,
+    options: JSONSerialization.ReadingOptions = []
+) throws -> Any {
+    try JSONSerialization.jsonObject(
+        with: data,
+        options: options
+    )
+}

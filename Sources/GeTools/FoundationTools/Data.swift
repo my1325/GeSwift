@@ -8,6 +8,16 @@
 import CommonCrypto
 import Foundation
 
+public protocol DataConvertable {
+    var asData: Data? { get }
+}
+
+extension DataConvertable where Self: Encodable {
+    public var asData: Data? {
+        try? JSONEncoder().encode(self)
+    }
+}
+
 public extension Data {
     var hexString: String {
         bytes.reduce("", { $0.appendingFormat("%02x", $1 & 0xff) })

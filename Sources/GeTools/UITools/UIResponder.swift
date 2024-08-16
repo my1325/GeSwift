@@ -18,7 +18,7 @@ public extension GeTool where Base: UIResponder {
     /// - Parameters:
     ///   - event: 事件
     func router(event: ResponderEvent) {
-        if let intercept = base as? ResponderProtocol {
+        if let intercept = base.next as? ResponderProtocol {
             intercept.intercept(event: event)
             return
         }
