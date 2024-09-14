@@ -25,8 +25,8 @@ extension CGAffineTransform {
     
     public static func scale(_ x: CGFloat = 1, y: CGFloat = 1) -> CGAffineTransform {
         CGAffineTransform(
-            scaleX: x.in(0, 1),
-            y: y.in(0, 1)
+            scaleX: x,
+            y: y
         )
     }
 }
