@@ -82,9 +82,15 @@ extension NSMutableAttributedString {
         range: NSRange? = nil
     ) {
         if let range {
-            addAttributes(attributes.attributes, range: range)
+            addAttributes(
+                attributes.attributes,
+                range: range
+            )
         } else {
-            addAttributes(attributes.attributes, range: NSMakeRange(0, self.length))
+            addAttributes(
+                attributes.attributes,
+                range: NSMakeRange(0, self.length)
+            )
         }
     }
 }

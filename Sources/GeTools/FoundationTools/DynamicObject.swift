@@ -82,9 +82,7 @@ public extension BoxValue {
         
         return nil
     }
-}
-
-public extension BoxValue {
+    
     var stringValue: String? {
         if let string = value as? String {
             return string
@@ -96,6 +94,27 @@ public extension BoxValue {
 
         return nil
     }
+    
+    var dictionaryValue: [String: BoxValue]? {
+        self.as([String: Any].self)?
+            .mapValues(BoxValue.init)
+    }
+    
+    var arrayValue: [BoxValue]? {
+        self.as([Any].self)?
+            .map(BoxValue.init)
+    }
+    
+    subscript(_ key: String) -> BoxValue? {
+        dictionaryValue?[key]
+    }
+    
+    subscript(_ index: Int) -> BoxValue? {
+        arrayValue?[index]
+    }
+}
+
+public extension BoxValue {
     
     func jsonString(
         _ options: JSONSerialization.WritingOptions = [],

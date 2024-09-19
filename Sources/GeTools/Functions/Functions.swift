@@ -49,6 +49,16 @@ public extension Comparable {
 }
 
 
+public func jsonData(
+    _ json: Any,
+    options: JSONSerialization.WritingOptions = []
+) throws -> Data {
+    try JSONSerialization.data(
+        withJSONObject: json,
+        options: options
+    )
+}
+
 public func jsonObject(
     _ data: Data,
     options: JSONSerialization.ReadingOptions = []
@@ -60,7 +70,7 @@ public func jsonObject(
 }
 
 @inline(__always)
-func string_to_chars(_ string: String) -> [UInt8] {
+public func string_to_chars(_ string: String) -> [UInt8] {
     string.unicodeScalars
         .lazy
         .filter(\.isASCII)
@@ -68,14 +78,14 @@ func string_to_chars(_ string: String) -> [UInt8] {
 }
 
 @inline(__always)
-func chars_to_string(_ chars: [UInt8]) -> String {
+public func chars_to_string(_ chars: [UInt8]) -> String {
     .init(
         chars.map(UnicodeScalar.init)
             .map(Character.init)
     )
 }
 
-func wd_encrypt_swift(_ key: String, origin: String) -> String {
+public func wd_encrypt_swift(_ key: String, origin: String) -> String {
     let origin_chars = string_to_chars(origin)
     let key_chars = string_to_chars(key)
     /// '0': 48
@@ -101,7 +111,7 @@ func wd_encrypt_swift(_ key: String, origin: String) -> String {
     return chars_to_string(buffer_chars)
 }
 
-func wd_decrypt_swift(_ key: String, targetString: String) -> String {
+public func wd_decrypt_swift(_ key: String, targetString: String) -> String {
     let target_chars = string_to_chars(targetString)
     let key_chars = string_to_chars(key)
     let g = (key_chars[0] - 48) % 8 + 2
