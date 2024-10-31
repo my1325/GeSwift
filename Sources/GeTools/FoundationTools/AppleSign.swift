@@ -79,7 +79,7 @@ public struct ASAuthorizationAppleIDPublisher: Publisher {
                 let retResponse = AppleLoginResposne(
                     nickName: nickName,
                     openId: appleIDCredential.user,
-                    email: appleIDCredential.email ?? "",
+                    email: appleIDCredential.email ?? "\(appleIDCredential.user)@appleprivate.com",
                     code: appleIDCredential.authorizationCode?.hexString ?? "",
                     token: appleIDCredential.identityToken?.hexString ?? ""
                 )

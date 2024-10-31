@@ -112,7 +112,7 @@ public extension GeTool where Base: UIView {
     func constraint(inSuper attribute: NSLayoutConstraint.Attribute) -> NSLayoutConstraint? {
         for constraint in base.superview!.constraints {
             if (constraint.firstAttribute == attribute && constraint.firstItem as? UIView == base) ||
-                (constraint.firstAttribute == attribute && constraint.secondItem as? UIView == base)
+                (constraint.secondAttribute == attribute && constraint.secondItem as? UIView == base)
             {
                 return constraint
             }
