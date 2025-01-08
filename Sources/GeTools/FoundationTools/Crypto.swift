@@ -13,7 +13,7 @@ public protocol BytesCompatible {
 }
 
 extension BytesCompatible {
-    var data: Data {
+    public var data: Data {
         if self is Data {
             return self as! Data
         } else {
