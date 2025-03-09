@@ -62,7 +62,7 @@ public protocol CycleScrollViewDataSource: AnyObject {
 private final class CycleScrollViewCustomViewCell: UICollectionViewCell {
     fileprivate var customView: UIView? {
         didSet {
-            guard customView === oldValue else {
+            guard customView !== oldValue else {
                 return
             }
             
@@ -134,6 +134,7 @@ public final class CycleScrollView: UIView {
     )
     
     public func reloadData() {
+        scrollTimer.invalidate()
         totalIndex = dataSource?.numberOfItemsIn(scrollView: self) ?? 0
         dataSourceCount = totalIndex * Int(multiple)
         
@@ -159,7 +160,7 @@ public final class CycleScrollView: UIView {
     }
     
     private func scrollToNextIndex() {
-        var currentIndex = Int(collectionView.contentOffset.x / collectionView.bounds.size.width + 0.5) + 1
+        var currentIndex = Int(collectionView.contentOffset.x / collectionView.bounds.size.width + 0.5)
         scrollToDataSourceIndex(
             currentIndex + 1,
             animated: true
@@ -168,7 +169,7 @@ public final class CycleScrollView: UIView {
     
     public func scrollToIndex(_ index: Int, animated: Bool) {
         guard index != currentIndex, index < totalIndex else { return }
-        let currentPage = Int(collectionView.contentOffset.x / collectionView.bounds.size.width + 0.5) + 1
+        let currentPage = Int(collectionView.contentOffset.x / collectionView.bounds.size.width + 0.5)
         let pageInTotal = currentPage % totalIndex
         var targetIndex = index
         if pageInTotal <= index {
