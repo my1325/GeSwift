@@ -28,7 +28,7 @@ open class TableViewDataSource<Section: SectionProtocol>: NSObject, UITableViewD
     let titleForFooter: TitleForFooter
 
     public init(
-        sectionIndexTitles: [String]? = nil,
+        _ sectionIndexTitles: [String]? = nil,
         dataSource: [Section] = [],
         configureCell: @escaping ConfigureCell,
         canEditRow: @escaping CanEditRow = { _, _, _, _ in true },

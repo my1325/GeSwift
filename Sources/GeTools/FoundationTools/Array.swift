@@ -8,13 +8,8 @@
 import Foundation
 
 public extension Array {
-    func jsonData(_ options: JSONSerialization.WritingOptions = []) throws -> Data? {
-        try JSONSerialization.data(
-            withJSONObject: self,
-            options: options
-        )
-    }
     
+    @discardableResult
     func just(_ action: (Element) -> Void) -> Self {
         forEach(action)
         return self
@@ -46,19 +41,6 @@ public extension Array {
             }
         }
         return retList
-    }
-    
-    mutating func insertFirst(_ e: Element) {
-        if isEmpty { append(e) }
-        else { insert(e, at: 0) }
-    }
-    
-    func lastEqualTo(_ e: Element) -> Bool where Element: Equatable {
-        last != nil && last! == e
-    }
-    
-    func firstEqualTo(_ e: Element) -> Bool where Element: Equatable {
-        first != nil && first! == e
     }
     
     func grouped<V>(_ keyPath: KeyPath<Element, V>) -> [[Element]] where V: Hashable {
@@ -103,36 +85,6 @@ public extension Array {
         Array(Set(self))
     }
     
-    func first<V>(
-        _ keyPath: KeyPath<Element, V>,
-        equalTo value: V
-    ) -> Element? where V: Equatable {
-        first(keyPath, with: value, by: ==)
-    }
-    
-    func first<V>(
-        _ keyPath: KeyPath<Element, V>,
-        with value: V,
-        by block: (V, V) throws -> Bool
-    ) rethrows -> Element? where V: Equatable {
-        try first(where: { try block($0[keyPath: keyPath], value) })
-    }
-    
-    func firstIndex<V>(
-        _ keyPath: KeyPath<Element, V>,
-        equalTo value: V
-    ) -> Index? where V: Equatable {
-        firstIndex(keyPath, with: value, by: ==)
-    }
-    
-    func firstIndex<V>(
-        _ keyPath: KeyPath<Element, V>,
-        with value: V,
-        by block: (V, V) throws -> Bool
-    ) rethrows -> Index? {
-        try firstIndex(where: { try block($0[keyPath: keyPath], value) })
-    }
-    
     mutating func insertOrRemove(_ value: Element) where Element: Comparable {
         if let index = firstIndex(where: { $0 == value }) {
             remove(at: index)
@@ -141,7 +93,7 @@ public extension Array {
         }
     }
     
-    mutating func insertWithDuplicates(_ value: Element) where Element: Comparable {
+    mutating func insertWithoutDuplicates(_ value: Element) where Element: Comparable {
         if !contains(where: { $0 == value }) {
             append(value)
         }

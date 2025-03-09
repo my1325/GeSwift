@@ -70,7 +70,6 @@ private final class CycleScrollViewCustomViewCell: UICollectionViewCell {
             if let customView {
                 contentView.addSubview(customView)
             }
-            
         }
     }
     
@@ -79,8 +78,8 @@ private final class CycleScrollViewCustomViewCell: UICollectionViewCell {
     }
 }
 
-public final class CycleScrollView: UIView {
-    private lazy var collectionView: UICollectionView = {
+open class CycleScrollView: UIView {
+    public lazy var collectionView: UICollectionView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.showsVerticalScrollIndicator = false
         $0.showsHorizontalScrollIndicator = false
@@ -95,14 +94,23 @@ public final class CycleScrollView: UIView {
         )
         self.addSubview($0)
         return $0
-    }(UICollectionView(frame: .zero, collectionViewLayout: {
-        $0.scrollDirection = .horizontal
-        $0.minimumLineSpacing = 0
-        $0.minimumInteritemSpacing = 0
-        return $0
-    }(UICollectionViewFlowLayout())))
+    }(
+        UICollectionView(
+            frame: .zero,
+            collectionViewLayout: {
+                $0.scrollDirection = .horizontal
+                $0.minimumLineSpacing = 0
+                $0.minimumInteritemSpacing = 0
+                return $0
+            }(
+                CycleScrollRTLLayout(isRTL)
+            )
+        )
+    )
     
-    public override func layoutSubviews() {
+    public var isRTL: Bool = false
+    
+    override public func layoutSubviews() {
         collectionView.frame = bounds
     }
 
@@ -119,14 +127,14 @@ public final class CycleScrollView: UIView {
     /// 当前的展示index
     public var currentIndex: Int = 0
         
-    private var totalIndex: Int = 0
+    var totalIndex: Int = 0
     
-    private var dataSourceCount: Int = 0
+    var dataSourceCount: Int = 0
     
     /// 刷新系数，真实的item会乘以这个数
     public var multiple: Double = 300
                     
-    private lazy var scrollTimer = CycleScrollTimer(
+    lazy var scrollTimer = CycleScrollTimer(
         scrollTimeInterval,
         timeTick: { [weak self] in
             self?.scrollToNextIndex()
@@ -250,8 +258,8 @@ extension CycleScrollView: UICollectionViewDelegateFlowLayout {
     private func scrollViewDidEndScroll(_ scrollView: UIScrollView) {
         guard totalIndex > 0 else { return }
         let index = Int(scrollView.contentOffset.x / scrollView.bounds.size.width + 0.5) % totalIndex
-        delegate?.scrollView(self, didScrollToItemAtIndex: index)
-        currentIndex = index
+        delegate?.scrollView(self, didScrollToItemAtIndex: index % totalIndex)
+        currentIndex = index % totalIndex
     }
 }
 
@@ -279,16 +287,20 @@ extension CycleScrollView: UICollectionViewDataSource {
         return cell
     }
     
-    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
         if let scrollCell = cell as? CycleScrollViewCustomViewCell,
-            let reuseView = scrollCell.customView
+           let reuseView = scrollCell.customView
         {
             delegate?.scrollView(
                 self,
                 willDisplay: reuseView,
-                at: indexPath.item
+                at: indexPath.item % totalIndex
             )
         }
     }

@@ -7,8 +7,8 @@
 import UIKit
 
 extension AssociateKey {
-    static let tableViewCacheHeightKey = AssociateKey(intValue: 10012)
-    static let multiDelegateForTableViewKey = AssociateKey(intValue: 10013)
+    static let tableViewCacheHeightKey = AssociateKey(intValue: 11012)
+    static let multiDelegateForTableViewKey = AssociateKey(intValue: 11013)
 }
 
 /// cache heights

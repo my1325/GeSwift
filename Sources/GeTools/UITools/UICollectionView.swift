@@ -22,7 +22,7 @@ public extension GeTool where Base: UICollectionView {
     }
 
     func register<T: UIView>(
-        forSupplementaryViewOfKind kind: String,
+        _ kind: String,
         withClass type: T.Type
     ) where T: Reusable {
         base.register(
@@ -33,7 +33,7 @@ public extension GeTool where Base: UICollectionView {
     }
 
     func register<T: UIView>(
-        forNibSupplementaryViewOfKind kind: String,
+        _ kind: String,
         withClass type: T.Type
     ) where T: NibReusable {
         base.register(
@@ -43,7 +43,7 @@ public extension GeTool where Base: UICollectionView {
         )
     }
 
-    func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T where T: Reusable {
+    func dequeueReusableCell<T: UICollectionViewCell>(_ indexPath: IndexPath) -> T where T: Reusable {
         base.dequeueReusableCell(
             withReuseIdentifier: T.reuseIdentifier,
             for: indexPath
@@ -51,7 +51,7 @@ public extension GeTool where Base: UICollectionView {
     }
 
     func dequeueReusableSupplementaryView<T: UIView>(
-        ofKind kind: String,
+        _ kind: String,
         for indexPath: IndexPath
     ) -> T where T: Reusable {
         base.dequeueReusableSupplementaryView(

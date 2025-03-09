@@ -25,8 +25,8 @@ extension CGAffineTransform {
     
     public static func scale(_ x: CGFloat = 1, y: CGFloat = 1) -> CGAffineTransform {
         CGAffineTransform(
-            scaleX: x.in(0, 1),
-            y: y.in(0, 1)
+            scaleX: x,
+            y: y
         )
     }
 }
@@ -112,7 +112,7 @@ public extension GeTool where Base: UIView {
     func constraint(inSuper attribute: NSLayoutConstraint.Attribute) -> NSLayoutConstraint? {
         for constraint in base.superview!.constraints {
             if (constraint.firstAttribute == attribute && constraint.firstItem as? UIView == base) ||
-                (constraint.firstAttribute == attribute && constraint.secondItem as? UIView == base)
+                (constraint.secondAttribute == attribute && constraint.secondItem as? UIView == base)
             {
                 return constraint
             }
